@@ -48,3 +48,5 @@ The hook itself never calls Jev or uploads source text. In observe mode it recor
 ## Evidence
 
 See the [full-task protocol](../evals/full-task/protocol.md), [full-task report](../evals/reports/2026-09-17-full-task-pilot.md), and [compatibility matrix](compatibility.md). Small synthetic tasks test integration and expose regressions; they do not establish production savings or general policy completeness.
+
+The [token-efficiency architecture plan](token-efficiency-plan.md) expands this comparison to AiKA modes, optional generative delegation, memory providers, caching and a matched evaluation design. Those extensions are proposed, not shipped capabilities.

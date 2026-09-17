@@ -33,6 +33,8 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 | DR-015–017 | Planned | Completion checks, explicit decisions and public framework remain unimplemented |
 | DR-018 | Partial | Shunt hook/helper/skill architecture plus host-managed MCP for Keychain access; native plugin activation and helper adoption need further validation |
 | DR-019 | Planned | Independently reviewed real-project cost/quality evaluation |
+| DR-020–027 | Proposed | Token-efficiency architecture experiments; see the [ordered plan](docs/token-efficiency-plan.md). No auxiliary generator or memory adapter has been implemented |
+| DR-028–033 | Planned | Adopted development-brain direction: contracts, native engineering memory, cross-host continuity, repository context, complex-task support and lifecycle evaluation; see [architecture](docs/development-brain.md) |
 
 ## Milestones and dependencies
 
@@ -43,6 +45,8 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 | M2: Evaluate | Repeated baseline and active runs produce an evidence-backed decision | DR-010, DR-011 |
 | M3: Initial release | Installable plugins with reliable lifecycle and public evaluation evidence | DR-012, DR-013 |
 | M4: Further experiments | Context selection, completion checks, explicit decisions, and a possible framework | DR-014 through DR-017 |
+| M5: Native development brain | Authorized technical memory survives host/session changes and detects stale source context | DR-028, DR-029, DR-030, DR-031, plus DR-018/020 |
+| M6: Measured development workflow | Bounded workers and complex-task support preserve quality with attributable full-lifecycle costs | DR-022, DR-023, DR-025, DR-032, DR-033, plus DR-027 |
 
 The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followed by catalog, adapter, routing, and trace integration. Build both host adapters early. Milestones are outcome gates, not calendar estimates.
 
@@ -495,6 +499,201 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Validation:** Reproduce a reviewed paired subset before spending on the full experiment; publish sanitized results and keep actual bills distinct from estimates.
 
+## DR-020: Attribute whole-task context and delegation overhead
+
+**Priority:** P0. **Depends on:** DR-008, DR-018. **Status:** proposed.
+
+Link redirect, helper call, selected evidence, tool result, native reread and repair to a session. Include idle plugin/tool-catalog overhead and source sizes without collecting private bodies by default.
+
+**Acceptance criteria:**
+
+- [ ] Distinguish delivered, invoked, selected, reread and unknown events in both hosts.
+- [ ] Record provider-specific input/cache/output and unknown usage; reconcile with whole-run totals without double counting.
+- [ ] Validate ordinary plugin activation, not only direct command hooks.
+- [ ] Publish a small paired diagnostic with native and active plugin sessions at the same model/effort.
+
+## DR-021: Retrieve complete useful evidence under a token budget
+
+**Priority:** P1. **Depends on:** DR-014, DR-020. **Status:** proposed.
+
+Add language-aware symbol/section boundaries, relevant neighbors and progressive targeted reads. Use bounded lexical/structural candidate retrieval before optional Jev ranking. Treat broader or oversized sources explicitly instead of silently assuming the current file cap covers them.
+
+**Acceptance criteria:**
+
+- [ ] Required-evidence recall and exact edit context are checked independently on cross-file, contradictory and no-answer cases.
+- [ ] The same shortlist/output budget supports a deterministic comparison.
+- [ ] Results expose partial coverage and versioned next-read handles; source changes invalidate handles.
+- [ ] Native reads remain available; token and reread reductions include all extra calls.
+
+## DR-022: Prototype a bounded generative bulk-reader
+
+**Priority:** P1. **Depends on:** DR-020, DR-021. **Status:** planned optional capability in the adopted development-brain scope.
+
+Introduce a minimal versioned worker-mode/provider interface and an opt-in focused-answer helper. Keep the existing evidence-only mode. Begin without worker tools or autonomous loops.
+
+**Acceptance criteria:**
+
+- [ ] Mode pins model/instructions, input scope, output format, deadline and cost/call limits.
+- [ ] Empty/failing responses cannot count as context savings; provider usage and failures remain visible.
+- [ ] Claims point to original evidence; exact edits use source text, not generated line numbers.
+- [ ] Compare the same worker with full bounded corpus and selected corpus; measure coverage, repairs and complete-task cost.
+
+## DR-023: Delegate predictable code into reviewable artifacts
+
+**Priority:** P1. **Depends on:** DR-022. **Status:** planned optional capability in the adopted development-brain scope.
+
+Support bounded tests/config/stub generation from explicit reference patterns. Return a staged artifact receipt instead of echoing the entire generated file into the host context.
+
+**Acceptance criteria:**
+
+- [ ] No arbitrary model-selected output path, overwrite, command or permission expansion.
+- [ ] Source/preimage hashes, authorized apply, atomic writes and stale-state rejection are defined per host.
+- [ ] Syntax, independent task checks, compact validation receipts and selective host review cover accepted output.
+- [ ] A single bounded repair policy and native escalation are measured, including failed attempts.
+- [ ] Debugging, architectural changes and sensitive operations retain the main-agent path by policy.
+
+## DR-024: Reuse evidence and compact deterministic tool results
+
+**Priority:** P1. **Depends on:** DR-009, DR-020, DR-021. **Status:** proposed.
+
+Implement exact revision-aware caches, concurrent deduplication and optional wrappers for large diffs/test logs. Emit a compact result with an accessible original, keeping exit status and failures. Do not assume generic hooks can replace every native tool result.
+
+**Acceptance criteria:**
+
+- [ ] Keys cover scope/access, source hash, query, model/mode/question version and relevant budgets.
+- [ ] Edits, withdrawals, permission changes and session compaction cannot serve stale or inaccessible evidence as current.
+- [ ] Cache hits, misses and saved API requests are measured; provider prompt caching stays a separate category.
+- [ ] Errors, warnings and failing tests survive compaction; unsupported host surfaces stay native.
+
+## DR-025: Route by expected benefit with optional Jev judgments
+
+**Priority:** P1. **Depends on:** DR-020, DR-022, DR-023. **Status:** proposed.
+
+Apply deterministic eligibility first, then evaluate narrow semantic routing/support judgments where useful. Add a session budget and circuit breaker; reuse existing DR-015 for bounded completion checks.
+
+**Acceptance criteria:**
+
+- [ ] Choice includes native/abstention; Score and citation judgments use explicit candidates and exact evidence.
+- [ ] Typed confidence never grants permissions, proves correctness or replaces tests.
+- [ ] Cost admission counts worker/Jev calls, added host turns, cache classes, reviews and repair; missing usage remains unknown.
+- [ ] An identical worker pipeline without Jev isolates the incremental effect of Jev on held-out tasks.
+- [ ] Independent judgments share useful state; dependent steps have separate bounded calls and calibrated thresholds.
+
+## DR-026: Add an optional versioned memory-provider contract
+
+**Priority:** P2. **Depends on:** DR-021, DR-024. **Status:** proposed.
+
+Design a read-only adapter for external organizational memory with search/read, source revisions, provenance and access-scoped caching. Keep private deployments outside the public core. This connector is separate from the native engineering memory adopted in DR-028–030; it does not satisfy that requirement.
+
+**Acceptance criteria:**
+
+- [ ] The plugin works without an external brain service; no organization endpoint, credential or private content enters public fixtures.
+- [ ] Authorization precedes candidate selection and cache reuse; project configuration is not treated as record-level ACL.
+- [ ] Memory freshness and retrieval omissions are explicit; memory does not silently override current source code or permissions.
+- [ ] Measure incremental value and overhead on repeated-project tasks; do not attribute unrelated worker savings to memory.
+
+## DR-027: Compare native, retrieval, worker and Jev pipelines
+
+**Priority:** P1. **Depends on:** DR-019, DR-020, DR-022, DR-025. **Status:** proposed.
+
+Extend DR-019 with the staged protocol and proposed promotion gates in the [architecture plan](docs/token-efficiency-plan.md#evaluation-that-can-support-a-superiority-claim). Confirm budget and statistical adequacy before freezing a confirmatory sample.
+
+**Acceptance criteria:**
+
+- [ ] Separate context-body compression, all-provider tokens, complete-task cost, actual charges and subscription quota evidence.
+- [ ] Preserve native, deterministic and same-worker-without-Jev controls; keep failures/interruption costs.
+- [ ] An actual Spotify comparison requires authenticated AiKA; otherwise label the control shunt-style reproduction.
+- [ ] Independent task checks, grouped paired intervals, cache reporting, repeated runs and per-host gates are frozen before results.
+- [ ] Publish null/negative results; never claim superiority from different datasets, an empty answer or a bytes-only ratio.
+
+## DR-028: Define engineering-memory and task-state contracts
+
+**Priority:** P0. **Depends on:** DR-003. **Status:** planned; adopted product direction.
+
+Define the [development-brain](docs/development-brain.md) record types, lifetimes and authority boundaries. Separate repository-derived evidence, durable technical memory and temporary task state.
+
+**Acceptance criteria:**
+
+- [ ] Technical decisions, constraints, observations, investigations, attempts, validations and questions have versioned schemas.
+- [ ] Lifecycle and evidence status are distinct; hypotheses and unsuccessful attempts never become verified facts by summarization alone.
+- [ ] Repository, worktree, source revision/hash, dirty-checkout and permission scope are explicit; directory names alone do not identify repositories.
+- [ ] Capture policies distinguish authorized explicit writes from optional observed-event capture and candidate lessons.
+- [ ] Idempotency, conflict/supersession, withdrawal/purge and stale-source behavior are specified with synthetic examples.
+
+## DR-029: Build the local engineering-memory store
+
+**Priority:** P1. **Depends on:** DR-028. **Status:** planned.
+
+Implement an embedded store with lexical search and exact source provenance. Evaluate a SQLite/FTS5 binding within the existing Node/TypeScript stack; keep deployments and private organization data out of the public package.
+
+**Acceptance criteria:**
+
+- [ ] The supported macOS/Linux installation can create, migrate, search and read the store without a cloud account or embedding provider.
+- [ ] Transactional writes return revisioned receipts and enforce idempotency/revision preconditions.
+- [ ] Concurrent host processes, interrupted writes, corruption diagnostics and stale handles have bounded tested behavior.
+- [ ] Correction/withdrawal invalidates retrieval and caches; explicit purge removes retained payloads and derived indexes under documented backup policy.
+- [ ] Backup/restore and scoped export/import round trips preserve records and provenance; uninstall does not silently delete memory.
+- [ ] User memory stores and source captures stay outside Git by default; publication checks verify the repository contains only intended public artifacts.
+
+## DR-030: Verify memory continuity between Codex and Claude
+
+**Priority:** P1. **Depends on:** DR-018, DR-029. **Status:** planned.
+
+Expose bounded memory operations through existing host-managed MCP. Deliver a minimal context pack in a fresh session using authorized search/read, with optional hook guidance only where verified.
+
+**Acceptance criteria:**
+
+- [ ] Save an explicit technical decision in one host; retrieve it in a fresh session of the other without replaying the prior transcript.
+- [ ] Correct and withdraw the record, then demonstrate that neither host receives the obsolete version as active.
+- [ ] Editing a source, switching a worktree and revoking scope trigger the expected applicability/invalidation behavior.
+- [ ] Two unrelated repositories cannot retrieve each other's records; explicitly bound workspaces can share authorized records.
+- [ ] Record actual memory invocation and delivered bytes/tokens; a hook firing or cursor advancing is not comprehension evidence.
+- [ ] Capture respects existing authorization; unavailable memory leaves native coding usable.
+
+## DR-031: Index current repository structure incrementally
+
+**Priority:** P1. **Depends on:** DR-021, DR-028, DR-029. **Status:** planned.
+
+Add revision-aware local file/symbol/reference/test candidates to the context engine. Start with explicitly supported languages and a lexical fallback; use memory and code as separately attributed sources.
+
+**Acceptance criteria:**
+
+- [ ] Authorized roots, excludes and secret/build/vendor exclusions are enforced before indexing or provider upload.
+- [ ] Content changes, dirty worktrees, deletions and renames update or invalidate the derived index.
+- [ ] Candidate recall includes required neighboring definitions and counterexamples on independent cross-file fixtures.
+- [ ] Evidence packs include original spans, hashes, scope, stale/partial warnings and progressive-read handles.
+- [ ] Index/update/retrieval overhead is reported; embeddings remain optional until measured against the lexical/structural baseline.
+
+## DR-032: Support bounded complex-task investigation
+
+**Priority:** P1. **Depends on:** DR-020, DR-028, DR-030. **Status:** planned.
+
+Implement visible task state for requirements, competing hypotheses, evidence, attempts, validation and next steps. The main agent retains planning and integration; optional workers/Jev are bounded operations, not a replacement conversation loop.
+
+**Acceptance criteria:**
+
+- [ ] Task lifecycle supports collect/investigate/propose/validate/accept/repair/escalate/stop with cancellation and finite repair budgets.
+- [ ] Hypotheses retain their evidence state and cannot be promoted solely by worker self-report or Jev confidence.
+- [ ] Validation receipts refer to actual artifacts, commands, source revisions and observed outcomes.
+- [ ] Complex debugging and architecture can stay with the principal LLM; independent delegation is optional and measured.
+- [ ] Accepted findings can become scoped durable memory under the capture policy; unresolved work resumes without full-chat storage.
+- [ ] Native authority applies to all execution and artifact writes; costs include unsuccessful investigations and repair.
+
+## DR-033: Evaluate development-brain quality and lifecycle cost
+
+**Priority:** P1. **Depends on:** DR-027, DR-030, DR-031, DR-032. **Status:** planned.
+
+Extend the whole-task study to continuity, memory applicability and complex programming. Freeze quality/cost targets per task family before confirmatory runs.
+
+**Acceptance criteria:**
+
+- [ ] Independently reviewed tasks include multi-file defects, architectural constraints, stale/misleading memory and cross-host continuation.
+- [ ] Memory-only, worker-without-Jev and worker-with-Jev ablations isolate each contribution against native/deterministic controls.
+- [ ] Correctness checks remain independent of the worker and Jev; source freshness, memory isolation and regressions are separately scored.
+- [ ] Full-lifecycle accounting includes initial indexing, updates, retrieval, all providers, repair and failed attempts; single-use and repeated-project results are separate.
+- [ ] Report quality/cost tradeoffs rather than promising simultaneous improvements on every task; negative/inconclusive results remain visible.
+- [ ] Install, upgrade, backup/restore, withdrawal/purge and uninstall are verified before claiming complete-product readiness.
+
 ## Traceability
 
 | Specification concern | Issues |
@@ -507,3 +706,6 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 | Open-source release | DR-012, DR-013 |
 | Shunt-style reading and evidence selection | DR-014, DR-018, DR-019 |
 | Future modules and framework decision | DR-015 through DR-017 |
+| Proposed token-efficiency expansion and matched worker controls | DR-020 through DR-027 |
+| Native engineering memory and cross-host continuity | DR-028, DR-029, DR-030 |
+| Repository-aware complex programming and lifecycle evaluation | DR-031, DR-032, DR-033 |

@@ -2,7 +2,7 @@
 
 Status: executable developer alpha; this specification also defines unimplemented release goals
 
-Specification version: 0.3
+Specification version: 0.4
 
 Created: 2026-09-17
 
@@ -10,11 +10,13 @@ Repository: https://github.com/dsandrade/jevra
 
 ## 1. Objective
 
-Build an open-source decision layer that lets users continue using Codex or Claude Code normally while a local runtime delegates selected semantic judgments to TypeSafe's Jev API.
+Build an open-source development plugin that lets users continue using Codex or Claude Code normally while Jevra combines durable engineering memory, repository evidence, bounded delegated work, and typed judgments through TypeSafe's Jev API.
 
-The initial objective is to explore the architecture and measure both task quality and efficiency. Neither a quality improvement nor a cost or latency reduction is assumed.
+The objective is to improve accepted-task success, complex-programming problem resolution, continuity across sessions, and efficiency. The current alpha explores selected decisions and retrieval; the complete development brain is planned. Neither a quality improvement nor a cost or latency reduction is assumed.
 
 The product is installed as host-specific plugins. Its implementation has a reusable core that may later become a public framework once real integrations establish a useful API.
+
+Jevra is developed from scratch in this repository. Native engineering memory is a core planned capability, with optional external memory adapters. See the [development-brain architecture](docs/development-brain.md) for the target design and first cross-host memory slice. This does not declare the target implemented.
 
 ## 2. Product thesis
 
@@ -27,6 +29,9 @@ The proposed responsibility split is:
 | User | Supplies goals, constraints, preferences, and authorization |
 | Host agent | Maintains the conversation, tool execution, native permissions, and sandbox |
 | LLM | Generates text, code, and candidate solutions; handles open-ended reasoning |
+| Engineering memory (planned) | Preserves technical decisions, investigations and verified outcomes with scope, provenance and source freshness |
+| Repository/context engine (planned expansion) | Retrieves bounded current code and memory evidence, with incremental indexes and revision-aware reuse |
+| Worker modes (planned) | Produce bounded summaries or predictable artifacts through an optional configured generative model |
 | Jev | Evaluates narrow semantic questions against supplied state and criteria |
 | Runtime | Collects state, applies deterministic rules, calls the provider, and maps judgments to behavior |
 
@@ -36,11 +41,11 @@ The runtime cannot observe or redirect every internal LLM decision. Injected adv
 
 ### Related work: Spotify Portal AI Plugins and shunt
 
-The [Spotify repository](https://github.com/spotify/portal-ai-plugins) packages Portal workflows for existing coding agents. Its [shunt plugin](https://github.com/spotify/portal-ai-plugins/blob/3c24ca30ff63e1f5bbad1c43fe5324daff579123/plugins/shunt/README.md) is the closest reference: hooks redirect large reads, scripts call auxiliary models through Portal/AiKA, and skills describe when to delegate. The reviewed shunt implementation targets Claude Code and keeps architectural judgments with Claude.
+The [Spotify repository](https://github.com/spotify/portal-ai-plugins) packages Portal workflows for existing coding agents. Its [shunt plugin](https://github.com/spotify/portal-ai-plugins/blob/3c24ca30ff63e1f5bbad1c43fe5324daff579123/plugins/shunt/README.md) provides a public comparison: hooks redirect large reads, scripts call auxiliary models through Portal/AiKA, and skills describe when to delegate. The reviewed shunt implementation targets Claude Code and keeps architectural judgments with Claude.
 
-Jevra shares the goal of distributing work while preserving the existing agent interface. Following the owner's scope update, it now implements shunt-style large-read interception and helper/skill separation. Jev selects exact source evidence and code references; the main LLM interprets it and generates code. The original skill-selection module remains available. Shunt is an architectural reference, not a required dependency or a benchmark proving Jevra's value.
+Jevra shares the goal of distributing work while preserving the existing agent interface. It implements large-read interception and separates hooks, helpers and skills. Jev selects exact source evidence and code references; the main LLM interprets it and generates code. The original skill-selection module remains available. The comparison with shunt does not establish Jevra's quality or efficiency.
 
-Reuse the separation between hooks, executable integration code, and skill guidance. Verify host behavior independently and retain a deterministic routing baseline. No Spotify source code is included in this initial repository.
+Keep hooks, executable integration code, and skill guidance separate. Verify host behavior independently and retain a deterministic routing baseline. No Spotify source code is included in this initial repository.
 
 The reviewed [benchmark definition](https://github.com/spotify/portal-ai-plugins/blob/3c24ca30ff63e1f5bbad1c43fe5324daff579123/plugins/shunt/evals/benchmarks.json) estimates Claude context tokens using characters divided by four. That measurement does not by itself establish total system cost, latency, or outcome quality. Jevra must include provider overhead and final task outcomes.
 
@@ -85,9 +90,21 @@ Automatic activation does not authorize uploading arbitrary workspace contents. 
 This owner-directed experiment advances DR-014 before the initial skill-routing release gate. It does not imply that skill routing or evidence selection has met promotion criteria. Detailed parity and differences are in [shunt architecture](docs/shunt-parity.md).
 
 ### Later experiments
+- The [token-efficiency architecture plan](docs/token-efficiency-plan.md) compares shunt with the current runtime and defines measurement for evidence reuse, optional generative workers and semantic routing. The [development-brain design](docs/development-brain.md) extends its initial optional-memory proposal: native engineering memory is now core planned scope. Main-LLM code generation remains the shipped behavior; auxiliary generation is in the adopted product direction but is not implemented or enabled.
 - Checking explicit completion requirements against observed evidence.
 - An MCP tool for LLM-proposed candidates and explicit decision requests.
 - A supported library API for other agent integrations.
+
+### Adopted target: a development brain within Jevra
+
+- Native engineering memory for explicit technical decisions, constraints, investigations, failed attempts and validated outcomes; distinct from a raw chat archive.
+- Repository-aware evidence with revision/hash provenance, worktree isolation, stale-state invalidation and incremental retrieval.
+- Shared authorized memory across fresh Codex/Claude sessions, with idempotent writes, receipts, correction/withdrawal and backup/restore.
+- Optional versioned generative worker modes plus Jev relevance, route and support judgments; native evidence-only mode remains available.
+- Main-agent-led complex investigation with explicit requirements, hypotheses, observed checks, bounded repair and cancellation.
+- Full lifecycle accounting: memory/index maintenance, main-model work, workers, Jev, fallback and failed attempts.
+
+The recommended first store is local and embedded, with lexical/structural retrieval before optional embeddings. Keep private organization services optional. The first vertical slice proves cross-host save/recall and stale-source handling; it does not start a hosted platform or autonomous coding loop. DR-028 through DR-033 add this scope without replacing existing issue IDs.
 
 ### Non-goals for the initial release
 
@@ -100,6 +117,8 @@ This owner-directed experiment advances DR-014 before the initial skill-routing 
 - Training, distributing, or self-hosting Jev model weights.
 
 ## 5. Architecture
+
+The diagram below describes the implemented decision pipeline. The larger target architecture, including native memory and worker modes, is documented in [development-brain.md](docs/development-brain.md#target-architecture). Planned packages or diagrams must not be presented as shipped modules.
 
 ```mermaid
 flowchart TD

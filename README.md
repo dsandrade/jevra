@@ -1,12 +1,14 @@
 # Jevra
 
-An open-source decision layer for coding agents, starting with Codex, Claude Code, and TypeSafe's Jev.
+An open-source development plugin for Codex and Claude Code, developed from scratch with engineering memory, bounded delegated work, and TypeSafe Jev judgments as its product direction.
 
-Users keep working in their existing agent. Following Spotify shunt’s architecture, an opt-in `PreToolUse` hook redirects large reads to a helper: Jev selects source excerpts, and the main LLM interprets them and writes code. `code-context` selects implementation references. The original `UserPromptSubmit` skill router remains available.
+Users keep working in their existing agent. An opt-in `PreToolUse` hook redirects large reads to a helper: Jev selects source excerpts, and the main LLM interprets them and writes code. `code-context` selects implementation references. The original `UserPromptSubmit` skill router remains available.
 
 **Status: executable developer alpha, `0.1.0-alpha.2`.** Large-read command hooks have run in authenticated Codex CLI and Claude Code sessions. The Jev selector has a live provider check; complete-task measurements are documented separately. This is not a general decision framework or a production release.
 
 ## What works
+
+The [development-brain architecture](docs/development-brain.md) defines the adopted product direction. Native engineering memory, repository indexing and generative workers are planned; the current executable capabilities are listed below.
 
 - Shared TypeScript core, official TypeSafe SDK provider, CLI, and separate host adapters.
 - Explicit skill directories, validated YAML metadata, content revisions, and bounded inputs.
@@ -77,12 +79,14 @@ The current reading pilot completed 12/12 tasks with 300/300 external checks. Cl
 
 - [Product and technical specification](SPEC.md)
 - [Implementation issues and acceptance criteria](ISSUES.md)
+- [Development-brain architecture and first delivery slice](docs/development-brain.md)
+- [Shunt comparison and token-efficiency experiment plan](docs/token-efficiency-plan.md)
 - [Development and evaluation](docs/development.md)
 - [Contributor and agent conventions](AGENTS.md)
 
 Reference a stable planning ID from `ISSUES.md` in contributions. These IDs are not GitHub issue numbers. Write implementation and technical documentation in English.
 
-See the [shunt parity map](docs/shunt-parity.md) for the shared control flow and explicit differences. Jev selects evidence; generation stays in the main model. Spotify code is not a dependency, and its published context-reduction percentages are not Jevra results.
+See the [shunt parity map](docs/shunt-parity.md) for the shared control flow and explicit differences. In the current alpha, Jev selects evidence and generation stays in the main model. Optional workers are part of the planned development-brain direction. Spotify code is not a dependency, and its published context-reduction percentages are not Jevra results.
 
 ## License and service dependency
 
