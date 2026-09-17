@@ -83,6 +83,7 @@ The current reading pilot completed 12/12 tasks with 300/300 external checks. Cl
 - [Implementation issues and acceptance criteria](ISSUES.md)
 - [Development-brain architecture and first delivery slice](docs/development-brain.md)
 - [Jev decision ownership, workflow concepts and stage map](docs/decision-architecture.md)
+- [Architecture critique and recommended quality/cost delivery sequence](docs/architecture-critique.md)
 - [Shunt comparison and token-efficiency experiment plan](docs/token-efficiency-plan.md)
 - [Development and evaluation](docs/development.md)
 - [Contributor and agent conventions](AGENTS.md)

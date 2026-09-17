@@ -1,5 +1,7 @@
 # Jevra development brain
 
+> Review note (2026-09-17): the [architecture critique](architecture-critique.md) recommends a smaller delivery sequence focused on complete-task quality and cost. It preserves Jev ownership of managed semantic decisions and proposes deferring broad memory/workflow automation. This is a recommendation for discussion, not an implemented change or an adopted replacement of this plan.
+
 Date: 2026-09-17. Status: adopted product direction; architecture and delivery slices are planned. The executable version remains `0.1.0-alpha.2`.
 
 ## Product decision

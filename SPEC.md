@@ -1,5 +1,7 @@
 # Jevra: Product and Technical Specification
 
+> Review note (2026-09-17): the [architecture critique](docs/architecture-critique.md) recommends a smaller delivery sequence focused on complete-task quality and cost. It preserves Jev ownership of managed semantic decisions and proposes deferring broad memory/workflow automation. This is a recommendation for discussion, not an implemented change or an adopted replacement of this plan.
+
 Status: executable developer alpha; this specification also defines unimplemented release goals
 
 Specification version: 0.5

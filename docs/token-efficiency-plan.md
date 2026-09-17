@@ -1,5 +1,7 @@
 # Token efficiency: architecture review and experiment plan
 
+> Review note (2026-09-17): the [architecture critique](architecture-critique.md) recommends a smaller delivery sequence focused on complete-task quality and cost. It preserves Jev ownership of managed semantic decisions and proposes deferring broad memory/workflow automation. This is a recommendation for discussion, not an implemented change or an adopted replacement of this plan.
+
 Date: 2026-09-17. Status: proposal, not an implemented architecture or a savings claim.
 
 This plan follows the owner's request to compare the complete Spotify shunt mechanism with Jevra before further implementation. The shipped choice remains **Jev selects evidence; the main LLM generates code**. The owner subsequently adopted Jevra as a complete development-focused plugin with native engineering memory and optional workers. [Development-brain architecture](development-brain.md) records that scope update; the architecture below remains planned, not silently enabled.
