@@ -6,6 +6,8 @@ Users keep working in their existing agent. An opt-in `PreToolUse` hook redirect
 
 **Status: executable developer alpha, `0.1.0-alpha.2`.** Large-read command hooks have run in authenticated Codex CLI and Claude Code sessions. The Jev selector has a live provider check; complete-task measurements are documented separately. This is not a general decision framework or a production release.
 
+The adopted [decision architecture](docs/decision-architecture.md) assigns every explicit semantic decision in a Jevra-managed workflow to Jev. LLMs propose solutions and produce artifacts; code enforces policy and execution. This broader lifecycle is planned, and hooks cannot control hidden host decisions.
+
 ## What works
 
 The [development-brain architecture](docs/development-brain.md) defines the adopted product direction. Native engineering memory, repository indexing and generative workers are planned; the current executable capabilities are listed below.
@@ -80,6 +82,7 @@ The current reading pilot completed 12/12 tasks with 300/300 external checks. Cl
 - [Product and technical specification](SPEC.md)
 - [Implementation issues and acceptance criteria](ISSUES.md)
 - [Development-brain architecture and first delivery slice](docs/development-brain.md)
+- [Jev decision ownership, workflow concepts and stage map](docs/decision-architecture.md)
 - [Shunt comparison and token-efficiency experiment plan](docs/token-efficiency-plan.md)
 - [Development and evaluation](docs/development.md)
 - [Contributor and agent conventions](AGENTS.md)

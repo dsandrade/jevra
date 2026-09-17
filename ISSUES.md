@@ -35,6 +35,7 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 | DR-019 | Planned | Independently reviewed real-project cost/quality evaluation |
 | DR-020–027 | Proposed | Token-efficiency architecture experiments; see the [ordered plan](docs/token-efficiency-plan.md). No auxiliary generator or memory adapter has been implemented |
 | DR-028–033 | Planned | Adopted development-brain direction: contracts, native engineering memory, cross-host continuity, repository context, complex-task support and lifecycle evaluation; see [architecture](docs/development-brain.md) |
+| DR-034–038 | Planned | Jev decision registry across managed stages, source-bound knowledge compilation, project profiles, assumption receipts and review-driven learning |
 
 ## Milestones and dependencies
 
@@ -45,8 +46,8 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 | M2: Evaluate | Repeated baseline and active runs produce an evidence-backed decision | DR-010, DR-011 |
 | M3: Initial release | Installable plugins with reliable lifecycle and public evaluation evidence | DR-012, DR-013 |
 | M4: Further experiments | Context selection, completion checks, explicit decisions, and a possible framework | DR-014 through DR-017 |
-| M5: Native development brain | Authorized technical memory survives host/session changes and detects stale source context | DR-028, DR-029, DR-030, DR-031, plus DR-018/020 |
-| M6: Measured development workflow | Bounded workers and complex-task support preserve quality with attributable full-lifecycle costs | DR-022, DR-023, DR-025, DR-032, DR-033, plus DR-027 |
+| M5: Native development brain | Authorized technical memory survives host/session changes and detects stale source context | DR-034, DR-028, DR-029, DR-030, DR-031/035, plus DR-018/020 |
+| M6: Measured development workflow | Bounded workers and complex-task support preserve quality with attributable full-lifecycle costs | DR-022, DR-023, DR-025, DR-032, DR-033, DR-036–038, plus DR-027 |
 
 The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followed by catalog, adapter, routing, and trace integration. Build both host adapters early. Milestones are outcome gates, not calendar estimates.
 
@@ -516,7 +517,7 @@ Link redirect, helper call, selected evidence, tool result, native reread and re
 
 **Priority:** P1. **Depends on:** DR-014, DR-020. **Status:** proposed.
 
-Add language-aware symbol/section boundaries, relevant neighbors and progressive targeted reads. Use bounded lexical/structural candidate retrieval before optional Jev ranking. Treat broader or oversized sources explicitly instead of silently assuming the current file cap covers them.
+Add language-aware symbol/section boundaries, relevant neighbors and progressive targeted reads. Use bounded lexical/structural candidate retrieval before Jev ranking in the managed workflow. Treat broader or oversized sources explicitly instead of silently assuming the current file cap covers them.
 
 **Acceptance criteria:**
 
@@ -565,11 +566,11 @@ Implement exact revision-aware caches, concurrent deduplication and optional wra
 - [ ] Cache hits, misses and saved API requests are measured; provider prompt caching stays a separate category.
 - [ ] Errors, warnings and failing tests survive compaction; unsupported host surfaces stay native.
 
-## DR-025: Route by expected benefit with optional Jev judgments
+## DR-025: Route eligible work with Jev judgments and cost accounting
 
 **Priority:** P1. **Depends on:** DR-020, DR-022, DR-023. **Status:** proposed.
 
-Apply deterministic eligibility first, then evaluate narrow semantic routing/support judgments where useful. Add a session budget and circuit breaker; reuse existing DR-015 for bounded completion checks.
+Apply deterministic eligibility first, then use Jev for every required semantic routing/support judgment through DR-034. Add a session budget and circuit breaker; reuse existing DR-015 for bounded completion checks.
 
 **Acceptance criteria:**
 
@@ -668,14 +669,14 @@ Add revision-aware local file/symbol/reference/test candidates to the context en
 
 **Priority:** P1. **Depends on:** DR-020, DR-028, DR-030. **Status:** planned.
 
-Implement visible task state for requirements, competing hypotheses, evidence, attempts, validation and next steps. The main agent retains planning and integration; optional workers/Jev are bounded operations, not a replacement conversation loop.
+Implement visible task state for requirements, competing hypotheses, evidence, attempts, validation and next steps. The main agent generates candidate plans and integrates artifacts; Jev evaluates/selects semantic alternatives through DR-034. Optional workers are bounded generators, not a replacement conversation loop.
 
 **Acceptance criteria:**
 
 - [ ] Task lifecycle supports collect/investigate/propose/validate/accept/repair/escalate/stop with cancellation and finite repair budgets.
 - [ ] Hypotheses retain their evidence state and cannot be promoted solely by worker self-report or Jev confidence.
 - [ ] Validation receipts refer to actual artifacts, commands, source revisions and observed outcomes.
-- [ ] Complex debugging and architecture can stay with the principal LLM; independent delegation is optional and measured.
+- [ ] The principal LLM generates complex debugging/architecture alternatives; Jev evaluates/selects or abstains. Independent generative delegation remains optional and measured.
 - [ ] Accepted findings can become scoped durable memory under the capture policy; unresolved work resumes without full-chat storage.
 - [ ] Native authority applies to all execution and artifact writes; costs include unsuccessful investigations and repair.
 
@@ -694,6 +695,78 @@ Extend the whole-task study to continuity, memory applicability and complex prog
 - [ ] Report quality/cost tradeoffs rather than promising simultaneous improvements on every task; negative/inconclusive results remain visible.
 - [ ] Install, upgrade, backup/restore, withdrawal/purge and uninstall are verified before claiming complete-product readiness.
 
+## DR-034: Centralize managed semantic decisions in Jev
+
+**Priority:** P0. **Depends on:** DR-003, DR-004, DR-020. **Status:** planned.
+
+Implement the [decision registry and receipts](docs/decision-architecture.md) in the existing core. All explicit managed semantic decisions use Jev. Extend DR-016's explicit tool without requiring a public framework or unsupported host interception.
+
+**Acceptance criteria:**
+
+- [ ] Each registered question declares stage, primitive, versioned criteria/state, candidate origin, limits and outcome policy; no hidden LLM semantic fallback exists in a managed transition.
+- [ ] The transition runner requires matching Jev receipts or exact valid cached receipts; reject stale evidence/state, unknown candidates and changed scope.
+- [ ] Permissions, mandatory checks, exact operations, user choices and arithmetic stay deterministic. A model answer cannot override them.
+- [ ] Test provider outage, malformed results, missing alternatives, abstention, budget exhaustion and native bypass without losing task checkpoints.
+- [ ] Report managed/advisory/bypass outcomes, instrumented stages and observable adoption; never claim coverage of hidden host decisions.
+- [ ] First implemented slice covers memory applicability/retrieval; later stage registration is incremental, with independent fixtures and cost accounting.
+
+## DR-035: Compile source-bound engineering knowledge incrementally
+
+**Priority:** P1. **Depends on:** DR-028, DR-029, DR-031, DR-034. **Status:** planned.
+
+Extend the repository index with small derived patterns, flows and anti-patterns. LLMs propose records; Jev evaluates kind, source support and reuse usefulness. Implement the module from scratch against the versioned Jevra contracts.
+
+**Acceptance criteria:**
+
+- [ ] Each derived record binds exact source spans/hashes, worktree/snapshot, derivation version and Jev support receipts; generation date or title hash alone is insufficient.
+- [ ] Renames, deleted files, dirty checkouts and corrections invalidate dependent records/caches; failed updates cannot advance the index cursor.
+- [ ] Unchanged sources skip regeneration; changed modules reconcile absent records, rather than only upserting new ones.
+- [ ] Retrieval returns metadata before bounded selected bodies, with progressive expansion and explicit partial coverage.
+- [ ] Independent fixtures detect unsupported summaries and required counterexamples; evaluate cold ingestion, updates and repeated-use economics separately.
+
+## DR-036: Define project profiles and semantic impact checks
+
+**Priority:** P1. **Depends on:** DR-028, DR-031, DR-034. **Status:** planned.
+
+Add small declarative profiles for supported stacks, test entry points, accepted constraints and dependency/contract relationships. Jev evaluates semantic applicability and candidate impact; explicit project requirements remain binding.
+
+**Acceptance criteria:**
+
+- [ ] Profiles have versions, scope and provenance; load only applicable optional guidance instead of a monolithic playbook.
+- [ ] Cross-component fixtures cover API consumers/producers, schema and frontend behavior without relying on private project identities.
+- [ ] UI, persisted-data and AI behavior impacts can request appropriate behavioral checks; mandatory checks cannot be dropped by Jev.
+- [ ] Unmapped components and partial dependency coverage remain explicit; scope expansion cannot grant access to another repository.
+- [ ] Report context overhead, missed impacts and test cost against the same tasks without profiles.
+
+## DR-037: Track evidence-backed assumptions and clarification
+
+**Priority:** P1. **Depends on:** DR-028, DR-032, DR-034. **Status:** planned.
+
+Extend task state with candidate alternatives, Jev selections, evidence and unresolved information. Retrieve applicable context before requesting information already available, while preserving real user decisions and explicit constraints.
+
+**Acceptance criteria:**
+
+- [ ] Each managed assumption records requirement, alternatives, selected option or abstention, supporting/contradicting evidence and Jev receipt.
+- [ ] Missing user/business values, conflicting requirements and omitted candidates cannot be silently filled by repository precedent.
+- [ ] Neither precedent counts, lexical similarity nor newest-file timestamps are treated as calibrated correctness confidence.
+- [ ] Dependent questions use updated state; exact repeated decisions can reuse valid receipts without replaying the transcript.
+- [ ] Independent tasks measure unnecessary questions, necessary questions preserved, incorrect assumptions, candidate recall and whole-task quality/cost.
+
+## DR-038: Add bounded independent review and scoped learning
+
+**Priority:** P1. **Depends on:** DR-015, DR-029, DR-032, DR-034. **Status:** planned.
+
+Implement an optional isolated review mode and a correction-to-lesson lifecycle. A reviewer generates findings; Jev evaluates support, severity and coverage. Runtime policy governs finite repair and memory writes.
+
+**Acceptance criteria:**
+
+- [ ] Review context contains relevant requirements, current sources and diff without the author's full conversation; isolation does not count as independent ground truth.
+- [ ] Unsupported serious findings trigger evidence retrieval or an unresolved status, not automatic downgrade and acceptance; thresholds are versioned and independently evaluated.
+- [ ] Every repair references the prior finding, actual validation receipts and source revision; cancellation/outage resumes from a consistent checkpoint.
+- [ ] Lessons distinguish observed facts, proposed explanations and reusable practices. Jev evaluates novelty/conflict/applicability; configured write/review policy governs promotion.
+- [ ] A single successful attempt cannot silently become a global rule; corrections, counterexamples and source invalidation affect retrieval.
+- [ ] Measure recurring-error prevention, false-lesson retrieval and all review/repair/capture costs; learning failure cannot rewrite a successful task outcome.
+
 ## Traceability
 
 | Specification concern | Issues |
@@ -709,3 +782,5 @@ Extend the whole-task study to continuity, memory applicability and complex prog
 | Proposed token-efficiency expansion and matched worker controls | DR-020 through DR-027 |
 | Native engineering memory and cross-host continuity | DR-028, DR-029, DR-030 |
 | Repository-aware complex programming and lifecycle evaluation | DR-031, DR-032, DR-033 |
+| Managed semantic ownership and decision coverage | DR-034, DR-003/004/016/020/025 |
+| Source-bound knowledge, impact profiles, assumptions and scoped learning | DR-035, DR-036, DR-037, DR-038 |

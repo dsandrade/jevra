@@ -12,15 +12,17 @@ Keep one repository and one product name. Users keep their existing coding agent
 
 Desired outcomes are higher accepted-task success, better complex-problem resolution, continuity across sessions/hosts, and lower expensive-token consumption. These are objectives, not established alpha capabilities. Optimize cost subject to quality requirements; provide a measured higher-quality path when a harder task justifies more spending.
 
+The owner subsequently assigned every explicit semantic decision in the managed workflow to Jev. [Decision architecture](decision-architecture.md) is authoritative for that ownership, registry and transition enforcement; optional workers remain generative helpers. This change is planned, not an alpha runtime claim.
+
 ## Responsibility boundaries
 
 | Component | Owns | Does not establish |
 | --- | --- | --- |
-| Codex / Claude Code | User conversation, open-ended problem solving, plan/candidate generation, native execution permissions, integration and final review | That every hook recommendation was followed |
+| Codex / Claude Code | User conversation, open-ended problem solving, plan/candidate generation, native execution permissions, integration and review-finding generation | That every hook recommendation was followed |
 | Engineering memory | Versioned technical decisions, findings, failed attempts, validated outcomes and unresolved questions | That an old finding remains true in the current checkout |
 | Repository evidence | Files, symbols, references, dependencies and test relationships from an authorized revision | Semantic completeness of a repository from a partial index |
 | Context engine | Bounded retrieval, revision-aware caches, useful neighbors, exact evidence packs and progressive expansion | Permission to fetch unrelated projects or inject all stored memory |
-| Jev | Narrow typed judgments over supplied evidence and eligible choices | Code/text generation, proof of correctness or authority to act |
+| Jev | All explicit semantic judgments and selections in managed stages, over supplied evidence and eligible choices | Code/text generation, proof of correctness or authority to act |
 | Worker modes | Bounded analysis, summaries or predictable artifacts using a configured generative model | Unlimited autonomous development or unrestricted commands |
 | Verification and ledger | Source freshness, schemas, test receipts, artifact checks, observed usage and bounded repair | That a passing test covers every semantic requirement |
 
@@ -36,10 +38,10 @@ flowchart TD
     M[Engineering memory: decisions and outcomes] --> C
     R[Current checkout: files, symbols and tests] --> C
     X[Optional external memory adapter] --> C
-    C --> J[Optional Jev judgments: relevance, route, support]
-    J --> L[Main LLM: investigation, design and integration]
+    C --> J[Jev: semantic evaluation and selection at each managed stage]
+    J --> L[Main LLM: candidate plans, hypotheses and artifacts]
+    L --> J
     J --> W[Optional bounded worker: analysis or artifact]
-    C --> L
     L --> V[Authorized execution and independent validation]
     W --> V
     V --> F[Compact receipt, selective review or bounded repair]
@@ -50,7 +52,7 @@ flowchart TD
     V --> A
 ```
 
-The arrows describe information flow, not a required API call at every node. Direct exact lookups and cache hits bypass semantic judgment. The host does not surrender its conversation loop to the plugin. A worker initially returns an artifact or answer; host-authorized execution applies and validates it. Unavailable integration surfaces retain native behavior.
+The arrows describe information flow, not a required API call at every node. Exact operations need no semantic inference. Exact cached Jev receipts can satisfy an unchanged semantic evaluation; ordinary content-cache hits do not substitute for one. The host does not surrender its conversation loop to the plugin. A worker initially returns an artifact or answer; host-authorized execution applies and validates it. Unavailable integration surfaces retain native behavior, recorded as outside managed decision coverage. Jev unavailability suspends the dependent managed transition; it must not silently switch judges.
 
 ## Native memory requirements
 
@@ -89,7 +91,7 @@ These are proposed internal contracts, not an implemented API. Paths and hashes 
 
 - User-requested technical memories can be stored under configured scope. Do not ask for confirmation again for each already-authorized low-impact write.
 - Automatic observations are limited to the explicitly enabled capture policy and observed artifacts/checks. Store a failed command as an observed failure, not a proven diagnosis. An accepted decision requires an actual user/source acceptance signal.
-- A model-proposed lesson stays a candidate until backed by evidence or reviewed. Jev may advise whether two statements conflict; code owns persistence and the final write policy.
+- A model-proposed lesson stays a candidate until backed by evidence or reviewed. Jev evaluates whether two candidate statements conflict; code owns persistence and the final write policy.
 - Use idempotency keys and revision preconditions. A replay returns the original receipt; conflicting payload reuse fails. Corrections preserve provenance and invalidate dependent retrieval/caches.
 - Ordinary withdrawal removes an item from retrieval and preserves an auditable tombstone. Explicit purge also deletes retained payloads and derived embeddings/caches; exports/backups need their own retention/deletion handling. Do not market a tombstone as secure erasure.
 - Store concise technical evidence, not complete private conversations by default. Memory is reference material, never a higher-priority instruction or a remembered permission grant.
@@ -109,10 +111,10 @@ Only authorized roots and file classes are indexed. Honor repository excludes pl
 Example: an intermittent duplicate-write bug spans a request handler, retry logic and storage layer.
 
 1. The host identifies requirements and reproduces the failure. The plugin retrieves relevant code, prior design decisions and applicable failed attempts, all tied to current source versions.
-2. The principal LLM proposes competing hypotheses and an investigation plan. Jev may rank supplied evidence or eligible next steps; it does not invent a diagnosis or replace open-ended reasoning.
+2. The principal LLM proposes competing hypotheses and an investigation plan. Jev evaluates evidential support and selects eligible next steps, or abstains; it does not generate the diagnosis. The LLM may need to propose more alternatives.
 3. A bounded worker can inspect an isolated question or prepare a predictable test artifact. Independent work is optional and budgeted; parallelism is not the default answer to complexity and does not imply fewer tokens.
 4. The host executes permitted checks. The runtime records outcomes against actual commands, artifacts and source hashes. A worker report that says a test passed is not a test receipt.
-5. The main LLM integrates a patch and reviews the affected behavior. Independent regression checks and explicit requirement evidence govern acceptance. Unsupported or conflicting findings trigger targeted expansion, not forced completion.
+5. The main LLM integrates a patch and generates review findings. Jev evaluates finding support and semantic requirement coverage; independent regression checks and deterministic gates govern completion. Unsupported or conflicting findings trigger targeted expansion, not forced completion.
 6. Persist a compact verified outcome and references under the capture policy. A later Codex or Claude session can retrieve that outcome without inheriting the whole transcript. If the underlying code changed, show it as needing revalidation.
 
 This is a proposed lifecycle, not an existing autonomous solver. The task state machine is `collect → investigate → propose → validate → accept | repair | escalate | stop`, with cancellation and a finite repair budget. Suggested plans are LLM output; executable commands still pass through native authority. Stop conditions include missing authorization, exhausted budgets, unavailable evidence and repeated unproductive repair.
@@ -123,12 +125,12 @@ Initial mode candidates:
 
 | Mode | Execution | Output |
 | --- | --- | --- |
-| `context-reader` | Deterministic retrieval + optional Jev | Exact evidence pack; existing alpha behavior evolves here |
+| `context-reader` | Deterministic candidate retrieval + Jev selection | Exact evidence pack; existing alpha behavior evolves here |
 | `bulk-analyst` | Optional generative worker | Focused answer with source references and omissions |
 | `artifact-writer` | Optional generative worker | Staged predictable code/config/test artifact and receipt |
-| `evidence-auditor` | Exact checks + optional Jev | Supported/contradicted/unknown findings, never automatic approval |
+| `evidence-auditor` | Exact checks + Jev semantic evaluation | Supported/contradicted/unknown findings, never automatic approval |
 
-Each mode pins instructions, schema, provider/model, allowed inputs, output limits, timeout, tools and retry policy. Keep tools disabled for the first generative modes. The main agent owns architecture/debugging decisions; later specialist investigation must be a separate evaluated mode, not an unbounded hidden agent loop.
+Each mode pins instructions, schema, provider/model, allowed inputs, output limits, timeout, tools and retry policy. Keep tools disabled for the first generative modes. The main agent generates architecture/debugging alternatives; Jev evaluates and selects within managed stages. Any later specialist investigation must be a separate evaluated mode with the same decision contract.
 
 Choose workers from user-configured providers by measured task capability and effective cost, not only advertised model size. No particular auxiliary provider/model has been selected. A Codex or Claude subscription login does not automatically supply a reusable worker API entitlement; any supported worker transport and credentials must be explicit. The API-driven Jev service also remains an external dependency; open-source plugin code does not include model weights or free inference.
 
@@ -138,14 +140,14 @@ Measure accepted-task success and resource use together. On straightforward gene
 
 | Stage | Deliverable | Existing/new issues |
 | --- | --- | --- |
-| Foundation | Ordinary plugin activation, telemetry and explicit contracts | DR-018, DR-020, DR-028 |
+| Foundation | Decision registry and receipts, ordinary plugin activation, telemetry and explicit contracts | DR-034, DR-018, DR-020, DR-028 |
 | Native memory | Local store, lifecycle, retrieval and cross-host continuity | DR-029, DR-030 |
-| Useful context | Repository index, structural retrieval, cache and progressive expansion | DR-031, DR-021, DR-024, DR-009 |
+| Useful context | Incremental source-bound knowledge, impact profiles, structural retrieval, cache and progressive expansion | DR-035, DR-036, DR-031, DR-021, DR-024, DR-009 |
 | Delegated work | Bounded summary then artifact modes | DR-022, DR-023 |
-| Complex-task support | Requirements/hypotheses ledger, evidence gates and Jev routing | DR-032, DR-025, DR-015 |
+| Complex-task support | Assumption/hypothesis ledger, independent review, scoped lessons and Jev routing | DR-037, DR-038, DR-032, DR-025, DR-015 |
 | Validation and release | Independent complex tasks, continuity and cost evaluation | DR-033, DR-019, DR-027, DR-012, DR-013 |
 
-The first vertical slice is deliberately narrower than the product: save one explicit architectural decision with provenance in an authorized repository, end the host session, retrieve it in a fresh session of the other host, edit the referenced source, and prove that the memory becomes stale rather than silently reused. Add lexical retrieval and one bounded evidence pack. Run the same task without memory to measure context and turn overhead. No worker or embedding provider is needed for this first slice; it establishes the new durable foundation and baseline.
+After the minimal DR-034 registry/receipt foundation, the first vertical slice is deliberately narrower than the product: save one explicit architectural decision with provenance in an authorized repository, end the host session, retrieve it in a fresh session of the other host, edit the referenced source, and prove that the memory becomes stale rather than silently reused. Add lexical candidate retrieval, Jev applicability selection with a receipt, and one bounded evidence pack. Run the same task without memory to measure context and turn overhead. No worker or embedding provider is needed for this first slice; it establishes the new durable foundation and baseline.
 
 DR-026 remains a separate optional connector for an external memory service. It does not satisfy the native engineering-memory requirement. DR-017 remains a later public-framework decision; the internal modules can evolve before their APIs are promised stable.
 
@@ -162,9 +164,13 @@ Keep the existing alpha pilot as historical evidence; it measured neither persis
 
 Freeze task sets, quality margins, cost targets and statistical design before confirmatory spending. Higher success at modest extra cost and equal success at lower cost are different outcomes; publish both when observed. Failure to beat a control is a reason to revise the route, not hide the run.
 
+## Workflow concepts and semantic ownership
+
+The [decision architecture](decision-architecture.md) adds an incremental source-to-knowledge compiler, evidence-backed assumptions, project impact profiles, isolated review and scoped lessons. These extend memory/index/investigation contracts; they share the same product and runtime. Jev owns the semantic judgments at each applicable stage. Executable validation, explicit user instructions and native permissions retain their authority.
+
 ## Decision record
 
 - Adopted by the owner: Jevra as the complete development-focused product, developed from scratch; open-source code; Codex/Claude interface retained.
-- Recommended architecture: native local engineering memory, optional external memory, versioned worker modes, Jev for bounded judgments, principal LLM for complex reasoning, verification and budgets throughout.
+- Recommended architecture: native local engineering memory, optional external memory, versioned worker modes, Jev for all explicit managed semantic judgments, principal LLM for candidate generation and complex reasoning, verification and budgets throughout.
 - Preserved: evidence-only use remains available; native permissions and current alpha behavior remain unchanged until implemented.
 - Still to validate: storage binding, actual memory/worker transports per host, auxiliary model selection, semantic thresholds, index strategy beyond lexical/structural retrieval, and the effect on real task success/cost.

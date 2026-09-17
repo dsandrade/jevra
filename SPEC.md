@@ -2,7 +2,7 @@
 
 Status: executable developer alpha; this specification also defines unimplemented release goals
 
-Specification version: 0.4
+Specification version: 0.5
 
 Created: 2026-09-17
 
@@ -18,6 +18,8 @@ The product is installed as host-specific plugins. Its implementation has a reus
 
 Jevra is developed from scratch in this repository. Native engineering memory is a core planned capability, with optional external memory adapters. See the [development-brain architecture](docs/development-brain.md) for the target design and first cross-host memory slice. This does not declare the target implemented.
 
+The latest owner decision makes Jev the evaluator for every explicit semantic decision in managed workflows, including planning, investigation, review and memory. The [decision architecture](docs/decision-architecture.md) defines the stage registry, typed receipts and failure boundaries. Deterministic controls and explicit user choices remain authoritative; hidden host reasoning is outside plugin control. This target supersedes earlier optional-Jev wording.
+
 ## 2. Product thesis
 
 Coding agents mix generation, reasoning, selection, validation, retrieval, and execution. Some recurring choices have explicit candidates and can be evaluated separately from the LLM's generation work.
@@ -32,7 +34,7 @@ The proposed responsibility split is:
 | Engineering memory (planned) | Preserves technical decisions, investigations and verified outcomes with scope, provenance and source freshness |
 | Repository/context engine (planned expansion) | Retrieves bounded current code and memory evidence, with incremental indexes and revision-aware reuse |
 | Worker modes (planned) | Produce bounded summaries or predictable artifacts through an optional configured generative model |
-| Jev | Evaluates narrow semantic questions against supplied state and criteria |
+| Jev | Owns all explicit semantic evaluations/selections in the target managed workflow, through bounded Choice/Score/Noul questions |
 | Runtime | Collects state, applies deterministic rules, calls the provider, and maps judgments to behavior |
 
 Jev is not an autonomous replacement for the host agent. It cannot select an option that the runtime did not supply. Typed answers ensure an interface, not factual correctness or authorization.
@@ -100,11 +102,13 @@ This owner-directed experiment advances DR-014 before the initial skill-routing 
 - Native engineering memory for explicit technical decisions, constraints, investigations, failed attempts and validated outcomes; distinct from a raw chat archive.
 - Repository-aware evidence with revision/hash provenance, worktree isolation, stale-state invalidation and incremental retrieval.
 - Shared authorized memory across fresh Codex/Claude sessions, with idempotent writes, receipts, correction/withdrawal and backup/restore.
-- Optional versioned generative worker modes plus Jev relevance, route and support judgments; native evidence-only mode remains available.
-- Main-agent-led complex investigation with explicit requirements, hypotheses, observed checks, bounded repair and cancellation.
+- Jev decision registry across intake, retrieval, planning, investigation, delegation, validation, review, repair, memory and completion; valid receipts for managed semantic transitions.
+- Optional versioned generative worker modes; evidence-only operation still uses Jev for semantic judgments.
+- LLM-generated candidate plans/hypotheses with Jev selection, observed checks, bounded repair and cancellation.
+- Incremental source-bound knowledge, project impact profiles, assumption records and scoped lessons from review, specified in the decision architecture.
 - Full lifecycle accounting: memory/index maintenance, main-model work, workers, Jev, fallback and failed attempts.
 
-The recommended first store is local and embedded, with lexical/structural retrieval before optional embeddings. Keep private organization services optional. The first vertical slice proves cross-host save/recall and stale-source handling; it does not start a hosted platform or autonomous coding loop. DR-028 through DR-033 add this scope without replacing existing issue IDs.
+The recommended first store is local and embedded, with lexical/structural retrieval before optional embeddings. Keep private organization services optional. The first vertical slice proves cross-host save/recall and stale-source handling; it does not start a hosted platform or autonomous coding loop. DR-028 through DR-038 add this scope without replacing existing issue IDs. DR-034 establishes the decision registry before the first memory slice.
 
 ### Non-goals for the initial release
 
@@ -259,6 +263,8 @@ The TypeSafe skill-suggestion cookbook is a reference experiment. Its published 
 
 ## 10. Operating modes and failure behavior
 
+The following describes the current alpha. In the planned managed lifecycle, an unavailable Jev judgment cannot silently become an LLM/deterministic semantic decision: pause that transition and record any native continuation as a bypass. See [decision ownership](docs/decision-architecture.md#one-decision-interface-many-bounded-questions).
+
 | Mode | Behavior |
 | --- | --- |
 | Disabled | No provider evaluation or injected guidance |
@@ -348,7 +354,7 @@ Measure whether selection preserves required evidence and improves final answers
 
 ### Completion checking
 
-Evaluate explicit requirements individually against observed artifacts and execution evidence. A statement that tests passed is not a substitute for actual test output. Use deterministic checks where available; Jev may judge semantic coverage of evidence.
+Evaluate explicit requirements individually against observed artifacts and execution evidence. A statement that tests passed is not a substitute for actual test output. Use deterministic checks where available; Jev judges semantic coverage of evidence in the managed workflow.
 
 Only request a bounded, specific correction when supported by evidence. Missing evidence and uncertainty must not become assertions of failure or success. Stop-hook loops require a hard attempt limit.
 

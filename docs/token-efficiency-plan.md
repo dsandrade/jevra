@@ -6,7 +6,7 @@ This plan follows the owner's request to compare the complete Spotify shunt mech
 
 ## Recommendation
 
-Keep Jevra an installable plugin with a reusable internal runtime. Separate four capabilities: native engineering memory, evidence retrieval, typed decisions, and optional generation. Add the cheapest deterministic improvements first; evaluate a bounded generative worker separately; add Jev only where it improves the measured quality/cost tradeoff. An external memory service remains optional; native memory is core to the expanded product, although it is not required to reproduce shunt's two helper mechanisms.
+Keep Jevra an installable plugin with a reusable internal runtime. Separate four capabilities: native engineering memory, evidence retrieval, typed decisions, and optional generation. Add the cheapest deterministic improvements first; evaluate a bounded generative worker separately; use Jev for every explicit managed semantic judgment, as adopted in the [decision architecture](decision-architecture.md). Reduce redundant calls and measure the quality/cost tradeoff; no-Jev pipelines remain experimental controls. An external memory service remains optional; native memory is core to the expanded product, although it is not required to reproduce shunt's two helper mechanisms.
 
 The objective is fewer expensive host tokens and lower **total cost per accepted task**, subject to preserved quality. Report all-provider token use separately: moving work to a cheaper model can lower cost while increasing aggregate tokens. Subscription quota and actual charges remain unknown unless independently observable.
 
@@ -99,7 +99,7 @@ flowchart TD
     H --> D[Local policy: eligibility, authorization, cache and budgets]
     D --> N[Native targeted operation when cheaper or necessary]
     D --> R[Local symbols, lexical retrieval and engineering memory]
-    R --> J[Optional Jev: relevance, bounded route, evidence support]
+    R --> J[Jev: relevance, bounded route, evidence support]
     J --> E[Exact evidence pack]
     J --> W[Optional generative worker: answer or code artifact]
     E --> V[Source hashes, citations, syntax and existing test gates]
@@ -110,12 +110,12 @@ flowchart TD
     V --> T
 ```
 
-This is a proposal. Hooks act at supported boundaries; they do not intercept hidden reasoning, replace the main model, erase previous context, or automatically execute every helper. A host-managed MCP process is not a license to bypass the host's filesystem or command permissions.
+This is a proposal. All managed semantic choices use the Jev registry; exact operations remain deterministic. Native fallbacks are labeled bypasses when they leave the managed lifecycle. Hooks act at supported boundaries; they do not intercept hidden reasoning, replace the main model, erase previous context, or automatically execute every helper. A host-managed MCP process is not a license to bypass the host's filesystem or command permissions.
 
 ### Two product profiles
 
-- **Evidence profile (existing commitment):** main model writes code; deterministic retrieval + optional Jev + caching/progressive reads aim to reduce input and retries. No auxiliary generation API is required.
-- **Delegation profile (adopted direction, planned opt-in):** a user-configured generative worker summarizes or produces predictable artifacts; Jev can select references, route eligible cases and audit evidence. This restores the main missing shunt mechanism. It introduces another provider's cost, latency, data boundary and failure modes.
+- **Evidence profile (existing commitment):** main model writes code; deterministic candidate retrieval + Jev semantic selection + caching/progressive reads aim to reduce input and retries. No auxiliary generation API is required.
+- **Delegation profile (adopted direction, planned opt-in):** a user-configured generative worker summarizes or produces predictable artifacts; Jev selects references, routes eligible cases and evaluates evidence support. This restores the main missing shunt mechanism. It introduces another provider's cost, latency, data boundary and failure modes.
 
 Native engineering memory can serve either profile. It supplies versioned knowledge; it does not become a code generator merely because it is called a brain. Keep the plugin portable: an optional private organization adapter must not become an open-source installation requirement. The first native store and capture policy are specified separately in [development-brain.md](development-brain.md).
 
@@ -129,14 +129,14 @@ Native engineering memory can serve either profile. It supplies versioned knowle
 
 ### Where Jev adds a testable hypothesis
 
-| Judgment | Primitive / state | Baseline and fallback |
+| Judgment | Primitive / state | Experimental control and outcome policy |
 | --- | --- | --- |
 | Which retrieved passages help this subtask? | Score per supplied passage; focused question + original evidence | Same shortlist and output budget, lexical ranking; native expansion if coverage is missing |
 | Which eligible execution path fits? | Choice over `native`, `evidence`, `summary`, `artifact`; task intent, capabilities and cost estimates | Deterministic eligibility first; native when no candidate is safe or sufficiently supported |
 | Does a generated claim have source support? | Choice: supported / contradicted / insufficient; claim + exact source | First check citation existence/hash in code; expand or escalate; never treat model approval as truth |
 | Is required evidence absent? | Separate bounded coverage judgments against explicit requirements and retrieved sources | Do not infer completeness of an unseen repository; ask for a targeted read |
 
-Batch independent questions only when they share useful state; dependent retrieval needs a later call. Version question meaning, criteria and model. Calibrate thresholds on held-out data. Jev does not write summaries, code, investigation plans or tests; it does not replace a compiler or grant permissions. LLMs also reason and decide: this is a division of suitable work, not a claim that they only emit prose.
+Batch independent questions only when they share useful state; dependent retrieval needs a later call. Version question meaning, criteria and model. Calibrate thresholds on held-out data. All target managed semantic stages use Jev; no-Jev rows are controls. Jev does not write summaries, code, investigation plans or tests; it does not replace a compiler or grant permissions. LLMs also reason and decide: this is a division of suitable work, not a claim that they only emit prose.
 
 ## Ordered delivery plan
 
@@ -146,7 +146,7 @@ This table preserves the cost-optimization workstream. The expanded product sequ
 
 | Phase | Work and issue mapping | Exit evidence |
 | --- | --- | --- |
-| 0. Establish observability | DR-020 + existing DR-018/012: normal plugin activation, minimal tool/skill overhead, redirect → call → result → reread chain | Both hosts execute an ordinary task with attributable usage; missing data remains explicit |
+| 0. Establish observability and ownership | DR-034 + DR-020 + existing DR-018/012: normal plugin activation, minimal tool/skill overhead, redirect → call → result → reread chain | Both hosts execute an ordinary task with attributable usage; missing data remains explicit |
 | 1. Improve evidence economics | DR-021 + DR-024 + DR-009: structural chunks, coverage-aware expansion, exact caches and compact receipts | Same required-evidence recall with fewer host tokens than lexical and current Jev controls; stale/deleted evidence never reused |
 | 2. Restore generative shunt mechanisms | DR-022, then DR-023: worker abstraction, bounded summary, predictable artifact generation | Verified nonempty answers, supported claims, correct artifacts, cheaper accepted tasks including worker and repairs |
 | 3. Add semantic economics | DR-025 + DR-015: Jev route/support judgments and budget policy | Incremental benefit versus the identical worker pipeline without Jev; no safety gate delegated to model confidence |
@@ -161,7 +161,7 @@ For any candidate delegation, estimate the host work avoided and compare it with
 
 `expected_net_saving = avoided_host_cost - worker_cost - jev_cost - added_host_overhead - expected_review_and_repair_cost - allocated_infrastructure_cost`
 
-Use separate uncached input, cache-read, cache-write and output prices. Provider-specific token counts are not interchangeable units of compute. A large file already in cached context may be cheap to reuse; a hook denial and an extra tool turn may cost more than a small read. Prefer deterministic skips and do not call Jev merely to decide an obvious low-value operation.
+Use separate uncached input, cache-read, cache-write and output prices. Provider-specific token counts are not interchangeable units of compute. A large file already in cached context may be cheap to reuse; a hook denial and an extra tool turn may cost more than a small read. Use deterministic eligibility and exact cache reuse to avoid unnecessary inference. If a semantic route choice is needed, Jev owns it; an economic heuristic cannot silently replace that judge. Unavailable or unaffordable judgments suspend the dependent managed transition, with native continuation recorded as a bypass.
 
 Cache by workspace/access scope, source revision/hash, exact question, mode/question version, model, output budget and relevant configuration. Deduplicate concurrent identical calls; invalidate on source edits, withdrawals and permission changes. Never mark evidence as safely remembered forever after a compacted host session. A hash receipt saves bandwidth only if the current host can use the referenced evidence.
 
@@ -176,6 +176,8 @@ Cache by workspace/access scope, source revision/hash, exact question, mode/ques
 7. **Proposed confirmatory gate, freeze before results:** task success at least 95%; paired success difference versus native and C with 95% lower confidence bound above −5 percentage points; no critical regression; aggregate cost per accepted task (including failed-attempt spend) at least 20% below native and 10% below C, with paired task-clustered 95% intervals excluding zero savings; p95 latency no more than 15% worse. These are product targets, not outcomes or a guarantee the proposed sample has enough power.
 8. **Claim rules:** beating the rounded 90% context claim requires comparable corpus, questions, coverage and denominator. Beating full-task cost requires an actual matched shunt arm or an explicitly labeled shunt-style control. Publish per-host results and negative/inconclusive outcomes. Do not optimize a tiny returned answer at the expense of correctness or hidden rereads.
 
+The expanded workflow also adopts incremental source knowledge, bounded project profiles, assumption receipts and review lessons. [Decision architecture](decision-architecture.md) maps these to DR-034–038 and defines measured decision coverage.
+
 ## Next concrete implementation slice
 
-Start with DR-020 and DR-018 for normal native plugin activation and attributable usage, alongside the DR-028 contracts. Then deliver the minimal DR-029/030 memory slice: an explicit technical decision recalled in a fresh other-host session, with changed-source invalidation. DR-021 improves retrieval next. Optional workers are now part of the adopted product direction, but remain unimplemented and separately evaluated.
+Start with DR-034 for the minimum Jev registry/receipt contract and DR-020/018 for normal native plugin activation and attributable usage, alongside the DR-028 memory contracts. Then deliver the minimal DR-029/030 memory slice: an explicit technical decision recalled in a fresh other-host session, with changed-source invalidation. DR-021 improves retrieval next. Optional workers are now part of the adopted product direction, but remain unimplemented and separately evaluated.

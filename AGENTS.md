@@ -14,7 +14,7 @@
 
 ## Architecture
 
-- Keep deterministic policy in code, narrow semantic judgments in the provider, and host-specific behavior in adapters.
+- Keep deterministic policy in code and host-specific behavior in adapters. The adopted target assigns every explicit semantic decision in Jevra-managed workflows to Jev; read `docs/decision-architecture.md`. LLMs generate candidates and artifacts. Enforce receipts for managed transitions, and distinguish advisory delivery and native bypass from Jev control.
 - Preserve native agent permissions, instruction hierarchy, and user authorization.
 - Hooks cannot expose all internal model decisions. Advice delivery is not evidence that a model followed it.
 - Skill selection and shunt-style evidence selection have separate evaluations and promotion decisions. Main-LLM generation remains the shipped code-context behavior. The owner has expanded planned scope to native engineering memory and optional generative workers; preserve evidence-only operation and do not present or enable unimplemented capabilities as existing defaults.
