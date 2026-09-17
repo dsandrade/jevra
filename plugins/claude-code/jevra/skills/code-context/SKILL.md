@@ -7,7 +7,7 @@ description: "Select reference passages with Jev for boilerplate, tests, configu
 
 Ask Jevra for reference evidence before generating a file:
 
-Prefer the Jevra `code_context` MCP tool with `spec` and `references` when available. The CLI below is an equivalent fallback.
+Prefer the Jevra `code_context` MCP tool with `spec` and `references` when available. Use the equivalent CLI below only in explicitly configured CLI mode. If MCP is unavailable, use native targeted reads.
 
 ```sh
 node "${CLAUDE_PLUGIN_ROOT}/dist/jevra.mjs" code-context --host claude-code --spec "Write tests matching the existing validation patterns" --reference tests/existing.test.js

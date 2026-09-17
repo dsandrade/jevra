@@ -23,6 +23,7 @@ export const contextConfigSchema = z.object({
 }).strict();
 export type ContextConfig = z.infer<typeof contextConfigSchema>;
 export const bulkConfigSchema = contextConfigSchema.omit({ sources: true }).extend({
+  transport: z.enum(['mcp', 'cli']).default('mcp'),
   roots: z.array(absolutePath).min(1).max(16),
   minLines: z.number().int().min(1).max(10000).default(350),
 }).strict();

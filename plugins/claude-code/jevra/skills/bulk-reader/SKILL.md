@@ -7,7 +7,7 @@ description: "Select exact evidence from large files with Jev before reading who
 
 Run the helper with a focused question and the files you need:
 
-Prefer the Jevra `bulk_read` MCP tool with `question` and `paths` when available. It uses the same selector in a host-managed process, so API credentials stay outside the model tool shell. The CLI below is a fallback when its credential store and network are accessible.
+Prefer the Jevra `bulk_read` MCP tool with `question` and `paths` when available. It uses the same selector in a host-managed process, so API credentials stay outside the model tool shell. Use the CLI below only when the user configured `bulkRead.transport: "cli"` and its credential store/network are accessible. When MCP is unavailable, use native targeted reads instead of switching transports automatically.
 
 ```sh
 node "${CLAUDE_PLUGIN_ROOT}/dist/jevra.mjs" bulk-read --host claude-code --question "Which rules govern retries and their exceptions?" --paths docs/policy.md

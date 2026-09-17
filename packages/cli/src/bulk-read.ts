@@ -82,10 +82,12 @@ export async function gateBulkRead(payload: unknown, host: Host, config: Config,
     if (!redirect) return {};
     const invocation = [process.execPath, cliPath, 'bulk-read', '--host', host, '--config', configFile,
       '--session-id', data.session_id, ...large.flatMap(p => ['--paths', p.path])].map(quoteArgument).join(' ');
+    const instruction = config.bulkRead.transport === 'mcp'
+      ? `For this broad read, call the Jevra bulk_read MCP tool with ${JSON.stringify({ paths: large.map(p => p.path), sessionId: data.session_id })} and a focused question. `
+      : `For this broad read, use the bulk-reader skill or run ${invocation} --question '<the focused question you need answered>'. `;
     return { hookSpecificOutput: { hookEventName: 'PreToolUse', permissionDecision: 'deny',
       permissionDecisionReason: `Jevra bulk reader: ${large.length} file(s) exceed ${config.bulkRead.minLines} lines. `
-        + `For this broad read, use Jevra's bulk_read MCP tool if available with ${JSON.stringify({ paths: large.map(p => p.path), sessionId: data.session_id })} and a focused question. `
-        + `Otherwise use the bulk-reader skill or run ${invocation} --question '<the focused question you need answered>'. `
+        + instruction
         + 'The helper returns exact excerpts with line numbers for you to interpret. '
         + 'After retrieval, use native targeted reads with offset/limit or a bounded range for exact edits, debugging, or missing evidence. If the helper is unavailable, fall back to native targeted reads.' } };
   } catch { return {}; }
@@ -101,7 +103,7 @@ export async function bulkRead(options: {
     throw new DecisionError('input_invalid');
   }
   const sources = await Promise.all(options.paths.map(p => approvedSource(p, options.cwd, settings.roots)));
-  const { roots: _roots, minLines: _minLines, ...context } = settings;
+  const { roots: _roots, minLines: _minLines, transport: _transport, ...context } = settings;
   return runContext({ host: options.host, sessionId: options.sessionId ?? 'standalone', eventId: randomUUID(),
     turnId: null, prompt: options.query, cwd: options.cwd },
   { ...options.config, mode: 'advise', context: { ...context, sources } }, options.provider, options.signal);

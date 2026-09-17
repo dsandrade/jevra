@@ -64,7 +64,7 @@ async function runCase(host: string, arm: string, task: typeof tasks[number], re
     const config = join(root, 'config.json');
     await writeFile(config, JSON.stringify({ version: 1, mode: arm === 'native' ? 'disabled' : 'advise',
       skillRoots: [join(cwd, 'skills')], stateDirectory: traceRoot, keychainService: values['keychain-service'],
-      bulkRead: { roots: [cwd], backend: arm === 'jev' ? 'jev' : 'deterministic', timeoutMs: 8000 } }), { mode: 0o600 });
+      bulkRead: { roots: [cwd], transport: 'mcp', backend: arm === 'jev' ? 'jev' : 'deterministic', timeoutMs: 8000 } }), { mode: 0o600 });
     const hookCommand = [process.execPath, cli, 'hook', '--host', host, '--config', config].map(quoteArgument).join(' ');
     const env: NodeJS.ProcessEnv = { ...process.env, PATH: `${dirname(process.execPath)}:${process.env.PATH}` };
     delete env.ANTHROPIC_API_KEY; delete env.OPENAI_API_KEY; delete env.CODEX_API_KEY;
@@ -136,7 +136,7 @@ const rows: any[] = [];
 const expectedRuns = hosts.length * arms.length * selectedTasks.length * repetitions;
 let saving = Promise.resolve();
 const save = () => {
-  const snapshot = JSON.stringify({ kind: 'shunt-full-task-pilot', expectedRuns, repetitions, hosts, arms, transport: 'mcp-with-cli-fallback', abortReason, codeHash, fixtureHash, protocolHash, rows }, null, 2) + '\n';
+  const snapshot = JSON.stringify({ kind: 'shunt-full-task-pilot', expectedRuns, repetitions, hosts, arms, transport: 'mcp', abortReason, codeHash, fixtureHash, protocolHash, rows }, null, 2) + '\n';
   saving = saving.then(() => writeFile(join(output, 'results.json'), snapshot));
   return saving;
 };

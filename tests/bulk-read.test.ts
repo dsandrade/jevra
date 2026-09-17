@@ -26,7 +26,12 @@ test('large reads redirect while targeted, small, unconfigured, and observe read
     const event = { hook_event_name: 'PreToolUse', session_id: 'fixture', cwd: dir, tool_name: 'Read', tool_input: { file_path: large } };
     const result = await gateBulkRead(event, 'claude-code', config, '/trusted/jevra.mjs', '/trusted/config.json');
     assert.equal(result.hookSpecificOutput?.permissionDecision, 'deny');
-    assert.match(result.hookSpecificOutput?.permissionDecisionReason ?? '', /bulk-read/);
+    assert.match(result.hookSpecificOutput?.permissionDecisionReason ?? '', /bulk_read MCP/);
+    assert.doesNotMatch(result.hookSpecificOutput?.permissionDecisionReason ?? '', /jevra\.mjs/);
+    const cliConfig = configSchema.parse({ ...config, bulkRead: { ...config.bulkRead, transport: 'cli' } });
+    const cliResult = await gateBulkRead(event, 'claude-code', cliConfig, '/trusted/jevra.mjs', '/trusted/config.json');
+    assert.match(cliResult.hookSpecificOutput?.permissionDecisionReason ?? '', /bulk-read/);
+    assert.match(cliResult.hookSpecificOutput?.permissionDecisionReason ?? '', /trusted\/jevra\.mjs/);
     for (const input of [{ file_path: large, offset: 1 }, { file_path: large, limit: 40 }, { file_path: small }]) {
       assert.deepEqual(await gateBulkRead({ ...event, tool_input: input }, 'claude-code', config, '/cli', '/config'), {});
     }
