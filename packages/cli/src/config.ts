@@ -8,6 +8,24 @@ import { z } from 'zod';
 import { DecisionError, MODEL, modeSchema, policySchema } from '@jevra/core';
 
 const absolutePath = z.string().min(1).max(4096).refine(isAbsolute);
+export const contextConfigSchema = z.object({
+  sources: z.array(absolutePath).min(1).max(16),
+  backend: z.enum(['deterministic', 'jev']).default('jev'),
+  maxFileBytes: z.number().int().min(1024).max(262144).default(65536),
+  maxTotalBytes: z.number().int().min(1024).max(524288).default(131072),
+  maxPassages: z.number().int().min(1).max(256).default(128),
+  chunkBytes: z.number().int().min(256).max(8192).default(3000),
+  shortlist: z.number().int().min(1).max(48).default(24),
+  topK: z.number().int().min(1).max(12).default(4),
+  maxOutputBytes: z.number().int().min(256).max(24576).default(8000),
+  minScore: z.number().min(0).max(3).default(1.5),
+  timeoutMs: z.number().int().min(100).max(10000).default(5000),
+}).strict();
+export type ContextConfig = z.infer<typeof contextConfigSchema>;
+export const bulkConfigSchema = contextConfigSchema.omit({ sources: true }).extend({
+  roots: z.array(absolutePath).min(1).max(16),
+  minLines: z.number().int().min(1).max(10000).default(350),
+}).strict();
 export const configSchema = z.object({
   version: z.literal(1),
   mode: modeSchema.default('observe'),
@@ -21,6 +39,8 @@ export const configSchema = z.object({
   policy: policySchema.default(() => policySchema.parse({})),
   traces: z.boolean().default(true),
   retentionDays: z.number().int().min(1).max(30).default(7),
+  context: contextConfigSchema.optional(),
+  bulkRead: bulkConfigSchema.optional(),
 }).strict();
 export type Config = z.infer<typeof configSchema>;
 

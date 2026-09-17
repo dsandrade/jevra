@@ -1,9 +1,27 @@
 {
   "hooks": {
-    "UserPromptSubmit": [{ "hooks": [{
-      "type": "command",
-      "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/jevra.mjs\" hook --host claude-code",
-      "timeout": 15
-    }] }]
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/jevra.mjs\" hook --host claude-code",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read|Bash|exec_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/jevra.mjs\" hook --host claude-code",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
   }
 }

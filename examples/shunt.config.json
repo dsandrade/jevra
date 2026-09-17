@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "mode": "observe",
+  "model": "jev-1.13.0",
+  "skillRoots": ["/absolute/path/to/reviewed-skills"],
+  "keychainService": "your-typesafe-key-service",
+  "bulkRead": {
+    "roots": ["/absolute/path/to/approved-project"],
+    "backend": "jev",
+    "minLines": 350,
+    "shortlist": 24,
+    "topK": 4,
+    "minScore": 1.5,
+    "maxOutputBytes": 8000,
+    "timeoutMs": 8000
+  }
+}

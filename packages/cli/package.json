@@ -1,14 +1,15 @@
 {
   "name": "@jevra/cli",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "private": true,
   "type": "module",
   "exports": "./src/index.ts",
   "dependencies": {
-    "@jevra/core": "0.1.0-alpha.1",
-    "@jevra/provider-typesafe": "0.1.0-alpha.1",
-    "@jevra/adapter-codex": "0.1.0-alpha.1",
-    "@jevra/adapter-claude-code": "0.1.0-alpha.1",
+    "@jevra/adapter-claude-code": "0.1.0-alpha.2",
+    "@jevra/adapter-codex": "0.1.0-alpha.2",
+    "@jevra/core": "0.1.0-alpha.2",
+    "@jevra/provider-typesafe": "0.1.0-alpha.2",
+    "@modelcontextprotocol/server": "2.0.0",
     "yaml": "2.9.1",
     "zod": "4.6.5"
   }

@@ -1,7 +1,7 @@
 {
   "name": "jevra",
-  "version": "0.1.0-alpha.1",
-  "description": "Experimental advisory skill routing through TypeSafe Jev.",
+  "version": "0.1.0-alpha.2",
+  "description": "Shunt-style evidence selection and advisory skill routing through TypeSafe Jev.",
   "author": {
     "name": "Daniel Andrade",
     "url": "https://github.com/dsandrade"
@@ -11,10 +11,12 @@
   "interface": {
     "displayName": "Jevra",
     "shortDescription": "Use Jevra in Codex.",
-    "longDescription": "Jevra evaluates bounded skill-routing choices with Jev while preserving the existing Codex workflow. Requires local configuration and native hook trust.",
+    "longDescription": "Jevra redirects large reads to Jev evidence selection and evaluates bounded skill choices while preserving the existing Codex workflow. Requires local configuration and native hook trust.",
     "developerName": "Daniel Andrade",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": "Help me use Jevra."
-  }
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
 }

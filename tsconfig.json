@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "ES2023",
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "strict": true,
@@ -13,5 +15,15 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["packages/**/*.ts", "tests/**/*.ts", "evals/**/*.ts"]
+  "include": [
+    "packages/**/*.ts",
+    "tests/**/*.ts",
+    "evals/**/*.ts"
+  ],
+  "exclude": [
+    "evals/local-results",
+    "evals/captures",
+    "node_modules",
+    "dist"
+  ]
 }

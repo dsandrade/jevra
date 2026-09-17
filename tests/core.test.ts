@@ -124,3 +124,19 @@ test('host adapters validate events and do not invent a stable Claude turn ident
   assert.throws(() => parseCodexEvent({ ...payload, cwd: 'relative' }), DecisionError);
   assert.throws(() => parseClaudeEvent({ ...payload, hook_event_name: 'PreToolUse' }), DecisionError);
 });
+
+// Sanitized live Score response: rounded score 2.67 and rounded mass imply 2.68.
+test('rounded provider probabilities and Score values remain valid without accepting incoherent scores', () => {
+  const criteria = ['Unrelated', 'Related but not useful', 'Useful facts', 'Essential rules'] as [string, string, ...string[]];
+  const request = { model: MODEL, state: {}, questions: { relevance: { type: 'score' as const, instructions: 'Relevance?', criteria } } };
+  const value = { model: MODEL, usage: { input_tokens: 340, output_tokens: 19 }, answers: { relevance: {
+    type: 'score', score: 2.67, confidence: 0.67, legend: Object.fromEntries(criteria.map((c, i) => [String(i), c])),
+    probabilities: { '0': 0, '1': 0, '2': 0.32, '3': 0.68 },
+  } } };
+  assert.doesNotThrow(() => validateResult(value, request));
+  value.answers.relevance.score = 2.2;
+  assert.throws(() => validateResult(value, request), /invalid_response/);
+  value.answers.relevance.score = 2.67;
+  value.answers.relevance.probabilities['1'] = 0.15;
+  assert.throws(() => validateResult(value, request), /invalid_response/);
+});

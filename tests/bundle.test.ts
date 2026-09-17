@@ -8,7 +8,7 @@ import { join, resolve } from 'node:path';
 test('the standalone bundled CLI starts without workspace dependencies', () => {
   const result = spawnSync(process.execPath, [resolve('dist/jevra.mjs'), '--help'], { cwd: tmpdir(), encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /Jevra 0.1.0-alpha.1/);
+  assert.match(result.stdout, /Jevra 0.1.0-alpha.2/);
 });
 
 test('packaged hooks fail open with valid JSON on absent config and malformed input', async () => {

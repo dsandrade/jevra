@@ -164,7 +164,9 @@ export function validateResult(value: unknown, request: ProviderRequest): Provid
     if (answer.type !== question.type) throw new DecisionError('invalid_response');
     if (answer.type === 'noul') continue;
     const sum = Object.values(answer.probabilities).reduce((a, b) => a + b, 0);
-    if (Math.abs(sum - 1) > 0.001) throw new DecisionError('invalid_response');
+    // The live API rounds wire probabilities and scores to two decimal places.
+    const rounding = 0.005 + Number.EPSILON * 16;
+    if (Math.abs(sum - 1) > Object.keys(answer.probabilities).length * rounding) throw new DecisionError('invalid_response');
     if (answer.type === 'choice' && question.type === 'choice') {
       const chosen = answer.probabilities[answer.choice];
       if (!sameKeys(answer.probabilities, question.criteria) || chosen === undefined
@@ -176,7 +178,8 @@ export function validateResult(value: unknown, request: ProviderRequest): Provid
       const legend = Object.fromEntries(question.criteria.map((label, i) => [String(i), label]));
       const expected = Object.entries(answer.probabilities).reduce((s, [i, p]) => s + Number(i) * p, 0);
       if (!sameKeys(answer.probabilities, legend) || hash(answer.legend) !== hash(legend)
-        || !Number.isFinite(expected) || Math.abs(answer.score - expected) > 0.001) {
+        || !Number.isFinite(expected) || answer.score < 0 || answer.score > question.criteria.length - 1
+        || Math.abs(answer.score - expected) > rounding * (1 + question.criteria.length * (question.criteria.length - 1) / 2)) {
         throw new DecisionError('invalid_response');
       }
     }

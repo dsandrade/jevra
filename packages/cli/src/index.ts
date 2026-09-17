@@ -11,6 +11,8 @@ import type { Config } from './config.ts';
 import { loadCatalog } from './catalog.ts';
 import type { Catalog } from './catalog.ts';
 import { appendTrace, clearTraces, makeTrace } from './trace.ts';
+import { bulkRead, gateBulkRead } from './bulk-read.ts';
+import { serveMcp } from './mcp.ts';
 
 export async function runEvent(event: Event, config: Config, provider: Provider, signal?: AbortSignal) {
   const started = performance.now();
@@ -68,19 +70,23 @@ export async function readBoundedInput(stream: NodeJS.ReadableStream, limit = 65
   return Buffer.concat(parts).toString('utf8');
 }
 
-const HELP = `Jevra 0.1.0-alpha.1 — experimental skill routing
+const HELP = `Jevra 0.1.0-alpha.2 — experimental skill routing and evidence selection
 
 Commands:
   init --skills-root <directory> [--keychain-service <name>] [--config <file>]
   doctor [--config <file>]
   hook --host codex|claude-code [--config <file>]      JSON event on stdin
   evaluate --prompt-file <file> [--config <file>]    explicit local evaluation
+  bulk-read --question <query> --paths <file> [--paths <file>] [--config <file>]
+  code-context --spec <query> --reference <file> [--reference <file>]
+  mcp --host codex|claude-code [--config <file>]    host-managed stdio tools
   clear-traces [--config <file>]
 
 Build with npm run build, then run node dist/jevra.mjs <command>.
 Configuration defaults to the user config directory; workspace config is never auto-loaded.
 The default mode is observe. Set mode to advise to inject routing suggestions.
 State sent to TypeSafe: the current prompt and configured skill names/descriptions/opaque IDs.
+Optional bulkRead.roots permits sending requested source excerpts to TypeSafe.
 Credentials: TYPESAFE_API_KEY or the explicitly configured macOS keychainService.
 `;
 
@@ -95,6 +101,8 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
       config: { type: 'string' }, host: { type: 'string' }, help: { type: 'boolean' },
       'skills-root': { type: 'string', multiple: true }, 'prompt-file': { type: 'string' },
       'keychain-service': { type: 'string' },
+      question: { type: 'string' }, paths: { type: 'string', multiple: true },
+      spec: { type: 'string' }, reference: { type: 'string', multiple: true }, 'session-id': { type: 'string' },
     } });
     const command = positionals[0];
     if (values.help || !command) { process.stdout.write(HELP); return; }
@@ -109,17 +117,34 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     if (command === 'doctor') {
       const catalog = await withDeadline(s => loadCatalog(config.skillRoots, config.maxSkills, s), config.timeoutMs);
       // Credential availability is checked without reading a Keychain secret.
-      process.stdout.write(JSON.stringify({ version: '0.1.0-alpha.1', configPath: path, mode: config.mode,
+      process.stdout.write(JSON.stringify({ version: '0.1.0-alpha.2', configPath: path, mode: config.mode,
         model: config.model, catalog: { count: catalog.skills.length, coverage: catalog.coverage, diagnostics: catalog.diagnostics },
         credentialSource: process.env.TYPESAFE_API_KEY?.trim() ? 'environment'
           : config.keychainService && process.platform === 'darwin' ? 'keychain_configured_unverified' : 'missing',
         hookActivation: 'unknown: review the host hook manager and perform a host smoke test',
         stateDirectory: statePath(config), calibratedPolicy: false,
+        bulkRead: config.bulkRead ?? 'disabled',
       }, null, 2) + '\n');
+      return;
+    }
+    if (command === 'mcp') {
+      if (values.host !== 'codex' && values.host !== 'claude-code') throw new DecisionError('input_invalid');
+      await serveMcp(config, values.host, createTypeSafeProvider({ getApiKey: () => readApiKey(config) }));
       return;
     }
     if (command === 'clear-traces') {
       process.stdout.write(JSON.stringify({ removedFiles: await clearTraces(statePath(config)) }) + '\n');
+      return;
+    }
+    if (command === 'bulk-read' || command === 'code-context') {
+      if (values.host && !['codex', 'claude-code'].includes(values.host)) throw new DecisionError('input_invalid');
+      const result = await bulkRead({ query: (command === 'bulk-read' ? values.question : values.spec) ?? '',
+        paths: (command === 'bulk-read' ? values.paths : values.reference) ?? [], cwd: process.cwd(),
+        host: values.host === 'claude-code' ? 'claude-code' : 'codex', config,
+        ...(values['session-id'] ? { sessionId: values['session-id'] } : {}), signal: controller.signal,
+        provider: createTypeSafeProvider({ getApiKey: () => readApiKey(config) }) });
+      process.stdout.write((result.text || JSON.stringify({ status: 'fallback', reason: result.result?.reason ?? 'unavailable',
+        nextAction: 'Read the relevant source ranges with native tools.' })) + '\n');
       return;
     }
     let event: Event;
@@ -129,6 +154,11 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
       const input = await withDeadline(() => readBoundedInput(process.stdin), 1000, controller.signal);
       let payload: unknown;
       try { payload = JSON.parse(input); } catch { throw new DecisionError('input_invalid'); }
+      if ((payload as { hook_event_name?: string })?.hook_event_name === 'PreToolUse') {
+        const output = await gateBulkRead(payload, values.host, config, resolve(process.argv[1]!), path);
+        process.stdout.write(JSON.stringify(output) + '\n');
+        return;
+      }
       event = values.host === 'codex' ? parseCodexEvent(payload) : parseClaudeEvent(payload);
     } else if (command === 'evaluate') {
       if (!values['prompt-file']) throw new DecisionError('input_invalid');

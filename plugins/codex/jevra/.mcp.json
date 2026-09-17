@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "jevra": {
+      "command": "node",
+      "args": [
+        "${PLUGIN_ROOT}/dist/jevra.mjs",
+        "mcp",
+        "--host",
+        "codex"
+      ]
+    }
+  }
+}

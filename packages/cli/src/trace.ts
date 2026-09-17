@@ -28,6 +28,21 @@ export interface Trace {
   adherence: 'unknown';
 }
 
+export interface ContextTrace extends Trace {
+  module: 'context-selection';
+  backend: string;
+  selectedIds: string[];
+  sourceBytes: number;
+  outputBytes: number;
+  requestBytes: number;
+  shortlistedCount: number;
+}
+
+export interface GateTrace {
+  schemaVersion: 1; timestamp: string; module: 'bulk-read-gate'; host: string;
+  sessionHash: string; eventHash: string; action: string; sourceCount: number; maxLines: number; evaluationAttempts: 0;
+}
+
 export function makeTrace(event: Event, decision: Decision, mode: Mode, candidateCount: number,
   outputPrepared: boolean, totalLatencyMs: number, policy: unknown): Trace {
   return {
@@ -53,7 +68,7 @@ export async function traceDirectory(stateDirectory: string): Promise<string> {
   return directory;
 }
 
-export async function appendTrace(stateDirectory: string, trace: Trace, retentionDays: number): Promise<void> {
+export async function appendTrace(stateDirectory: string, trace: Trace | ContextTrace | GateTrace, retentionDays: number): Promise<void> {
   const directory = await traceDirectory(stateDirectory);
   const now = Date.now();
   for (const name of await readdir(directory)) {

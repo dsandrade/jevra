@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "jevra": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/dist/jevra.mjs",
+        "mcp",
+        "--host",
+        "claude-code"
+      ]
+    }
+  }
+}
