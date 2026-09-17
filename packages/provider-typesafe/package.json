@@ -1,0 +1,8 @@
+{
+  "name": "@jevra/provider-typesafe",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": { "@jevra/core": "0.1.0-alpha.1", "@typesafe-ai/sdk": "0.6.0" }
+}

@@ -1,0 +1,486 @@
+{
+  "version": 1,
+  "provenance": "Synthetic cases authored for the initial component smoke evaluation; labels require independent review.",
+  "cases": [
+    {
+      "id": "route-001",
+      "split": "development",
+      "prompt": "Review this diff for bugs before merge.",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-002",
+      "split": "development",
+      "prompt": "Inspect the attached patch for regressions.",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-003",
+      "split": "holdout",
+      "prompt": "Audit these pull request changes for correctness.",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-004",
+      "split": "development",
+      "prompt": "Find defects introduced by this code change.",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-005",
+      "split": "development",
+      "prompt": "Check whether this patch breaks existing behavior.",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-006",
+      "split": "holdout",
+      "prompt": "Examine the proposed commit and report actionable problems.",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-007",
+      "split": "development",
+      "prompt": "Write unit tests for the payment calculator.",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-008",
+      "split": "development",
+      "prompt": "Add test cases for the parser edge conditions.",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-009",
+      "split": "holdout",
+      "prompt": "Create tests covering empty and malformed inputs.",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-010",
+      "split": "development",
+      "prompt": "Extend the existing unit tests for the validator.",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-011",
+      "split": "development",
+      "prompt": "Cover the retry helper with focused assertions.",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-012",
+      "split": "holdout",
+      "prompt": "Implement missing test coverage for the date formatter.",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-013",
+      "split": "development",
+      "prompt": "Debug this crash using the attached stack trace.",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-014",
+      "split": "development",
+      "prompt": "Investigate why the checkout test is failing.",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-015",
+      "split": "holdout",
+      "prompt": "Find the cause of this 500 error in production.",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-016",
+      "split": "development",
+      "prompt": "This service is crashing after startup; identify the cause.",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-017",
+      "split": "development",
+      "prompt": "Diagnose the reproducible timeout shown in these logs.",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-018",
+      "split": "holdout",
+      "prompt": "The parser returns the wrong result for this input. Find the bug.",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-019",
+      "split": "development",
+      "prompt": "Write API documentation for the existing checkout endpoint.",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-020",
+      "split": "development",
+      "prompt": "Document the request and response of this HTTP route.",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-021",
+      "split": "holdout",
+      "prompt": "Update the OpenAPI endpoint descriptions from the routes.",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-022",
+      "split": "development",
+      "prompt": "Describe the parameters and responses of our inventory API.",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-023",
+      "split": "development",
+      "prompt": "Add endpoint examples to the existing HTTP API reference.",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-024",
+      "split": "holdout",
+      "prompt": "Generate endpoint documentation from this routing module.",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-025",
+      "split": "development",
+      "prompt": "Write a SQL migration to add a nullable phone column.",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-026",
+      "split": "development",
+      "prompt": "Create a database migration for the audit_events table.",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-027",
+      "split": "holdout",
+      "prompt": "Add an index to the database schema with rollback SQL.",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-028",
+      "split": "development",
+      "prompt": "Migrate the users table to include a unique external identifier.",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-029",
+      "split": "development",
+      "prompt": "Implement a reversible migration that renames this database column.",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-030",
+      "split": "holdout",
+      "prompt": "Add a foreign key constraint using the existing migration framework.",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-031",
+      "split": "development",
+      "prompt": "Explain the repository structure to a new contributor.",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-032",
+      "split": "development",
+      "prompt": "Create an onboarding guide to this codebase layout.",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-033",
+      "split": "holdout",
+      "prompt": "Help me onboard: identify entry points and development commands.",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-034",
+      "split": "development",
+      "prompt": "I am new here; map the major directories and local development workflow.",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-035",
+      "split": "development",
+      "prompt": "Give a contributor a tour of this repository and how to run it.",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-036",
+      "split": "holdout",
+      "prompt": "Describe how the components of this unfamiliar codebase fit together.",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "category": "covered"
+    },
+    {
+      "id": "route-037",
+      "split": "development",
+      "prompt": "Explain what a monad is.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-038",
+      "split": "development",
+      "prompt": "What is the difference between SQL and NoSQL?",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-039",
+      "split": "holdout",
+      "prompt": "Give me an overview of unit testing as a concept.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-040",
+      "split": "development",
+      "prompt": "What does HTTP status 404 mean?",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-041",
+      "split": "development",
+      "prompt": "Write a birthday greeting for my friend.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-042",
+      "split": "holdout",
+      "prompt": "Translate this sentence into French: good morning.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-043",
+      "split": "development",
+      "prompt": "Deploy the application to production.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-044",
+      "split": "development",
+      "prompt": "Create a logo for this product.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-045",
+      "split": "holdout",
+      "prompt": "Send this email to the customer.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-046",
+      "split": "development",
+      "prompt": "Build a new checkout screen in React.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-047",
+      "split": "development",
+      "prompt": "What is a database migration?",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-048",
+      "split": "holdout",
+      "prompt": "Explain how code review helps a team.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "no_match"
+    },
+    {
+      "id": "route-049",
+      "split": "development",
+      "prompt": "Use $change-review on this patch.",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "category": "explicit_reference"
+    },
+    {
+      "id": "route-050",
+      "split": "development",
+      "prompt": "Do not use unit-test-author for this request.",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "category": "explicit_reference"
+    },
+    {
+      "id": "route-051",
+      "split": "holdout",
+      "prompt": "Use /api-doc-author for this endpoint.",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "category": "explicit_reference"
+    },
+    {
+      "id": "route-052",
+      "split": "development",
+      "prompt": "Use $unknown-skill to handle this.",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "category": "explicit_reference"
+    },
+    {
+      "id": "route-053",
+      "split": "development",
+      "prompt": "Review this diff, then write unit tests for the uncovered behavior.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "multi_skill"
+    },
+    {
+      "id": "route-054",
+      "split": "holdout",
+      "prompt": "Write a database migration and document the new HTTP endpoints.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "multi_skill"
+    },
+    {
+      "id": "route-055",
+      "split": "development",
+      "prompt": "Give me a repository tour and then diagnose this crash.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "multi_skill"
+    },
+    {
+      "id": "route-056",
+      "split": "development",
+      "prompt": "Write unit tests for this endpoint and update its API documentation.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "multi_skill"
+    },
+    {
+      "id": "route-057",
+      "split": "holdout",
+      "prompt": "Help me with my project.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "ambiguous"
+    },
+    {
+      "id": "route-058",
+      "split": "development",
+      "prompt": "Improve this.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "ambiguous"
+    },
+    {
+      "id": "route-059",
+      "split": "development",
+      "prompt": "Can you handle this task?",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "ambiguous"
+    },
+    {
+      "id": "route-060",
+      "split": "holdout",
+      "prompt": "Something needs attention in this repo.",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "category": "ambiguous"
+    }
+  ]
+}

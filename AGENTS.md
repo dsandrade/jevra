@@ -8,7 +8,7 @@
 ## Project state
 
 - Read `SPEC.md` and `ISSUES.md` before planning implementation.
-- This repository currently contains planning documents, not a working application.
+- This repository contains an experimental skill-routing runtime. Read `docs/compatibility.md` for verified boundaries and pending host validation.
 - Preserve stable backlog IDs and distinguish planning IDs from GitHub issue numbers.
 - Do not claim compatibility, test results, or efficiency gains without evidence.
 

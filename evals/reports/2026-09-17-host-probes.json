@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-09-17T16:51:26.529Z",
+  "platform": "darwin",
+  "probes": [
+    {
+      "host": "codex",
+      "version": "codex-cli 0.154.0-alpha.6.2",
+      "hookReceived": true,
+      "modelReceivedContext": true,
+      "exitCode": 0,
+      "payloadFields": [
+        "cwd",
+        "hook_event_name",
+        "model",
+        "permission_mode",
+        "prompt",
+        "session_id",
+        "transcript_path",
+        "turn_id"
+      ],
+      "trustMode": "isolated, inspected probe only; one-invocation hook trust override; no persistent trust changes"
+    },
+    {
+      "host": "codex",
+      "kind": "live-jev-wiring",
+      "exitCode": 0,
+      "decision": "recommended",
+      "providerModel": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1359,
+        "output_tokens": 190
+      },
+      "hookLatencyMs": 2471,
+      "modelReceivedContext": true,
+      "limitation": "Verifies a suggested name reaching the model; does not measure skill loading or task completion."
+    },
+    {
+      "host": "claude-code",
+      "version": "2.1.259 (Claude Code)",
+      "modelReceivedContext": null,
+      "status": "skipped_missing_authentication"
+    }
+  ]
+}

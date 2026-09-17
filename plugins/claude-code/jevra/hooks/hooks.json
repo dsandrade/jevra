@@ -1,0 +1,9 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [{ "hooks": [{
+      "type": "command",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/jevra.mjs\" hook --host claude-code",
+      "timeout": 15
+    }] }]
+  }
+}

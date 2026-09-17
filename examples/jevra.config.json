@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "mode": "observe",
+  "model": "jev-1.13.0",
+  "skillRoots": ["/absolute/path/to/your/skills"],
+  "timeoutMs": 3000,
+  "maxRequestBytes": 65536,
+  "maxSkills": 64,
+  "policy": {
+    "minConfidence": 0.75,
+    "minProbability": 0.65,
+    "maxMultipleProbability": 0.35
+  },
+  "traces": true,
+  "retentionDays": 7
+}

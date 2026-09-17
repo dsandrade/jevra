@@ -1,8 +1,8 @@
 # Jevra: Product and Technical Specification
 
-Status: proposed, before implementation
+Status: executable developer alpha; this specification also defines unimplemented release goals
 
-Specification version: 0.1
+Specification version: 0.2
 
 Created: 2026-09-17
 
@@ -105,9 +105,9 @@ flowchart TD
     Policy --> Trace[Local decision and usage trace]
 ```
 
-### Proposed repository layout
+### Repository layout
 
-This is a future layout, not a claim that these packages exist:
+These packages exist in the developer alpha. Their internal contracts are not yet a stable public framework:
 
 ```text
 packages/
@@ -125,7 +125,7 @@ evals/
   reports/
 ```
 
-Use TypeScript for the initial implementation. Select and pin a supported Node.js LTS version, package manager, SDK, and validation library during scaffolding. Keep host schemas out of the core.
+The alpha uses TypeScript, Node 24.21.0, npm 11.19.0, TypeSafe SDK 0.6.0, and Zod 4.6.5. Host schemas stay out of the core.
 
 A synchronous hook process is the starting execution model for decisions that must affect the current request. Process startup, API latency, and host delivery all count toward overhead. An asynchronous observer may be useful for shadow evaluation, but it cannot control an operation that has already proceeded.
 
@@ -133,7 +133,7 @@ Do not introduce a daemon until measurements show that its lifecycle complexity 
 
 ## 6. Host capability model
 
-Documentation was reviewed on 2026-09-17. The following are documented capabilities, not locally verified compatibility claims. Pin and test actual host versions before announcing support.
+Documentation was reviewed on 2026-09-17. The following are documented capabilities and intended uses. The alpha implements only `UserPromptSubmit`; see [compatibility evidence](docs/compatibility.md) for verified versions and limits.
 
 | Surface | Planned use | Boundary |
 | --- | --- | --- |
@@ -177,7 +177,7 @@ The result separates raw provider judgments from the runtime's disposition:
 - `selected_candidate_id`: present only for a validated recommendation.
 - `reason_code`: a deterministic operational reason, not fabricated model reasoning.
 - `usage`, `latency_ms`, and `provider_model`: provider and runtime accounting.
-- `applied`: whether the adapter delivered supported output, distinct from whether the LLM followed it.
+- `delivery`: prepared output versus confirmed host delivery, distinct from whether the LLM followed it. The alpha records only `output_prepared` or `none`; adherence is `unknown`.
 
 The provider's `confidence` must not be a mandatory universal field: Choice and Score expose it, while Noul returns a yes-probability. None of these values is a general probability that the workflow is correct.
 
@@ -336,7 +336,13 @@ A future `decision.evaluate` MCP tool may accept candidate solutions proposed by
 - Straightforward contribution guidance and diagnostic bug-report templates.
 - GitHub Git transport over SSH.
 
-Initial publication contains planning documents only. Package publishing, marketplace submission, and public performance claims are separate later milestones.
+The repository includes the developer alpha, synthetic component reports, and a verified Codex context probe. Package publishing, marketplace submission, and full-task performance claims remain later milestones.
+
+### Current implementation boundary
+
+The first module reads only the current prompt and explicitly configured skill directories. It performs one Choice selection and one independent multi-skill Noul judgment in a single SDK request, with no retries. It implements local validation, provisional thresholds, stale-result rejection, bounded IO, and metadata traces. Body hashes are computed locally; bodies and paths are not sent to TypeSafe.
+
+Observe is the default. Cache, event deduplication, durable session budgets, automatic installation, transcript instrumentation, skill-adherence observation, module registration, two-stage selection, and full-task evaluation are not implemented. Explicit references preserve native handling; multi-skill and uncertain results abstain. This alpha is an integration experiment, not the completion of the initial release scope above.
 
 ## 15. Decisions to resolve during implementation
 

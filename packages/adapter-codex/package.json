@@ -1,0 +1,8 @@
+{
+  "name": "@jevra/adapter-codex",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": { "@jevra/core": "0.1.0-alpha.1", "zod": "4.6.5" }
+}

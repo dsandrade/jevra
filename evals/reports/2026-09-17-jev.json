@@ -1,0 +1,1056 @@
+{
+  "kind": "component-smoke-evaluation",
+  "timestamp": "2026-09-17T16:50:37.479Z",
+  "backend": "jev",
+  "providerModel": "jev-1.13.0",
+  "questionVersion": "skill-selection/1",
+  "policyVersion": "skill-selection/1",
+  "datasetHash": "2cd92ea2af93a1d5bb69e9fb6bd74c59ca9e330dd6481d9ef5458d23e0b9383e",
+  "catalogHash": "161b405be27c8ae10901fc794c183839193f0ec4d4666b67ba1457eca4179650",
+  "policy": {
+    "minConfidence": 0.75,
+    "minProbability": 0.65,
+    "maxMultipleProbability": 0.35
+  },
+  "runtime": "v24.21.0",
+  "cache": "disabled",
+  "repetitions": 1,
+  "limitations": [
+    "Synthetic author-labeled cases; not independently reviewed.",
+    "Component routing only: no host LLM task execution, task success, or total-system savings measured.",
+    "Single run with provisional thresholds; no calibration or promotion decision."
+  ],
+  "summary": {
+    "cases": 60,
+    "correct": 60,
+    "development": {
+      "cases": 40,
+      "correct": 40
+    },
+    "holdout": {
+      "cases": 20,
+      "correct": 20
+    },
+    "fallbacks": 4,
+    "p50Ms": 324,
+    "p95Ms": 545,
+    "inputTokens": 73790,
+    "outputTokens": 10412,
+    "observedInputTokens": 73790,
+    "observedOutputTokens": 10412,
+    "evaluationAttempts": 56,
+    "callsWithKnownUsage": 56,
+    "actualCost": null,
+    "hostLlmUsage": null
+  },
+  "rows": [
+    {
+      "id": "route-001",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "change-review",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 846,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-002",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "change-review",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 321,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-003",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "change-review",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 428,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-004",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "change-review",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 319,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-005",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "change-review",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 307,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-006",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "change-review",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "change-review",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 313,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-007",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "unit-test-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 303,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-008",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "unit-test-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 311,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-009",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "unit-test-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 309,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-010",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "unit-test-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 279,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-011",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "unit-test-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 312,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-012",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "unit-test-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "unit-test-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 737,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-013",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "bug-diagnosis",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 307,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 191
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-014",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "bug-diagnosis",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 333,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 191
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-015",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "bug-diagnosis",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 285,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 191
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-016",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "bug-diagnosis",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 466,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 191
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-017",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "bug-diagnosis",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 289,
+      "usage": {
+        "input_tokens": 1322,
+        "output_tokens": 191
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-018",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "bug-diagnosis",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "bug-diagnosis",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 323,
+      "usage": {
+        "input_tokens": 1322,
+        "output_tokens": 191
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-019",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "api-doc-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 324,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 192
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-020",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "api-doc-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 293,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 192
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-021",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "api-doc-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 352,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 192
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-022",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "api-doc-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 335,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 192
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-023",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "api-doc-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 351,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 192
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-024",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "api-doc-author",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "api-doc-author",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 302,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 192
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-025",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "schema-migration",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 335,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 189
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-026",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "schema-migration",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 320,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 189
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-027",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "schema-migration",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 300,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 189
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-028",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "schema-migration",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 302,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 189
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-029",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "schema-migration",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 333,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 189
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-030",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "schema-migration",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "schema-migration",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 333,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 189
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-031",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "repository-onboarding",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 328,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-032",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "repository-onboarding",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 319,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-033",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "repository-onboarding",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 292,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-034",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "repository-onboarding",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 327,
+      "usage": {
+        "input_tokens": 1322,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-035",
+      "split": "development",
+      "category": "covered",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "repository-onboarding",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 342,
+      "usage": {
+        "input_tokens": 1322,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-036",
+      "split": "holdout",
+      "category": "covered",
+      "expectedSkill": "repository-onboarding",
+      "expectedBehavior": "recommend",
+      "predictedSkill": "repository-onboarding",
+      "behavior": "recommend",
+      "reason": "recommended",
+      "correct": true,
+      "latencyMs": 420,
+      "usage": {
+        "input_tokens": 1320,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-037",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 393,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-038",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 348,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-039",
+      "split": "holdout",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 417,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-040",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 323,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-041",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 353,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-042",
+      "split": "holdout",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 451,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-043",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 323,
+      "usage": {
+        "input_tokens": 1314,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-044",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 400,
+      "usage": {
+        "input_tokens": 1315,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-045",
+      "split": "holdout",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 353,
+      "usage": {
+        "input_tokens": 1315,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-046",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 347,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-047",
+      "split": "development",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 420,
+      "usage": {
+        "input_tokens": 1314,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-048",
+      "split": "holdout",
+      "category": "no_match",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 410,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-049",
+      "split": "development",
+      "category": "explicit_reference",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "predictedSkill": null,
+      "behavior": "fallback",
+      "reason": "explicit_skill_reference",
+      "correct": true,
+      "latencyMs": 0,
+      "usage": null,
+      "evaluationAttempts": 0
+    },
+    {
+      "id": "route-050",
+      "split": "development",
+      "category": "explicit_reference",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "predictedSkill": null,
+      "behavior": "fallback",
+      "reason": "explicit_skill_reference",
+      "correct": true,
+      "latencyMs": 0,
+      "usage": null,
+      "evaluationAttempts": 0
+    },
+    {
+      "id": "route-051",
+      "split": "holdout",
+      "category": "explicit_reference",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "predictedSkill": null,
+      "behavior": "fallback",
+      "reason": "explicit_skill_reference",
+      "correct": true,
+      "latencyMs": 0,
+      "usage": null,
+      "evaluationAttempts": 0
+    },
+    {
+      "id": "route-052",
+      "split": "development",
+      "category": "explicit_reference",
+      "expectedSkill": null,
+      "expectedBehavior": "fallback",
+      "predictedSkill": null,
+      "behavior": "fallback",
+      "reason": "explicit_skill_reference",
+      "correct": true,
+      "latencyMs": 0,
+      "usage": null,
+      "evaluationAttempts": 0
+    },
+    {
+      "id": "route-053",
+      "split": "development",
+      "category": "multi_skill",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "multiple_skills",
+      "correct": true,
+      "latencyMs": 323,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-054",
+      "split": "holdout",
+      "category": "multi_skill",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "multiple_skills",
+      "correct": true,
+      "latencyMs": 333,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 189
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-055",
+      "split": "development",
+      "category": "multi_skill",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "multiple_skills",
+      "correct": true,
+      "latencyMs": 321,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 191
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-056",
+      "split": "development",
+      "category": "multi_skill",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "multiple_skills",
+      "correct": true,
+      "latencyMs": 545,
+      "usage": {
+        "input_tokens": 1320,
+        "output_tokens": 190
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-057",
+      "split": "holdout",
+      "category": "ambiguous",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "multiple_skills",
+      "correct": true,
+      "latencyMs": 296,
+      "usage": {
+        "input_tokens": 1314,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-058",
+      "split": "development",
+      "category": "ambiguous",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 379,
+      "usage": {
+        "input_tokens": 1312,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-059",
+      "split": "development",
+      "category": "ambiguous",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 346,
+      "usage": {
+        "input_tokens": 1314,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    },
+    {
+      "id": "route-060",
+      "split": "holdout",
+      "category": "ambiguous",
+      "expectedSkill": null,
+      "expectedBehavior": "abstain",
+      "predictedSkill": null,
+      "behavior": "abstain",
+      "reason": "no_match",
+      "correct": true,
+      "latencyMs": 694,
+      "usage": {
+        "input_tokens": 1315,
+        "output_tokens": 175
+      },
+      "evaluationAttempts": 1
+    }
+  ]
+}

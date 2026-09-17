@@ -1,0 +1,23 @@
+{
+  "name": "@jevra/workspace",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=24.21.0 <25" },
+  "packageManager": "npm@11.19.0",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test tests/*.test.ts",
+    "check": "npm run typecheck && npm test",
+    "eval": "node evals/runners/skill-routing.ts",
+    "smoke:hosts": "node scripts/probe-hosts.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.5",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  }
+}

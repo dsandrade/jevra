@@ -1,0 +1,8 @@
+{
+  "name": "jevra",
+  "version": "0.1.0-alpha.1",
+  "description": "Experimental advisory skill routing through TypeSafe Jev.",
+  "author": { "name": "Daniel Andrade", "url": "https://github.com/dsandrade" },
+  "repository": "https://github.com/dsandrade/jevra",
+  "license": "MIT"
+}

@@ -1,6 +1,6 @@
 # Implementation Backlog
 
-Status: planning only
+Status: developer alpha implemented; release milestones remain open
 
 Created: 2026-09-17
 
@@ -8,7 +8,28 @@ Source of truth for scope: [SPEC.md](SPEC.md)
 
 These are ready-to-refine issue drafts. IDs such as DR-001 are stable planning identifiers, not GitHub issue numbers. No implementation issue is complete merely because this document exists.
 
-Priority: P0 = foundation or release blocker; P1 = required to validate and ship the initial experiment; P2 = later experiment, subject to evidence. All issues start with status **Planned**.
+Priority: P0 = foundation or release blocker; P1 = required to validate and ship the initial experiment; P2 = later experiment, subject to evidence. Current implementation status appears below; unchecked acceptance criteria remain outstanding.
+
+## Implementation snapshot — 2026-09-17
+
+See [compatibility](docs/compatibility.md) and [component results](evals/reports/2026-09-17-component-pilot.md). Partial means executable work exists but the issue's full scope or acceptance remains open.
+
+| ID | Status | Evidence and remaining work |
+| --- | --- | --- |
+| DR-001 | Partial | Codex marker and live Jev context delivery verified; Claude login, lifecycle/trust matrix, and observation probes pending |
+| DR-002 | Verification | Pinned workspace, lockfile, build/typecheck/tests and CI workflow exist; clean-checkout and remote CI results being verified |
+| DR-003 | Partial | Typed core, policy, modes, fake provider, revisions; no general module registry |
+| DR-004 | Partial | Official SDK, typed validation, sanitized failures, zero retries, live pilot; broader accounting/fault coverage pending |
+| DR-005 | Implemented for configured roots | Bounded catalog and diagnostics, explicit references, revision checks; no host-internal registry discovery |
+| DR-006 | Partial | Independent adapters and bundled hooks; authenticated Claude and version negotiation pending |
+| DR-007 | Partial | Single-call Choice + Noul route and configurable policy; two-stage comparison and calibration pending |
+| DR-008 | Partial | Metadata traces, retention, deletion, doctor; no replay capture or automatic trust/adherence detection |
+| DR-009 | Partial | Deadlines, cancellation, isolation, stale checks; deduplication, caching, session budgets, host failure matrix pending |
+| DR-010 | Partial | 60-case component dataset and two runners; independent review, native/full-task arms, paired repetitions pending |
+| DR-011 | Planned | Component smoke report exists; confirmatory quality/efficiency experiment and promotion decision pending |
+| DR-012 | Partial | Manifests, local build/config, manual setup/removal; full installation lifecycle pending |
+| DR-013 | Partial | Public code/docs and reviewed synthetic results; versioned distribution and release gate pending |
+| DR-014–017 | Planned | Later experiments; no implementation yet |
 
 ## Milestones and dependencies
 
@@ -36,13 +57,13 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] Record tested host versions, OS, surface, commands, and sanitized fixtures.
+- [x] Record tested host versions, OS, surface, commands, and sanitized fixtures.
 - [ ] Demonstrate `UserPromptSubmit` guidance reaching the model in both hosts.
 - [ ] Document reliable and unreliable ways to observe skill loading.
-- [ ] Publish a capability matrix distinguishing documented, verified, and unsupported behavior.
+- [x] Publish a capability matrix distinguishing documented, verified, and unsupported behavior.
 - [ ] Confirm that installation does not bypass native hook trust or permissions.
-- [ ] Record a supported fallback for unavailable catalog or transcript interfaces.
-- [ ] Review Spotify shunt's hook/script/skill separation as related work without assuming equivalent decision semantics or copying its host behavior unverified.
+- [x] Record a supported fallback for unavailable catalog or transcript interfaces.
+- [x] Review Spotify shunt's hook/script/skill separation as related work without assuming equivalent decision semantics or copying its host behavior unverified.
 
 **Validation:** A minimal reproducible request in each host, plus missing-trust and malformed-output cases. No Jev call is required.
 
@@ -61,10 +82,10 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 **Acceptance criteria:**
 
 - [ ] A clean checkout installs from a committed lockfile and builds with documented commands.
-- [ ] Package boundaries keep host schemas and provider transport out of the core.
+- [x] Package boundaries keep host schemas and provider transport out of the core.
 - [ ] CI runs relevant static checks and tests without live API credentials.
-- [ ] Runtime and dependency versions are pinned or constrained intentionally.
-- [ ] README documents actual commands and supported development platforms.
+- [x] Runtime and dependency versions are pinned or constrained intentionally.
+- [x] README documents actual commands and supported development platforms.
 
 **Validation:** Run the clean-checkout workflow locally and in GitHub Actions.
 
@@ -82,12 +103,12 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] Results separate raw judgments, runtime disposition, and host delivery.
-- [ ] Schema, question, policy, and state versions are carried through evaluation.
-- [ ] Unknown or stale candidates cannot become applied recommendations.
-- [ ] Noul is supported without a fabricated confidence field.
-- [ ] A fake provider can exercise the complete pipeline without a host or network.
-- [ ] Observe mode cannot emit model-visible routing advice.
+- [x] Results separate raw judgments, runtime disposition, and host delivery.
+- [x] Schema, question, policy, and state versions are carried through evaluation.
+- [x] Unknown or stale candidates cannot become applied recommendations.
+- [x] Noul is supported without a fabricated confidence field.
+- [x] A fake provider can exercise the complete pipeline without a host or network.
+- [x] Observe mode cannot emit model-visible routing advice.
 
 **Validation:** Behavioral tests for recommendation, abstention, fallback, stale results, invalid candidates, and isolated concurrent sessions.
 
@@ -105,11 +126,11 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] Choice, Noul, and Score responses map accurately to normalized judgments.
-- [ ] Independent questions can share a request without assuming sequential reasoning.
-- [ ] Total retry time and call count cannot exceed the configured budget.
-- [ ] Authentication, validation, rate-limit, overload, timeout, and malformed-response failures are distinguishable.
-- [ ] Credentials and raw request bodies do not appear in default logs or errors.
+- [x] Choice, Noul, and Score responses map accurately to normalized judgments.
+- [x] Independent questions can share a request without assuming sequential reasoning.
+- [x] Total retry time and call count cannot exceed the configured budget.
+- [x] Authentication, validation, rate-limit, overload, timeout, and malformed-response failures are distinguishable.
+- [x] Credentials and raw request bodies do not appear in default logs or errors.
 - [ ] Evaluations record the configured and returned model identifiers.
 
 **Validation:** Transport fixtures for success and failure paths; a separately enabled live smoke check using a user-provided key.
@@ -128,13 +149,13 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] Catalog sources are explicit and constrained to configured roots.
-- [ ] Duplicate names, missing files, invalid metadata, symlinks, and changed content have defined behavior.
-- [ ] Catalog coverage and source failures are visible in diagnostics.
-- [ ] Explicitly selected known skills bypass semantic rerouting.
-- [ ] Multi-skill and unresolved requests use a documented fallback.
-- [ ] Inputs exclude full transcripts and full repositories by default.
-- [ ] Skill content cannot become an executable command or overwrite runtime policy.
+- [x] Catalog sources are explicit and constrained to configured roots.
+- [x] Duplicate names, missing files, invalid metadata, symlinks, and changed content have defined behavior.
+- [x] Catalog coverage and source failures are visible in diagnostics.
+- [x] Explicitly selected known skills bypass semantic rerouting.
+- [x] Multi-skill and unresolved requests use a documented fallback.
+- [x] Inputs exclude full transcripts and full repositories by default.
+- [x] Skill content cannot become an executable command or overwrite runtime policy.
 
 **Validation:** Sanitized fixture catalogs with similar skills, no-match requests, duplicate names, out-of-root paths, and content changes.
 
@@ -153,11 +174,11 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 **Acceptance criteria:**
 
 - [ ] Each adapter validates the host-specific payload and declares capabilities by tested version.
-- [ ] Supported guidance is delivered in the native output shape and bounded in size.
-- [ ] Disabled mode performs no provider request; observe mode injects no recommendation.
+- [x] Supported guidance is delivered in the native output shape and bounded in size.
+- [x] Disabled mode performs no provider request; observe mode injects no recommendation.
 - [ ] Unavailable fields and unsupported versions have an explicit fallback and diagnostic.
-- [ ] Both adapters preserve native permissions and unrelated user hooks.
-- [ ] stdout carries only the host protocol; diagnostics use the appropriate separate channel.
+- [x] Both adapters preserve native permissions and unrelated user hooks.
+- [x] stdout carries only the host protocol; diagnostics use the appropriate separate channel.
 
 **Validation:** Contract fixtures from DR-001 and real host smoke checks with a deterministic fake decision module.
 
@@ -175,13 +196,13 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] Questions have stable IDs/versions and explicitly defined options and criteria.
-- [ ] No-match behavior does not force the nearest unsuitable skill.
-- [ ] Thresholds are configurable and documented as provisional until calibrated.
-- [ ] The module preserves explicit user skill selection and native instruction priority.
-- [ ] Advice identifies a validated catalog entry without copying the entire catalog into context.
-- [ ] Runtime explanations use observed facts and reason codes, not invented Jev reasoning.
-- [ ] Provider calls, questions, and input sizes respect configured limits.
+- [x] Questions have stable IDs/versions and explicitly defined options and criteria.
+- [x] No-match behavior does not force the nearest unsuitable skill.
+- [x] Thresholds are configurable and documented as provisional until calibrated.
+- [x] The module preserves explicit user skill selection and native instruction priority.
+- [x] Advice identifies a validated catalog entry without copying the entire catalog into context.
+- [x] Runtime explanations use observed facts and reason codes, not invented Jev reasoning.
+- [x] Provider calls, questions, and input sizes respect configured limits.
 
 **Validation:** Development fixtures spanning correct matches, close matches, no-match, uncertain, and multi-skill requests; compare strategy overhead.
 
@@ -199,12 +220,12 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] Default traces contain correlation IDs, versions, hashes, disposition, timing, and usage, excluding raw prompts and code.
-- [ ] Known, ignored, and unknown skill adherence remain distinct.
+- [x] Default traces contain correlation IDs, versions, hashes, disposition, timing, and usage, excluding raw prompts and code.
+- [x] Known, ignored, and unknown skill adherence remain distinct.
 - [ ] Diagnostics identify inactive/untrusted hooks, missing credentials, unsupported versions, and partial catalogs.
-- [ ] Logs have a documented location, retention policy, and deletion path.
+- [x] Logs have a documented location, retention policy, and deletion path.
 - [ ] Replay capture requires explicit opt-in and records enough sanitized state to reproduce a decision.
-- [ ] Reports never substitute zero for unavailable usage or outcomes.
+- [x] Reports never substitute zero for unavailable usage or outcomes.
 
 **Validation:** Secret-marker and source-content fixtures verify default redaction; retained captures can replay a deterministic fixture end to end.
 
@@ -222,13 +243,13 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] Service errors, exhausted budgets, and malformed results return to native routing.
-- [ ] An interrupted request cannot later inject an obsolete recommendation.
-- [ ] Concurrent sessions cannot share mutable decisions or misattribute usage.
+- [x] Service errors, exhausted budgets, and malformed results return to native routing.
+- [x] An interrupted request cannot later inject an obsolete recommendation.
+- [x] Concurrent sessions cannot share mutable decisions or misattribute usage.
 - [ ] Duplicate events do not create uncontrolled repeated API calls.
 - [ ] Cache keys include relevant state, catalog, question, policy, and model identities.
 - [ ] Cache behavior is observable, bounded, and separately measurable from fresh inference.
-- [ ] SDK retries cannot outlive the hook's total deadline.
+- [x] SDK retries cannot outlive the hook's total deadline.
 
 **Validation:** Failure injection, concurrent session fixtures, interruption during evaluation, changed-catalog cache invalidation, and real-host timeout checks.
 
@@ -247,14 +268,14 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 **Acceptance criteria:**
 
 - [ ] Cases include close matches, no match, explicit skill selection, ambiguity, multi-skill requests, and coding outcomes.
-- [ ] Calibration and held-out cases are separated.
+- [x] Calibration and held-out cases are separated.
 - [ ] Each run records host/model/settings, repository state, catalog revision, conditions, and repeat index.
 - [ ] Runners preserve comparable clean workspaces and support paired repeated tasks.
 - [ ] Deterministic and Jev arms share equivalent integration plumbing where applicable.
 - [ ] Cold and warm cache conditions are reported separately.
-- [ ] Actual charges, estimates, subscription usage, and missing values are distinct.
+- [x] Actual charges, estimates, subscription usage, and missing values are distinct.
 - [ ] Context-size reductions are not reported as total system savings; include auxiliary provider calls and final task outcomes.
-- [ ] Success labels do not rely solely on Jev evaluating its own result.
+- [x] Success labels do not rely solely on Jev evaluating its own result.
 
 **Validation:** Reproduce a small deterministic evaluation end to end before spending on full live runs.
 
@@ -297,11 +318,11 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 **Acceptance criteria:**
 
 - [ ] A fresh installation works through a documented path in each supported host.
-- [ ] Setup clearly lists state sent to TypeSafe and how credentials are stored.
+- [x] Setup clearly lists state sent to TypeSafe and how credentials are stored.
 - [ ] Hook activation uses the host's supported review/trust flow.
 - [ ] Existing unrelated hooks and configuration survive install, reinstall, upgrade, and removal.
 - [ ] Unsupported versions produce a clear diagnostic without silently claiming support.
-- [ ] Disabling stops decisions; uninstall removes only owned configuration and offers documented data cleanup.
+- [x] Disabling stops decisions; uninstall removes only owned configuration and offers documented data cleanup.
 - [ ] Package contents exclude secrets, captures, local state, and development-only artifacts.
 
 **Validation:** Fresh-profile lifecycle checks in both hosts, including installation alongside an unrelated hook.
@@ -320,13 +341,13 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] README reflects actual implemented behavior and known limitations.
-- [ ] Public claims link to project measurements rather than borrowing provider benchmark results.
+- [x] README reflects actual implemented behavior and known limitations.
+- [x] Public claims link to project measurements rather than borrowing provider benchmark results.
 - [ ] The release identifies supported host, runtime, SDK, and provider model versions.
-- [ ] Evaluation data is synthetic or approved and free of credentials/private content.
+- [x] Evaluation data is synthetic or approved and free of credentials/private content.
 - [ ] Contributors can build, test, and reproduce a small evaluation from a clean checkout.
-- [ ] License and third-party service requirements are clear.
-- [ ] Release notes state the default mode and how to disable or remove the integration.
+- [x] License and third-party service requirements are clear.
+- [x] Release notes state the default mode and how to disable or remove the integration.
 
 **Validation:** Execute the documented onboarding and reproduction steps against the release candidate.
 
