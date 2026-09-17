@@ -1,0 +1,26 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Private runtime and evaluation state
+.jevra/
+evals/captures/
+evals/local-results/
+*.log
+
+# Operating system and editor state
+.DS_Store
+.idea/
+.vscode/
