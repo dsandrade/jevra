@@ -349,8 +349,8 @@ Observe is the default. Cache, event deduplication, durable session budgets, aut
 | Question | Resolution point |
 | --- | --- |
 | Which exact host versions and surfaces are supported? | DR-001 compatibility spike |
-| Which catalog interfaces are reliable in each host? | DR-001 and DR-005 |
-| Which Node.js LTS, package manager, and SDK versions are pinned? | DR-002 scaffolding |
+| Which catalog interfaces are reliable in each host? | Alpha: explicitly configured directories; host registries remain unverified |
+| Which Node.js LTS, package manager, and SDK versions are pinned? | Resolved: Node 24.21.0, npm 11.19.0, TypeSafe SDK 0.6.0 |
 | Single evaluation or shortlist plus verification? | DR-007 and DR-011 pilot |
 | What thresholds, latency budgets, and quality margins apply? | DR-011 before held-out evaluation |
 | Is native subscription usage sufficient for cost measurement? | DR-010 instrumentation |

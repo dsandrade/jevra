@@ -4,7 +4,8 @@ Recorded on 2026-09-17. A verified row describes only the surface named in that 
 
 | Component or capability | Version / surface | Evidence |
 | --- | --- | --- |
-| Runtime | Node 24.21.0, npm 11.19.0, macOS arm64 | Build, typecheck, and behavioral tests passed |
+| Runtime | Node 24.21.0, npm 11.19.0, macOS arm64 | Build, typecheck, 34 behavioral tests, and clean-checkout install/check/eval passed |
+| CI | GitHub Actions, Ubuntu and macOS | [Credential-free install, checks, and deterministic evaluation passed](https://github.com/dsandrade/jevra/actions/runs/35249951291) on code commit `ee3157f` |
 | TypeSafe | SDK 0.6.0, `jev-1.13.0` | Real synthetic requests and SDK transport fixtures passed |
 | Codex input/context | CLI `0.154.0-alpha.6.2`, macOS | Native `UserPromptSubmit` receipt and random context marker returned by model |
 | Codex + Jev | Same CLI, bundled Jevra command hook | Real Jev recommendation returned to the host; model echoed the suggested skill name |

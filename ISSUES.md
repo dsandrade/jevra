@@ -17,7 +17,7 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 | ID | Status | Evidence and remaining work |
 | --- | --- | --- |
 | DR-001 | Partial | Codex marker and live Jev context delivery verified; Claude login, lifecycle/trust matrix, and observation probes pending |
-| DR-002 | Verification | Pinned workspace, lockfile, build/typecheck/tests and CI workflow exist; clean-checkout and remote CI results being verified |
+| DR-002 | Complete | Clean checkout passed npm ci/check/eval; [CI passed on macOS and Ubuntu](https://github.com/dsandrade/jevra/actions/runs/35249951291) |
 | DR-003 | Partial | Typed core, policy, modes, fake provider, revisions; no general module registry |
 | DR-004 | Partial | Official SDK, typed validation, sanitized failures, zero retries, live pilot; broader accounting/fault coverage pending |
 | DR-005 | Implemented for configured roots | Bounded catalog and diagnostics, explicit references, revision checks; no host-internal registry discovery |
@@ -81,9 +81,9 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Acceptance criteria:**
 
-- [ ] A clean checkout installs from a committed lockfile and builds with documented commands.
+- [x] A clean checkout installs from a committed lockfile and builds with documented commands.
 - [x] Package boundaries keep host schemas and provider transport out of the core.
-- [ ] CI runs relevant static checks and tests without live API credentials.
+- [x] CI runs relevant static checks and tests without live API credentials.
 - [x] Runtime and dependency versions are pinned or constrained intentionally.
 - [x] README documents actual commands and supported development platforms.
 
