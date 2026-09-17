@@ -2,7 +2,7 @@
 
 Status: executable developer alpha; this specification also defines unimplemented release goals
 
-Specification version: 0.2
+Specification version: 0.3
 
 Created: 2026-09-17
 
@@ -38,7 +38,7 @@ The runtime cannot observe or redirect every internal LLM decision. Injected adv
 
 The [Spotify repository](https://github.com/spotify/portal-ai-plugins) packages Portal workflows for existing coding agents. Its [shunt plugin](https://github.com/spotify/portal-ai-plugins/blob/3c24ca30ff63e1f5bbad1c43fe5324daff579123/plugins/shunt/README.md) is the closest reference: hooks redirect large reads, scripts call auxiliary models through Portal/AiKA, and skills describe when to delegate. The reviewed shunt implementation targets Claude Code and keeps architectural judgments with Claude.
 
-Jevra shares the goal of distributing work while preserving the existing agent interface. Its first module delegates bounded semantic selection to Jev rather than moving bulk reading or text generation to another LLM. Shunt is an architectural reference, not a required dependency or a benchmark proving Jevra's value.
+Jevra shares the goal of distributing work while preserving the existing agent interface. Following the owner's scope update, it now implements shunt-style large-read interception and helper/skill separation. Jev selects exact source evidence and code references; the main LLM interprets it and generates code. The original skill-selection module remains available. Shunt is an architectural reference, not a required dependency or a benchmark proving Jevra's value.
 
 Reuse the separation between hooks, executable integration code, and skill guidance. Verify host behavior independently and retain a deterministic routing baseline. No Spotify source code is included in this initial repository.
 
@@ -71,9 +71,20 @@ Automatic activation does not authorize uploading arbitrary workspace contents. 
 - Reproducible component and end-to-end evaluations.
 - Installation, upgrade, disable, and uninstall documentation.
 
-### Later experiments
+### Current alpha: shunt-style reading and reference selection
 
-- Selecting evidence through retrieval controlled by the runtime.
+- `PreToolUse` redirects configured full-file reads above 350 lines to a `bulk-read` helper.
+- The helper uses bounded source files, deterministic chunks and BM25, then Jev Score to select original evidence with provenance.
+- The preferred helper transport is host-managed stdio MCP, with equivalent CLI commands. This preserves the shell sandbox when macOS Keychain is unavailable there; only the API-calling process reads credentials. No network daemon is introduced.
+- `code-context` uses the same selector for implementation references. The owner explicitly chose main-LLM generation; Jevra does not generate or write the target code.
+- Small files and targeted reads preserve native behavior. Missing configuration, unavailable helpers and invalid results have native fallbacks.
+- Hooks, CLI helpers and bundled skills form the integration; there is no proactive prompt-context injection.
+- File upload scope is explicit through `bulkRead.roots`; enabling this module permits the helper to send shortlisted source text and the focused question to TypeSafe.
+- Compare native, deterministic and Jev arms using complete tasks, independent checks and whole-run usage. See the [frozen pilot protocol](evals/full-task/protocol.md).
+
+This owner-directed experiment advances DR-014 before the initial skill-routing release gate. It does not imply that skill routing or evidence selection has met promotion criteria. Detailed parity and differences are in [shunt architecture](docs/shunt-parity.md).
+
+### Later experiments
 - Checking explicit completion requirements against observed evidence.
 - An MCP tool for LLM-proposed candidates and explicit decision requests.
 - A supported library API for other agent integrations.
@@ -125,7 +136,7 @@ evals/
   reports/
 ```
 
-The alpha uses TypeScript, Node 24.21.0, npm 11.19.0, TypeSafe SDK 0.6.0, and Zod 4.6.5. Host schemas stay out of the core.
+The alpha uses TypeScript, Node 24.21.0, npm 11.19.0, TypeSafe SDK 0.6.0, MCP SDK 2.0.0, and Zod 4.6.5. Host schemas stay out of the core.
 
 A synchronous hook process is the starting execution model for decisions that must affect the current request. Process startup, API latency, and host delivery all count toward overhead. An asynchronous observer may be useful for shadow evaluation, but it cannot control an operation that has already proceeded.
 
@@ -133,16 +144,16 @@ Do not introduce a daemon until measurements show that its lifecycle complexity 
 
 ## 6. Host capability model
 
-Documentation was reviewed on 2026-09-17. The following are documented capabilities and intended uses. The alpha implements only `UserPromptSubmit`; see [compatibility evidence](docs/compatibility.md) for verified versions and limits.
+Documentation was reviewed on 2026-09-17. The following are documented capabilities and intended uses. The alpha implements `UserPromptSubmit` and bounded `PreToolUse` read redirection; see [compatibility evidence](docs/compatibility.md) for verified versions and limits.
 
 | Surface | Planned use | Boundary |
 | --- | --- | --- |
 | `SessionStart` | Optional initialization and diagnostics | Not sufficient for routing every request |
 | `UserPromptSubmit` | Skill selection before generation | Context injection guides the model; it does not replace the native router |
-| `PreToolUse` | Observe actual skill-loading behavior where identifiable | The LLM has already proposed a tool call; interception cannot undo that reasoning cost |
+| `PreToolUse` | Redirect eligible large reads to the explicit helper | The LLM has already proposed a tool call; interception cannot undo that reasoning cost |
 | `PostToolUse` | Record observed results and delivery outcomes | Cannot undo executed side effects |
 | `Stop` | Later bounded completion checks | Continuation must have a strict retry limit |
-| MCP tool | Later explicit evaluation or controlled retrieval | Invocation depends on the host model or a supported hook configuration |
+| MCP tool | Implemented bounded bulk-read and code-reference retrieval; general evaluation remains future scope | Invocation depends on the host model or a supported hook configuration |
 
 Codex and Claude Code require independent schema and behavior mappings. Similar event names do not imply equivalent semantics. For example, the reviewed Codex documentation does not support `permissionDecision: "ask"` in `PreToolUse`, while Claude Code documents it.
 
@@ -235,7 +246,7 @@ The TypeSafe skill-suggestion cookbook is a reference experiment. Its published 
 | Observe | Evaluate and record; do not change the model-visible decision |
 | Advise | Deliver a bounded recommendation, preserving native host control |
 
-Enforced control is outside the initial release. A future module must document both the supported host mechanism and the authorization needed for each action.
+The opt-in bulk-read module uses a native PreToolUse denial to redirect large full reads in advise mode. This is not general enforcement: targeted reads remain available and host permissions still apply. The gate makes no provider call; observe only records eligible read metadata. An explicit helper call requests selection in either observe or advise mode; disabled mode rejects it.
 
 For consultative routing, timeout, unavailable credentials, rate limiting, service failure, malformed output, missing candidates, low-confidence policy outcomes, or stale state return to native behavior. Record the failure category without leaking input or credentials.
 
@@ -248,7 +259,7 @@ Cache keys must include the relevant normalized state, catalog/content revisions
 ## 11. Data and authority boundaries
 
 - Credentials stay in local user configuration or an approved secret store and never enter prompts, logs, fixtures, Git, or reports.
-- Send only the state needed for the enabled decision and disclose those fields during setup.
+- Send only the state needed for the enabled decision and disclose those fields during setup. Skill routing sends prompt and catalog metadata; bulk-read/code-context send a focused question plus shortlisted original source text and opaque IDs from the configured roots. Local output includes source paths and line numbers; those metadata fields are not provider input. Source text itself may still contain paths or sensitive information.
 - Treat repository content, tool output, and skill text as potentially untrusted data. They cannot expand plugin authority or become executable hook commands.
 - Preserve native permissions and user instructions. Semantic confidence does not grant authorization.
 - Validate hook payloads and provider responses before using them.
@@ -336,13 +347,13 @@ A future `decision.evaluate` MCP tool may accept candidate solutions proposed by
 - Straightforward contribution guidance and diagnostic bug-report templates.
 - GitHub Git transport over SSH.
 
-The repository includes the developer alpha, synthetic component reports, and a verified Codex context probe. Package publishing, marketplace submission, and full-task performance claims remain later milestones.
+The repository includes the developer alpha, synthetic component and full-task reports, authenticated read-gate probes in both hosts, and verified Jev retrieval over MCP. Package publishing, marketplace submission, and full-task performance claims remain later milestones.
 
 ### Current implementation boundary
 
-The first module reads only the current prompt and explicitly configured skill directories. It performs one Choice selection and one independent multi-skill Noul judgment in a single SDK request, with no retries. It implements local validation, provisional thresholds, stale-result rejection, bounded IO, and metadata traces. Body hashes are computed locally; bodies and paths are not sent to TypeSafe.
+The first module reads only the current prompt and explicitly configured skill directories. It performs one Choice selection and one independent multi-skill Noul judgment in a single SDK request, with no retries. It implements local validation, provisional thresholds, stale-result rejection, bounded IO, and metadata traces. Body hashes are computed locally; skill bodies and path metadata are not sent by that module. The separate bulk-reading module sends its focused question and shortlisted original source text from configured roots, and returns selected excerpts through MCP or CLI.
 
-Observe is the default. Cache, event deduplication, durable session budgets, automatic installation, transcript instrumentation, skill-adherence observation, module registration, two-stage selection, and full-task evaluation are not implemented. Explicit references preserve native handling; multi-skill and uncertain results abstain. This alpha is an integration experiment, not the completion of the initial release scope above.
+Observe is the default. Cache, event deduplication, durable session budgets, automatic installation, transcript instrumentation, skill-adherence observation, module registration, and two-stage skill selection are not implemented. A synthetic three-arm full-task retrieval pilot is implemented; broad independently reviewed evaluation remains open. Explicit references preserve native handling; multi-skill and uncertain results abstain. This alpha is an integration experiment, not the completion of the initial release scope above.
 
 ## 15. Decisions to resolve during implementation
 
@@ -350,7 +361,7 @@ Observe is the default. Cache, event deduplication, durable session budgets, aut
 | --- | --- |
 | Which exact host versions and surfaces are supported? | DR-001 compatibility spike |
 | Which catalog interfaces are reliable in each host? | Alpha: explicitly configured directories; host registries remain unverified |
-| Which Node.js LTS, package manager, and SDK versions are pinned? | Resolved: Node 24.21.0, npm 11.19.0, TypeSafe SDK 0.6.0 |
+| Which Node.js LTS, package manager, and SDK versions are pinned? | Resolved: Node 24.21.0, npm 11.19.0, TypeSafe SDK 0.6.0, MCP SDK 2.0.0 |
 | Single evaluation or shortlist plus verification? | DR-007 and DR-011 pilot |
 | What thresholds, latency budgets, and quality margins apply? | DR-011 before held-out evaluation |
 | Is native subscription usage sufficient for cost measurement? | DR-010 instrumentation |

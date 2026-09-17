@@ -9,9 +9,9 @@ Use the pinned Node/npm versions and `npm ci`. Workspace packages are private du
 - `packages/adapter-*`: independent host event parsing and context output.
 - `packages/cli`: user config, catalog, credentials, bounded IO, traces, and commands.
 - `plugins`: host manifests and hooks; the build supplies generated executables.
-- `evals`: synthetic skills, labeled cases, component runner, and reviewed reports.
+- `evals`: synthetic skills, labeled cases, component runner, complete-task runners and external judges, and reviewed reports.
 
-There is one internal module, not a public registration framework. No persistent daemon, cache, deduplication store, or cross-event call budget exists. Each eligible event can make one evaluation attempt. Explicit mentions, disabled mode, and invalid/empty catalogs bypass inference. A fallback may have unknown billed usage, even if the local request timed out.
+There are two internal modules: skill routing and evidence selection. They are not a public registration framework. No persistent daemon, cache, deduplication store, or cross-event call budget exists. Each eligible skill event or explicit Jev helper call can make one evaluation attempt. The large-read gate itself makes none. Explicit mentions, disabled mode, and invalid/empty catalogs bypass inference. A fallback may have unknown billed usage, even if the local request timed out.
 
 ## Checks
 
@@ -36,4 +36,26 @@ The dataset has 60 synthetic, author-labeled prompts: 36 covered tasks, 12 no-ma
 
 ## Next validation gate
 
-Follow DR-009 through DR-012 in [ISSUES.md](../ISSUES.md). Add call-budget/deduplication behavior, then authenticated Claude probes, reviewed full-task cases and three host-level arms: native, deterministic, and Jev. Predeclare quality margins and overhead budgets. Track skill loading separately from context delivery and report failures and harmful suggestions. Keep observe as default until that evidence supports a change.
+Follow DR-009 through DR-012 in [ISSUES.md](../ISSUES.md). Add call-budget/deduplication behavior, broader reviewed real-project cases and normal plugin activation checks in both hosts. Predeclare quality margins and overhead budgets. Track skill loading separately from context delivery and report failures and harmful suggestions. Keep observe as default until that evidence supports a change.
+
+## Full coding-task evaluation
+
+Read the [protocol](../evals/full-task/protocol.md) before running:
+
+```sh
+npm run build
+node evals/full-task/run.ts --repetitions 1 --keychain-service your-typesafe-key-service \
+  --output evals/local-results/new-comparison
+node evals/full-task/report.ts --input evals/local-results/new-comparison/results.json \
+  --output evals/local-results/new-comparison/report
+```
+
+This consumes existing authenticated Codex/Claude model usage and TypeSafe usage. The command above runs 12 synthetic coding tasks: two tasks, one repetition, three arms and two hosts. Omitting `--repetitions 1` requests the original 24-run design. Narrow an integration check with `--hosts claude-code --tasks retry-policy --arms jev --repetitions 1`. Use `--output` for a new ignored results directory and `--timeout` for an explicitly recorded run budget. SIGINT/SIGTERM stop active runs and preserve partial records; authentication and rate-limit failures stop further runs. Never merge differently configured runs into the same comparison.
+
+The runner creates and removes temporary fixture repositories, references existing Codex authentication without copying it, disables automatic Codex skill instructions and unrelated Claude skills/MCP, and configures the reviewed command hook plus only the Jevra MCP helper in active arms. It uses Codex's per-invocation hook trust override only for that fixed hook; it does not modify persistent trust or user settings. Agents retain their native tool permissions and can choose targeted-read fallback. The test does not validate marketplace installation. The MCP transport keeps Keychain credentials outside the model tool shell; the shell sandbox remains in place.
+
+`fixtures.ts` supplies tasks and visible tests; `judge.mjs` checks resulting code from outside the agent workspace. Unit tests prove the judge rejects original broken fixtures and accepts independent reference implementations. A task is complete only when the host finishes successfully before the deadline and the external checks pass.
+
+Raw model streams and synthetic solution snapshots remain local under `evals/local-results`. Review before publication: streams can include local paths, session identifiers, account details, or inherited host context. Publish sanitized metrics, not raw sessions. Per-run reports preserve timeouts, missing usage, helper calls, actual helper outcomes and cache tokens. Helper invocations without a corresponding trace leave Jev cost unknown.
+
+The runner uses standard API-equivalent Codex price bounds and Claude's own client-side estimate, including auxiliary models. Codex cache-write counts are unavailable; the range prices uncached input at the documented input/cache-write rates. These are neither actual bills nor a measurement of subscription quota savings. See the report for model/rate sources and the provisional promotion decision.

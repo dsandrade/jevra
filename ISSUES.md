@@ -16,20 +16,23 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 
 | ID | Status | Evidence and remaining work |
 | --- | --- | --- |
-| DR-001 | Partial | Codex marker and live Jev context delivery verified; Claude login, lifecycle/trust matrix, and observation probes pending |
-| DR-002 | Complete | Clean checkout passed npm ci/check/eval; [CI passed on macOS and Ubuntu](https://github.com/dsandrade/jevra/actions/runs/35249951291) |
+| DR-001 | Partial | Codex marker and live Jev context delivery verified; authenticated read gates verified in both hosts; full lifecycle/trust and observation probes pending |
+| DR-002 | Complete | Clean checkout passed npm ci/check/eval; [CI passed on macOS and Ubuntu](https://github.com/dsandrade/jevra/actions/runs/35257430261) |
 | DR-003 | Partial | Typed core, policy, modes, fake provider, revisions; no general module registry |
 | DR-004 | Partial | Official SDK, typed validation, sanitized failures, zero retries, live pilot; broader accounting/fault coverage pending |
 | DR-005 | Implemented for configured roots | Bounded catalog and diagnostics, explicit references, revision checks; no host-internal registry discovery |
-| DR-006 | Partial | Independent adapters and bundled hooks; authenticated Claude and version negotiation pending |
+| DR-006 | Partial | Independent adapters and bundled hooks; authenticated read gates in both CLIs; version negotiation and normal installation pending |
 | DR-007 | Partial | Single-call Choice + Noul route and configurable policy; two-stage comparison and calibration pending |
 | DR-008 | Partial | Metadata traces, retention, deletion, doctor; no replay capture or automatic trust/adherence detection |
 | DR-009 | Partial | Deadlines, cancellation, isolation, stale checks; deduplication, caching, session budgets, host failure matrix pending |
-| DR-010 | Partial | 60-case component dataset and two runners; independent review, native/full-task arms, paired repetitions pending |
-| DR-011 | Planned | Component smoke report exists; confirmatory quality/efficiency experiment and promotion decision pending |
+| DR-010 | Partial | 60-case component dataset plus two full coding tasks with native/deterministic/Jev arms, paired repetitions and external judges; independent real-world data pending |
+| DR-011 | Partial | Component smoke and shunt full-task pilot; confirmatory skill-routing quality/efficiency experiment remains pending |
 | DR-012 | Partial | Manifests, local build/config, manual setup/removal; full installation lifecycle pending |
 | DR-013 | Partial | Public code/docs and reviewed synthetic results; versioned distribution and release gate pending |
-| DR-014–017 | Planned | Later experiments; no implementation yet |
+| DR-014 | Experimental implementation | Shunt-style hooks, bounded bulk-read/code-context, Jev relevance scoring, exact provenance and full-task pilot; broader evidence and adoption gaps remain |
+| DR-015–017 | Planned | Completion checks, explicit decisions and public framework remain unimplemented |
+| DR-018 | Partial | Shunt hook/helper/skill architecture plus host-managed MCP for Keychain access; native plugin activation and helper adoption need further validation |
+| DR-019 | Planned | Independently reviewed real-project cost/quality evaluation |
 
 ## Milestones and dependencies
 
@@ -269,12 +272,12 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 - [ ] Cases include close matches, no match, explicit skill selection, ambiguity, multi-skill requests, and coding outcomes.
 - [x] Calibration and held-out cases are separated.
-- [ ] Each run records host/model/settings, repository state, catalog revision, conditions, and repeat index.
-- [ ] Runners preserve comparable clean workspaces and support paired repeated tasks.
-- [ ] Deterministic and Jev arms share equivalent integration plumbing where applicable.
+- [x] Each run records host/model/settings, repository state, catalog revision, conditions, and repeat index.
+- [x] Runners preserve comparable clean workspaces and support paired repeated tasks.
+- [x] Deterministic and Jev arms share equivalent integration plumbing where applicable.
 - [ ] Cold and warm cache conditions are reported separately.
 - [x] Actual charges, estimates, subscription usage, and missing values are distinct.
-- [ ] Context-size reductions are not reported as total system savings; include auxiliary provider calls and final task outcomes.
+- [x] Context-size reductions are not reported as total system savings; include auxiliary provider calls and final task outcomes.
 - [x] Success labels do not rely solely on Jev evaluating its own result.
 
 **Validation:** Reproduce a small deterministic evaluation end to end before spending on full live runs.
@@ -353,22 +356,22 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 ## DR-014: Experiment with controlled context selection
 
-**Priority:** P2
+**Priority:** P1 (advanced by owner scope change)
 
-**Milestone:** M4
+**Milestone:** M2 / experimental alpha
 
-**Depends on:** DR-011, DR-013
+**Depends on:** DR-004, DR-006, DR-008; promotion still requires DR-011
 
 **Problem:** Agents may spend context and reasoning on irrelevant retrieved evidence.
 
-**Scope:** Add a bounded retrieval surface owned by the runtime, potentially exposed through MCP. Retrieve candidates in code, evaluate relevance with Jev, and return selected passages with provenance.
+**Scope:** Add a shunt-style PreToolUse read gate and explicit bulk-read/code-context CLI surface. Retrieve candidates in code, evaluate relevance with Jev, and return selected original passages with provenance. The main LLM writes code and summaries; no auxiliary generator is introduced.
 
 **Acceptance criteria:**
 
-- [ ] Control is limited to the owned retrieval surface and described accurately.
+- [x] Control is limited to the owned retrieval surface and described accurately.
 - [ ] Required evidence and source attribution survive selection.
-- [ ] Empty results, conflicting evidence, and no-answer cases have defined behavior.
-- [ ] Retrieval plus Jev plus host-tool overhead is included in comparisons.
+- [x] Empty results, conflicting evidence, and no-answer cases have defined behavior.
+- [x] Retrieval plus Jev plus host-tool overhead is included in comparisons.
 - [ ] Held-out full-task evaluations show whether the module merits release.
 
 **Validation:** Paired retrieval/answer tasks with independent evidence labels and final-answer checks.
@@ -439,6 +442,59 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 **Validation:** A small independent integration demonstrates the proposed API before declaring it stable.
 
+## DR-018: Validate shunt-style integration and helper adoption
+
+**Priority:** P1
+
+**Milestone:** M2 / experimental alpha
+
+**Depends on:** DR-006, DR-014
+
+**Problem:** Large-read interception can succeed while the host chooses targeted native reads instead of invoking Jev. Hook delivery alone is insufficient evidence of delegation or savings.
+
+**Scope:** Preserve the hook/helper/skill split from Spotify shunt; validate normal plugin skill discovery and trust activation independently in Codex and Claude. Measure helper adoption and native fallback without blocking legitimate targeted reads.
+
+**Acceptance criteria:**
+
+- [x] Large full reads redirect; small and targeted reads retain native permissions.
+- [x] Shell handling does not execute or expand model-proposed text.
+- [x] Both plugins package bulk-reader and code-context guidance and the equivalent stdio MCP tools.
+- [x] The API-calling MCP process can read Keychain without weakening Codex tool-shell permissions or exporting the credential to the model environment.
+- [x] Code-context returns source references; the main LLM generates and validates code.
+- [x] Configured roots, bounded files, exact excerpts, native fallback and upload fields are documented.
+- [x] Read gates are observed in authenticated command-hook sessions in both CLIs.
+- [ ] Native plugin activation, skill discovery and changed-hook trust lifecycle are verified on both hosts.
+- [ ] Helper adoption improves in ordinary tasks without forced reads or removal of native fallback.
+- [ ] Measure native rereads after selection and test clearer coverage/provenance output without implying completeness or hiding uncertainty.
+- [ ] Compare extra tool turns and context overhead against avoided reading before expanding default interception.
+- [ ] Context/body reduction is accompanied by evidence of lower complete-task cost at preserved quality.
+
+**Validation:** [Parity map](docs/shunt-parity.md), packaged CLI checks and [full-task pilot](evals/reports/2026-09-17-full-task-pilot.md). Native lifecycle and adoption remain separate from these command-hook results.
+
+## DR-019: Measure independently reviewed real-project tasks
+
+**Priority:** P1
+
+**Milestone:** M2
+
+**Depends on:** DR-010, DR-014, DR-018
+
+**Problem:** Two author-designed synthetic tasks cannot establish general savings, and gate-only behavior cannot establish Jev's incremental value.
+
+**Scope:** Build a reviewed task set using approved open-source snapshots, independent outcome checks, repeated paired runs and explicit cache conditions. Compare native, deterministic and Jev reading under normal plugin activation.
+
+**Acceptance criteria:**
+
+- [ ] Task provenance and allowed provider-upload scope are explicit.
+- [ ] At least two independent reviewers validate required evidence and correctness checks.
+- [ ] Tasks include multiple files, obsolete/conflicting evidence, code references, no useful result and helper failures.
+- [ ] Runs separately record gate redirects, helper invocations, successful selections, fallback reads and unknown usage.
+- [ ] Runtime, model, effort, cache conditions and budget settings are recorded with task and code revisions.
+- [ ] Promotion requires preserved task quality, observed helper use and predefined conservative cost/latency gates.
+- [ ] Negative outcomes and differences against deterministic retrieval remain published.
+
+**Validation:** Reproduce a reviewed paired subset before spending on the full experiment; publish sanitized results and keep actual bills distinct from estimates.
+
 ## Traceability
 
 | Specification concern | Issues |
@@ -449,4 +505,5 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 | Observability, privacy, and measurement | DR-008, DR-010, DR-011 |
 | Failure recovery, isolation, caching, and budgets | DR-004, DR-009 |
 | Open-source release | DR-012, DR-013 |
-| Future modules and framework decision | DR-014 through DR-017 |
+| Shunt-style reading and evidence selection | DR-014, DR-018, DR-019 |
+| Future modules and framework decision | DR-015 through DR-017 |

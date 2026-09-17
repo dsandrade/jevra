@@ -1,0 +1,1964 @@
+{
+  "implementationRevision": "438bd85f7f243ac23667a9c207e6c36858172971",
+  "kind": "shunt-full-task-pilot",
+  "expectedRuns": 12,
+  "attemptedRuns": 12,
+  "repetitions": 1,
+  "transport": "mcp",
+  "interruptedRuns": [],
+  "abortReason": null,
+  "codeHash": "8aff8d4dc58bb1352307202f718fe1ed761fdc88780a5481682077f9e26379c3",
+  "fixtureHash": "af8fef0ff5a9e16aa5f7937865f96f8a8d57a1ab35edec0790e2b6cfb03c1ac8",
+  "protocolHash": "10efa31f1ebd59138f6f43b66fb1a8dfc78447ea2131d88f9f273187fbd82357",
+  "actualBilledUsd": null,
+  "summaries": [
+    {
+      "host": "codex",
+      "arm": "native",
+      "runs": 2,
+      "completed": 2,
+      "checksPassed": 50,
+      "checksTotal": 50,
+      "medianDurationMs": 143935,
+      "inputTokens": 244720,
+      "outputTokens": 8414,
+      "cachedInputTokens": 207616,
+      "estimateUsdLow": 0.9993559999999999,
+      "estimateUsdHigh": 1.092116,
+      "redirects": 0,
+      "helperCalls": 0,
+      "jevAttempts": 0,
+      "successfulHelperRuns": 0
+    },
+    {
+      "host": "codex",
+      "arm": "deterministic",
+      "runs": 2,
+      "completed": 2,
+      "checksPassed": 50,
+      "checksTotal": 50,
+      "medianDurationMs": 155328,
+      "inputTokens": 324152,
+      "outputTokens": 8749,
+      "cachedInputTokens": 294912,
+      "estimateUsdLow": 1.024762,
+      "estimateUsdHigh": 1.0978620000000001,
+      "redirects": 2,
+      "helperCalls": 2,
+      "jevAttempts": 0,
+      "successfulHelperRuns": 2
+    },
+    {
+      "host": "codex",
+      "arm": "jev",
+      "runs": 2,
+      "completed": 2,
+      "checksPassed": 50,
+      "checksTotal": 50,
+      "medianDurationMs": 150878,
+      "inputTokens": 331512,
+      "outputTokens": 8385,
+      "cachedInputTokens": 296704,
+      "estimateUsdLow": 1.0646831099999998,
+      "estimateUsdHigh": 1.1517031100000001,
+      "redirects": 2,
+      "helperCalls": 2,
+      "jevAttempts": 2,
+      "successfulHelperRuns": 2
+    },
+    {
+      "host": "claude-code",
+      "arm": "native",
+      "runs": 2,
+      "completed": 2,
+      "checksPassed": 50,
+      "checksTotal": 50,
+      "medianDurationMs": 100213,
+      "inputTokens": 605579,
+      "outputTokens": 21106,
+      "cachedInputTokens": 539450,
+      "estimateUsdLow": 0.577588,
+      "estimateUsdHigh": 0.577588,
+      "redirects": 0,
+      "helperCalls": 0,
+      "jevAttempts": 0,
+      "successfulHelperRuns": 0
+    },
+    {
+      "host": "claude-code",
+      "arm": "deterministic",
+      "runs": 2,
+      "completed": 2,
+      "checksPassed": 50,
+      "checksTotal": 50,
+      "medianDurationMs": 111657.5,
+      "inputTokens": 835288,
+      "outputTokens": 22308,
+      "cachedInputTokens": 765517,
+      "estimateUsdLow": 0.6493484,
+      "estimateUsdHigh": 0.6493484,
+      "redirects": 2,
+      "helperCalls": 0,
+      "jevAttempts": 0,
+      "successfulHelperRuns": 0
+    },
+    {
+      "host": "claude-code",
+      "arm": "jev",
+      "runs": 2,
+      "completed": 2,
+      "checksPassed": 50,
+      "checksTotal": 50,
+      "medianDurationMs": 98649,
+      "inputTokens": 701240,
+      "outputTokens": 19950,
+      "cachedInputTokens": 646272,
+      "estimateUsdLow": 0.5430290099999999,
+      "estimateUsdHigh": 0.5430290099999999,
+      "redirects": 2,
+      "helperCalls": 1,
+      "jevAttempts": 1,
+      "successfulHelperRuns": 1
+    }
+  ],
+  "decisions": [
+    {
+      "host": "codex",
+      "savingsLow": -0.15244528476338792,
+      "savingsHigh": 0.02511902581777048,
+      "incrementalSavingsLow": -0.12387374824593445,
+      "latencyChange": 0.048237051446833545,
+      "checks": {
+        "plannedRuns": false,
+        "quality": true,
+        "helperUsed": true,
+        "cost": false,
+        "latency": true
+      },
+      "promotion": false
+    },
+    {
+      "host": "claude-code",
+      "savingsLow": 0.05983328947277311,
+      "savingsHigh": 0.05983328947277311,
+      "incrementalSavingsLow": 0.16373242776913,
+      "latencyChange": -0.015606757606298594,
+      "checks": {
+        "plannedRuns": false,
+        "quality": true,
+        "helperUsed": false,
+        "cost": false,
+        "latency": true
+      },
+      "promotion": false
+    }
+  ],
+  "rows": [
+    {
+      "id": "claude-code-retry-policy-0-native",
+      "host": "claude-code",
+      "arm": "native",
+      "task": "retry-policy",
+      "repetition": 0,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "model": "claude-sonnet-5",
+      "effort": "high",
+      "durationMs": 78513,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retry-policy",
+        "checks": [
+          {
+            "name": "invalid-attempt-0",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt--1",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-1.5",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-NaN",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-undefined",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-safety",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-permanent",
+            "passed": true
+          },
+          {
+            "name": "permanent-200",
+            "passed": true
+          },
+          {
+            "name": "permanent-400",
+            "passed": true
+          },
+          {
+            "name": "permanent-404",
+            "passed": true
+          },
+          {
+            "name": "permanent-501",
+            "passed": true
+          },
+          {
+            "name": "permanent-505",
+            "passed": true
+          },
+          {
+            "name": "transient-429",
+            "passed": true
+          },
+          {
+            "name": "transient-500",
+            "passed": true
+          },
+          {
+            "name": "transient-502",
+            "passed": true
+          },
+          {
+            "name": "transient-503",
+            "passed": true
+          },
+          {
+            "name": "transient-504",
+            "passed": true
+          },
+          {
+            "name": "transient-599",
+            "passed": true
+          },
+          {
+            "name": "unsafe-write",
+            "passed": true
+          },
+          {
+            "name": "blank-key-is-unsafe",
+            "passed": true
+          },
+          {
+            "name": "key-protects-write",
+            "passed": true
+          },
+          {
+            "name": "network-TIMEOUT",
+            "passed": true
+          },
+          {
+            "name": "network-NETWORK_RESET",
+            "passed": true
+          },
+          {
+            "name": "unknown-code",
+            "passed": true
+          },
+          {
+            "name": "rounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "bounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "small-hint-does-not-lower-base",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint--1",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-Infinity",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-NaN",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-500",
+            "passed": true
+          },
+          {
+            "name": "hint-not-used-for-other-status",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 232730,
+      "totalOutputTokens": 8867,
+      "cachedInputTokens": 202108,
+      "costEstimateUsdLow": 0.2486446,
+      "costEstimateUsdHigh": 0.2486446,
+      "totalEstimateUsdLow": 0.2486446,
+      "totalEstimateUsdHigh": 0.2486446,
+      "actualBilledUsd": null,
+      "toolCalls": 8,
+      "editCalls": 2,
+      "testCommands": 1,
+      "terminalResult": "success",
+      "failure": null,
+      "redirects": 0,
+      "helperInvocations": 0,
+      "helperCalls": 0,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "codex-retry-policy-0-native",
+      "host": "codex",
+      "arm": "native",
+      "task": "retry-policy",
+      "repetition": 0,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "durationMs": 135088,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retry-policy",
+        "checks": [
+          {
+            "name": "invalid-attempt-0",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt--1",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-1.5",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-NaN",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-undefined",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-safety",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-permanent",
+            "passed": true
+          },
+          {
+            "name": "permanent-200",
+            "passed": true
+          },
+          {
+            "name": "permanent-400",
+            "passed": true
+          },
+          {
+            "name": "permanent-404",
+            "passed": true
+          },
+          {
+            "name": "permanent-501",
+            "passed": true
+          },
+          {
+            "name": "permanent-505",
+            "passed": true
+          },
+          {
+            "name": "transient-429",
+            "passed": true
+          },
+          {
+            "name": "transient-500",
+            "passed": true
+          },
+          {
+            "name": "transient-502",
+            "passed": true
+          },
+          {
+            "name": "transient-503",
+            "passed": true
+          },
+          {
+            "name": "transient-504",
+            "passed": true
+          },
+          {
+            "name": "transient-599",
+            "passed": true
+          },
+          {
+            "name": "unsafe-write",
+            "passed": true
+          },
+          {
+            "name": "blank-key-is-unsafe",
+            "passed": true
+          },
+          {
+            "name": "key-protects-write",
+            "passed": true
+          },
+          {
+            "name": "network-TIMEOUT",
+            "passed": true
+          },
+          {
+            "name": "network-NETWORK_RESET",
+            "passed": true
+          },
+          {
+            "name": "unknown-code",
+            "passed": true
+          },
+          {
+            "name": "rounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "bounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "small-hint-does-not-lower-base",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint--1",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-Infinity",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-NaN",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-500",
+            "passed": true
+          },
+          {
+            "name": "hint-not-used-for-other-status",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 111244,
+      "totalOutputTokens": 3891,
+      "cachedInputTokens": 91776,
+      "costEstimateUsdLow": 0.481006,
+      "costEstimateUsdHigh": 0.529676,
+      "totalEstimateUsdLow": 0.481006,
+      "totalEstimateUsdHigh": 0.529676,
+      "actualBilledUsd": null,
+      "toolCalls": 9,
+      "editCalls": 2,
+      "testCommands": 2,
+      "terminalResult": "turn.completed",
+      "failure": null,
+      "redirects": 0,
+      "helperInvocations": 0,
+      "helperCalls": 0,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "claude-code-retry-policy-0-deterministic",
+      "host": "claude-code",
+      "arm": "deterministic",
+      "task": "retry-policy",
+      "repetition": 0,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "model": "claude-sonnet-5",
+      "effort": "high",
+      "durationMs": 99859,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retry-policy",
+        "checks": [
+          {
+            "name": "invalid-attempt-0",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt--1",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-1.5",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-NaN",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-undefined",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-safety",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-permanent",
+            "passed": true
+          },
+          {
+            "name": "permanent-200",
+            "passed": true
+          },
+          {
+            "name": "permanent-400",
+            "passed": true
+          },
+          {
+            "name": "permanent-404",
+            "passed": true
+          },
+          {
+            "name": "permanent-501",
+            "passed": true
+          },
+          {
+            "name": "permanent-505",
+            "passed": true
+          },
+          {
+            "name": "transient-429",
+            "passed": true
+          },
+          {
+            "name": "transient-500",
+            "passed": true
+          },
+          {
+            "name": "transient-502",
+            "passed": true
+          },
+          {
+            "name": "transient-503",
+            "passed": true
+          },
+          {
+            "name": "transient-504",
+            "passed": true
+          },
+          {
+            "name": "transient-599",
+            "passed": true
+          },
+          {
+            "name": "unsafe-write",
+            "passed": true
+          },
+          {
+            "name": "blank-key-is-unsafe",
+            "passed": true
+          },
+          {
+            "name": "key-protects-write",
+            "passed": true
+          },
+          {
+            "name": "network-TIMEOUT",
+            "passed": true
+          },
+          {
+            "name": "network-NETWORK_RESET",
+            "passed": true
+          },
+          {
+            "name": "unknown-code",
+            "passed": true
+          },
+          {
+            "name": "rounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "bounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "small-hint-does-not-lower-base",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint--1",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-Infinity",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-NaN",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-500",
+            "passed": true
+          },
+          {
+            "name": "hint-not-used-for-other-status",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 441892,
+      "totalOutputTokens": 9027,
+      "cachedInputTokens": 410100,
+      "costEstimateUsdLow": 0.296496,
+      "costEstimateUsdHigh": 0.296496,
+      "totalEstimateUsdLow": 0.296496,
+      "totalEstimateUsdHigh": 0.296496,
+      "actualBilledUsd": null,
+      "toolCalls": 15,
+      "editCalls": 2,
+      "testCommands": 1,
+      "terminalResult": "success",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 0,
+      "helperCalls": 0,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "claude-code-retry-policy-0-jev",
+      "host": "claude-code",
+      "arm": "jev",
+      "task": "retry-policy",
+      "repetition": 0,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "model": "claude-sonnet-5",
+      "effort": "high",
+      "durationMs": 81374,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retry-policy",
+        "checks": [
+          {
+            "name": "invalid-attempt-0",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt--1",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-1.5",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-NaN",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-undefined",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-safety",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-permanent",
+            "passed": true
+          },
+          {
+            "name": "permanent-200",
+            "passed": true
+          },
+          {
+            "name": "permanent-400",
+            "passed": true
+          },
+          {
+            "name": "permanent-404",
+            "passed": true
+          },
+          {
+            "name": "permanent-501",
+            "passed": true
+          },
+          {
+            "name": "permanent-505",
+            "passed": true
+          },
+          {
+            "name": "transient-429",
+            "passed": true
+          },
+          {
+            "name": "transient-500",
+            "passed": true
+          },
+          {
+            "name": "transient-502",
+            "passed": true
+          },
+          {
+            "name": "transient-503",
+            "passed": true
+          },
+          {
+            "name": "transient-504",
+            "passed": true
+          },
+          {
+            "name": "transient-599",
+            "passed": true
+          },
+          {
+            "name": "unsafe-write",
+            "passed": true
+          },
+          {
+            "name": "blank-key-is-unsafe",
+            "passed": true
+          },
+          {
+            "name": "key-protects-write",
+            "passed": true
+          },
+          {
+            "name": "network-TIMEOUT",
+            "passed": true
+          },
+          {
+            "name": "network-NETWORK_RESET",
+            "passed": true
+          },
+          {
+            "name": "unknown-code",
+            "passed": true
+          },
+          {
+            "name": "rounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "bounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "small-hint-does-not-lower-base",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint--1",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-Infinity",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-NaN",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-500",
+            "passed": true
+          },
+          {
+            "name": "hint-not-used-for-other-status",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 295605,
+      "totalOutputTokens": 9101,
+      "cachedInputTokens": 268342,
+      "costEstimateUsdLow": 0.25077839999999996,
+      "costEstimateUsdHigh": 0.25077839999999996,
+      "totalEstimateUsdLow": 0.25077839999999996,
+      "totalEstimateUsdHigh": 0.25077839999999996,
+      "actualBilledUsd": null,
+      "toolCalls": 12,
+      "editCalls": 2,
+      "testCommands": 1,
+      "terminalResult": "success",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 0,
+      "helperCalls": 0,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "codex-retry-policy-0-deterministic",
+      "host": "codex",
+      "arm": "deterministic",
+      "task": "retry-policy",
+      "repetition": 0,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "durationMs": 140647,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retry-policy",
+        "checks": [
+          {
+            "name": "invalid-attempt-0",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt--1",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-1.5",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-NaN",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-undefined",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-safety",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-permanent",
+            "passed": true
+          },
+          {
+            "name": "permanent-200",
+            "passed": true
+          },
+          {
+            "name": "permanent-400",
+            "passed": true
+          },
+          {
+            "name": "permanent-404",
+            "passed": true
+          },
+          {
+            "name": "permanent-501",
+            "passed": true
+          },
+          {
+            "name": "permanent-505",
+            "passed": true
+          },
+          {
+            "name": "transient-429",
+            "passed": true
+          },
+          {
+            "name": "transient-500",
+            "passed": true
+          },
+          {
+            "name": "transient-502",
+            "passed": true
+          },
+          {
+            "name": "transient-503",
+            "passed": true
+          },
+          {
+            "name": "transient-504",
+            "passed": true
+          },
+          {
+            "name": "transient-599",
+            "passed": true
+          },
+          {
+            "name": "unsafe-write",
+            "passed": true
+          },
+          {
+            "name": "blank-key-is-unsafe",
+            "passed": true
+          },
+          {
+            "name": "key-protects-write",
+            "passed": true
+          },
+          {
+            "name": "network-TIMEOUT",
+            "passed": true
+          },
+          {
+            "name": "network-NETWORK_RESET",
+            "passed": true
+          },
+          {
+            "name": "unknown-code",
+            "passed": true
+          },
+          {
+            "name": "rounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "bounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "small-hint-does-not-lower-base",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint--1",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-Infinity",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-NaN",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-500",
+            "passed": true
+          },
+          {
+            "name": "hint-not-used-for-other-status",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 158973,
+      "totalOutputTokens": 3938,
+      "cachedInputTokens": 143488,
+      "costEstimateUsdLow": 0.495238,
+      "costEstimateUsdHigh": 0.5339505,
+      "totalEstimateUsdLow": 0.495238,
+      "totalEstimateUsdHigh": 0.5339505,
+      "actualBilledUsd": null,
+      "toolCalls": 12,
+      "editCalls": 1,
+      "testCommands": 1,
+      "terminalResult": "turn.completed",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 1,
+      "helperCalls": 1,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [
+        {
+          "reason": "selected",
+          "sourceBytes": 36283,
+          "outputBytes": 3019,
+          "candidateCount": 44,
+          "shortlistedCount": 24,
+          "usage": null
+        }
+      ],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "claude-code-retention-policy-0-deterministic",
+      "host": "claude-code",
+      "arm": "deterministic",
+      "task": "retention-policy",
+      "repetition": 0,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "model": "claude-sonnet-5",
+      "effort": "high",
+      "durationMs": 123456,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retention-policy",
+        "checks": [
+          {
+            "name": "invalid-now",
+            "passed": true
+          },
+          {
+            "name": "session-boundary",
+            "passed": true
+          },
+          {
+            "name": "audit-boundary",
+            "passed": true
+          },
+          {
+            "name": "legal-hold",
+            "passed": true
+          },
+          {
+            "name": "active-session",
+            "passed": true
+          },
+          {
+            "name": "active-audit-can-expire",
+            "passed": true
+          },
+          {
+            "name": "unknown-category",
+            "passed": true
+          },
+          {
+            "name": "invalid-created-at",
+            "passed": true
+          },
+          {
+            "name": "future-record",
+            "passed": true
+          },
+          {
+            "name": "retain-newest-old-report",
+            "passed": true
+          },
+          {
+            "name": "tied-newest-reports",
+            "passed": true
+          },
+          {
+            "name": "per-account-newest",
+            "passed": true
+          },
+          {
+            "name": "held-newest-still-compared",
+            "passed": true
+          },
+          {
+            "name": "invalid-report-is-not-newest",
+            "passed": true
+          },
+          {
+            "name": "report-exact-boundary",
+            "passed": true
+          },
+          {
+            "name": "report-expired-boundary",
+            "passed": true
+          },
+          {
+            "name": "sorted-ids",
+            "passed": true
+          },
+          {
+            "name": "no-input-mutation",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 393396,
+      "totalOutputTokens": 13281,
+      "cachedInputTokens": 355417,
+      "costEstimateUsdLow": 0.3528524,
+      "costEstimateUsdHigh": 0.3528524,
+      "totalEstimateUsdLow": 0.3528524,
+      "totalEstimateUsdHigh": 0.3528524,
+      "actualBilledUsd": null,
+      "toolCalls": 13,
+      "editCalls": 4,
+      "testCommands": 2,
+      "terminalResult": "success",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 0,
+      "helperCalls": 0,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "codex-retry-policy-0-jev",
+      "host": "codex",
+      "arm": "jev",
+      "task": "retry-policy",
+      "repetition": 0,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "durationMs": 149750,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retry-policy",
+        "checks": [
+          {
+            "name": "invalid-attempt-0",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt--1",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-1.5",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-NaN",
+            "passed": true
+          },
+          {
+            "name": "invalid-attempt-undefined",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-safety",
+            "passed": true
+          },
+          {
+            "name": "exhausted-before-permanent",
+            "passed": true
+          },
+          {
+            "name": "permanent-200",
+            "passed": true
+          },
+          {
+            "name": "permanent-400",
+            "passed": true
+          },
+          {
+            "name": "permanent-404",
+            "passed": true
+          },
+          {
+            "name": "permanent-501",
+            "passed": true
+          },
+          {
+            "name": "permanent-505",
+            "passed": true
+          },
+          {
+            "name": "transient-429",
+            "passed": true
+          },
+          {
+            "name": "transient-500",
+            "passed": true
+          },
+          {
+            "name": "transient-502",
+            "passed": true
+          },
+          {
+            "name": "transient-503",
+            "passed": true
+          },
+          {
+            "name": "transient-504",
+            "passed": true
+          },
+          {
+            "name": "transient-599",
+            "passed": true
+          },
+          {
+            "name": "unsafe-write",
+            "passed": true
+          },
+          {
+            "name": "blank-key-is-unsafe",
+            "passed": true
+          },
+          {
+            "name": "key-protects-write",
+            "passed": true
+          },
+          {
+            "name": "network-TIMEOUT",
+            "passed": true
+          },
+          {
+            "name": "network-NETWORK_RESET",
+            "passed": true
+          },
+          {
+            "name": "unknown-code",
+            "passed": true
+          },
+          {
+            "name": "rounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "bounded-server-hint",
+            "passed": true
+          },
+          {
+            "name": "small-hint-does-not-lower-base",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint--1",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-Infinity",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-NaN",
+            "passed": true
+          },
+          {
+            "name": "ignored-hint-500",
+            "passed": true
+          },
+          {
+            "name": "hint-not-used-for-other-status",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 171194,
+      "totalOutputTokens": 4199,
+      "cachedInputTokens": 151040,
+      "costEstimateUsdLow": 0.56253,
+      "costEstimateUsdHigh": 0.612915,
+      "totalEstimateUsdLow": 0.562856802,
+      "totalEstimateUsdHigh": 0.613241802,
+      "actualBilledUsd": null,
+      "toolCalls": 10,
+      "editCalls": 1,
+      "testCommands": 1,
+      "terminalResult": "turn.completed",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 1,
+      "helperCalls": 1,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [
+        {
+          "reason": "selected",
+          "sourceBytes": 36283,
+          "outputBytes": 1773,
+          "candidateCount": 44,
+          "shortlistedCount": 24,
+          "usage": {
+            "input_tokens": 7781,
+            "output_tokens": 700
+          }
+        }
+      ],
+      "jev": {
+        "attempts": 1,
+        "callsWithKnownUsage": 1,
+        "observedInputTokens": 7781,
+        "observedOutputTokens": 700,
+        "estimateUsd": 0.000326802,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "claude-code-retention-policy-0-jev",
+      "host": "claude-code",
+      "arm": "jev",
+      "task": "retention-policy",
+      "repetition": 0,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "model": "claude-sonnet-5",
+      "effort": "high",
+      "durationMs": 115924,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retention-policy",
+        "checks": [
+          {
+            "name": "invalid-now",
+            "passed": true
+          },
+          {
+            "name": "session-boundary",
+            "passed": true
+          },
+          {
+            "name": "audit-boundary",
+            "passed": true
+          },
+          {
+            "name": "legal-hold",
+            "passed": true
+          },
+          {
+            "name": "active-session",
+            "passed": true
+          },
+          {
+            "name": "active-audit-can-expire",
+            "passed": true
+          },
+          {
+            "name": "unknown-category",
+            "passed": true
+          },
+          {
+            "name": "invalid-created-at",
+            "passed": true
+          },
+          {
+            "name": "future-record",
+            "passed": true
+          },
+          {
+            "name": "retain-newest-old-report",
+            "passed": true
+          },
+          {
+            "name": "tied-newest-reports",
+            "passed": true
+          },
+          {
+            "name": "per-account-newest",
+            "passed": true
+          },
+          {
+            "name": "held-newest-still-compared",
+            "passed": true
+          },
+          {
+            "name": "invalid-report-is-not-newest",
+            "passed": true
+          },
+          {
+            "name": "report-exact-boundary",
+            "passed": true
+          },
+          {
+            "name": "report-expired-boundary",
+            "passed": true
+          },
+          {
+            "name": "sorted-ids",
+            "passed": true
+          },
+          {
+            "name": "no-input-mutation",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 405635,
+      "totalOutputTokens": 10849,
+      "cachedInputTokens": 377930,
+      "costEstimateUsdLow": 0.29192699999999994,
+      "costEstimateUsdHigh": 0.29192699999999994,
+      "totalEstimateUsdLow": 0.2922506099999999,
+      "totalEstimateUsdHigh": 0.2922506099999999,
+      "actualBilledUsd": null,
+      "toolCalls": 18,
+      "editCalls": 5,
+      "testCommands": 2,
+      "terminalResult": "success",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 1,
+      "helperCalls": 1,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [
+        {
+          "reason": "selected",
+          "sourceBytes": 36526,
+          "outputBytes": 1747,
+          "candidateCount": 44,
+          "shortlistedCount": 24,
+          "usage": {
+            "input_tokens": 7705,
+            "output_tokens": 694
+          }
+        }
+      ],
+      "jev": {
+        "attempts": 1,
+        "callsWithKnownUsage": 1,
+        "observedInputTokens": 7705,
+        "observedOutputTokens": 694,
+        "estimateUsd": 0.00032361,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "codex-retention-policy-0-deterministic",
+      "host": "codex",
+      "arm": "deterministic",
+      "task": "retention-policy",
+      "repetition": 0,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "durationMs": 170009,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retention-policy",
+        "checks": [
+          {
+            "name": "invalid-now",
+            "passed": true
+          },
+          {
+            "name": "session-boundary",
+            "passed": true
+          },
+          {
+            "name": "audit-boundary",
+            "passed": true
+          },
+          {
+            "name": "legal-hold",
+            "passed": true
+          },
+          {
+            "name": "active-session",
+            "passed": true
+          },
+          {
+            "name": "active-audit-can-expire",
+            "passed": true
+          },
+          {
+            "name": "unknown-category",
+            "passed": true
+          },
+          {
+            "name": "invalid-created-at",
+            "passed": true
+          },
+          {
+            "name": "future-record",
+            "passed": true
+          },
+          {
+            "name": "retain-newest-old-report",
+            "passed": true
+          },
+          {
+            "name": "tied-newest-reports",
+            "passed": true
+          },
+          {
+            "name": "per-account-newest",
+            "passed": true
+          },
+          {
+            "name": "held-newest-still-compared",
+            "passed": true
+          },
+          {
+            "name": "invalid-report-is-not-newest",
+            "passed": true
+          },
+          {
+            "name": "report-exact-boundary",
+            "passed": true
+          },
+          {
+            "name": "report-expired-boundary",
+            "passed": true
+          },
+          {
+            "name": "sorted-ids",
+            "passed": true
+          },
+          {
+            "name": "no-input-mutation",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 165179,
+      "totalOutputTokens": 4811,
+      "cachedInputTokens": 151424,
+      "costEstimateUsdLow": 0.529524,
+      "costEstimateUsdHigh": 0.5639115,
+      "totalEstimateUsdLow": 0.529524,
+      "totalEstimateUsdHigh": 0.5639115,
+      "actualBilledUsd": null,
+      "toolCalls": 11,
+      "editCalls": 2,
+      "testCommands": 2,
+      "terminalResult": "turn.completed",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 1,
+      "helperCalls": 1,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [
+        {
+          "reason": "selected",
+          "sourceBytes": 36526,
+          "outputBytes": 3018,
+          "candidateCount": 44,
+          "shortlistedCount": 24,
+          "usage": null
+        }
+      ],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "claude-code-retention-policy-0-native",
+      "host": "claude-code",
+      "arm": "native",
+      "task": "retention-policy",
+      "repetition": 0,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "model": "claude-sonnet-5",
+      "effort": "high",
+      "durationMs": 121913,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retention-policy",
+        "checks": [
+          {
+            "name": "invalid-now",
+            "passed": true
+          },
+          {
+            "name": "session-boundary",
+            "passed": true
+          },
+          {
+            "name": "audit-boundary",
+            "passed": true
+          },
+          {
+            "name": "legal-hold",
+            "passed": true
+          },
+          {
+            "name": "active-session",
+            "passed": true
+          },
+          {
+            "name": "active-audit-can-expire",
+            "passed": true
+          },
+          {
+            "name": "unknown-category",
+            "passed": true
+          },
+          {
+            "name": "invalid-created-at",
+            "passed": true
+          },
+          {
+            "name": "future-record",
+            "passed": true
+          },
+          {
+            "name": "retain-newest-old-report",
+            "passed": true
+          },
+          {
+            "name": "tied-newest-reports",
+            "passed": true
+          },
+          {
+            "name": "per-account-newest",
+            "passed": true
+          },
+          {
+            "name": "held-newest-still-compared",
+            "passed": true
+          },
+          {
+            "name": "invalid-report-is-not-newest",
+            "passed": true
+          },
+          {
+            "name": "report-exact-boundary",
+            "passed": true
+          },
+          {
+            "name": "report-expired-boundary",
+            "passed": true
+          },
+          {
+            "name": "sorted-ids",
+            "passed": true
+          },
+          {
+            "name": "no-input-mutation",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 372849,
+      "totalOutputTokens": 12239,
+      "cachedInputTokens": 337342,
+      "costEstimateUsdLow": 0.32894340000000005,
+      "costEstimateUsdHigh": 0.32894340000000005,
+      "totalEstimateUsdLow": 0.32894340000000005,
+      "totalEstimateUsdHigh": 0.32894340000000005,
+      "actualBilledUsd": null,
+      "toolCalls": 12,
+      "editCalls": 4,
+      "testCommands": 2,
+      "terminalResult": "success",
+      "failure": null,
+      "redirects": 0,
+      "helperInvocations": 0,
+      "helperCalls": 0,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "codex-retention-policy-0-jev",
+      "host": "codex",
+      "arm": "jev",
+      "task": "retention-policy",
+      "repetition": 0,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "durationMs": 152006,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retention-policy",
+        "checks": [
+          {
+            "name": "invalid-now",
+            "passed": true
+          },
+          {
+            "name": "session-boundary",
+            "passed": true
+          },
+          {
+            "name": "audit-boundary",
+            "passed": true
+          },
+          {
+            "name": "legal-hold",
+            "passed": true
+          },
+          {
+            "name": "active-session",
+            "passed": true
+          },
+          {
+            "name": "active-audit-can-expire",
+            "passed": true
+          },
+          {
+            "name": "unknown-category",
+            "passed": true
+          },
+          {
+            "name": "invalid-created-at",
+            "passed": true
+          },
+          {
+            "name": "future-record",
+            "passed": true
+          },
+          {
+            "name": "retain-newest-old-report",
+            "passed": true
+          },
+          {
+            "name": "tied-newest-reports",
+            "passed": true
+          },
+          {
+            "name": "per-account-newest",
+            "passed": true
+          },
+          {
+            "name": "held-newest-still-compared",
+            "passed": true
+          },
+          {
+            "name": "invalid-report-is-not-newest",
+            "passed": true
+          },
+          {
+            "name": "report-exact-boundary",
+            "passed": true
+          },
+          {
+            "name": "report-expired-boundary",
+            "passed": true
+          },
+          {
+            "name": "sorted-ids",
+            "passed": true
+          },
+          {
+            "name": "no-input-mutation",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 160318,
+      "totalOutputTokens": 4186,
+      "cachedInputTokens": 145664,
+      "costEstimateUsdLow": 0.501504,
+      "costEstimateUsdHigh": 0.538139,
+      "totalEstimateUsdLow": 0.5018263079999999,
+      "totalEstimateUsdHigh": 0.538461308,
+      "actualBilledUsd": null,
+      "toolCalls": 11,
+      "editCalls": 2,
+      "testCommands": 2,
+      "terminalResult": "turn.completed",
+      "failure": null,
+      "redirects": 1,
+      "helperInvocations": 1,
+      "helperCalls": 1,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [
+        {
+          "reason": "selected",
+          "sourceBytes": 36526,
+          "outputBytes": 1747,
+          "candidateCount": 44,
+          "shortlistedCount": 24,
+          "usage": {
+            "input_tokens": 7674,
+            "output_tokens": 694
+          }
+        }
+      ],
+      "jev": {
+        "attempts": 1,
+        "callsWithKnownUsage": 1,
+        "observedInputTokens": 7674,
+        "observedOutputTokens": 694,
+        "estimateUsd": 0.000322308,
+        "actualBilledUsd": null
+      }
+    },
+    {
+      "id": "codex-retention-policy-0-native",
+      "host": "codex",
+      "arm": "native",
+      "task": "retention-policy",
+      "repetition": 0,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "durationMs": 152782,
+      "exitCode": 0,
+      "timedOut": false,
+      "taskCompleted": true,
+      "quality": {
+        "task": "retention-policy",
+        "checks": [
+          {
+            "name": "invalid-now",
+            "passed": true
+          },
+          {
+            "name": "session-boundary",
+            "passed": true
+          },
+          {
+            "name": "audit-boundary",
+            "passed": true
+          },
+          {
+            "name": "legal-hold",
+            "passed": true
+          },
+          {
+            "name": "active-session",
+            "passed": true
+          },
+          {
+            "name": "active-audit-can-expire",
+            "passed": true
+          },
+          {
+            "name": "unknown-category",
+            "passed": true
+          },
+          {
+            "name": "invalid-created-at",
+            "passed": true
+          },
+          {
+            "name": "future-record",
+            "passed": true
+          },
+          {
+            "name": "retain-newest-old-report",
+            "passed": true
+          },
+          {
+            "name": "tied-newest-reports",
+            "passed": true
+          },
+          {
+            "name": "per-account-newest",
+            "passed": true
+          },
+          {
+            "name": "held-newest-still-compared",
+            "passed": true
+          },
+          {
+            "name": "invalid-report-is-not-newest",
+            "passed": true
+          },
+          {
+            "name": "report-exact-boundary",
+            "passed": true
+          },
+          {
+            "name": "report-expired-boundary",
+            "passed": true
+          },
+          {
+            "name": "sorted-ids",
+            "passed": true
+          },
+          {
+            "name": "no-input-mutation",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "totalInputTokens": 133476,
+      "totalOutputTokens": 4523,
+      "cachedInputTokens": 115840,
+      "costEstimateUsdLow": 0.51835,
+      "costEstimateUsdHigh": 0.56244,
+      "totalEstimateUsdLow": 0.51835,
+      "totalEstimateUsdHigh": 0.56244,
+      "actualBilledUsd": null,
+      "toolCalls": 8,
+      "editCalls": 2,
+      "testCommands": 2,
+      "terminalResult": "turn.completed",
+      "failure": null,
+      "redirects": 0,
+      "helperInvocations": 0,
+      "helperCalls": 0,
+      "untracedHelperCalls": 0,
+      "helperOutcomes": [],
+      "jev": {
+        "attempts": 0,
+        "callsWithKnownUsage": 0,
+        "observedInputTokens": 0,
+        "observedOutputTokens": 0,
+        "estimateUsd": 0,
+        "actualBilledUsd": null
+      }
+    }
+  ]
+}
