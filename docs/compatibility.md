@@ -20,6 +20,13 @@ Recorded on 2026-09-17. A verified row describes only the surface named in that 
 | Native hook trust lifecycle | Codex documentation reviewed | Normal installation, changed-hook re-review, and missing-trust matrix remain pending |
 | Skill loading / adherence | Both hosts | Unknown; no later tool observer implemented |
 | Installation/upgrades | Both hosts | Manual development setup only; automated lifecycle pending |
+| Artifact MCP and native application | Codex `0.154.0-alpha.6.2`, Claude `2.1.274`, Node 24.21.0 | [Synthetic diagnostic](../evals/reports/2026-09-17-artifact-host-probe.md): ordinary Codex adoption, native Claude fallback and explicit Claude wiring; accepted bytes applied exactly in both managed runs |
+| Artifact whole-task pilot | Same artifact CLIs, configured Astra/Sonnet 5 parents and Luna worker | [12 completed cells](../evals/reports/2026-09-17-artifact-comparison.md), helper requests in all eight offered cells, no consistent Jev-arm savings; one native grammar rejection and one unresolved-candidate native bypass |
+| Compact native-ticket delivery | Same artifact CLIs, Node 24.21.0, 2026-09-18 | [Two ordinary diagnostics](../evals/reports/2026-09-18-materialization-host-probe.md): Codex used one generation call and exact-byte native materialization; Claude connected but completed natively, leaving its ticket adoption unverified; no matched savings result |
+| Claude prompt routing + compact delivery | Claude `2.1.274`, Sonnet 5, Node 24.21.0 | [Scoped existing hook diagnostic](../evals/reports/2026-09-18-economic-routing.md) observed skill/helper use and exact-byte application on an ordinary request; description-only setup completed natively; higher gross usage, no savings claim |
+| Economic route | Jev `1.13.0`, optional `economic-route/1` | Initial four-case uncertainty remains; [16-case follow-up](../evals/reports/2026-09-18-economic-applicability.md) favored evaluation-only membership at the economic gate, with a recorded relevance-gate defect invalidating combined route counters; no production promotion |
+| Corrected artifact comparison | v2 offline proposal, 2026-09-18 | Six authored workloads passed baseline/four-mutant checks; shared grammar, syntax inspection and token utilities exist; no executable live runner or paid v2 cells |
+| Current local worker/artifact checks | Unreleased working tree, 2026-09-18 | 152 offline checks and typecheck/build pass, including eight new evaluation/preparation checks; prior skills/Claude manifest validation remains separate from older CI evidence |
 
 The Codex probe uses an isolated temporary `CODEX_HOME`, references existing authentication without copying its contents, and excludes user hook configuration. It vets its own fixed synthetic hook and uses the documented one-invocation trust override. It never writes persistent hook-trust records. This proves context transport, not normal installation trust behavior.
 
@@ -28,6 +35,12 @@ The skill adapters consume `UserPromptSubmit`; a shared bounded gate consumes va
 Malformed input, missing config, catalog problems, API failures, and timeouts return empty JSON from the hook, preserving native behavior. Failures after a valid event/config are traced when the local trace store is available. Errors before event parsing cannot be associated with a decision trace.
 
 ## Reproduce
+
+For the current artifact integration, use the [artifact MCP configuration and
+diagnostic](artifact-mcp.md). Its runner preserves the official auth location,
+uses no hook-trust bypass and reports ordinary and explicit invocation separately.
+The commands below reproduce older hook evidence and retain their documented
+limitations; they are not the artifact runner.
 
 ```sh
 npm run check

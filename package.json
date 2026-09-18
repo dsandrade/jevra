@@ -17,7 +17,12 @@
     "test": "npm run build && node --test tests/*.test.ts",
     "check": "npm run typecheck && npm test",
     "eval": "node evals/runners/skill-routing.ts",
-    "smoke:hosts": "node scripts/probe-hosts.mjs"
+    "smoke:hosts": "node scripts/probe-hosts.mjs",
+    "probe:worker": "node evals/workers/probe.ts",
+    "probe:managed-worker": "node evals/workers/managed-probe.ts",
+    "probe:artifact": "node evals/workers/artifact-probe.ts",
+    "probe:artifact-host": "node evals/workers/host-probe.ts",
+    "eval:artifacts": "node evals/artifact-comparison/run.ts"
   },
   "devDependencies": {
     "@modelcontextprotocol/client": "2.0.0",

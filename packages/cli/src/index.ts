@@ -1,7 +1,7 @@
 import { parseArgs } from 'node:util';
 import { randomUUID } from 'node:crypto';
 import { resolve } from 'node:path';
-import { DecisionError, fallbackDecision, revision, selectSkill, withDeadline } from '@jevra/core';
+import { DecisionError, MODEL, fallbackDecision, revision, selectSkill, withDeadline } from '@jevra/core';
 import type { Decision, Event, Provider } from '@jevra/core';
 import { parseCodexEvent, codexOutput } from '@jevra/adapter-codex';
 import { parseClaudeEvent, claudeOutput } from '@jevra/adapter-claude-code';
@@ -13,6 +13,7 @@ import type { Catalog } from './catalog.ts';
 import { appendTrace, clearTraces, makeTrace } from './trace.ts';
 import { bulkRead, gateBulkRead } from './bulk-read.ts';
 import { serveMcp } from './mcp.ts';
+import { materializeTest } from './materialization.ts';
 
 export async function runEvent(event: Event, config: Config, provider: Provider, signal?: AbortSignal) {
   const started = performance.now();
@@ -80,6 +81,7 @@ Commands:
   bulk-read --question <query> --paths <file> [--paths <file>] [--config <file>]
   code-context --spec <query> --reference <file> [--reference <file>]
   mcp --host codex|claude-code [--config <file>]    host-managed stdio tools
+  materialize-test --config <file> --session-id <id> --ticket <id>
   clear-traces [--config <file>]
 
 Build with npm run build, then run node dist/jevra.mjs <command>.
@@ -100,7 +102,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     const { values, positionals } = parseArgs({ args: argv, allowPositionals: true, strict: true, options: {
       config: { type: 'string' }, host: { type: 'string' }, help: { type: 'boolean' },
       'skills-root': { type: 'string', multiple: true }, 'prompt-file': { type: 'string' },
-      'keychain-service': { type: 'string' },
+      'keychain-service': { type: 'string' }, ticket: { type: 'string' },
       question: { type: 'string' }, paths: { type: 'string', multiple: true },
       spec: { type: 'string' }, reference: { type: 'string', multiple: true }, 'session-id': { type: 'string' },
     } });
@@ -124,12 +126,26 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
         hookActivation: 'unknown: review the host hook manager and perform a host smoke test',
         stateDirectory: statePath(config), calibratedPolicy: false,
         bulkRead: config.bulkRead ?? 'disabled',
+        testArtifacts: { enabled: config.mode === 'advise' && config.testArtifacts?.enabled === true
+            && config.model === MODEL && process.env.JEVRA_WORKER_ACTIVE !== '1',
+          profiles: config.testArtifacts?.profiles.length ?? 0, application: 'native_host_only',
+          delivery: config.testArtifacts?.delivery ?? 'review',
+          economicRouting: config.testArtifacts?.economics?.mode ?? 'disabled',
+          capabilityCertification: 'experimental; see DR-039' },
       }, null, 2) + '\n');
       return;
     }
     if (command === 'mcp') {
       if (values.host !== 'codex' && values.host !== 'claude-code') throw new DecisionError('input_invalid');
-      await serveMcp(config, values.host, createTypeSafeProvider({ getApiKey: () => readApiKey(config) }));
+      await serveMcp(config, values.host, createTypeSafeProvider({ getApiKey: () => readApiKey(config) }), process.cwd(),
+        { configFile: path, cliFile: resolve(process.argv[1]!) });
+      return;
+    }
+    if (command === 'materialize-test') {
+      if (!values.config || !values.ticket || !values['session-id']) throw new DecisionError('input_invalid');
+      // No provider is constructed or credential fetched by this native application path.
+      const result = await materializeTest(config, process.cwd(), values['session-id'], values.ticket, controller.signal);
+      process.stdout.write(JSON.stringify(result) + '\n');
       return;
     }
     if (command === 'clear-traces') {

@@ -36,9 +36,88 @@ The dataset has 60 synthetic, author-labeled prompts: 36 covered tasks, 12 no-ma
 
 ## Next validation gate
 
-Follow DR-009 through DR-012 in [ISSUES.md](../ISSUES.md). Add call-budget/deduplication behavior, broader reviewed real-project cases and normal plugin activation checks in both hosts. Predeclare quality margins and overhead budgets. Track skill loading separately from context delivery and report failures and harmful suggestions. Keep observe as default until that evidence supports a change.
+For the next implementation, follow [CLI-first worker v1](v1-delivery-plan.md).
+DR-039's fresh Codex transport and the scoped managed decision/accounting contracts
+exist. The first managed live diagnostic stopped at uncertain continuation; the
+later restricted artifact diagnostic passed actual baseline/mutation checks and
+Jev review. [Opt-in MCP invocation/review](artifact-mcp.md) now exists, with one
+ordinary Codex adoption and explicit Claude wiring. Claude's ordinary probe used
+native tools. Next freeze the paired worker comparison and measure ordinary adoption.
+The older DR-009 through DR-012
+release obligations remain open in [ISSUES.md](../ISSUES.md); no generator or new
+default is enabled by the documentation. Predeclare quality margins and overhead
+budgets before held-out runs, and preserve the existing evidence-only behavior.
+
+## Experimental CLI worker transport
+
+The [artifact validator](test-artifacts.md) executes only its closed pure-function
+test grammar on pinned Node 24.21.0. Offline coverage is in `tests/artifacts.test.ts`.
+The explicit live diagnostic creates, validates and, if accepted, applies a file
+only in its synthetic fixture:
+
+```sh
+npm run probe:artifact -- --keychain-service your-typesafe-key-service
+```
+
+It permits at most four Jev calls and two Codex/Luna generations. See the
+[live result](../evals/reports/2026-09-17-test-artifact-probe.md). MCP remains evidence-only
+unless the experimental artifact configuration is explicitly enabled.
+
+The internal [managed worker](managed-worker.md) now composes the transport with
+Jev decisions and a per-operation ledger. Run `node --test tests/managed-worker.test.ts`
+for its offline tests. The explicit diagnostic below uses live Jev requests and
+the existing Codex model allowance; it writes sanitized metadata only:
+
+```sh
+npm run probe:managed-worker -- --keychain-service your-typesafe-key-service
+```
+
+Alternatively supply `--config` for an existing Jevra config. Do not supply both.
+See the [recorded outcome](../evals/reports/2026-09-17-managed-worker-probe.md),
+including its uncertain continuation and complete observed usage.
+
+`packages/core/src/worker.ts` defines the internal versioned request/result schemas.
+`packages/cli/src/codex-worker.ts` implements a fresh Codex/Luna generation call;
+`worker-process.ts` handles bounded IO and POSIX process-group lifecycle. The
+opt-in MCP surface exposes `test_profiles`, `generate_tests` and
+`read_test_artifact`; startup alone does not dispatch workers. There is no MCP
+apply tool. See [configuration and diagnostics](artifact-mcp.md) and the
+[recorded host results](../evals/reports/2026-09-17-artifact-host-probe.md).
+
+Run `node --test tests/worker.test.ts` for the offline transport fixtures. They do
+not read real credentials or call a provider. The explicit `npm run probe:worker`
+diagnostic consumes existing Codex model allowance and saves a sanitized report in
+ignored `evals/local-results`. It sends a fixed synthetic packet; no project code
+or parent conversation is supplied. See the [probe report](../evals/reports/2026-09-17-cli-worker-probe.md)
+and [transport limits](worker-architecture.md#implemented-transport-boundary).
+
+The current adapter accepts the inspected CLI version with ChatGPT login on POSIX.
+It refuses API-key login, different CLI versions and standalone user hooks. It
+neither edits user settings nor extracts auth tokens. Unknown responding-model and
+usage fields remain null. General tool-catalog/managed-policy certification and
+normal plugin adoption remain open; do not expose this transport as an unrestricted
+model-selected command runner.
 
 ## Full coding-task evaluation
+
+For the credential-free Shunt measurement audit, read the
+[source comparison](shunt-cost-audit.md). Run
+`node evals/shunt-audit.ts /absolute/path/to/portal-ai-plugins evals/local-results/shunt-measurement-audit.json`
+against its pinned upstream commit. It runs tracked upstream scripts in a temporary
+copy with an always-failing local transport and asserts how failures affect the
+benchmark. It makes no real model calls and does not measure AiKA quality or cost.
+
+For the newer test-artifact worker comparison, see the dedicated
+[artifact harness](../evals/artifact-comparison/README.md) and
+[frozen protocol](../evals/artifact-comparison/protocol.md). Run it with
+`npm run eval:artifacts -- --codex-executable /absolute/path/to/codex --keychain-service your-typesafe-key-service --output evals/local-results/unique-artifact-run`.
+It compares native completion, the same fixed worker without Jev, and Jev-managed
+generation with a shared helper catalog. The fixed control is evaluation-only.
+It preserves supported auth locations, uses no hook-trust bypass, and counts
+non-adoption, native recovery, failures and every known provider request. The
+closed test grammar is an execution boundary; its rejection cannot be relabeled
+as proof of functional incorrectness. Do not merge these results with the older
+read-gate experiment below.
 
 Read the [protocol](../evals/full-task/protocol.md) before running:
 
@@ -59,3 +138,7 @@ The runner creates and removes temporary fixture repositories, references existi
 Raw model streams and synthetic solution snapshots remain local under `evals/local-results`. Review before publication: streams can include local paths, session identifiers, account details, or inherited host context. Publish sanitized metrics, not raw sessions. Per-run reports preserve timeouts, missing usage, helper calls, actual helper outcomes and cache tokens. Helper invocations without a corresponding trace leave Jev cost unknown.
 
 The runner uses standard API-equivalent Codex price bounds and Claude's own client-side estimate, including auxiliary models. Codex cache-write counts are unavailable; the range prices uncached input at the documented input/cache-write rates. These are neither actual bills nor a measurement of subscription quota savings. See the report for model/rate sources and the provisional promotion decision.
+
+## Corrected reader checks and exploratory preparation
+
+Use the pinned Node runtime, then run `npm run check`. `node evals/reader-comparison/prepare.ts` creates a private hashed manifest without inference. Read [the protocol](../evals/reader-comparison/protocol.md) before choosing the first matched two-cell subset. `node evals/economic-applicability-v2/run.ts --keychain-service codex-typesafe-api-key` is a new development diagnostic, not a repair or promotion of the frozen v1 results. See [reader configuration](focused-reader.md); enabling it sends admitted source data to Luna and cited/counterevidence to Jev. No global host configuration or plugin installation is performed by this preparation.

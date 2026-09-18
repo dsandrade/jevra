@@ -1,12 +1,22 @@
 # Implementation Backlog
 
-> Review note (2026-09-17): the [architecture critique](docs/architecture-critique.md) recommends a smaller delivery sequence focused on complete-task quality and cost. It preserves Jev ownership of managed semantic decisions and proposes deferring broad memory/workflow automation. This is a recommendation for discussion, not an implemented change or an adopted replacement of this plan.
+> Delivery decision (2026-09-18): implement the [accepted architecture corrections](docs/focused-reader.md) and make the smaller [reader comparison](evals/reader-comparison/protocol.md) the next experiment. Preserve compact artifacts and historical negative/null results. Independent calibration, live adoption/quality/cost validation and DR-039 activation gates remain open; memory and the large artifact expansion are deferred.
+
+> First reader observation (2026-09-18): the [matched Codex pair](evals/reports/2026-09-18-reader-comparison.md) passed authored code/fact checks with reconciled accounting, but the offered helper was never invoked. The scoped protocol enabled no read gate. Prioritize scoped gate delivery/adherence and adoption metadata before another matrix; no reader benefit or economic calibration follows.
+
+> Gate preflight (2026-09-18): [14 built-hook cases and catalog availability passed](evals/reports/2026-09-18-reader-gate-validation.md), and one scoped definition completed normal Codex trust review. The optional session guidance mismatch is corrected. Bounded observations exist, but paid-runner wiring, native gate execution/delivery and ordinary helper adoption remain open. No new model inference or savings measurement occurred.
+
+> Subsequent gate task (2026-09-18): the [wired single-cell diagnostic](evals/reports/2026-09-18-reader-gate-task.md) passed authored quality checks with 100,606 total tokens, but invoked no helper. Native gate execution/delivery remains unknown. The v1 preflight/parent user-config mismatch is corrected in v2, with scoped MCP isolation and all configured active invocation metadata; local checks passed 184 tests. No v2 paid task or savings claim follows. Preserve v1 snapshots and require fresh preparation before any separately bounded dispatch.
+
+> First managed reader adoption (2026-09-18): a [fresh v2 cell](evals/reports/2026-09-18-reader-gate-task-v2.md) observed five gate entries, one redirect and one answered helper with passing authored task checks. One Luna generation and two Jev requests reconciled to 128,778 total tokens across all components. Compact delivery works in this scope; whole-task savings remain unproven. Next freeze a small matched native/reader comparison under the same corrected host context, before selected-corpus or memory expansion. No automatic paid retry or promotion follows.
 
 Status: developer alpha implemented; release milestones remain open
 
 Created: 2026-09-17
 
 Source of truth for scope: [SPEC.md](SPEC.md)
+
+The owner adopted the [2026-09-18 corrections](docs/focused-reader.md): production-gate/full-answer evaluation, narrow economic membership, fixed-packet batch reduction and an opt-in focused reader. Implementation does not authorize efficiency claims or automatic calibration promotion.
 
 These are ready-to-refine issue drafts. IDs such as DR-001 are stable planning identifiers, not GitHub issue numbers. No implementation issue is complete merely because this document exists.
 
@@ -35,9 +45,16 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 | DR-015–017 | Planned | Completion checks, explicit decisions and public framework remain unimplemented |
 | DR-018 | Partial | Shunt hook/helper/skill architecture plus host-managed MCP for Keychain access; native plugin activation and helper adoption need further validation |
 | DR-019 | Planned | Independently reviewed real-project cost/quality evaluation |
-| DR-020–027 | Proposed | Token-efficiency architecture experiments; see the [ordered plan](docs/token-efficiency-plan.md). No auxiliary generator or memory adapter has been implemented |
+| DR-020/025 | Partial | Internal operation ledger and managed Jev routing/review exist; host reconciliation, session budgets and calibration remain pending |
+| DR-023 | Partial | Restricted test artifacts, actual checks and one repair; opt-in MCP review/native application verified, broader profiles and ordinary adoption remain open |
+| DR-027 | Partial | Frozen 12-cell artifact pilot completed; no consistent Jev-arm savings; grammar parity, repeated independent tasks and broader controls remain open |
+| DR-021/024 | Planned in scoped increments | Start with required evidence/freshness; broader structure and reuse remain separate experiments |
+| DR-022 | Partial | Fresh v2 gate cell observed ordinary answered-reader adoption and passing authored quality with 128,778 all-component tokens; repeated matched quality/cost, selected-corpus comparison and general activation remain open |
+| DR-026 | Follow-on | Optional external-memory adapter |
 | DR-028–033 | Planned | Adopted development-brain direction: contracts, native engineering memory, cross-host continuity, repository context, complex-task support and lifecycle evaluation; see [architecture](docs/development-brain.md) |
-| DR-034–038 | Planned | Jev decision registry across managed stages, source-bound knowledge compilation, project profiles, assumption receipts and review-driven learning |
+| DR-034 | Partial | First source-bound worker decision/transition registry, 25 offline tests and a live uncertain-outcome diagnostic; wider stages remain pending |
+| DR-035–038 | Planned | Source-bound knowledge compilation, project profiles, assumption receipts and review-driven learning |
+| DR-039 | Partial | Bounded Codex/Luna transport, 21 offline tests and two exact-output synthetic probes; broader policy/tool-catalog certification remains open |
 
 ## Milestones and dependencies
 
@@ -51,7 +68,12 @@ See [compatibility](docs/compatibility.md) and [component results](evals/reports
 | M5: Native development brain | Authorized technical memory survives host/session changes and detects stale source context | DR-034, DR-028, DR-029, DR-030, DR-031/035, plus DR-018/020 |
 | M6: Measured development workflow | Bounded workers and complex-task support preserve quality with attributable full-lifecycle costs | DR-022, DR-023, DR-025, DR-032, DR-033, DR-036–038, plus DR-027 |
 
-The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followed by catalog, adapter, routing, and trace integration. Build both host adapters early. Milestones are outcome gates, not calendar estimates.
+M0–M6 retain the historical outcome groups; their numbering is not the current
+implementation order. The next delivery is the bounded worker slice of M6 before
+M5 memory, as specified in the [v1 plan](docs/v1-delivery-plan.md). V1 dependencies
+mean the required slices of existing issues; they do not require completing every
+older skill-routing or memory criterion. No existing issue is renumbered or marked
+complete by this sequencing change. Milestones are outcome gates, not calendar estimates.
 
 ## DR-001: Verify Codex and Claude Code integration capabilities
 
@@ -470,6 +492,7 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 - [x] Code-context returns source references; the main LLM generates and validates code.
 - [x] Configured roots, bounded files, exact excerpts, native fallback and upload fields are documented.
 - [x] Read gates are observed in authenticated command-hook sessions in both CLIs.
+- [x] Opt-in artifact MCP delivers reviewed candidates to both CLIs; a synthetic diagnostic distinguishes ordinary Codex adoption, native Claude fallback and explicit Claude invocation.
 - [ ] Native plugin activation, skill discovery and changed-hook trust lifecycle are verified on both hosts.
 - [ ] Helper adoption improves in ordinary tasks without forced reads or removal of native fallback.
 - [ ] Measure native rereads after selection and test clearer coverage/provenance output without implying completeness or hiding uncertainty.
@@ -504,14 +527,20 @@ The primary dependency sequence is DR-001 -> DR-002 -> DR-003 -> DR-004, followe
 
 ## DR-020: Attribute whole-task context and delegation overhead
 
-**Priority:** P0. **Depends on:** DR-008, DR-018. **Status:** proposed.
+**Priority:** P0. **Depends on:** DR-008; DR-018 for ordinary host adoption evidence. **Status:** partial: internal per-operation ledger implemented.
 
 Link redirect, helper call, selected evidence, tool result, native reread and repair to a session. Include idle plugin/tool-catalog overhead and source sizes without collecting private bodies by default.
+
+Implemented slice: [managed operation ledger](docs/managed-worker.md) separates
+Jev and CLI usage, failed calls, unknown usage/cache entries and unmeasured host/
+billing/quota telemetry. It is in-memory accounting with explicit diagnostic
+reports, not durable host/session reconciliation.
 
 **Acceptance criteria:**
 
 - [ ] Distinguish delivered, invoked, selected, reread and unknown events in both hosts.
 - [ ] Record provider-specific input/cache/output and unknown usage; reconcile with whole-run totals without double counting.
+- [ ] Attribute main-host, CLI-worker and Jev usage separately, including startup/context overhead, extra internal turns, failed attempts and repair; keep actual charges, API estimates and quota telemetry distinct.
 - [ ] Validate ordinary plugin activation, not only direct command hooks.
 - [ ] Publish a small paired diagnostic with native and active plugin sessions at the same model/effort.
 
@@ -530,29 +559,91 @@ Add language-aware symbol/section boundaries, relevant neighbors and progressive
 
 ## DR-022: Prototype a bounded generative bulk-reader
 
-**Priority:** P1. **Depends on:** DR-020, DR-021. **Status:** planned optional capability in the adopted development-brain scope.
+**Priority:** P1. **Depends on:** DR-020, DR-021, DR-025, DR-039. **Status:** partial: opt-in full/selected reader implemented; local boundary checks exist; live quality/cost validation remains open.
 
-Introduce a minimal versioned worker-mode/provider interface and an opt-in focused-answer helper. Keep the existing evidence-only mode. Begin without worker tools or autonomous loops.
+Reuse DR-039's versioned worker/transport interface for an opt-in focused-answer helper. Keep the existing evidence-only mode. Begin without worker tools or autonomous loops. This reader is not a prerequisite to DR-023.
+
+The 2026-09-18 review proposes prioritizing this experiment to test the Shunt
+large-corpus mechanism. It calls for matched ordinary native targeted reads,
+existing excerpts, a full bounded-corpus reader and Jev-selected-corpus reader,
+with exact citation checks, explicit gaps and subsequent-edit validation. Budget,
+independent requirements and promotion gates must be frozen before paid calls;
+the owner adopted this priority. The exploratory runner freezes selected subsets and defaults to two cells; independent review and confirmatory promotion remain pending.
+
+The [first complete-task pair](evals/reports/2026-09-18-reader-comparison.md)
+completed with both authored quality judges passing, but the parent made no helper
+call. The evaluation server initialized with an empty inference ledger. No read
+gate was enabled, so the complete gate-plus-reader mechanism was not exercised.
+Next certify scoped native gate delivery/adherence and record bounded adoption
+metadata. A separately labeled explicit reader diagnostic may establish wiring;
+it cannot substitute for ordinary adoption or establish savings.
+
+The [gate preflight](evals/reports/2026-09-18-reader-gate-validation.md) now
+verifies the built gate's 14 synthetic cases, separate tool availability and one
+normal scoped native trust transition. Guidance uses only common helper arguments.
+The subsequently [wired gate cell](evals/reports/2026-09-18-reader-gate-task.md)
+passed authored quality checks but adopted no helper. Native invocation/delivery
+remains inconclusive. V2 corrects the readiness/parent user-config mismatch,
+isolates unrelated MCPs with scoped flags and records configured active gate
+invocations before parsing. Offline/zero-inference checks passed; no v2 paid task
+ran. Preserve the original manifest and source snapshots; its used/superseded
+scope cannot be reused. Next use fresh preparation and native review before a
+separately bounded v2 adoption diagnostic. This is not full plugin activation,
+native task-adherence certification or reader savings evidence.
+
+The [fresh v2 cell](evals/reports/2026-09-18-reader-gate-task-v2.md) subsequently
+observed five gate invocation records, one redirect and one answered helper. Its
+full-corpus Luna generation and two Jev route/review requests passed authored
+quality and reconciled accounting. Total usage was 128,778 tokens; no matched
+contemporaneous baseline or savings claim follows. Next compare native and reader
+under the same corrected configuration/instructions with all inference counted,
+then evaluate Jev-selected corpus recall and contradiction handling. Preserve the
+original v2 protocol snapshot; no automatic expansion or activation follows.
 
 **Acceptance criteria:**
 
-- [ ] Mode pins model/instructions, input scope, output format, deadline and cost/call limits.
-- [ ] Empty/failing responses cannot count as context savings; provider usage and failures remain visible.
-- [ ] Claims point to original evidence; exact edits use source text, not generated line numbers.
+- [x] Mode pins model/instructions, input scope, output format, deadline and byte/call limits; monetary/quota limits remain unobservable.
+- [x] Empty/failing responses cannot count as context savings; provider usage and failures remain visible.
+- [x] Claims point to original evidence; exact edits use source text, not generated line numbers.
 - [ ] Compare the same worker with full bounded corpus and selected corpus; measure coverage, repairs and complete-task cost.
 
 ## DR-023: Delegate predictable code into reviewable artifacts
 
-**Priority:** P1. **Depends on:** DR-022. **Status:** planned optional capability in the adopted development-brain scope.
+**Priority:** P1. **Depends on:** DR-039 and the worker slices of DR-020/025/034. **Status:** partial: restricted profile and opt-in MCP delivery implemented; per-host diagnostics exist, broader delivery remains open.
 
-Support bounded tests/config/stub generation from explicit reference patterns. Return a staged artifact receipt instead of echoing the entire generated file into the host context.
+Start with bounded TypeScript/Node test generation from explicit requirements and reference patterns, using Luna through Codex CLI. Return a staged artifact receipt instead of echoing the entire generated file into the host context. Fixtures/config/stubs are later extensions; no reader or durable-memory implementation is required.
+
+Implemented [pure-function profile](docs/test-artifacts.md): runtime-owned source
+bindings and fixed output, private staged candidates, closed AST admission, real
+Node baseline/mutation checks, source-bound Jev review, at most one repair and a
+separate create-only apply capability. Sixteen artifact tests passed. The
+[live diagnostic](evals/reports/2026-09-17-test-artifact-probe.md) accepted and
+applied one synthetic artifact; it needed no repair and establishes no savings.
+The subsequent [MCP surface](docs/artifact-mcp.md) adds bounded process-local
+idempotency and artifact delivery for native application. [Host results](evals/reports/2026-09-17-artifact-host-probe.md)
+verify exact accepted bytes in both CLIs but do not guarantee native atomic writes
+or repeated ordinary adoption.
+
+The [Shunt cost audit](docs/shunt-cost-audit.md) led to the opt-in
+[compact native-ticket path](docs/artifact-materialization.md): accepted signed
+tickets, exact configured-source selection and a deterministic native-permission
+materializer. Eight additional offline tests cover its acceptance/integrity,
+freshness, scope, durable handoff and create-only boundary. MCP still cannot write
+the target. Repeated host adoption and measured savings remain unproven.
+The [compact host diagnostic](evals/reports/2026-09-18-materialization-host-probe.md)
+observed one-call generation and exact-byte native materialization in Codex.
+Claude connected but completed natively; its compact-path adoption is unverified.
 
 **Acceptance criteria:**
 
-- [ ] No arbitrary model-selected output path, overwrite, command or permission expansion.
+- [x] Initial pure-function profile has no arbitrary model-selected output path, overwrite, command or permission expansion.
 - [ ] Source/preimage hashes, authorized apply, atomic writes and stale-state rejection are defined per host.
 - [ ] Syntax, independent task checks, compact validation receipts and selective host review cover accepted output.
+- [ ] Default successful delivery avoids full-body helper output and parent regeneration; a bound native materializer preserves acceptance, hashes, destination, expiry and permission checks, with targeted review available.
+- [x] Routine invocation can resolve an already-configured source/profile without a mandatory discovery turn; exact ambiguous matches fail before inference, while future semantic selection belongs to Jev.
 - [ ] A single bounded repair policy and native escalation are measured, including failed attempts.
+- [x] Internal generation and repair each receive a fresh explicit packet, with at most two invocations; broader DR-039 host/config isolation certification remains open.
+- [x] Initial profile keeps candidates pending until actual required checks and Jev's requirement review finish; independently supplied mutants test effectiveness beyond a passing baseline.
 - [ ] Debugging, architectural changes and sensitive operations retain the main-agent path by policy.
 
 ## DR-024: Reuse evidence and compact deterministic tool results
@@ -570,17 +661,42 @@ Implement exact revision-aware caches, concurrent deduplication and optional wra
 
 ## DR-025: Route eligible work with Jev judgments and cost accounting
 
-**Priority:** P1. **Depends on:** DR-020, DR-022, DR-023. **Status:** proposed.
+**Priority:** P1. **Depends on:** minimum DR-020 accounting and DR-034 receipts. **Status:** partial: managed test-generation route implemented; calibration and session budgets pending.
 
 Apply deterministic eligibility first, then use Jev for every required semantic routing/support judgment through DR-034. Add a session budget and circuit breaker; reuse existing DR-015 for bounded completion checks.
 
+Define and test the initial route against fixed worker capabilities before those
+workers are fully implemented. Do not create a dependency on finishing DR-022/023
+before their own semantic route can exist. Expand registered routes incrementally.
+
 **Acceptance criteria:**
 
-- [ ] Choice includes native/abstention; Score and citation judgments use explicit candidates and exact evidence.
-- [ ] Typed confidence never grants permissions, proves correctness or replaces tests.
+- [x] Initial test-worker Choice includes native/abstention; relevance Score and requirement judgments use explicit candidates and exact evidence.
+- [x] Initial worker confidence gates only candidate delivery; it grants no permissions and cannot replace trusted tests.
 - [ ] Cost admission counts worker/Jev calls, added host turns, cache classes, reviews and repair; missing usage remains unknown.
 - [ ] An identical worker pipeline without Jev isolates the incremental effect of Jev on held-out tasks.
 - [ ] Independent judgments share useful state; dependent steps have separate bounded calls and calibrated thresholds.
+
+Selected-packet operations use three bounded batches; configured fixed packets use two, plus one if repair is needed. Per-operation budgets and full typed answers exist. The first live diagnostic
+stopped at uncertain continuation; thresholds remain provisional. See the
+[recorded result](evals/reports/2026-09-17-managed-worker-probe.md). Session-wide
+cost admission and matched controls remain open.
+
+The 2026-09-18 [economic contract](docs/economic-routing.md) adds an optional
+first-batch Choice backed by trusted whole-task component ranges, quality/adoption
+checks, fixed bounds and explicit unknowns. Observe/enforce modes and compact
+native handoff are implemented. Ten added offline tests pass. The four-case
+[live question diagnostic](evals/reports/2026-09-18-economic-routing.md) included
+positive-case uncertainty; no default calibration, confidence tuning or economic
+promotion follows. Automatic calibration ingestion and independently validated
+applicability remain open.
+
+The subsequent [16-case comparison](evals/reports/2026-09-18-economic-applicability.md)
+accepted 0/4 authored positives under the current economic Choice versus 4/4 under
+an evaluation-only membership Noul plus computed admissibility. Neither accepted
+12 blocking cases. Preserve the evaluator defect (relevance 2 instead of runtime
+1.5; omitted relevance answers): combined route conclusions are invalid and cannot
+be rescored from saved data. The frozen results/questions remain unchanged. The new [v2 evaluator](evals/economic-applicability-v2/protocol.md) uses production gates/full typed answers; runtime economic routing now defaults to narrow membership plus deterministic eligibility. Independent applicability/calibration validation remains open.
 
 ## DR-026: Add an optional versioned memory-provider contract
 
@@ -597,17 +713,42 @@ Design a read-only adapter for external organizational memory with search/read, 
 
 ## DR-027: Compare native, retrieval, worker and Jev pipelines
 
-**Priority:** P1. **Depends on:** DR-019, DR-020, DR-022, DR-025. **Status:** proposed.
+**Priority:** P1. **Depends on:** DR-019, DR-020, DR-023, DR-025; DR-022 for the adopted next reader comparison. **Status:** partial: exploratory artifact pilot completed; confirmatory validation remains open.
 
 Extend DR-019 with the staged protocol and proposed promotion gates in the [architecture plan](docs/token-efficiency-plan.md#evaluation-that-can-support-a-superiority-claim). Confirm budget and statistical adequacy before freezing a confirmatory sample.
 
+The [artifact pilot](evals/reports/2026-09-17-artifact-comparison.md) completed all
+12 planned cells with known host/worker/Jev usage. All eight offered helper cells
+requested generation. Jev's aggregate upper cost scenario increased 1.4% on Codex
+and 26.0% on Claude versus native. One native output failed grammar admission;
+the unequal grammar guidance prevents a quality-superiority interpretation. One
+Jev-unresolved artifact was applied through native bypass. Keep these observations
+separate from acceptance and from the older read-gate experiment.
+
 **Acceptance criteria:**
 
-- [ ] Separate context-body compression, all-provider tokens, complete-task cost, actual charges and subscription quota evidence.
-- [ ] Preserve native, deterministic and same-worker-without-Jev controls; keep failures/interruption costs.
+- [x] Separate context-body compression, all-provider tokens, complete-task cost, actual charges and subscription quota evidence; unobservable charges/allowance remain unknown.
+- [x] Preserve native and same-worker-without-Jev controls for the artifact pilot, including failed attempts; deterministic retrieval remains in the separate reading experiment.
 - [ ] An actual Spotify comparison requires authenticated AiKA; otherwise label the control shunt-style reproduction.
 - [ ] Independent task checks, grouped paired intervals, cache reporting, repeated runs and per-host gates are frozen before results.
-- [ ] Publish null/negative results; never claim superiority from different datasets, an empty answer or a bytes-only ratio.
+- [x] The artifact comparison records transport/authentication/model/CLI versions and verifies admitted generated-test effectiveness against independent seeded mutations.
+- [x] Record null/negative results in sanitized repository artifacts; never claim superiority from different datasets, an empty answer or a bytes-only ratio.
+- [ ] Correct grammar-instruction parity across arms and record a sanitized rejected-syntax category before the next protocol; do not reinterpret the original failure as functional incorrectness.
+- [ ] Preserve final managed termination reasons and measure unaccepted-candidate reuse separately from accepted application.
+- [ ] Compare a shorter parent handoff with the existing three-tool flow while preserving Jev transitions, source binding and native permissions.
+- [ ] Compare compact artifact tickets/native materialization, not just fewer full-body responses; measure retained host work and small-task cases where delegation should be declined.
+- [ ] Calibrate requirement scope and abstention on new correct/incorrect candidates, then freeze repeated tasks and cache conditions; no threshold tuning against this pilot.
+
+The [v2 proposal](evals/artifact-comparison-v2/protocol.md) has six 4/8/24-example
+workloads, shared runtime/parent grammar, reproducible proposed block orders,
+delivery/managed-Jev/hook contrasts, non-executing rejected-syntax diagnostics and
+normalized parent/worker/Jev/hook accounting utilities. All six authored canonical
+outputs passed baseline and four seeded-mutant checks offline. `prepare.ts` only
+writes a manifest (144 proposed base cells; 162 with the optional Claude hook).
+No paid cells ran. This large proposal is deferred in favor of [the smaller reader comparison](evals/reader-comparison/protocol.md). Artifact expansion still needs matching adapters/worker-ticket control,
+independent review, production gate/full-answer parity, failure-injection accounting,
+cache/budget freeze and confirmatory validation; utilities alone do not close the
+acceptance criteria above.
 
 ## DR-028: Define engineering-memory and task-state contracts
 
@@ -699,7 +840,7 @@ Extend the whole-task study to continuity, memory applicability and complex prog
 
 ## DR-034: Centralize managed semantic decisions in Jev
 
-**Priority:** P0. **Depends on:** DR-003, DR-004, DR-020. **Status:** planned.
+**Priority:** P0. **Depends on:** DR-003, DR-004, DR-020. **Status:** partial: first managed worker registry implemented.
 
 Implement the [decision registry and receipts](docs/decision-architecture.md) in the existing core. All explicit managed semantic decisions use Jev. Extend DR-016's explicit tool without requiring a public framework or unsupported host interception.
 
@@ -710,7 +851,15 @@ Implement the [decision registry and receipts](docs/decision-architecture.md) in
 - [ ] Permissions, mandatory checks, exact operations, user choices and arithmetic stay deterministic. A model answer cannot override them.
 - [ ] Test provider outage, malformed results, missing alternatives, abstention, budget exhaustion and native bypass without losing task checkpoints.
 - [ ] Report managed/advisory/bypass outcomes, instrumented stages and observable adoption; never claim coverage of hidden host decisions.
-- [ ] First implemented slice covers memory applicability/retrieval; later stage registration is incremental, with independent fixtures and cost accounting.
+- [x] First internal slice covers worker routing, evidence relevance/support and bounded continuation, with offline fixtures and operation accounting. Memory applicability/retrieval follows later.
+
+`managed-test-worker/2` enforces locally owned, source-bound Jev receipts without
+receipt import or LLM fallback. Twenty-five offline tests passed. One live run
+generated a candidate and reviewed it but withheld continuation as uncertain.
+Broader registry stages, persistent checkpoints/cache, calibrated quality and
+ordinary host adoption remain open; see [implementation details](docs/managed-worker.md).
+The optional artifact profile now adds review with actual validation evidence and
+an eligible-action set that prevents acceptance after failed checks or a third generation.
 
 ## DR-035: Compile source-bound engineering knowledge incrementally
 
@@ -769,6 +918,39 @@ Implement an optional isolated review mode and a correction-to-lesson lifecycle.
 - [ ] A single successful attempt cannot silently become a global rule; corrections, counterexamples and source invalidation affect retrieval.
 - [ ] Measure recurring-error prevention, false-lesson retrieval and all review/repair/capture costs; learning failure cannot rewrite a successful task outcome.
 
+## DR-039: Build a fresh noninteractive CLI worker transport
+
+**Priority:** P0. **Depends on:** existing DR-003/008 contracts and the relevant DR-009 lifecycle controls. **Status:** partial; transport implemented and locally probed, broader capability certification pending.
+
+Implement the [fresh request execution contract](docs/worker-architecture.md#fresh-request-execution-contract)
+with Codex CLI and `gpt-5.6-luna` first. Separate model/profile from transport, while
+keeping only one transport required for v1. The parent host may be Claude Code or
+Codex. Claude CLI and direct provider adapters remain follow-on work.
+
+**Acceptance criteria:**
+
+- [x] Versioned request/result types distinguish generated candidates, unavailable/auth/limit failures, cancellation, timeout and invalid output; usage can be unknown.
+- [x] Launch the configured executable with an argument array and bounded stdin, without interpolating task text into a shell command.
+- [ ] Start fresh noninteractive sessions, disable session persistence, and verify that parent history, unrelated plugins/MCP/hooks and worker recursion are absent; preserve applicable instructions and managed policy.
+- [ ] Inspect effective tool access and residual prompt overhead on recorded CLI versions. Ephemeral/read-only flags alone cannot pass the isolation gate.
+- [x] Use supported CLI authentication without extracting login tokens; prevent unintended API credential overrides and silent paid/model/transport fallback.
+- [x] Bound input, event/output bytes, artifact size, concurrency and time; cancellation cleans up the process tree and cannot publish a late result.
+- [x] Parse structured events/results, preserve failures and actual model metadata, and attribute usage without conflating estimates with subscription charges.
+- [x] Fake-child fixtures cover malformed/truncated streams, nonzero exits, limits, timeout, cancellation and cleanup without credentials or provider calls.
+- [x] A bounded synthetic live probe verifies Luna output, intended authentication and observed context/tool behavior; publish sanitized findings and limitations before the artifact integration.
+
+**Validation:** Offline transport tests first; then one small capability probe.
+Do not modify the user's global CLI settings or infer end-to-end compatibility
+from `--help`, login status or the cached model listing alone.
+
+**Evidence:** [Local probe report](evals/reports/2026-09-17-cli-worker-probe.md),
+`tests/worker.test.ts`, internal contracts in `packages/core/src/worker.ts` and the
+transport in `packages/cli/src/codex-worker.ts`. No tool items were observed in the
+two probes; an exhaustive available-tool audit across managed configurations has
+not been completed. Standalone user hooks fail before inference. The responding
+model is unknown when the stream omits it; the configured Luna model is recorded
+separately. The subsequent managed artifact workflow and opt-in MCP surface reuse this transport; broader capability certification remains open.
+
 ## Traceability
 
 | Specification concern | Issues |
@@ -785,4 +967,5 @@ Implement an optional isolated review mode and a correction-to-lesson lifecycle.
 | Native engineering memory and cross-host continuity | DR-028, DR-029, DR-030 |
 | Repository-aware complex programming and lifecycle evaluation | DR-031, DR-032, DR-033 |
 | Managed semantic ownership and decision coverage | DR-034, DR-003/004/016/020/025 |
+| CLI-first artifact worker v1 | DR-039, scoped DR-020/034/025, DR-023, DR-018/012, DR-019/027 |
 | Source-bound knowledge, impact profiles, assumptions and scoped learning | DR-035, DR-036, DR-037, DR-038 |

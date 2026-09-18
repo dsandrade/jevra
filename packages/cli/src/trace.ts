@@ -43,6 +43,14 @@ export interface GateTrace {
   sessionHash: string; eventHash: string; action: string; sourceCount: number; maxLines: number; evaluationAttempts: 0;
 }
 
+export interface GateInvocationTrace {
+  schemaVersion: 1; timestamp: string; module: 'bulk-read-gate-invocation'; host: string;
+  sessionHash: string; eventHash: string; payloadValid: boolean;
+  toolKind: 'Read' | 'Bash' | 'exec_command' | 'other';
+  readShape: 'simple_read' | 'not_simple_read' | 'not_shell';
+  evaluationAttempts: 0;
+}
+
 export function makeTrace(event: Event, decision: Decision, mode: Mode, candidateCount: number,
   outputPrepared: boolean, totalLatencyMs: number, policy: unknown): Trace {
   return {
@@ -68,7 +76,7 @@ export async function traceDirectory(stateDirectory: string): Promise<string> {
   return directory;
 }
 
-export async function appendTrace(stateDirectory: string, trace: Trace | ContextTrace | GateTrace, retentionDays: number): Promise<void> {
+export async function appendTrace(stateDirectory: string, trace: Trace | ContextTrace | GateTrace | GateInvocationTrace, retentionDays: number): Promise<void> {
   const directory = await traceDirectory(stateDirectory);
   const now = Date.now();
   for (const name of await readdir(directory)) {

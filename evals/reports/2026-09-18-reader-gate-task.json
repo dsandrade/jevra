@@ -1,0 +1,296 @@
+{
+  "version": "reader-gate-task-report/1",
+  "date": "2026-09-18",
+  "status": "exploratory_non_adoption_inconclusive_gate_execution",
+  "frozenManifest": {
+    "version": "reader-gate-task/1",
+    "preparedAt": "2026-09-18T06:37:08.782Z",
+    "execute": true,
+    "selectedCells": [
+      {
+        "id": "codex/large-shipping/jev-full-gate",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "jev-full-gate"
+      }
+    ],
+    "hashes": {
+      "evals/reader-comparison/protocol.md": "a5f22ff2d575885d69d62d6122667cffa5aa025a22dadf55cc4f79ba61f477e5",
+      "evals/reader-comparison/fixtures.ts": "332b96c6243a7ac6207fff857fb8db71f96e39c60e4ac119ac5fc88799ba4e62",
+      "evals/reader-comparison/judge.ts": "056a506f96597deb404f7a254218b0a0b3310dad6bba5ff487c7ec0dfd92ed2d",
+      "evals/reader-comparison/server.ts": "9e9a5352a50d7b6f58995be4fa69e88c156d8a44323cda8183807d19266cfbff",
+      "evals/reader-comparison/run.ts": "1fbde3603c0f4ae7899d88f4845df9eb5e2c4e1309fddc60555af55a87053397",
+      "evals/reader-comparison/accounting.ts": "99656e9ecb056916e6305c96d0b3ab5c9bd76cdce5892a8bc1ef11c6857b6292",
+      "evals/reader-comparison/prepare.ts": "372386625ec1f934aec0a3079c20826cc4a8aa07b27fea1b8bebb114236ff717",
+      "packages/core/src/reader.ts": "007edb89384521efb192129d7d7224a5f9ffc24dc373ff3a8d37843156cf9194",
+      "packages/core/src/accounting.ts": "511ff84eac5ebf484dc443756a6ea5d45a46f9c8b1d94189692ce18b577b28b0",
+      "packages/core/src/context.ts": "a2cf8d37d923885d0acfa4f48283f238b96336dc198296f6dfe05ffcd37947c0",
+      "packages/core/src/index.ts": "3d0214343bc89646d285349856b3c7ef080a9a0c690f43533999e753473fc00c",
+      "packages/core/src/worker.ts": "0a9187b5449b08cfbdb9a223d41584fc6332b955ffee83ba0f1390d0e9fb1449",
+      "packages/cli/src/reader-session.ts": "1374fbdd8c75e6c9acec09e4c42479483f8115f245ef493b6c8274ddff36c874",
+      "packages/cli/src/bulk-read.ts": "4795d0b131d9b524e377a4f572e84331294f36c128630c0fdd6be576bf57b275",
+      "packages/cli/src/config.ts": "ff77e257d309d6695b228f81017dac4168311027b0889fc70f1a8113a1aefa07",
+      "packages/cli/src/codex-worker.ts": "3bde147f320552d4b3d8e0f0965795a17ac504f10a0af43fc412e681b80d3e3f",
+      "packages/cli/src/worker-process.ts": "b474dfdb3c75050dab51b2d58608037e2409819ad9340f7ca25e3dc6210c9745",
+      "packages/cli/src/test-policy.ts": "66c522d9d679a20b9234fa3d35e15ba6be78d2cc6e734c2b5ca8fbeb72f841ef",
+      "packages/provider-typesafe/src/index.ts": "211c90ecdec732face3a13409354867a25fea034b16cecae3d904815e8dc20b3",
+      "package-lock.json": "ebbee3f71746ff2a4d2839fd7bba46341b319f1164fef0a7f4925ee21b413195",
+      "dist/jevra.mjs": "958b7cbdaed857103b6d137aaacb85bc367b78e00ac425044a0f4a74547aef3f",
+      "evals/reader-gate/run.ts": "4952c6abf23967538d9015e99834be02b8b24d81f2621767bcbba0be1407f34b",
+      "evals/reader-gate/config-lease.ts": "6ad67ceafcd6d7431016ec4292f454b36fb6e4ea1db77d74927b36c8bf1ec1f3",
+      "evals/reader-gate/inspect-hooks.ts": "a0d720a98a2784d3ff2958327ea0d5093ff253229025b4c8a42ae0c37852c129",
+      "evals/reader-gate/observations.ts": "d9c97d54497c4a1bfeee7be498fe8acbd662030ab9daaa09c00ed7ca72828508",
+      "evals/reader-gate/task-protocol.md": "48c258c20a288d8b5c5c248c4bb7ce63f17b048136bd81e1957696857f86e3e5"
+    },
+    "sourceHash": "83a3fcd95b2f0245d4eb340cb2444868933fe10cae396e1ba1d88cde6321ed15",
+    "requirementsHash": "1c223dad947e05cf78b3c74f75db5712dd398e269fd93ebede326dcadb0ae96d",
+    "promptHash": "14289d726a500c796a23f051495829df53fcaa88edee276e65607e80a8755970",
+    "preflightConfigHash": "2fef82a77c76e8a6a6f3ba2abdbfc2873845c0c1fdcffb1ad58b41321306d1c7",
+    "taskConfigHash": "2cc2aff4013b5de733b9f3ca9ab2b3c7fa093013d4b9c1506c1e9e1fadba06b6",
+    "nativeReadiness": {
+      "configuredMatches": 1,
+      "unrelatedDefinitions": 0,
+      "enabled": true,
+      "trustStatus": "trusted",
+      "definitionFingerprint": "3b769562232d60e4a32c8158d10ccd6ad1e86b29563bd203340b2831f425cb31",
+      "warningCount": 0,
+      "errorCount": 0,
+      "ready": true,
+      "inferenceCalls": 0
+    },
+    "models": {
+      "requestedParent": "gpt-6-astra",
+      "worker": "gpt-5.6-luna",
+      "effort": "low",
+      "observedParent": null
+    },
+    "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+    "node": "v24.21.0",
+    "budget": {
+      "maxCells": 1,
+      "maxParentMs": 240000,
+      "maxWorkerCalls": 1,
+      "maxJevRequests": 4,
+      "maxJevRequestBytes": 49152,
+      "maxCorpusBytes": 98304,
+      "maxWorkerInputBytes": 131072,
+      "maxWorkerOutputBytes": 8000,
+      "enforceableUsd": null
+    },
+    "cachePolicy": "fresh_parent_existing_provider_caches_not_controlled",
+    "labelSource": "authored_synthetic_not_independent_review",
+    "promotion": "not_authorized"
+  },
+  "frozenSourceSnapshots": {
+    "evals/reader-gate/run.ts": "evals/reader-gate/frozen-v1-run.ts.txt",
+    "evals/reader-gate/observations.ts": "evals/reader-gate/frozen-v1-observations.ts.txt",
+    "evals/reader-gate/inspect-hooks.ts": "evals/reader-gate/frozen-v1-inspect-hooks.ts.txt",
+    "evals/reader-gate/task-protocol.md": "evals/reader-gate/frozen-v1-task-protocol.md.txt",
+    "packages/cli/src/bulk-read.ts": "evals/reader-gate/frozen-v1-bulk-read.ts.txt"
+  },
+  "row": {
+    "id": "codex/large-shipping/jev-full-gate",
+    "status": "completed",
+    "success": true,
+    "failure": null,
+    "durationMs": 44880,
+    "cleanupComplete": true,
+    "parent": {
+      "usage": {
+        "input": 99556,
+        "cacheRead": 76160,
+        "cacheWrite": null,
+        "output": 1050
+      },
+      "failure": null,
+      "terminal": "turn.completed",
+      "observedModel": null,
+      "toolCalls": 5,
+      "modelUsage": null
+    },
+    "observations": {
+      "version": "reader-observations/1",
+      "observations": [
+        {
+          "ordinal": 1,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 136,
+          "exitCode": 0
+        },
+        {
+          "ordinal": 2,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 59382,
+          "exitCode": 0
+        },
+        {
+          "ordinal": 3,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 436,
+          "exitCode": 0
+        },
+        {
+          "ordinal": 4,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 84,
+          "exitCode": 0
+        }
+      ],
+      "omitted": 0,
+      "complete": true,
+      "scope": "Observable host events only; absent hook events do not establish absent hook execution."
+    },
+    "helperCalls": [],
+    "helperJournal": {
+      "reservations": [],
+      "journals": []
+    },
+    "accounting": {
+      "complete": true,
+      "components": [
+        {
+          "component": "parent",
+          "observedCalls": 1,
+          "expectedCalls": 1,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 99556,
+          "knownOutput": 1050,
+          "knownCacheRead": 76160,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 1
+        },
+        {
+          "component": "worker",
+          "observedCalls": 0,
+          "expectedCalls": 0,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 0,
+          "knownOutput": 0,
+          "knownCacheRead": 0,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 0
+        },
+        {
+          "component": "managed_jev",
+          "observedCalls": 0,
+          "expectedCalls": 0,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 0,
+          "knownOutput": 0,
+          "knownCacheRead": 0,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 0
+        },
+        {
+          "component": "routing_hook",
+          "observedCalls": 0,
+          "expectedCalls": 0,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 0,
+          "knownOutput": 0,
+          "knownCacheRead": 0,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 0
+        }
+      ],
+      "knownInput": 99556,
+      "knownOutput": 1050,
+      "input": 99556,
+      "output": 1050,
+      "totalTokens": 100606,
+      "apiEquivalentUsd": null,
+      "actualBilledUsd": null,
+      "subscriptionUsage": null
+    },
+    "gate": {
+      "recordedEligibleReads": 0,
+      "records": [],
+      "nativeInvocationCount": null,
+      "scope": "Eligible reads only; no provider inference in the local gate."
+    },
+    "quality": {
+      "passed": true,
+      "facts": true,
+      "scope": true,
+      "grammar": true,
+      "functional": true,
+      "failure": null,
+      "labelSource": "authored_synthetic_oracle_not_independent_review"
+    },
+    "configRestored": true
+  },
+  "derived": {
+    "totalTokens": 100606,
+    "grossInputMinusReportedCacheReads": 23396,
+    "observedCommandOutputBytes": 60038,
+    "maximumObservedCommandOutputBytes": 59382,
+    "collectorCoverage": "Completed command/MCP events and exposed hook completions only; complete flag means not truncated, not all host tool kinds observed."
+  },
+  "prospectiveV2": {
+    "status": "implemented_offline_only_no_model_task_dispatched",
+    "contextIsolationProbe": {
+      "version": "native-context-isolation-probe/2",
+      "before": {
+        "configuredMcpServers": 4,
+        "enabledMcpServers": 3,
+        "onlyJevraEnabled": false,
+        "standardOpenAiProvider": true
+      },
+      "isolated": {
+        "configuredMcpServers": 5,
+        "enabledMcpServers": 1,
+        "onlyJevraEnabled": true,
+        "standardOpenAiProvider": true
+      },
+      "disabledServerCount": 4,
+      "inferenceCalls": 0,
+      "persistentConfigurationChanged": false
+    },
+    "changes": [
+      "same_normal_user_config_context_for_preflight_and_parent",
+      "scoped_unrelated_mcp_disabling_and_effective_config_guard",
+      "configured_active_gate_invocation_metadata_before_parse_or_eligibility",
+      "bounded_startup_hook_warning_metadata"
+    ],
+    "sourceHashes": {
+      "evals/reader-gate/run.ts": "cc9664d0df4d4042ddfe82d9a9f59705340fd1d2f59eaf2af988bff0d9af28f5",
+      "evals/reader-gate/observations.ts": "7650af107d73ccbdb59cd3221d734989b31b0ca5c8df3f31c8f68da6e4185ab2",
+      "evals/reader-gate/inspect-hooks.ts": "eb13202850de7d202afa8f5b03a7f3dca77b1bb16718fee85eccdd92556e4120",
+      "evals/reader-gate/config-lease.ts": "6ad67ceafcd6d7431016ec4292f454b36fb6e4ea1db77d74927b36c8bf1ec1f3",
+      "evals/reader-gate/task-protocol.md": "c62dc148cc5b4dc079ded18318b6e230f9e9bbda150b1fc0eeccb8aa842fa073",
+      "packages/cli/src/bulk-read.ts": "a5abfc8600f8d8b944a7a015064ffbc6ceaefefbd21ae4d3df12665c1d8b36ba",
+      "packages/cli/src/trace.ts": "39162816670ba65688f08c3415fdab2358a55537eeff8fbb4ac3941e3a1dc212",
+      "tests/bulk-read.test.ts": "ab8238e596c8b241ed211961fc8c1768eb07941203f71a4d2619231a92b8622b",
+      "tests/reader-gate.test.ts": "022913835b809dd0408b25c4555e457c4e7cb21004077b87833b6dc3ccd1d0f5"
+    },
+    "localCheck": {
+      "node": "24.21.0",
+      "fullSuitePassed": 184,
+      "fullSuiteFailed": 0,
+      "skipped": 0,
+      "typecheck": "passed",
+      "build": "passed",
+      "subsequentMetadataAndReadonlyRpcChanges": "typecheck and six targeted reader-gate tests passed"
+    }
+  },
+  "actualBilledUsd": null,
+  "apiEquivalentUsd": null,
+  "subscriptionUsage": null,
+  "limitations": [
+    "One authored synthetic cell, no contemporaneous matched baseline, repeats or independently reviewed requirements.",
+    "No helper, Luna or managed Jev inference occurred; native gate invocation/delivery remains unknown.",
+    "Preflight loaded normal user config while v1 parent ignored it; causal explanation remains inconclusive because v1 lacks all-invocation traces and startup-warning metadata.",
+    "Unsupported or wrapped shell commands remain an alternative explanation; raw commands were not retained.",
+    "Existing provider caches were not controlled; gross input includes cache reads and cache writes are unreported.",
+    "V2 changes have no new paid task observation, no calibration/promotion or savings claim.",
+    "The original prepared scope is used and source/build bindings are superseded; a new reviewed preflight is required before any future dispatch."
+  ]
+}

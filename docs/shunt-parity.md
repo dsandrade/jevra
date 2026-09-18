@@ -1,5 +1,7 @@
 # Shunt architecture and Jevra
 
+> Current correction contracts (2026-09-18): see [focused reader and corrected decisions](focused-reader.md). Fixed artifact packets now share route/support; economic routing defaults to narrow membership and code-owned eligibility. Dated diagrams/diagnostics below remain scoped to their recorded version.
+
 Jevra follows the hook → helper → compact evidence → main-agent flow of [Spotify shunt](https://github.com/spotify/portal-ai-plugins/tree/3c24ca30ff63e1f5bbad1c43fe5324daff579123/plugins/shunt), reviewed at commit `3c24ca30ff63e1f5bbad1c43fe5324daff579123`. It is an original implementation, not a vendored copy or an AiKA dependency.
 
 | Shunt responsibility | Jevra implementation | Boundary |
@@ -46,6 +48,20 @@ Only the requested files inside configured `bulkRead.roots` are eligible. There 
 The hook itself never calls Jev or uploads source text. In observe mode it records eligible large-read metadata without blocking. The agent must actually invoke the helper for retrieval to happen. An explicit helper invocation works in observe mode too; disabled mode rejects it. This differs from the skill router, whose observe mode still evaluates eligible prompts.
 
 ## Evidence
+
+The later [cost audit](shunt-cost-audit.md) compares these helpers with the
+implemented artifact worker and the 12-cell complete-task pilot. It identifies
+the missing direct artifact handoff, capability-only routing and benchmark metric
+differences. Its offline failed-transport reproduction verifies that the public
+benchmark can report perfect apparent savings on empty failed responses; it is
+not a live AiKA evaluation or a refutation of historical successful runs.
+
+The table above describes the original evidence-selection path. The separate
+opt-in artifact profile now delegates restricted test generation to Luna under
+Jev decisions, but its host still reads and writes the full returned candidate.
+The recommended next contract transfers accepted bytes through a deterministic
+native-permission materializer, with a compact receipt and targeted review. It is
+proposed, not an available MCP apply capability.
 
 See the [full-task protocol](../evals/full-task/protocol.md), [full-task report](../evals/reports/2026-09-17-full-task-pilot.md), and [compatibility matrix](compatibility.md). Small synthetic tasks test integration and expose regressions; they do not establish production savings or general policy completeness.
 

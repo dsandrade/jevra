@@ -1,0 +1,17 @@
+# Gate-enabled reader task diagnostic v1
+
+Status: exploratory single-task integration diagnostic, executable only with an already-reviewed prepared scope. This is separate from the frozen first reader pair and zero-inference gate preflight. One cell: Codex, `large-shipping`, full Luna + Jev reader offered with the existing local PreToolUse gate. Same authored task/prompt/fact and closed code judge; ordinary targeted reads remain available. No explicit helper call is requested and no full-read strategy is forced. Non-adoption remains an outcome.
+
+This scope has no reader guidance skill: the direct gate instruction and MCP catalog offer delegation. It differs from the first pair's skill condition and cannot isolate the gate's causal effect. A scope receives a create-only dispatch marker before the parent starts, preventing an automatic second attempt even if its code/answer files remain untouched after failure.
+
+Default preparation performs no model inference. `--execute` dispatches at most one parent, with 240 seconds, one Luna attempt and four bounded Jev requests. Node/CLI/model/effort, source/build/config/question hashes and budget freeze before dispatch. No inference retry, alternate model, global plugin activation, auth copy or hook-trust exception. Monetary/quota ceilings remain unobservable. Existing provider caches are reported, not claimed controlled. The gate itself has zero provider inference by construction; only eligible reads are traced, so missing traces are not a zero native-invocation count.
+
+```sh
+node evals/reader-gate/run.ts --prepared evals/local-results/<reviewed-scope> --codex-executable /Applications/ChatGPT.app/Contents/Resources/codex
+# Use a different output directory for an authorized inference dispatch.
+node evals/reader-gate/run.ts --prepared evals/local-results/<reviewed-scope> --codex-executable /Applications/ChatGPT.app/Contents/Resources/codex --execute
+```
+
+The scope must still have the exact preflight source/build/config and initial fixture bytes, with no answer file. Native hooks/list must report one trusted enabled definition with the reviewed fingerprint and no unrelated definitions. During the task an exclusive private config lease enables metadata traces and moves journals to the task output directory, then restores original bytes on success or failure. Source/config changes and concurrent leases fail before model dispatch; an unrelated edit during a lease is preserved and reported instead of being overwritten. Normal trust concerns the unchanged command definition; both config versions receive hashes. Native auth/settings remain in their normal locations.
+
+Actual parent/tool/helper observations, eligible gate records, complete helper reservation/journal reconciliation, semantic Jev outputs and authored quality checks are retained without raw parent stdout/stderr or source bodies. Missing helper usage blocks comparable totals. Gate records demonstrate runtime evaluation, rather than all hook invocations; observed host responses and helper adoption provide separate evidence. The bounded collector explicitly marks truncation and unknown output/outcomes. This single synthetic cell has no matched contemporaneous baseline, independent requirement labels or repetitions. It cannot establish savings or authorize calibration/promotion.

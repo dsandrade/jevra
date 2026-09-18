@@ -1,0 +1,121 @@
+import { parseArgs } from 'node:util';
+import { mkdir, readFile, readdir, realpath, writeFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
+import { hash } from '@jevra/core';
+import { reconcileInvocations } from '../../packages/core/src/accounting.ts';
+import type { Invocation, Reservation } from '../../packages/core/src/accounting.ts';
+import { workerEnvironment } from '../../packages/cli/src/codex-worker.ts';
+import { runWorkerProcess } from '../../packages/cli/src/worker-process.ts';
+import { quoteArgument } from '../../packages/cli/src/bulk-read.ts';
+import { manifestFiles } from '../reader-comparison/prepare.ts';
+import { taskPrompt, tasks } from '../reader-comparison/fixtures.ts';
+import { judge } from '../reader-comparison/judge.ts';
+import { hostMetrics } from '../artifact-comparison/metrics.ts';
+import { hostObservations } from './observations.ts';
+import { inspectHooks, inspectContext } from './inspect-hooks.ts';
+import { withGateConfig } from './config-lease.ts';
+
+const { values } = parseArgs({ options: { prepared: { type: 'string' }, 'codex-executable': { type: 'string' },
+  execute: { type: 'boolean', default: false }, output: { type: 'string', default: `evals/local-results/reader-gate-task-${Date.now()}` } } });
+if (process.versions.node !== '24.21.0' || !values.prepared || !values['codex-executable']) throw new Error('invalid_gate_task_configuration');
+const root = await realpath(values.prepared), cwd = join(root, 'workspace'), configFile = join(root, 'config.json');
+const output = resolve(values.output!), executable = resolve(values['codex-executable']), cli = resolve('dist/jevra.mjs');
+const prepared = JSON.parse(await readFile(join(root, 'results.json'), 'utf8'));
+const reviewed = JSON.parse(await readFile(join(root, 'native-reviewed.json'), 'utf8'));
+if (!prepared.gateCasesPassed || !prepared.catalogAvailable || !reviewed.after.ready) throw new Error('missing_verified_gate_preflight');
+for (const [path, expected] of Object.entries(prepared.manifest.hashes)) {
+  if (hash(await readFile(path, 'utf8')) !== expected) throw new Error('changed_gate_preflight_source');
+}
+const task = tasks.find(t => t.id === 'large-shipping')!;
+for (const [path, text] of Object.entries(task.files)) if (await readFile(join(cwd, path), 'utf8') !== text) throw new Error('used_or_changed_gate_fixture');
+try { await readFile(join(cwd, 'answer.json')); throw new Error('used_gate_fixture'); }
+catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
+const original = await readFile(configFile, 'utf8'); if (hash(original) !== reviewed.configHash) throw new Error('changed_gate_configuration');
+await mkdir(output, { recursive: true, mode: 0o700 });
+const state = join(output, 'state'), helperLog = join(output, 'invocations.json');
+const active = JSON.stringify({ ...JSON.parse(original), traces: true, stateDirectory: state });
+const command = [process.execPath, cli, 'hook', '--host', 'codex', '--config', configFile].map(quoteArgument).join(' ');
+const nativeSettings = JSON.parse(await readFile(join(root, 'native-settings.json'), 'utf8')) as string[];
+const env = workerEnvironment(process.env); delete env.JEVRA_WORKER_ACTIVE;
+const shutdown = new AbortController(); for (const signal of ['SIGINT', 'SIGTERM'] as const) process.once(signal, () => shutdown.abort());
+const execute = (args: string[], input?: string, timeoutMs = 10000) => runWorkerProcess({ executable, args, cwd, env,
+  signal: shutdown.signal, timeoutMs, killGraceMs: 2000, maxOutputBytes: 2097152, maxStderrBytes: 65536, ...(input !== undefined ? { input } : {}) });
+const version = await execute(['--version']); if (version.failure || !version.cleanupComplete || version.stdout.toString('utf8').trim() !== 'codex-cli 0.154.0-alpha.6.2') throw new Error('unsupported_host_version');
+const ready = await inspectHooks(executable, nativeSettings, cwd, command, env);
+if (!ready.ready || ready.definitionFingerprint !== reviewed.after.definitionFingerprint) throw new Error('gate_not_ready');
+const context = await inspectContext(executable, nativeSettings, cwd, env);
+if (!context.metadata.standardOpenAiProvider) throw new Error('unsupported_native_provider_context');
+if (context.disableOverrides.includes('mcp_servers.jevra.enabled=false')) throw new Error('native_mcp_name_collision');
+const files = [...new Set([...manifestFiles, 'dist/jevra.mjs', 'packages/cli/src/trace.ts', 'evals/reader-gate/run.ts', 'evals/reader-gate/config-lease.ts',
+  'evals/reader-gate/inspect-hooks.ts', 'evals/reader-gate/observations.ts', 'evals/reader-gate/task-protocol.md'])];
+const manifest = { version: 'reader-gate-task/2', preparedAt: new Date().toISOString(), execute: values.execute,
+  selectedCells: [{ id: 'codex/large-shipping/jev-full-gate', host: 'codex', taskId: task.id, arm: 'jev-full-gate' }],
+  hashes: Object.fromEntries(await Promise.all(files.map(async p => [p, hash(await readFile(p, 'utf8'))]))),
+  sourceHash: hash(task.files), requirementsHash: hash([task.facts, task.examples]), promptHash: hash(taskPrompt(task)),
+  preflightConfigHash: hash(original), taskConfigHash: hash(active), nativeReadiness: ready,
+  nativeContext: { ...context.metadata, parentLoadsUserConfiguration: true, unrelatedMcpDisabled: context.disableOverrides.length },
+  models: { requestedParent: 'gpt-6-astra', worker: 'gpt-5.6-luna', effort: 'low', observedParent: null },
+  hostVersion: 'codex-cli 0.154.0-alpha.6.2', node: process.version,
+  budget: { maxCells: 1, maxParentMs: 240000, maxWorkerCalls: 1, maxJevRequests: 4, maxJevRequestBytes: 49152,
+    maxCorpusBytes: 98304, maxWorkerInputBytes: 131072, maxWorkerOutputBytes: 8000, enforceableUsd: null },
+  cachePolicy: 'fresh_parent_existing_provider_caches_not_controlled', labelSource: 'authored_synthetic_not_independent_review', promotion: 'not_authorized' };
+await writeFile(join(output, 'manifest.json'), JSON.stringify(manifest, null, 2), { mode: 0o600, flag: 'wx' });
+if (!values.execute) { console.log(JSON.stringify({ output, prepared: true, ready, inferenceCalls: 0 })); }
+else {
+  const reservation: Reservation = { id: manifest.selectedCells[0]!.id + '/parent', component: 'parent' };
+  const row: any = { id: manifest.selectedCells[0]!.id, status: 'reserved', reservation, success: false, failure: null };
+  const save = () => writeFile(join(output, 'results.json'), JSON.stringify({ manifest, row, actualBilledUsd: null, subscriptionUsage: null }, null, 2), { mode: 0o600 });
+  await save();
+  try {
+    await withGateConfig(configFile, reviewed.configHash, active, async () => {
+      const current = await inspectHooks(executable, nativeSettings, cwd, command, env);
+      if (!current.ready || current.definitionFingerprint !== ready.definitionFingerprint) throw new Error('gate_not_ready');
+      const args = [resolve('evals/reader-comparison/server.ts'), '--arm', 'jev-full', '--config', configFile, '--log', helperLog];
+      const settings = ['approval_policy="never"', 'model_provider="openai"', 'forced_login_method="chatgpt"', 'model_reasoning_effort="low"',
+        'skills.bundled.enabled=false', 'skills.include_instructions=true', 'memories.use_memories=false', 'memories.generate_memories=false',
+        'web_search="disabled"', 'features.apps=false', 'features.plugins=false', 'features.remote_plugin=false', 'features.multi_agent=false',
+        'features.hooks=true', ...context.disableOverrides, `log_dir=${JSON.stringify(join(output, 'logs'))}`,
+        `hooks.PreToolUse=[{matcher="Read|Bash|exec_command",hooks=[{type="command",command=${JSON.stringify(command)},timeout=3}]}]`,
+        `mcp_servers.jevra.command=${JSON.stringify(process.execPath)}`, `mcp_servers.jevra.args=${JSON.stringify(args)}`,
+        `mcp_servers.jevra.cwd=${JSON.stringify(cwd)}`, 'mcp_servers.jevra.enabled=true', 'mcp_servers.jevra.tool_timeout_sec=200', 'mcp_servers.jevra.default_tools_approval_mode="approve"'];
+      const effective = await inspectContext(executable, settings, cwd, env);
+      if (!effective.metadata.onlyJevraEnabled || !effective.metadata.standardOpenAiProvider) throw new Error('gate_context_not_isolated');
+      await writeFile(join(root, 'task-dispatched.json'), JSON.stringify({ id: row.id, manifestHash: hash(manifest) }), { mode: 0o600, flag: 'wx' });
+      row.status = 'started'; await save(); const started = performance.now();
+      const r = await execute(['exec', '--ephemeral', '--skip-git-repo-check', '--sandbox', 'workspace-write',
+        '--model', 'gpt-6-astra', ...settings.flatMap(s => ['-c', s]), '--json', '-'], taskPrompt(task), 240000);
+      row.durationMs = Math.round(performance.now() - started); row.cleanupComplete = r.cleanupComplete;
+      row.startup = { stderrBytes: r.stderrBytes, hookReviewWarningObserved: /hook[^\n]*(?:review|untrusted)|(?:review|untrusted)[^\n]*hook/i.test(r.stderr.toString('utf8')) };
+      const events = r.stdout.toString('utf8').split('\n').flatMap(line => { try { return [JSON.parse(line)]; } catch { return []; } });
+      const { cost: _historicalCost, ...parent } = hostMetrics('codex', events); row.parent = parent;
+      row.failure = r.failure ?? parent.failure; row.observations = hostObservations(events);
+      row.helperCalls = events.filter(e => e.type === 'item.completed' && e.item?.type === 'mcp_tool_call').map(e =>
+        ['bulk_read', 'code_context'].includes(e.item.tool) ? e.item.tool : 'other');
+      const journal: Invocation = { ...reservation, status: row.failure || r.exitCode !== 0 ? 'failed' : 'completed', usage: parent.usage };
+      let helper: { reservations: Reservation[]; journals: Invocation[] } = { reservations: [], journals: [] }, missing = false;
+      try { helper = JSON.parse(await readFile(helperLog, 'utf8')); } catch { missing = true; }
+      row.helperJournal = helper; row.accounting = reconcileInvocations([reservation, ...helper.reservations], [journal, ...helper.journals], missing ? ['worker', 'managed_jev'] : []);
+      const gate = [], invocations = [];
+      try { for (const f of await readdir(join(state, 'traces'))) for (const line of (await readFile(join(state, 'traces', f), 'utf8')).split('\n')) {
+        if (!line) continue; const trace = JSON.parse(line);
+        if (trace.module === 'bulk-read-gate-invocation') invocations.push({ payloadValid: trace.payloadValid === true,
+          toolKind: ['Read', 'Bash', 'exec_command'].includes(trace.toolKind) ? trace.toolKind : 'other',
+          readShape: ['simple_read', 'not_simple_read', 'not_shell'].includes(trace.readShape) ? trace.readShape : 'unknown',
+          inferenceAttempts: trace.evaluationAttempts === 0 ? 0 : null });
+        if (trace.module === 'bulk-read-gate') gate.push({
+          action: trace.action === 'redirect' ? 'redirect' : 'observe', sourceCount: trace.sourceCount, maxLines: trace.maxLines, inferenceAttempts: trace.evaluationAttempts });
+      } } catch { /* Missing gate records remain unknown, rather than zero native invocations. */ }
+      row.gate = { recordedInvocations: invocations.length, invocations, recordedEligibleReads: gate.length, records: gate, nativeInvocationCount: null,
+        scope: 'Observed invocation and eligibility records; missing records cannot become zero native invocations. No provider inference in the local gate.' };
+      row.quality = await judge(task, cwd, join(output, 'judge'));
+      row.success = row.quality.passed && !row.failure && r.exitCode === 0 && r.cleanupComplete;
+      row.status = 'completed'; await save();
+    });
+    row.configRestored = hash(await readFile(configFile, 'utf8')) === reviewed.configHash;
+  } catch (error) {
+    row.success = false;
+    row.status = 'failed'; row.failure ??= error instanceof Error && /^(changed_gate_|gate_|used_)/.test(error.message) ? error.message : 'harness_error';
+  } finally { await save(); }
+  console.log(JSON.stringify({ output, success: row.success, failure: row.failure, completeAccounting: row.accounting?.complete ?? false,
+    helperCalls: row.helperCalls, eligibleGateRecords: row.gate?.recordedEligibleReads ?? null, configRestored: row.configRestored ?? false }));
+}

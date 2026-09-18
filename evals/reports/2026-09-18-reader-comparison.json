@@ -1,0 +1,571 @@
+{
+  "manifest": {
+    "version": "reader-comparison/1",
+    "status": "exploratory_ready_not_promoted",
+    "executable": true,
+    "preparedAt": "2026-09-18T06:07:36.748Z",
+    "hashes": {
+      "evals/reader-comparison/protocol.md": "a5f22ff2d575885d69d62d6122667cffa5aa025a22dadf55cc4f79ba61f477e5",
+      "evals/reader-comparison/fixtures.ts": "332b96c6243a7ac6207fff857fb8db71f96e39c60e4ac119ac5fc88799ba4e62",
+      "evals/reader-comparison/judge.ts": "056a506f96597deb404f7a254218b0a0b3310dad6bba5ff487c7ec0dfd92ed2d",
+      "evals/reader-comparison/server.ts": "9e9a5352a50d7b6f58995be4fa69e88c156d8a44323cda8183807d19266cfbff",
+      "evals/reader-comparison/run.ts": "1fbde3603c0f4ae7899d88f4845df9eb5e2c4e1309fddc60555af55a87053397",
+      "evals/reader-comparison/accounting.ts": "99656e9ecb056916e6305c96d0b3ab5c9bd76cdce5892a8bc1ef11c6857b6292",
+      "evals/reader-comparison/prepare.ts": "372386625ec1f934aec0a3079c20826cc4a8aa07b27fea1b8bebb114236ff717",
+      "packages/core/src/reader.ts": "007edb89384521efb192129d7d7224a5f9ffc24dc373ff3a8d37843156cf9194",
+      "packages/core/src/accounting.ts": "511ff84eac5ebf484dc443756a6ea5d45a46f9c8b1d94189692ce18b577b28b0",
+      "packages/core/src/context.ts": "a2cf8d37d923885d0acfa4f48283f238b96336dc198296f6dfe05ffcd37947c0",
+      "packages/core/src/index.ts": "3d0214343bc89646d285349856b3c7ef080a9a0c690f43533999e753473fc00c",
+      "packages/core/src/worker.ts": "0a9187b5449b08cfbdb9a223d41584fc6332b955ffee83ba0f1390d0e9fb1449",
+      "packages/cli/src/reader-session.ts": "1374fbdd8c75e6c9acec09e4c42479483f8115f245ef493b6c8274ddff36c874",
+      "packages/cli/src/bulk-read.ts": "12394e0d6c2fa190b5a9cdc278c1253037573c1e68f9d76a56d50a6342b7ec36",
+      "packages/cli/src/config.ts": "ff77e257d309d6695b228f81017dac4168311027b0889fc70f1a8113a1aefa07",
+      "packages/cli/src/codex-worker.ts": "3bde147f320552d4b3d8e0f0965795a17ac504f10a0af43fc412e681b80d3e3f",
+      "packages/cli/src/worker-process.ts": "b474dfdb3c75050dab51b2d58608037e2409819ad9340f7ca25e3dc6210c9745",
+      "packages/cli/src/test-policy.ts": "66c522d9d679a20b9234fa3d35e15ba6be78d2cc6e734c2b5ca8fbeb72f841ef",
+      "packages/provider-typesafe/src/index.ts": "211c90ecdec732face3a13409354867a25fea034b16cecae3d904815e8dc20b3",
+      "package-lock.json": "ebbee3f71746ff2a4d2839fd7bba46341b319f1164fef0a7f4925ee21b413195"
+    },
+    "cells": [
+      {
+        "id": "codex/large-shipping/luna-full",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "luna-full"
+      },
+      {
+        "id": "codex/large-shipping/jev-full",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "jev-full"
+      },
+      {
+        "id": "codex/large-shipping/jev-selected",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "codex/large-shipping/native",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "native"
+      },
+      {
+        "id": "codex/large-shipping/excerpts",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "excerpts"
+      },
+      {
+        "id": "codex/cross-file-eligibility/jev-full",
+        "host": "codex",
+        "taskId": "cross-file-eligibility",
+        "arm": "jev-full"
+      },
+      {
+        "id": "codex/cross-file-eligibility/jev-selected",
+        "host": "codex",
+        "taskId": "cross-file-eligibility",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "codex/cross-file-eligibility/luna-full",
+        "host": "codex",
+        "taskId": "cross-file-eligibility",
+        "arm": "luna-full"
+      },
+      {
+        "id": "codex/cross-file-eligibility/native",
+        "host": "codex",
+        "taskId": "cross-file-eligibility",
+        "arm": "native"
+      },
+      {
+        "id": "codex/cross-file-eligibility/excerpts",
+        "host": "codex",
+        "taskId": "cross-file-eligibility",
+        "arm": "excerpts"
+      },
+      {
+        "id": "codex/conflicting-retry/native",
+        "host": "codex",
+        "taskId": "conflicting-retry",
+        "arm": "native"
+      },
+      {
+        "id": "codex/conflicting-retry/luna-full",
+        "host": "codex",
+        "taskId": "conflicting-retry",
+        "arm": "luna-full"
+      },
+      {
+        "id": "codex/conflicting-retry/excerpts",
+        "host": "codex",
+        "taskId": "conflicting-retry",
+        "arm": "excerpts"
+      },
+      {
+        "id": "codex/conflicting-retry/jev-full",
+        "host": "codex",
+        "taskId": "conflicting-retry",
+        "arm": "jev-full"
+      },
+      {
+        "id": "codex/conflicting-retry/jev-selected",
+        "host": "codex",
+        "taskId": "conflicting-retry",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "codex/absent-retention/native",
+        "host": "codex",
+        "taskId": "absent-retention",
+        "arm": "native"
+      },
+      {
+        "id": "codex/absent-retention/luna-full",
+        "host": "codex",
+        "taskId": "absent-retention",
+        "arm": "luna-full"
+      },
+      {
+        "id": "codex/absent-retention/jev-full",
+        "host": "codex",
+        "taskId": "absent-retention",
+        "arm": "jev-full"
+      },
+      {
+        "id": "codex/absent-retention/jev-selected",
+        "host": "codex",
+        "taskId": "absent-retention",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "codex/absent-retention/excerpts",
+        "host": "codex",
+        "taskId": "absent-retention",
+        "arm": "excerpts"
+      },
+      {
+        "id": "claude-code/large-shipping/luna-full",
+        "host": "claude-code",
+        "taskId": "large-shipping",
+        "arm": "luna-full"
+      },
+      {
+        "id": "claude-code/large-shipping/excerpts",
+        "host": "claude-code",
+        "taskId": "large-shipping",
+        "arm": "excerpts"
+      },
+      {
+        "id": "claude-code/large-shipping/jev-selected",
+        "host": "claude-code",
+        "taskId": "large-shipping",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "claude-code/large-shipping/native",
+        "host": "claude-code",
+        "taskId": "large-shipping",
+        "arm": "native"
+      },
+      {
+        "id": "claude-code/large-shipping/jev-full",
+        "host": "claude-code",
+        "taskId": "large-shipping",
+        "arm": "jev-full"
+      },
+      {
+        "id": "claude-code/cross-file-eligibility/jev-full",
+        "host": "claude-code",
+        "taskId": "cross-file-eligibility",
+        "arm": "jev-full"
+      },
+      {
+        "id": "claude-code/cross-file-eligibility/excerpts",
+        "host": "claude-code",
+        "taskId": "cross-file-eligibility",
+        "arm": "excerpts"
+      },
+      {
+        "id": "claude-code/cross-file-eligibility/luna-full",
+        "host": "claude-code",
+        "taskId": "cross-file-eligibility",
+        "arm": "luna-full"
+      },
+      {
+        "id": "claude-code/cross-file-eligibility/jev-selected",
+        "host": "claude-code",
+        "taskId": "cross-file-eligibility",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "claude-code/cross-file-eligibility/native",
+        "host": "claude-code",
+        "taskId": "cross-file-eligibility",
+        "arm": "native"
+      },
+      {
+        "id": "claude-code/conflicting-retry/luna-full",
+        "host": "claude-code",
+        "taskId": "conflicting-retry",
+        "arm": "luna-full"
+      },
+      {
+        "id": "claude-code/conflicting-retry/jev-selected",
+        "host": "claude-code",
+        "taskId": "conflicting-retry",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "claude-code/conflicting-retry/jev-full",
+        "host": "claude-code",
+        "taskId": "conflicting-retry",
+        "arm": "jev-full"
+      },
+      {
+        "id": "claude-code/conflicting-retry/native",
+        "host": "claude-code",
+        "taskId": "conflicting-retry",
+        "arm": "native"
+      },
+      {
+        "id": "claude-code/conflicting-retry/excerpts",
+        "host": "claude-code",
+        "taskId": "conflicting-retry",
+        "arm": "excerpts"
+      },
+      {
+        "id": "claude-code/absent-retention/jev-selected",
+        "host": "claude-code",
+        "taskId": "absent-retention",
+        "arm": "jev-selected"
+      },
+      {
+        "id": "claude-code/absent-retention/native",
+        "host": "claude-code",
+        "taskId": "absent-retention",
+        "arm": "native"
+      },
+      {
+        "id": "claude-code/absent-retention/jev-full",
+        "host": "claude-code",
+        "taskId": "absent-retention",
+        "arm": "jev-full"
+      },
+      {
+        "id": "claude-code/absent-retention/luna-full",
+        "host": "claude-code",
+        "taskId": "absent-retention",
+        "arm": "luna-full"
+      },
+      {
+        "id": "claude-code/absent-retention/excerpts",
+        "host": "claude-code",
+        "taskId": "absent-retention",
+        "arm": "excerpts"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "large-shipping",
+        "kind": "large_single",
+        "sourceBytes": 59382,
+        "sourcesHash": "83a3fcd95b2f0245d4eb340cb2444868933fe10cae396e1ba1d88cde6321ed15",
+        "requirementsHash": "1c223dad947e05cf78b3c74f75db5712dd398e269fd93ebede326dcadb0ae96d",
+        "promptHash": "14289d726a500c796a23f051495829df53fcaa88edee276e65607e80a8755970"
+      },
+      {
+        "id": "cross-file-eligibility",
+        "kind": "cross_file",
+        "sourceBytes": 40840,
+        "sourcesHash": "f8e1eba039c1d1c8bea6f064cb06df4c0dd50f65654018078b7940fdaaaf2cd6",
+        "requirementsHash": "0ed28086cfe085d3553ad12ddb6c84e0e972d32d05915f32fc8b1a0b8e351c70",
+        "promptHash": "bfe00f235d36df62382189cd699f393ba457608d84fabd26d3584d86196d2ff5"
+      },
+      {
+        "id": "conflicting-retry",
+        "kind": "conflicting",
+        "sourceBytes": 38673,
+        "sourcesHash": "f372986a6657f3239907f5daa18a359ffc444958cb362e16c74c4d0acc054811",
+        "requirementsHash": "715c767c15932b8bb1c9ca6dcd093fd6c45f627017cc30fd9a562543efd087b3",
+        "promptHash": "3a85a9ce2fbd11d75e20c16d1a39c6f85d19fb328efb6a0e0f9775ab6f3e23af"
+      },
+      {
+        "id": "absent-retention",
+        "kind": "no_answer",
+        "sourceBytes": 40044,
+        "sourcesHash": "fecd6c92289e75c27ca84fe0d19025203e181d1dbf9de5a097023ea74accf9e3",
+        "requirementsHash": "c042c090f01296394963958c47098ffc545873e90709430f70c715641a6f2bf5",
+        "promptHash": "a2d68984846b10d58e6687801969e554e4b7d9b3930d860f839feea4ac45cafa"
+      }
+    ],
+    "cachePolicy": "fresh_cli_sessions_existing_provider_caches_reported_not_claimed_cold",
+    "labelSource": "authored_synthetic_oracle_not_independent_review",
+    "promotion": "not_authorized",
+    "actualBilledUsd": null,
+    "subscriptionUsage": null,
+    "selectedCells": [
+      {
+        "id": "codex/large-shipping/jev-full",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "jev-full"
+      },
+      {
+        "id": "codex/large-shipping/native",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "native"
+      }
+    ],
+    "budget": {
+      "maxCells": 2,
+      "maxKnownInput": 300000,
+      "maxRunMs": 900000
+    },
+    "runtime": {
+      "node": "v24.21.0",
+      "workerModel": "gpt-5.6-luna",
+      "parentModels": {
+        "codex": "gpt-6-astra",
+        "claude-code": "claude-sonnet-5"
+      },
+      "effort": "low"
+    }
+  },
+  "rows": [
+    {
+      "id": "codex/large-shipping/jev-full",
+      "host": "codex",
+      "taskId": "large-shipping",
+      "arm": "jev-full",
+      "status": "completed",
+      "success": true,
+      "accounting": {
+        "complete": true,
+        "components": [
+          {
+            "component": "parent",
+            "observedCalls": 1,
+            "expectedCalls": 1,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 82403,
+            "knownOutput": 892,
+            "knownCacheRead": 59392,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 1
+          },
+          {
+            "component": "worker",
+            "observedCalls": 0,
+            "expectedCalls": 0,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 0,
+            "knownOutput": 0,
+            "knownCacheRead": 0,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 0
+          },
+          {
+            "component": "managed_jev",
+            "observedCalls": 0,
+            "expectedCalls": 0,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 0,
+            "knownOutput": 0,
+            "knownCacheRead": 0,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 0
+          },
+          {
+            "component": "routing_hook",
+            "observedCalls": 0,
+            "expectedCalls": 0,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 0,
+            "knownOutput": 0,
+            "knownCacheRead": 0,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 0
+          }
+        ],
+        "knownInput": 82403,
+        "knownOutput": 892,
+        "input": 82403,
+        "output": 892,
+        "totalTokens": 83295,
+        "apiEquivalentUsd": null,
+        "actualBilledUsd": null,
+        "subscriptionUsage": null
+      },
+      "failure": null,
+      "helperJournal": {
+        "reservations": [],
+        "journals": []
+      },
+      "parentReservation": {
+        "id": "codex/large-shipping/jev-full/parent",
+        "component": "parent"
+      },
+      "parent": {
+        "usage": {
+          "input": 82403,
+          "cacheRead": 59392,
+          "cacheWrite": null,
+          "output": 892
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 4,
+        "modelUsage": null
+      },
+      "cleanupComplete": true,
+      "durationMs": 38569,
+      "helperCalls": [],
+      "toolOutputBytes": 59688,
+      "observedAgentMessages": 2,
+      "internalModelPassCount": null,
+      "quality": {
+        "passed": true,
+        "facts": true,
+        "scope": true,
+        "grammar": true,
+        "functional": true,
+        "failure": null,
+        "labelSource": "authored_synthetic_oracle_not_independent_review"
+      }
+    },
+    {
+      "id": "codex/large-shipping/native",
+      "host": "codex",
+      "taskId": "large-shipping",
+      "arm": "native",
+      "status": "completed",
+      "success": true,
+      "accounting": {
+        "complete": true,
+        "components": [
+          {
+            "component": "parent",
+            "observedCalls": 1,
+            "expectedCalls": 1,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 95790,
+            "knownOutput": 946,
+            "knownCacheRead": 73344,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 1
+          },
+          {
+            "component": "worker",
+            "observedCalls": 0,
+            "expectedCalls": 0,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 0,
+            "knownOutput": 0,
+            "knownCacheRead": 0,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 0
+          },
+          {
+            "component": "managed_jev",
+            "observedCalls": 0,
+            "expectedCalls": 0,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 0,
+            "knownOutput": 0,
+            "knownCacheRead": 0,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 0
+          },
+          {
+            "component": "routing_hook",
+            "observedCalls": 0,
+            "expectedCalls": 0,
+            "countReconciled": true,
+            "unknownCalls": 0,
+            "knownInput": 0,
+            "knownOutput": 0,
+            "knownCacheRead": 0,
+            "knownCacheWrite": 0,
+            "unknownCacheCalls": 0
+          }
+        ],
+        "knownInput": 95790,
+        "knownOutput": 946,
+        "input": 95790,
+        "output": 946,
+        "totalTokens": 96736,
+        "apiEquivalentUsd": null,
+        "actualBilledUsd": null,
+        "subscriptionUsage": null
+      },
+      "failure": null,
+      "helperJournal": {
+        "reservations": [],
+        "journals": []
+      },
+      "parentReservation": {
+        "id": "codex/large-shipping/native/parent",
+        "component": "parent"
+      },
+      "parent": {
+        "usage": {
+          "input": 95790,
+          "cacheRead": 73344,
+          "cacheWrite": null,
+          "output": 946
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 5,
+        "modelUsage": null
+      },
+      "cleanupComplete": true,
+      "durationMs": 57285,
+      "helperCalls": [],
+      "toolOutputBytes": 59967,
+      "observedAgentMessages": 2,
+      "internalModelPassCount": null,
+      "quality": {
+        "passed": true,
+        "facts": true,
+        "scope": true,
+        "grammar": true,
+        "functional": true,
+        "failure": null,
+        "labelSource": "authored_synthetic_oracle_not_independent_review"
+      }
+    }
+  ],
+  "stopReason": null,
+  "missingCells": [],
+  "actualBilledUsd": null,
+  "subscriptionUsage": null,
+  "promotion": "not_authorized",
+  "observationStatus": "completed_reader_offered_not_invoked",
+  "interpretation": {
+    "readerInvoked": false,
+    "qualityLabels": "authored_synthetic_not_independently_reviewed",
+    "readerEfficiencyEstablished": false,
+    "calibrationEligible": false,
+    "readGateEnabled": false,
+    "observedParentModel": null,
+    "grossInputDeltaPercent": -13.975362772732014,
+    "totalTokensDeltaPercent": -13.894517036056897,
+    "inputMinusReportedCacheReadDeltaPercent": 2.5171522765748966,
+    "limits": "one observation per arm; no helper inference; uncontrolled provider caches; no monetary or attributable subscription measurement"
+  }
+}

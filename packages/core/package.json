@@ -3,6 +3,6 @@
   "version": "0.1.0-alpha.2",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts", "./context": "./src/context.ts" },
+  "exports": { ".": "./src/index.ts", "./context": "./src/context.ts", "./worker": "./src/worker.ts", "./managed-worker": "./src/managed-worker.ts" },
   "dependencies": { "zod": "4.6.5" }
 }

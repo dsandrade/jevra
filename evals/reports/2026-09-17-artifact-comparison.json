@@ -1,0 +1,2188 @@
+{
+  "schemaVersion": 1,
+  "protocolHash": "60497fcfc74e893824d788696f6a7ed7cc25ea15f9c15a1536b17bfd4d7a44b9",
+  "provenance": {
+    "startedAt": "2026-09-17T23:33:12.054Z",
+    "runtime": {
+      "node": "v24.21.0",
+      "platform": "darwin",
+      "arch": "arm64"
+    },
+    "sourceHashes": {
+      "evals/artifact-comparison/protocol.md": "60497fcfc74e893824d788696f6a7ed7cc25ea15f9c15a1536b17bfd4d7a44b9",
+      "evals/artifact-comparison/fixtures.ts": "2d00f2d4229d41a6d444215463228735ba28b16a059d620043b1b9ba59591fc9",
+      "evals/artifact-comparison/control.ts": "c4b8eb2192b7960dd60d79d50749fc1a104b0ed7fc7a9436d8da42a9fa8a3450",
+      "evals/artifact-comparison/server.ts": "bd526bdd82e052c998e3bb36a77291a7a8884ad3717df3c256c79d0f6b284ecf",
+      "evals/artifact-comparison/judge.ts": "86fa029eea48b599244944a04974f923bde70d3001b292d581e8eab2d56a298d",
+      "evals/artifact-comparison/metrics.ts": "94b2b1cb717ea736eea5cb75406568aa05a9fb12ad5b00d411772cc1db9cb5e3",
+      "evals/artifact-comparison/run.ts": "7e7b490a803e814763932dd12b8d901484c2ed00e382896e000361eb3ccc61ed",
+      "packages/cli/src/artifact-session.ts": "4fc65ca1362d36a0b691bfaec25837f06d0dce37397afa2507c2ac6b36f3c103",
+      "packages/core/src/managed-worker.ts": "4e171e4fcfb477be329d338ee0c45b808e99b63da2d091001524fef89b0fb56c",
+      "packages/cli/src/codex-worker.ts": "3bde147f320552d4b3d8e0f0965795a17ac504f10a0af43fc412e681b80d3e3f",
+      "packages/cli/src/test-artifacts.ts": "8f78554ecac185ec2bc8e239a200f72db72ef08ce5deed8f16fa3873fb2a3dc2",
+      "packages/cli/src/test-policy.ts": "66c522d9d679a20b9234fa3d35e15ba6be78d2cc6e734c2b5ca8fbeb72f841ef",
+      "packages/cli/src/worker-process.ts": "b474dfdb3c75050dab51b2d58608037e2409819ad9340f7ca25e3dc6210c9745",
+      "packages/provider-typesafe/src/index.ts": "211c90ecdec732face3a13409354867a25fea034b16cecae3d904815e8dc20b3",
+      "packages/cli/src/config.ts": "428d09e333e0b264bdd4d09b8b24ed1837e51d17024a2641404d990a27386844",
+      "packages/core/src/index.ts": "3d0214343bc89646d285349856b3c7ef080a9a0c690f43533999e753473fc00c",
+      "packages/core/src/artifact.ts": "52c0326230695a6c49027172eeeb4bb05a3af71c54726274bcb890785499620c",
+      "packages/core/src/worker.ts": "ab55360a7998a1b086de289d3283b506a5ec72a76fdaa2e3f0e88fe18ad2498d",
+      "package.json": "8b28925ab30ea7d1b64f0e1452a291fc3275e1e15250a83cf70181f7720becb6",
+      "package-lock.json": "ebbee3f71746ff2a4d2839fd7bba46341b319f1164fef0a7f4925ee21b413195"
+    },
+    "skillHash": "02a5bab8d305ff70dfa1adedf7a658f2c3fdbd3fe70a9b6197edba1d1b46d335",
+    "schedule": [
+      {
+        "host": "codex",
+        "task": "clamp",
+        "arms": [
+          "native",
+          "worker",
+          "jev"
+        ]
+      },
+      {
+        "host": "claude-code",
+        "task": "clamp",
+        "arms": [
+          "worker",
+          "jev",
+          "native"
+        ]
+      },
+      {
+        "host": "codex",
+        "task": "shipping",
+        "arms": [
+          "jev",
+          "native",
+          "worker"
+        ]
+      },
+      {
+        "host": "claude-code",
+        "task": "shipping",
+        "arms": [
+          "native",
+          "jev",
+          "worker"
+        ]
+      }
+    ]
+  },
+  "attempted": 12,
+  "expected": 12,
+  "missing": [],
+  "stopReason": null,
+  "groups": [
+    {
+      "host": "codex",
+      "arm": "native",
+      "attempted": 2,
+      "expected": 2,
+      "successful": 1,
+      "helperRequested": 0,
+      "acceptedArtifactApplied": 0,
+      "successfulWithoutAcceptedArtifact": 1,
+      "input": 260120,
+      "output": 2539,
+      "hostInput": 260120,
+      "hostCacheRead": 206336,
+      "workerCalls": 0,
+      "jevCalls": 0,
+      "durationMs": 118022,
+      "cost": {
+        "low": 0.8711260000000001,
+        "high": 1.9476969999999998
+      },
+      "costPerSuccess": {
+        "low": 0.8711260000000001,
+        "high": 1.9476969999999998
+      },
+      "incompleteAccounting": false
+    },
+    {
+      "host": "codex",
+      "arm": "worker",
+      "attempted": 2,
+      "expected": 2,
+      "successful": 2,
+      "helperRequested": 2,
+      "acceptedArtifactApplied": 2,
+      "successfulWithoutAcceptedArtifact": 0,
+      "input": 284090,
+      "output": 2885,
+      "hostInput": 278418,
+      "hostCacheRead": 244480,
+      "workerCalls": 2,
+      "jevCalls": 0,
+      "durationMs": 127389,
+      "cost": {
+        "low": 0.69173624,
+        "high": 1.50001828
+      },
+      "costPerSuccess": {
+        "low": 0.34586812,
+        "high": 0.75000914
+      },
+      "incompleteAccounting": false
+    },
+    {
+      "host": "codex",
+      "arm": "jev",
+      "attempted": 2,
+      "expected": 2,
+      "successful": 2,
+      "helperRequested": 2,
+      "acceptedArtifactApplied": 2,
+      "successfulWithoutAcceptedArtifact": 0,
+      "input": 333056,
+      "output": 4163,
+      "hostInput": 315531,
+      "hostCacheRead": 263808,
+      "workerCalls": 2,
+      "jevCalls": 6,
+      "durationMs": 130648,
+      "cost": {
+        "low": 0.8829117519999999,
+        "high": 1.974386452
+      },
+      "costPerSuccess": {
+        "low": 0.44145587599999997,
+        "high": 0.987193226
+      },
+      "incompleteAccounting": false
+    },
+    {
+      "host": "claude-code",
+      "arm": "native",
+      "attempted": 2,
+      "expected": 2,
+      "successful": 2,
+      "helperRequested": 0,
+      "acceptedArtifactApplied": 0,
+      "successfulWithoutAcceptedArtifact": 2,
+      "input": 170838,
+      "output": 1826,
+      "hostInput": 170838,
+      "hostCacheRead": 136656,
+      "workerCalls": 0,
+      "jevCalls": 0,
+      "durationMs": 26204,
+      "cost": {
+        "low": 0.1756992,
+        "high": 0.1756992
+      },
+      "costPerSuccess": {
+        "low": 0.0878496,
+        "high": 0.0878496
+      },
+      "incompleteAccounting": false
+    },
+    {
+      "host": "claude-code",
+      "arm": "worker",
+      "attempted": 2,
+      "expected": 2,
+      "successful": 2,
+      "helperRequested": 2,
+      "acceptedArtifactApplied": 1,
+      "successfulWithoutAcceptedArtifact": 1,
+      "input": 409093,
+      "output": 3948,
+      "hostInput": 403473,
+      "hostCacheRead": 362149,
+      "workerCalls": 2,
+      "jevCalls": 0,
+      "durationMs": 59005,
+      "cost": {
+        "low": 0.26471604,
+        "high": 0.26635268
+      },
+      "costPerSuccess": {
+        "low": 0.13235802,
+        "high": 0.13317634
+      },
+      "incompleteAccounting": false
+    },
+    {
+      "host": "claude-code",
+      "arm": "jev",
+      "attempted": 2,
+      "expected": 2,
+      "successful": 2,
+      "helperRequested": 2,
+      "acceptedArtifactApplied": 1,
+      "successfulWithoutAcceptedArtifact": 1,
+      "input": 401947,
+      "output": 6132,
+      "hostInput": 382587,
+      "hostCacheRead": 353288,
+      "workerCalls": 2,
+      "jevCalls": 6,
+      "durationMs": 91999,
+      "cost": {
+        "low": 0.219168672,
+        "high": 0.221370072
+      },
+      "costPerSuccess": {
+        "low": 0.109584336,
+        "high": 0.110685036
+      },
+      "incompleteAccounting": false
+    }
+  ],
+  "paired": [
+    {
+      "id": "codex-clamp-worker",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": -17.17264449922028,
+      "outputChangePct": -6.587615283267456,
+      "latencyChangePct": -9.826155954699555,
+      "upperCostChangePct": -10.808859037689322,
+      "robustScenarioSaving": false
+    },
+    {
+      "id": "codex-clamp-jev",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": 9.91372805473112,
+      "outputChangePct": 36.89064558629775,
+      "latencyChangePct": -12.166197792685562,
+      "upperCostChangePct": 18.738918284510575,
+      "robustScenarioSaving": false
+    },
+    {
+      "id": "claude-code-clamp-worker",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": 153.41975337529541,
+      "outputChangePct": 124.7020585048754,
+      "latencyChangePct": 108.82997807454653,
+      "upperCostChangePct": 45.791712924958496,
+      "robustScenarioSaving": false
+    },
+    {
+      "id": "claude-code-clamp-jev",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": 109.91646582586516,
+      "outputChangePct": 282.1235102925244,
+      "latencyChangePct": 214.4973755896618,
+      "upperCostChangePct": -1.993112788262985,
+      "robustScenarioSaving": true
+    },
+    {
+      "id": "codex-shipping-jev",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": 56.55468502690726,
+      "outputChangePct": 104.21155729676785,
+      "latencyChangePct": 43.236085162297,
+      "upperCostChangePct": -14.239329454050564,
+      "robustScenarioSaving": false
+    },
+    {
+      "id": "codex-shipping-worker",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": 50.728078505856274,
+      "outputChangePct": 43.682664054848196,
+      "latencyChangePct": 33.214938304555815,
+      "upperCostChangePct": -33.92808086637531,
+      "robustScenarioSaving": false
+    },
+    {
+      "id": "claude-code-shipping-jev",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": 160.6754603814254,
+      "outputChangePct": 188.4828349944629,
+      "latencyChangePct": 300.46624226665466,
+      "upperCostChangePct": 73.55453506308342,
+      "robustScenarioSaving": false
+    },
+    {
+      "id": "claude-code-shipping-worker",
+      "baselinePresent": true,
+      "qualityLoss": false,
+      "inputChangePct": 125.48732486762569,
+      "outputChangePct": 107.53045404208197,
+      "latencyChangePct": 147.23392809109654,
+      "upperCostChangePct": 61.4593383767307,
+      "robustScenarioSaving": false
+    }
+  ],
+  "gates": [
+    {
+      "host": "codex",
+      "arm": "worker",
+      "noQualityLoss": true,
+      "fullAccounting": true,
+      "costScreen": true,
+      "latencyScreen": true,
+      "qualifiesForLargerTest": true,
+      "inputChangePct": 9.214977702598803,
+      "latencyChangePct": 7.936655877717724,
+      "upperCostChangePct": -22.98502898551469,
+      "robustScenarioSaving": false
+    },
+    {
+      "host": "codex",
+      "arm": "jev",
+      "noQualityLoss": true,
+      "fullAccounting": true,
+      "costScreen": false,
+      "latencyScreen": true,
+      "qualifiesForLargerTest": false,
+      "inputChangePct": 28.039366446255578,
+      "latencyChangePct": 10.698005456609794,
+      "upperCostChangePct": 1.3703082152922264,
+      "robustScenarioSaving": false
+    },
+    {
+      "host": "claude-code",
+      "arm": "worker",
+      "noQualityLoss": true,
+      "fullAccounting": true,
+      "costScreen": false,
+      "latencyScreen": false,
+      "qualifiesForLargerTest": false,
+      "inputChangePct": 139.4625317552301,
+      "latencyChangePct": 125.17554571821097,
+      "upperCostChangePct": 51.59584107383528,
+      "robustScenarioSaving": false
+    },
+    {
+      "host": "claude-code",
+      "arm": "jev",
+      "noQualityLoss": true,
+      "fullAccounting": true,
+      "costScreen": false,
+      "latencyScreen": false,
+      "qualifiesForLargerTest": false,
+      "inputChangePct": 135.27962162984815,
+      "latencyChangePct": 251.08762021065485,
+      "upperCostChangePct": 25.99378483225876,
+      "robustScenarioSaving": false
+    }
+  ],
+  "cells": [
+    {
+      "id": "codex-clamp-native",
+      "host": "codex",
+      "task": "clamp",
+      "arm": "native",
+      "status": "completed",
+      "success": false,
+      "failure": null,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "configuredModel": "gpt-6-astra",
+      "durationMs": 69315,
+      "judgeDurationMs": 32,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": false,
+      "outputHash": "9e331f7aee000e9ad351276a2f7319535da26494ae62329001eec3e971496051",
+      "stagedCandidateMatched": false,
+      "coverage": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "qualityPassed": false,
+      "coverageEstablished": false,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "failed",
+          "reason": "unsupported_syntax",
+          "tests": 0,
+          "failures": 0
+        }
+      ],
+      "toolCalls": [],
+      "hostMetrics": {
+        "usage": {
+          "input": 159032,
+          "cacheRead": 137728,
+          "cacheWrite": null,
+          "output": 1518
+        },
+        "cost": {
+          "low": 0.426668,
+          "high": 0.921906
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 8,
+        "modelUsage": null
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "calls": 0
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0,
+          "high": 0
+        },
+        "cost": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      "total": {
+        "input": 159032,
+        "output": 1518,
+        "cost": {
+          "low": 0.426668,
+          "high": 0.921906
+        }
+      },
+      "managedOutcomes": [],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "codex-clamp-worker",
+      "host": "codex",
+      "task": "clamp",
+      "arm": "worker",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "configuredModel": "gpt-6-astra",
+      "durationMs": 62504,
+      "judgeDurationMs": 400,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": true,
+      "outputHash": "d464e5736b91edade879454ec57f7cf19fd722c9db4323648a42c53cd3cf391e",
+      "stagedCandidateMatched": true,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 128882,
+          "cacheRead": 107776,
+          "cacheWrite": null,
+          "output": 1037
+        },
+        "cost": {
+          "low": 0.370686,
+          "high": 0.820977
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 10,
+        "modelUsage": null
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2840,
+          "output": 381,
+          "cacheRead": 1792,
+          "calls": 1
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.00070264,
+          "high": 0.00128148
+        },
+        "cost": {
+          "low": 0.00070264,
+          "high": 0.00128148
+        }
+      },
+      "total": {
+        "input": 131722,
+        "output": 1418,
+        "cost": {
+          "low": 0.37138864,
+          "high": 0.8222584799999999
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "accepted",
+          "reason": "accepted",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": null,
+          "decisions": []
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "codex-clamp-jev",
+      "host": "codex",
+      "task": "clamp",
+      "arm": "jev",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "configuredModel": "gpt-6-astra",
+      "durationMs": 60882,
+      "judgeDurationMs": 397,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": true,
+      "outputHash": "7b7db2bdc7778d5708af592e633a03dd0ad7d2e85ee9e9fc9c59a22697e84713",
+      "stagedCandidateMatched": true,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 166021,
+          "cacheRead": 136192,
+          "cacheWrite": null,
+          "output": 989
+        },
+        "cost": {
+          "low": 0.483932,
+          "high": 1.092284
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 10,
+        "modelUsage": null
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2841,
+          "output": 393,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 5936,
+          "output": 696,
+          "calls": 3
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.001289112,
+          "high": 0.002377212
+        },
+        "cost": {
+          "low": 0.001289112,
+          "high": 0.002377212
+        }
+      },
+      "total": {
+        "input": 174798,
+        "output": 2078,
+        "cost": {
+          "low": 0.48522111199999995,
+          "high": 1.094661212
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "accepted",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": "passed",
+          "decisions": [
+            {
+              "stage": "route_evidence",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 0,
+              "continuation": null
+            },
+            {
+              "stage": "evidence_support",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 9,
+              "continuation": null
+            },
+            {
+              "stage": "validated_candidate_review",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 9,
+              "continuation": {
+                "choice": "accept",
+                "confidence": 0.96
+              }
+            }
+          ]
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "claude-code-clamp-worker",
+      "host": "claude-code",
+      "task": "clamp",
+      "arm": "worker",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "durationMs": 31431,
+      "judgeDurationMs": 391,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": true,
+      "outputHash": "19fae76c9f61cb2db32b2d3b7d68cb5fd5f9c108d04beb95fdf67fcc928c1486",
+      "stagedCandidateMatched": true,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 213791,
+          "cacheRead": 186520,
+          "cacheWrite": 26174,
+          "output": 1695
+        },
+        "cost": {
+          "low": 0.15999499999999997,
+          "high": 0.15999499999999997
+        },
+        "failure": null,
+        "terminal": "success",
+        "observedModel": "claude-sonnet-5",
+        "toolCalls": 8,
+        "modelUsage": {
+          "claude-haiku-4-5-20251001": {
+            "input": 1079,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "estimateUsd": 0.001149
+          },
+          "claude-sonnet-5": {
+            "input": 18,
+            "cacheRead": 186520,
+            "cacheWrite": 26174,
+            "output": 1681,
+            "estimateUsd": 0.15884600000000001
+          }
+        }
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2817,
+          "output": 379,
+          "cacheRead": 1792,
+          "calls": 1
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.00069564,
+          "high": 0.0012663800000000001
+        },
+        "cost": {
+          "low": 0.00069564,
+          "high": 0.0012663800000000001
+        }
+      },
+      "total": {
+        "input": 216608,
+        "output": 2074,
+        "cost": {
+          "low": 0.16069063999999997,
+          "high": 0.16126137999999998
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "accepted",
+          "reason": "accepted",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": null,
+          "decisions": []
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "claude-code-clamp-jev",
+      "host": "claude-code",
+      "task": "clamp",
+      "arm": "jev",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "durationMs": 47335,
+      "judgeDurationMs": 404,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": false,
+      "outputHash": "09d786540fe1f2da757e34f9b95a04b6020e605cbcd19afe8762dce73b7b780b",
+      "stagedCandidateMatched": true,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 168501,
+          "cacheRead": 153754,
+          "cacheWrite": 13654,
+          "output": 1946
+        },
+        "cost": {
+          "low": 0.10586380000000001,
+          "high": 0.10586380000000001
+        },
+        "failure": null,
+        "terminal": "success",
+        "observedModel": "claude-sonnet-5",
+        "toolCalls": 7,
+        "modelUsage": {
+          "claude-haiku-4-5-20251001": {
+            "input": 1079,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "estimateUsd": 0.001149
+          },
+          "claude-sonnet-5": {
+            "input": 14,
+            "cacheRead": 153754,
+            "cacheWrite": 13654,
+            "output": 1932,
+            "estimateUsd": 0.1047148
+          }
+        }
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2942,
+          "output": 409,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 7981,
+          "output": 1172,
+          "calls": 3
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.001414402,
+          "high": 0.002542402
+        },
+        "cost": {
+          "low": 0.001414402,
+          "high": 0.002542402
+        }
+      },
+      "total": {
+        "input": 179424,
+        "output": 3527,
+        "cost": {
+          "low": 0.107278202,
+          "high": 0.10840620200000001
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "unresolved",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": "passed",
+          "decisions": [
+            {
+              "stage": "route_evidence",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 0,
+              "continuation": null
+            },
+            {
+              "stage": "evidence_support",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 16,
+              "continuation": null
+            },
+            {
+              "stage": "validated_candidate_review",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 16,
+              "continuation": {
+                "choice": "repair",
+                "confidence": 0.39
+              }
+            }
+          ]
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "claude-code-clamp-native",
+      "host": "claude-code",
+      "task": "clamp",
+      "arm": "native",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "durationMs": 15051,
+      "judgeDurationMs": 406,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": false,
+      "outputHash": "ad7e2785aff21b26389ad3d6c4ab8d847719aa6e48e1f6dc5bb8d070c005182c",
+      "stagedCandidateMatched": false,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 3
+        }
+      ],
+      "toolCalls": [],
+      "hostMetrics": {
+        "usage": {
+          "input": 85474,
+          "cacheRead": 62419,
+          "cacheWrite": 21968,
+          "output": 923
+        },
+        "cost": {
+          "low": 0.1106108,
+          "high": 0.1106108
+        },
+        "failure": null,
+        "terminal": "success",
+        "observedModel": "claude-sonnet-5",
+        "toolCalls": 3,
+        "modelUsage": {
+          "claude-haiku-4-5-20251001": {
+            "input": 1079,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "estimateUsd": 0.001149
+          },
+          "claude-sonnet-5": {
+            "input": 8,
+            "cacheRead": 62419,
+            "cacheWrite": 21968,
+            "output": 909,
+            "estimateUsd": 0.1094618
+          }
+        }
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "calls": 0
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0,
+          "high": 0
+        },
+        "cost": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      "total": {
+        "input": 85474,
+        "output": 923,
+        "cost": {
+          "low": 0.1106108,
+          "high": 0.1106108
+        }
+      },
+      "managedOutcomes": [],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "codex-shipping-jev",
+      "host": "codex",
+      "task": "shipping",
+      "arm": "jev",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "configuredModel": "gpt-6-astra",
+      "durationMs": 69766,
+      "judgeDurationMs": 393,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": true,
+      "outputHash": "b22349dc0199ca1a99f637a9e4594cd550bd7e059ae9c526c4fb34609ac90fa9",
+      "stagedCandidateMatched": true,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 149510,
+          "cacheRead": 127616,
+          "cacheWrite": null,
+          "output": 997
+        },
+        "cost": {
+          "low": 0.396406,
+          "high": 0.877357
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 10,
+        "modelUsage": null
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2828,
+          "output": 392,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 5920,
+          "output": 696,
+          "calls": 3
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.00128464,
+          "high": 0.0023682399999999998
+        },
+        "cost": {
+          "low": 0.00128464,
+          "high": 0.0023682399999999998
+        }
+      },
+      "total": {
+        "input": 158258,
+        "output": 2085,
+        "cost": {
+          "low": 0.39769064,
+          "high": 0.8797252400000001
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "accepted",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": "passed",
+          "decisions": [
+            {
+              "stage": "route_evidence",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 0,
+              "continuation": null
+            },
+            {
+              "stage": "evidence_support",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 9,
+              "continuation": null
+            },
+            {
+              "stage": "validated_candidate_review",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 9,
+              "continuation": {
+                "choice": "accept",
+                "confidence": 0.95
+              }
+            }
+          ]
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "codex-shipping-native",
+      "host": "codex",
+      "task": "shipping",
+      "arm": "native",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "configuredModel": "gpt-6-astra",
+      "durationMs": 48707,
+      "judgeDurationMs": 396,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": false,
+      "outputHash": "36ca13c9be102ff1af3eaf58c35b1b799e78a031de9aaafe9a2a1eb5f3de3796",
+      "stagedCandidateMatched": false,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        }
+      ],
+      "toolCalls": [],
+      "hostMetrics": {
+        "usage": {
+          "input": 101088,
+          "cacheRead": 68608,
+          "cacheWrite": null,
+          "output": 1021
+        },
+        "cost": {
+          "low": 0.444458,
+          "high": 1.025791
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 7,
+        "modelUsage": null
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "calls": 0
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0,
+          "high": 0
+        },
+        "cost": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      "total": {
+        "input": 101088,
+        "output": 1021,
+        "cost": {
+          "low": 0.444458,
+          "high": 1.025791
+        }
+      },
+      "managedOutcomes": [],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "codex-shipping-worker",
+      "host": "codex",
+      "task": "shipping",
+      "arm": "worker",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "configuredModel": "gpt-6-astra",
+      "durationMs": 64885,
+      "judgeDurationMs": 406,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": true,
+      "outputHash": "87116f04a37dda4dd40ba99f043a16baab752cb62b0ec20a24c5e106741d9623",
+      "stagedCandidateMatched": true,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 149536,
+          "cacheRead": 136704,
+          "cacheWrite": null,
+          "output": 1086
+        },
+        "cost": {
+          "low": 0.319324,
+          "high": 0.675658
+        },
+        "failure": null,
+        "terminal": "turn.completed",
+        "observedModel": null,
+        "toolCalls": 8,
+        "modelUsage": null
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2832,
+          "output": 381,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.0010236,
+          "high": 0.0021018
+        },
+        "cost": {
+          "low": 0.0010236,
+          "high": 0.0021018
+        }
+      },
+      "total": {
+        "input": 152368,
+        "output": 1467,
+        "cost": {
+          "low": 0.3203476,
+          "high": 0.6777598
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "accepted",
+          "reason": "accepted",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": null,
+          "decisions": []
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "claude-code-shipping-native",
+      "host": "claude-code",
+      "task": "shipping",
+      "arm": "native",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "durationMs": 11153,
+      "judgeDurationMs": 403,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": false,
+      "outputHash": "33677d9f465121ea8e566cb0ef87b0b8ca6552c0c4bdd82f94a86658a65a8c3e",
+      "stagedCandidateMatched": false,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        }
+      ],
+      "toolCalls": [],
+      "hostMetrics": {
+        "usage": {
+          "input": 85364,
+          "cacheRead": 74237,
+          "cacheWrite": 10047,
+          "output": 903
+        },
+        "cost": {
+          "low": 0.0650884,
+          "high": 0.0650884
+        },
+        "failure": null,
+        "terminal": "success",
+        "observedModel": "claude-sonnet-5",
+        "toolCalls": 3,
+        "modelUsage": {
+          "claude-haiku-4-5-20251001": {
+            "input": 1072,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "estimateUsd": 0.001137
+          },
+          "claude-sonnet-5": {
+            "input": 8,
+            "cacheRead": 74237,
+            "cacheWrite": 10047,
+            "output": 890,
+            "estimateUsd": 0.0639514
+          }
+        }
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "calls": 0
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0,
+          "high": 0
+        },
+        "cost": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      "total": {
+        "input": 85364,
+        "output": 903,
+        "cost": {
+          "low": 0.0650884,
+          "high": 0.0650884
+        }
+      },
+      "managedOutcomes": [],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "claude-code-shipping-jev",
+      "host": "claude-code",
+      "task": "shipping",
+      "arm": "jev",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "durationMs": 44664,
+      "judgeDurationMs": 398,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": true,
+      "outputHash": "c0145a73edba8cfbb09002f1512ce64c9ce9b798e2a04b8993a21bea33d32ed5",
+      "stagedCandidateMatched": true,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 214086,
+          "cacheRead": 199534,
+          "cacheWrite": 13462,
+          "output": 1586
+        },
+        "cost": {
+          "low": 0.1106278,
+          "high": 0.1106278
+        },
+        "failure": null,
+        "terminal": "success",
+        "observedModel": "claude-sonnet-5",
+        "toolCalls": 8,
+        "modelUsage": {
+          "claude-haiku-4-5-20251001": {
+            "input": 1072,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "output": 19,
+            "estimateUsd": 0.001167
+          },
+          "claude-sonnet-5": {
+            "input": 18,
+            "cacheRead": 199534,
+            "cacheWrite": 13462,
+            "output": 1567,
+            "estimateUsd": 0.1094608
+          }
+        }
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2802,
+          "output": 388,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 5635,
+          "output": 631,
+          "calls": 3
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.00126267,
+          "high": 0.00233607
+        },
+        "cost": {
+          "low": 0.00126267,
+          "high": 0.00233607
+        }
+      },
+      "total": {
+        "input": 222523,
+        "output": 2605,
+        "cost": {
+          "low": 0.11189046999999999,
+          "high": 0.11296387
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "accepted",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": "passed",
+          "decisions": [
+            {
+              "stage": "route_evidence",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 0,
+              "continuation": null
+            },
+            {
+              "stage": "evidence_support",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 8,
+              "continuation": null
+            },
+            {
+              "stage": "validated_candidate_review",
+              "status": "validated",
+              "reason": null,
+              "requirementCount": 8,
+              "continuation": {
+                "choice": "accept",
+                "confidence": 0.97
+              }
+            }
+          ]
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    },
+    {
+      "id": "claude-code-shipping-worker",
+      "host": "claude-code",
+      "task": "shipping",
+      "arm": "worker",
+      "status": "completed",
+      "success": true,
+      "failure": null,
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "durationMs": 27574,
+      "judgeDurationMs": 395,
+      "sourceUnchanged": true,
+      "acceptedArtifactApplied": false,
+      "outputHash": "224c52c24bf8c88f947ca0e63804f525fbded468c15cf7e4366ac60311f8f783",
+      "stagedCandidateMatched": false,
+      "coverage": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "qualityPassed": true,
+      "coverageEstablished": true,
+      "checks": [
+        {
+          "kind": "syntax_policy",
+          "outcome": "passed",
+          "reason": "valid",
+          "tests": 0,
+          "failures": 0
+        },
+        {
+          "kind": "baseline",
+          "outcome": "passed",
+          "reason": "assertions_passed",
+          "tests": 8,
+          "failures": 0
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        },
+        {
+          "kind": "mutation",
+          "outcome": "passed",
+          "reason": "mutant_detected",
+          "tests": 8,
+          "failures": 2
+        }
+      ],
+      "toolCalls": [
+        {
+          "name": "test_profiles",
+          "status": "completed"
+        },
+        {
+          "name": "generate_tests",
+          "status": "completed"
+        },
+        {
+          "name": "read_test_artifact",
+          "status": "completed"
+        }
+      ],
+      "hostMetrics": {
+        "usage": {
+          "input": 189682,
+          "cacheRead": 175629,
+          "cacheWrite": 12965,
+          "output": 1499
+        },
+        "cost": {
+          "low": 0.1030148,
+          "high": 0.1030148
+        },
+        "failure": null,
+        "terminal": "success",
+        "observedModel": "claude-sonnet-5",
+        "toolCalls": 7,
+        "modelUsage": {
+          "claude-haiku-4-5-20251001": {
+            "input": 1072,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "estimateUsd": 0.001137
+          },
+          "claude-sonnet-5": {
+            "input": 16,
+            "cacheRead": 175629,
+            "cacheWrite": 12965,
+            "output": 1486,
+            "estimateUsd": 0.1018778
+          }
+        }
+      },
+      "managedMetrics": {
+        "worker": {
+          "input": 2803,
+          "output": 375,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0,
+        "knownCost": {
+          "low": 0.0010106,
+          "high": 0.0020765
+        },
+        "cost": {
+          "low": 0.0010106,
+          "high": 0.0020765
+        }
+      },
+      "total": {
+        "input": 192485,
+        "output": 1874,
+        "cost": {
+          "low": 0.1040254,
+          "high": 0.1050913
+        }
+      },
+      "managedOutcomes": [
+        {
+          "status": "accepted",
+          "reason": "accepted",
+          "deliveryFailure": null,
+          "generations": 1,
+          "validation": null,
+          "decisions": []
+        }
+      ],
+      "actualBilledUsd": null,
+      "subscriptionAllowance": null
+    }
+  ]
+}

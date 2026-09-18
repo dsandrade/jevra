@@ -13,4 +13,4 @@ Prefer the Jevra `code_context` MCP tool with `spec` and `references` when avail
 node "${PLUGIN_ROOT}/dist/jevra.mjs" code-context --host codex --spec "Write tests matching the existing validation patterns" --reference tests/existing.test.js
 ```
 
-Repeat `--reference` for more source files. The helper returns original reference excerpts, not generated code. Use the main model to write the requested code, verify exact source context as needed, and run relevant checks. There is no auxiliary generative model and no `--target` write performed by Jevra.
+Repeat `--reference` for more source files. The helper returns original reference excerpts, not generated code. Use the main model to write the requested code, verify exact source context as needed, and run relevant checks. This evidence tool has no auxiliary generator or `--target` write. The separately configured experimental test-artifact tools can delegate eligible pure-function tests when available.

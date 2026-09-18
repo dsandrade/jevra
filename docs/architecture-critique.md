@@ -1,5 +1,9 @@
 # Architecture critique: quality and cost first
 
+> Subsequent decision: [CLI-first worker v1](v1-delivery-plan.md) adopts a bounded worker-first delivery. This review remains the historical rationale; the linked plan and current SPEC/ISSUES govern implementation order.
+
+> The [2026-09-18 comparison](shunt-architecture-review-2026-09-18.md) reviews the implemented compact path and subsequent diagnostics. Its recommendations were subsequently adopted in [the correction contracts](focused-reader.md); statements about missing generation in this older review describe its earlier source snapshot.
+
 Date: 2026-09-17. Status: recommendation for discussion; no runtime changes or new benchmark results. Reviewed public design at `482a26a` and executable implementation at `438bd85`. This review recommends a smaller delivery sequence; it does not declare the recommendations adopted or implemented.
 
 ## Verdict

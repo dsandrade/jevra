@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "3c24ca30ff63e1f5bbad1c43fe5324daff579123",
+  "sourceHashes": {
+    "scripts/bulk-read": "f1e552e8325139d797ac6b69d6216cc62f9381abb3198b8ee9b6f4a0ff2b6b08",
+    "scripts/code-write": "6bcf94c97a6cd315e2d82f9ffbd672f59b958d0c7b86e4411e7ff97baad25c86",
+    "scripts/lib/aika.sh": "dafba8ec7c361d0cd33df6c1e51c632afcbdd72068b669daee727f361f3a2d5d",
+    "evals/run.sh": "232b7222e40c4aad79ea10a1151f56fd9952919cfed8859e4c820dadf86a899f",
+    "evals/benchmarks.json": "985a7664829e97b79013ead022234114baf979c3647ae3add631d9a7f92302f7"
+  },
+  "kind": "offline_failed_transport_audit",
+  "liveModelRequests": 0,
+  "helperReaderExitCode": 1,
+  "helperWriterExitCode": 1,
+  "targetCreated": false,
+  "failedStubInvocations": 6,
+  "benchmarkExitCode": 0,
+  "rows": [
+    {
+      "name": "single-large-file",
+      "withoutEstimate": 12006,
+      "withEstimate": 0,
+      "apparentSavingsPct": 100
+    },
+    {
+      "name": "multi-file-cross-read",
+      "withoutEstimate": 12686,
+      "withEstimate": 0,
+      "apparentSavingsPct": 100
+    },
+    {
+      "name": "source-plus-test",
+      "withoutEstimate": 680,
+      "withEstimate": 0,
+      "apparentSavingsPct": 100
+    },
+    {
+      "name": "code-generation",
+      "withoutEstimate": 680,
+      "withEstimate": 0,
+      "apparentSavingsPct": 100
+    }
+  ],
+  "conclusion": "Helpers reject a failed transport, but the benchmark reports zero response tokens and 100% apparent savings. This does not reproduce or invalidate historical successful model outputs."
+}

@@ -1,0 +1,54 @@
+import { spawn } from 'node:child_process';
+import { summarizeHookList, summarizeNativeContext } from './observations.ts';
+
+/** Read-only native preflight. Deliberately exposes no turn/start or trust-write method. */
+async function inspectNative<T>(executable: string, settings: string[], cwd: string, env: NodeJS.ProcessEnv,
+  method: 'hooks/list' | 'config/read', params: unknown, summarize: (value: unknown) => T) {
+  return new Promise<T>( (resolve, reject) => {
+    const child = spawn(executable, ['app-server', ...settings.flatMap(s => ['-c', s])], { cwd, env, shell: false, detached: true, stdio: ['pipe', 'pipe', 'pipe'] });
+    let buffer = '', bytes = 0, stderrBytes = 0, result: T | undefined;
+    let failure: Error | undefined, ended = false, killTimer: ReturnType<typeof setTimeout> | undefined;
+    const kill = (signal: NodeJS.Signals) => { if (child.pid) try { process.kill(-child.pid, signal); } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== 'ESRCH') failure ??= new Error('hook_preflight_cleanup_failed');
+    } };
+    const finish = () => {
+      if (ended) return; ended = true; clearTimeout(timer); clearTimeout(killTimer);
+      child.stdin.destroy(); child.stdout.destroy(); child.stderr.destroy();
+      if (failure || !result) reject(failure ?? new Error('hook_preflight_incomplete')); else resolve(result);
+    };
+    const stop = (reason?: string) => { if (reason) failure ??= new Error(reason); child.stdin.destroy(); kill('SIGTERM');
+      killTimer ??= setTimeout(() => { kill('SIGKILL'); failure ??= new Error('hook_preflight_cleanup_failed'); finish(); }, 1500); };
+    const timer = setTimeout(() => stop('hook_preflight_timeout'), 10000);
+    const send = (message: unknown) => child.stdin.write(JSON.stringify(message) + '\n');
+    child.stdin.on('error', () => { /* Process events determine sanitized failure. */ });
+    child.stderr.on('data', (data: Buffer) => { stderrBytes += data.length; if (stderrBytes > 65536) stop('hook_preflight_output_limit'); });
+    child.stdout.on('data', (data: Buffer) => {
+      bytes += data.length; if (bytes > 524288) { stop('hook_preflight_output_limit'); return; }
+      buffer += data.toString('utf8');
+      while (buffer.includes('\n')) {
+        const line = buffer.slice(0, buffer.indexOf('\n')); buffer = buffer.slice(buffer.indexOf('\n') + 1);
+        try {
+          const message = JSON.parse(line);
+          if (message.id === 1) {
+            if (message.error || !message.result) { stop('hook_preflight_initialization_failed'); return; }
+            send({ method: 'initialized' }); send({ id: 2, method, params });
+          } else if (message.id === 2) {
+            if (message.error) { stop('hook_preflight_list_failed'); return; }
+            result = summarize(message.result); stop(); return;
+          }
+        } catch { stop('hook_preflight_invalid_response'); return; }
+      }
+    });
+    child.once('error', () => { failure ??= new Error('hook_preflight_unavailable'); finish(); });
+    child.once('close', () => {
+      if (child.pid) { try { process.kill(-child.pid, 0); stop('hook_preflight_cleanup_failed'); return; } catch {} }
+      finish();
+    });
+    send({ id: 1, method: 'initialize', params: { clientInfo: { name: 'jevra-gate-preflight', title: null, version: '1' }, capabilities: { experimentalApi: true } } });
+  });
+}
+
+export const inspectHooks = (executable: string, settings: string[], cwd: string, command: string, env: NodeJS.ProcessEnv) =>
+  inspectNative(executable, settings, cwd, env, 'hooks/list', { cwds: [cwd] }, value => summarizeHookList(value, command, cwd));
+export const inspectContext = (executable: string, settings: string[], cwd: string, env: NodeJS.ProcessEnv) =>
+  inspectNative(executable, settings, cwd, env, 'config/read', { cwd, includeLayers: false }, summarizeNativeContext);

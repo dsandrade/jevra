@@ -8,6 +8,7 @@ import { readBoundedFile, statePath } from './config.ts';
 import type { Config } from './config.ts';
 import { runContext } from './context.ts';
 import { appendTrace } from './trace.ts';
+import { FocusedReaderSession } from './reader-session.ts';
 
 export const quoteArgument = (value: string) => `'${value.replaceAll("'", "'\\''")}'`;
 
@@ -48,6 +49,18 @@ const toolEventSchema = z.object({ hook_event_name: z.literal('PreToolUse'), ses
 export async function gateBulkRead(payload: unknown, host: Host, config: Config, cliPath: string, configFile: string) {
   if (!config.bulkRead || config.mode === 'disabled') return {};
   const event = toolEventSchema.safeParse(payload);
+  if (config.traces) {
+    const data = event.success ? event.data : null;
+    const toolKind = data?.tool_name === 'Read' ? 'Read' : data?.tool_name === 'Bash' ? 'Bash'
+      : data?.tool_name === 'exec_command' ? 'exec_command' : 'other';
+    const command = data?.tool_input.command ?? data?.tool_input.cmd;
+    const readShape = typeof command === 'string' ? simpleReadPaths(command).length ? 'simple_read' : 'not_simple_read' : 'not_shell';
+    try { await withDeadline(() => appendTrace(statePath(config), {
+      schemaVersion: 1, timestamp: new Date().toISOString(), module: 'bulk-read-gate-invocation', host,
+      sessionHash: hash(data?.session_id ?? 'invalid'), eventHash: hash([data?.session_id ?? 'invalid', data?.tool_use_id ?? randomUUID()]),
+      payloadValid: event.success, toolKind, readShape, evaluationAttempts: 0,
+    }, config.retentionDays), 250); } catch { process.stderr.write('jevra: trace_unavailable\n'); }
+  }
   if (!event.success) return {};
   const data = event.data;
   let paths: string[] = [];
@@ -83,12 +96,13 @@ export async function gateBulkRead(payload: unknown, host: Host, config: Config,
     const invocation = [process.execPath, cliPath, 'bulk-read', '--host', host, '--config', configFile,
       '--session-id', data.session_id, ...large.flatMap(p => ['--paths', p.path])].map(quoteArgument).join(' ');
     const instruction = config.bulkRead.transport === 'mcp'
-      ? `For this broad read, call the Jevra bulk_read MCP tool with ${JSON.stringify({ paths: large.map(p => p.path), sessionId: data.session_id })} and a focused question. `
+      ? `For this broad read, call the Jevra bulk_read MCP tool with ${JSON.stringify({ paths: large.map(p => p.path) })} and a focused question. `
       : `For this broad read, use the bulk-reader skill or run ${invocation} --question '<the focused question you need answered>'. `;
     return { hookSpecificOutput: { hookEventName: 'PreToolUse', permissionDecision: 'deny',
       permissionDecisionReason: `Jevra bulk reader: ${large.length} file(s) exceed ${config.bulkRead.minLines} lines. `
         + instruction
-        + 'The helper returns exact excerpts with line numbers for you to interpret. '
+        + (config.bulkRead.reader?.enabled ? 'The helper returns a focused answer with verified citations and explicit reading limits. '
+          : 'The helper returns exact excerpts with line numbers for you to interpret. ')
         + 'After retrieval, use native targeted reads with offset/limit or a bounded range for exact edits, debugging, or missing evidence. If the helper is unavailable, fall back to native targeted reads.' } };
   } catch { return {}; }
 }
@@ -96,6 +110,7 @@ export async function gateBulkRead(payload: unknown, host: Host, config: Config,
 export async function bulkRead(options: {
   query: string; paths: string[]; cwd: string; host: Host; sessionId?: string;
   config: Config; provider: Provider; signal?: AbortSignal;
+  readerSession?: FocusedReaderSession; forceExcerpts?: boolean;
 }) {
   const settings = options.config.bulkRead;
   if (!settings || options.config.mode === 'disabled') throw new DecisionError('config_invalid');
@@ -103,7 +118,12 @@ export async function bulkRead(options: {
     throw new DecisionError('input_invalid');
   }
   const sources = await Promise.all(options.paths.map(p => approvedSource(p, options.cwd, settings.roots)));
-  const { roots: _roots, minLines: _minLines, transport: _transport, ...context } = settings;
+  const { roots: _roots, minLines: _minLines, transport: _transport, reader: _reader, ...context } = settings;
+  if (!options.forceExcerpts && settings.reader?.enabled && options.config.mode === 'advise'
+    && process.env.JEVRA_WORKER_ACTIVE !== '1') {
+    const reader = options.readerSession ?? new FocusedReaderSession(options.config, options.provider);
+    return reader.read(options.query, { ...context, sources }, options.cwd, options.sessionId ?? 'standalone', options.signal);
+  }
   return runContext({ host: options.host, sessionId: options.sessionId ?? 'standalone', eventId: randomUUID(),
     turnId: null, prompt: options.query, cwd: options.cwd },
   { ...options.config, mode: 'advise', context: { ...context, sources } }, options.provider, options.signal);

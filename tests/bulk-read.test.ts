@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, realpath, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, realpath, writeFile, rm, readFile, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { configSchema } from '../packages/cli/src/config.ts';
@@ -27,6 +27,7 @@ test('large reads redirect while targeted, small, unconfigured, and observe read
     const result = await gateBulkRead(event, 'claude-code', config, '/trusted/jevra.mjs', '/trusted/config.json');
     assert.equal(result.hookSpecificOutput?.permissionDecision, 'deny');
     assert.match(result.hookSpecificOutput?.permissionDecisionReason ?? '', /bulk_read MCP/);
+    assert.doesNotMatch(result.hookSpecificOutput?.permissionDecisionReason ?? '', /sessionId|fixture/);
     assert.doesNotMatch(result.hookSpecificOutput?.permissionDecisionReason ?? '', /jevra\.mjs/);
     const cliConfig = configSchema.parse({ ...config, bulkRead: { ...config.bulkRead, transport: 'cli' } });
     const cliResult = await gateBulkRead(event, 'claude-code', cliConfig, '/trusted/jevra.mjs', '/trusted/config.json');
@@ -66,5 +67,24 @@ test('bundled bulk-read and code-context commands return reference evidence with
       assert.equal(invalid.stdout, '');
       assert.equal(invalid.stderr, 'jevra: input_invalid\n');
     }
+  } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
+test('invocation metadata distinguishes unsupported commands from absent execution without capturing inputs', async () => {
+  const dir = await realpath(await mkdtemp(join(tmpdir(), 'jevra-gate-invocation-')));
+  try {
+    await mkdir(join(dir, 'skills'));
+    const config = configSchema.parse({ version: 1, mode: 'advise', skillRoots: [join(dir, 'skills')], stateDirectory: join(dir, 'state'),
+      traces: true, bulkRead: { roots: [dir] } });
+    const event = { hook_event_name: 'PreToolUse', session_id: 'PRIVATE_SESSION', cwd: dir, tool_name: 'Bash',
+      tool_input: { command: 'cat PRIVATE_SOURCE && echo PRIVATE_CONTENT' } };
+    assert.deepEqual(await gateBulkRead(event, 'codex', config, '/cli', '/config'), {});
+    assert.deepEqual(await gateBulkRead({ invalid: 'PRIVATE_PAYLOAD' }, 'codex', config, '/cli', '/config'), {});
+    const traces = [];
+    for (const file of await readdir(join(dir, 'state', 'traces'))) traces.push(...(await readFile(join(dir, 'state', 'traces', file), 'utf8')).trim().split('\n').map(line => JSON.parse(line)));
+    const calls = traces.filter(t => t.module === 'bulk-read-gate-invocation');
+    assert.equal(calls.length, 2); assert.equal(calls[0]!.payloadValid, true); assert.equal(calls[0]!.readShape, 'not_simple_read');
+    assert.equal(calls[1]!.payloadValid, false); assert.ok(calls.every(t => t.evaluationAttempts === 0));
+    assert.doesNotMatch(JSON.stringify(traces), /PRIVATE_|cat |echo |jevra-gate-invocation/);
   } finally { await rm(dir, { recursive: true, force: true }); }
 });

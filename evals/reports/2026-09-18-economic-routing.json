@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 1,
+  "economic": {
+    "kind": "synthetic-economic-question-diagnostic",
+    "timestamp": "2026-09-18T04:29:31.511Z",
+    "implementationHash": "e1ad368b6d6a3165bb6352262e10818c1db7f35c49396b9f2373278182110627",
+    "results": [
+      {
+        "name": "missing",
+        "requestHash": "fde2cc6a7440dd99485475dc15c70b3e627298de7f293b0282d74dd21d4c7379",
+        "questionSetHash": "ef4ed42c65538f743d01a96f0ed1a8d22af72065570ebd0c9f668c0631a6cb30",
+        "observedModel": "jev-1.13.0",
+        "answers": {
+          "route": {
+            "type": "choice",
+            "choice": "tests",
+            "probabilities": {
+              "abstain": 0,
+              "native": 0,
+              "tests": 1
+            },
+            "confidence": 0.99
+          },
+          "economic_route": {
+            "type": "choice",
+            "choice": "insufficient",
+            "probabilities": {
+              "native": 0.06,
+              "insufficient": 0.94
+            },
+            "confidence": 0.87
+          }
+        },
+        "expected": [
+          "insufficient"
+        ],
+        "matchesExpected": true,
+        "decisionMeetsThreshold": true,
+        "usage": {
+          "input_tokens": 1324,
+          "output_tokens": 92
+        },
+        "failure": null
+      },
+      {
+        "name": "negative",
+        "requestHash": "0c469f87496b3e9f2a43e98e95bda3c0cdeec2e6747523a37e741b35eedac2cd",
+        "questionSetHash": "ef4ed42c65538f743d01a96f0ed1a8d22af72065570ebd0c9f668c0631a6cb30",
+        "observedModel": "jev-1.13.0",
+        "answers": {
+          "route": {
+            "type": "choice",
+            "choice": "tests",
+            "probabilities": {
+              "native": 0,
+              "tests": 0.99,
+              "abstain": 0.01
+            },
+            "confidence": 0.98
+          },
+          "economic_route": {
+            "type": "choice",
+            "choice": "native",
+            "probabilities": {
+              "native": 0.55,
+              "insufficient": 0.45
+            },
+            "confidence": 0.1
+          }
+        },
+        "expected": [
+          "native"
+        ],
+        "matchesExpected": true,
+        "decisionMeetsThreshold": false,
+        "usage": {
+          "input_tokens": 1467,
+          "output_tokens": 89
+        },
+        "failure": null
+      },
+      {
+        "name": "positive",
+        "requestHash": "bd6cc8b73f759e5d5dc4f6d375ea327abd925325dfaca268effa2407f3ee0ed1",
+        "questionSetHash": "d092d3c0adbf0a15663d965cb4a6f9eb624c8a497662ebab4a5833574e084f03",
+        "observedModel": "jev-1.13.0",
+        "answers": {
+          "route": {
+            "type": "choice",
+            "choice": "tests",
+            "probabilities": {
+              "tests": 1,
+              "native": 0,
+              "abstain": 0
+            },
+            "confidence": 0.99
+          },
+          "economic_route": {
+            "type": "choice",
+            "choice": "insufficient",
+            "probabilities": {
+              "insufficient": 0.47000000000000003,
+              "native": 0.2,
+              "delegate": 0.33
+            },
+            "confidence": 0.19
+          }
+        },
+        "expected": [
+          "delegate"
+        ],
+        "matchesExpected": false,
+        "decisionMeetsThreshold": false,
+        "usage": {
+          "input_tokens": 1492,
+          "output_tokens": 99
+        },
+        "failure": null
+      },
+      {
+        "name": "unrelated",
+        "requestHash": "0767899f039d128f1e7abb1c81247d17bf16bbdec328ba177ee2d09679a555e2",
+        "questionSetHash": "d092d3c0adbf0a15663d965cb4a6f9eb624c8a497662ebab4a5833574e084f03",
+        "observedModel": "jev-1.13.0",
+        "answers": {
+          "route": {
+            "type": "choice",
+            "choice": "tests",
+            "probabilities": {
+              "abstain": 0.01,
+              "native": 0.01,
+              "tests": 0.98
+            },
+            "confidence": 0.98
+          },
+          "economic_route": {
+            "type": "choice",
+            "choice": "insufficient",
+            "probabilities": {
+              "insufficient": 0.87,
+              "native": 0.13,
+              "delegate": 0
+            },
+            "confidence": 0.79
+          }
+        },
+        "expected": [
+          "native",
+          "insufficient"
+        ],
+        "matchesExpected": true,
+        "decisionMeetsThreshold": true,
+        "usage": {
+          "input_tokens": 1481,
+          "output_tokens": 99
+        },
+        "failure": null
+      }
+    ],
+    "parentInvocations": 0,
+    "workerInvocations": 0,
+    "actualBilledUsd": null,
+    "limitation": "Hypothetical classifier inputs, not measured savings, calibrated accuracy or production economic evidence."
+  },
+  "claudeDiagnostics": [
+    {
+      "timestamp": "2026-09-18T04:29:44.649Z",
+      "host": "claude-code",
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "observedModel": "claude-sonnet-5",
+      "codeHash": "3f63ecc39af290c3fc4254e24484cce6db971d8047625563022d6b0b15284085",
+      "skillHash": "5cbbbd1337a88539cd5e4df9ccc14402f75c556fc5fe667e1d87e689fc58900f",
+      "setup": "explicit MCP plus repository skill; no installed plugin",
+      "promptMentionsJevraOrTools": false,
+      "delivery": "native-ticket",
+      "skillAdvertised": true,
+      "skillReadObserved": false,
+      "mcpConnection": [
+        {
+          "name": "jevra",
+          "status": "connected"
+        }
+      ],
+      "mcpCalls": [],
+      "exitCode": 0,
+      "failure": null,
+      "cleanupComplete": true,
+      "terminalResult": "success",
+      "durationMs": 14858,
+      "hostUsage": {
+        "inputTokens": 90440,
+        "cachedInputTokens": 79887,
+        "cacheCreationInputTokens": 9573,
+        "outputTokens": 645
+      },
+      "managedUsage": {
+        "worker": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "calls": 0
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0
+      },
+      "materialization": {
+        "commandCalls": 0,
+        "readArtifactCalls": 0,
+        "fullExactBodyObservedInNativeToolPayload": true,
+        "applicationReceipts": [],
+        "outputMatchesApplicationReceipt": false
+      },
+      "actualBilledUsd": null,
+      "subscriptionUsage": null,
+      "outputCreated": true,
+      "outputMatchesAcceptedArtifact": false,
+      "sourceUnchanged": true,
+      "variant": "description",
+      "quality": {
+        "requiredChecksPassed": true,
+        "checks": [
+          {
+            "kind": "syntax_policy",
+            "outcome": "passed",
+            "reason": "valid",
+            "tests": 0,
+            "failures": 0,
+            "exitCode": null
+          },
+          {
+            "kind": "baseline",
+            "outcome": "passed",
+            "reason": "assertions_passed",
+            "tests": 3,
+            "failures": 0,
+            "exitCode": 0
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          }
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-09-18T04:32:58.686Z",
+      "host": "claude-code",
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "observedModel": "claude-sonnet-5",
+      "codeHash": "f8f89fcc9ae3fb5eacd1b0277107188e94381b2efa96b0d20304c723b1bc0e9d",
+      "skillHash": "5cbbbd1337a88539cd5e4df9ccc14402f75c556fc5fe667e1d87e689fc58900f",
+      "setup": "explicit MCP, repository skill and scoped existing Jev routing hook; no installed plugin",
+      "promptMentionsJevraOrTools": false,
+      "delivery": "native-ticket",
+      "routingHook": {
+        "requested": true,
+        "records": [
+          {
+            "disposition": "recommend",
+            "reason": "recommended",
+            "delivery": "output_prepared",
+            "adherence": "unknown",
+            "evaluationAttempts": 1,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 670,
+              "output_tokens": 78
+            },
+            "durationMs": 919
+          }
+        ],
+        "accountingComplete": true
+      },
+      "skillAdvertised": true,
+      "skillReadObserved": true,
+      "mcpConnection": [
+        {
+          "name": "jevra",
+          "status": "connected"
+        }
+      ],
+      "mcpCalls": [
+        "generate_tests"
+      ],
+      "exitCode": 0,
+      "failure": null,
+      "cleanupComplete": true,
+      "terminalResult": "success",
+      "durationMs": 43526,
+      "hostUsage": {
+        "inputTokens": 121444,
+        "cachedInputTokens": 108352,
+        "cacheCreationInputTokens": 12110,
+        "outputTokens": 958
+      },
+      "managedUsage": {
+        "worker": {
+          "input": 2760,
+          "output": 212,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 3938,
+          "output": 306,
+          "calls": 3
+        },
+        "unknownEntries": 0
+      },
+      "materialization": {
+        "commandCalls": 1,
+        "readArtifactCalls": 0,
+        "fullExactBodyObservedInNativeToolPayload": false,
+        "applicationReceipts": [
+          {
+            "status": "applied",
+            "candidateHash": "a3957aba7a330eabb0245794a9c8e618109846b67c7360fde8179ea1978e6602",
+            "bytes": 315,
+            "postApplyChecks": "not_run",
+            "inferenceCalls": 0
+          }
+        ],
+        "outputMatchesApplicationReceipt": true
+      },
+      "actualBilledUsd": null,
+      "subscriptionUsage": null,
+      "outputCreated": true,
+      "outputMatchesAcceptedArtifact": true,
+      "sourceUnchanged": true,
+      "variant": "hook",
+      "quality": {
+        "requiredChecksPassed": true,
+        "checks": [
+          {
+            "kind": "syntax_policy",
+            "outcome": "passed",
+            "reason": "valid",
+            "tests": 0,
+            "failures": 0,
+            "exitCode": null
+          },
+          {
+            "kind": "baseline",
+            "outcome": "passed",
+            "reason": "assertions_passed",
+            "tests": 3,
+            "failures": 0,
+            "exitCode": 0
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Four economic scenarios are hypothetical, not measured calibrations.",
+    "Two ordinary Claude requests differ by a scoped existing routing hook; single observations do not establish causality or cost savings.",
+    "Economic configuration was absent in the host diagnostics to isolate adoption; economic decisions were probed separately.",
+    "Hook output_prepared proves prepared advice, not independently verified context delivery; host skill/helper calls are separate observations.",
+    "Native model execution metadata remains operator-declared, not attested."
+  ]
+}

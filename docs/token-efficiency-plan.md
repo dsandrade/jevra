@@ -1,6 +1,8 @@
 # Token efficiency: architecture review and experiment plan
 
-> Review note (2026-09-17): the [architecture critique](architecture-critique.md) recommends a smaller delivery sequence focused on complete-task quality and cost. It preserves Jev ownership of managed semantic decisions and proposes deferring broad memory/workflow automation. This is a recommendation for discussion, not an implemented change or an adopted replacement of this plan.
+> Current correction contracts (2026-09-18): see [focused reader and corrected decisions](focused-reader.md). Fixed artifact packets now share route/support; economic routing defaults to narrow membership and code-owned eligibility. Dated diagrams/diagnostics below remain scoped to their recorded version.
+
+> Delivery update: [CLI-first worker v1](v1-delivery-plan.md) defines the adopted implementation order. The [artifact pilot](../evals/reports/2026-09-17-artifact-comparison.md) found no consistent Jev-arm savings. Compact native-ticket delivery and optional economic routing were subsequently implemented; the focused generative reader is now opt-in, while reliable economic calibration remains missing. The [2026-09-18 architecture review](shunt-architecture-review-2026-09-18.md) is the current comparison and recommends a smaller reader experiment. This document retains the earlier architecture snapshot and broader proposals; its dated gap table is not current runtime status.
 
 Date: 2026-09-17. Status: proposal, not an implemented architecture or a savings claim.
 
@@ -58,7 +60,7 @@ flowchart TD
 
 The gate itself makes no Jev call. An actual helper invocation is required. File defaults are 64 KiB each / 128 KiB total, output 8,000 bytes, and 5-second helper deadline (8 seconds in the pilot). Oversized or unsupported reads pass through; limits are not a repository index. Jev can only rank candidates supplied by retrieval. The separate skill router recommends a skill; it does not remove the host's existing skill catalog or guarantee lower prompt tokens.
 
-## Capability and gap map
+## Capability and gap map — earlier runtime snapshot
 
 | Mechanism | Shunt / AiKA boundary | Jevra today | Next action |
 | --- | --- | --- | --- |

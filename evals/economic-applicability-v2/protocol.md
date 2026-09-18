@@ -1,0 +1,7 @@
+# Economic applicability v2
+
+This diagnostic uses the production **selected-packet initial route** registry and default gates: Choice confidence 0.7/probability 0.8, evidence Score **1.5**, and family-membership Noul 0.85. Numerical eligibility is computed first; an inadmissible enforce-mode case records a deterministic handoff with zero provider calls. Ten of the 16 authored cases require inference; six are code-policy cases. Initial-route readiness is not final acceptance: selected-packet sufficiency, generation, checks and candidate review remain required.
+
+All typed answers are retained, including fractional Scores, probabilities and legends. Started calls are journaled before inference; failures preserve observable usage. Missing calls/usage are unknown. Run `node evals/economic-applicability-v2/run.ts --keychain-service codex-typesafe-api-key` with the pinned Node runtime only after offline checks. Limits: 16 calls, 49,152 bytes/call, 32,000 observed input tokens and 120 seconds; stop on first failure, no retry/fallback. The input-token limit is checked between calls and may be exceeded by the final bounded request.
+
+The 16 existing authored cases and hypothetical cost ranges are development inputs, **not independent held-out labels or real savings measurements**. This version neither repairs missing evidence in the frozen v1 report nor changes its questions/results. The v1 combined route analysis is invalid because its evaluator required Score 2 and omitted the Scores. No calibration promotion is authorized by either diagnostic.

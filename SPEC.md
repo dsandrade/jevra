@@ -1,10 +1,10 @@
 # Jevra: Product and Technical Specification
 
-> Review note (2026-09-17): the [architecture critique](docs/architecture-critique.md) recommends a smaller delivery sequence focused on complete-task quality and cost. It preserves Jev ownership of managed semantic decisions and proposes deferring broad memory/workflow automation. This is a recommendation for discussion, not an implemented change or an adopted replacement of this plan.
+> Delivery decision (2026-09-18): implement the [architecture-review corrections](docs/focused-reader.md) and prioritize a small reader-oriented comparison after local validation. Preserve the CLI-first Luna transport, accepted compact artifacts and native checks. Keep memory and new worker roles deferred until large/cross-file substitution has quality and complete-task evidence. This is an experimental milestone, not an efficiency claim.
 
 Status: executable developer alpha; this specification also defines unimplemented release goals
 
-Specification version: 0.5
+Specification version: 0.7
 
 Created: 2026-09-17
 
@@ -53,6 +53,11 @@ Keep hooks, executable integration code, and skill guidance separate. Verify hos
 
 The reviewed [benchmark definition](https://github.com/spotify/portal-ai-plugins/blob/3c24ca30ff63e1f5bbad1c43fe5324daff579123/plugins/shunt/evals/benchmarks.json) estimates Claude context tokens using characters divided by four. That measurement does not by itself establish total system cost, latency, or outcome quality. Jevra must include provider overhead and final task outcomes.
 
+The [2026-09-18 architecture review](docs/shunt-architecture-review-2026-09-18.md)
+updates the comparison after compact delivery and economic diagnostics. It
+recommends a smaller focused-reader experiment and measurement repairs before
+the large artifact matrix. The owner adopted this sequencing; see the [implemented correction contracts](docs/focused-reader.md). Historical reports and the frozen v1 evaluator are preserved.
+
 ## 3. User experience
 
 1. Install the plugin for a supported host and configure a user-owned TypeSafe API key.
@@ -93,8 +98,95 @@ Automatic activation does not authorize uploading arbitrary workspace contents. 
 
 This owner-directed experiment advances DR-014 before the initial skill-routing release gate. It does not imply that skill routing or evidence selection has met promotion criteria. Detailed parity and differences are in [shunt architecture](docs/shunt-parity.md).
 
+### Next delivery: CLI-first worker v1
+
+"V1" names the first complete bounded-worker milestone, not a declaration of a
+stable `1.0.0` API. The executable version remains `0.1.0-alpha.2` until released.
+The [delivery plan](docs/v1-delivery-plan.md) and [worker architecture](docs/worker-architecture.md)
+define the implementation scope and transport contract.
+
+- First profile: `artifact-writer/tests`, with at most one bounded repair.
+- First generator: `gpt-5.6-luna` through a fresh noninteractive `codex exec`
+  process using supported CLI authentication. The parent host can be Codex or Claude Code.
+- The worker receives explicit requirements, applicable instructions and Jev-selected
+  evidence; it does not inherit the main conversation, resume a prior worker or
+  need autonomous repository exploration. Disable unrelated integrations and
+  verify residual CLI context/tool overhead on the supported version.
+- Jev owns explicit semantic routing, evidence evaluation and continuation within
+  the managed operation. Deterministic policy owns limits, permissions, hashes and
+  required checks. LLM-internal reasoning remains outside that ownership guarantee.
+- Generate a staged candidate and a compact receipt. Application and actual tests
+  remain authorized operations; a candidate is not marked accepted before required
+  checks and the managed semantic evaluation finish.
+- Keep main-host, CLI-worker and Jev usage attributable. Separate tokens, cache,
+  API-equivalent estimates, actual charges and observable subscription allowance.
+- Do not silently switch models, use API billing or continue through an LLM judge
+  when the configured generator or Jev is unavailable.
+- Claude CLI and direct API generation adapters are later interchangeable
+  transports, not prerequisites for this first path. Native memory and broad investigation/review remain follow-on increments. The opt-in focused reader now uses the same bounded transport.
+
+The direction is settled enough to start implementation. The first technical gate
+is a bounded transport probe: verify fresh context, authentication, tool/config
+isolation, structured output, cancellation and usage before a complete live task.
+This is engineering work, not a requirement for Spotify Portal access or another
+architecture approval. The internal transport and two synthetic probes are now
+implemented; see the [probe report](evals/reports/2026-09-17-cli-worker-probe.md).
+An internal [managed generation and ledger slice](docs/managed-worker.md) now exists.
+Its first live diagnostic generated a candidate but withheld continuation as uncertain.
+The [restricted artifact profile](docs/test-artifacts.md) now adds private staging,
+actual baseline/mutation checks, one repair and explicit create-only application.
+One synthetic live artifact passed this path. The [opt-in MCP surface](docs/artifact-mcp.md)
+now exposes profile discovery, generation and source-bound artifact delivery. It
+leaves application to native host permissions. Identical requests deduplicate within
+the process, each profile has one operation, and session capacity defaults to one
+(maximum four). Configured requirements cannot be omitted by tool callers.
+The [host diagnostic](evals/reports/2026-09-17-artifact-host-probe.md) observed ordinary
+Codex adoption and explicit Claude wiring; ordinary Claude completion used native
+tools. A later [12-cell paired artifact pilot](evals/reports/2026-09-17-artifact-comparison.md)
+observed helper requests in all eight offered cells, but no consistent Jev-arm
+savings: aggregate upper cost estimates rose 1.4% on Codex and 26.0% on Claude.
+Parent-host consumption dominated. One native output failed the restricted grammar;
+unequal grammar guidance prevents a quality-superiority claim. One unresolved Jev
+candidate was applied through native bypass, so final correctness is not equivalent
+to managed acceptance. Keep the evaluation-only worker control outside production.
+Next correct instruction parity and diagnostic gaps, measure the compact handoff, and
+investigate requirement scope before a new repeated protocol. Broader profiles,
+normal installation lifecycle and validated economics remain open.
+
+The [Shunt cost audit](docs/shunt-cost-audit.md) led to implemented opt-in
+[compact native-ticket delivery](docs/artifact-materialization.md). Exact configured
+source selection removes mandatory discovery. An accepted ticket permits the
+deterministic CLI to authenticate bindings and create exact bytes through native
+host permissions, so the parent need not receive and re-emit the complete body.
+Tickets expire ten minutes after issuance, survive issuer shutdown and permit one
+publication attempt; legacy review delivery remains the default. Configuration
+and staging stay outside the workspace. MCP exposes no application tool.
+The optional [economic route](docs/economic-routing.md) now supplies complete-task
+measurement ranges alongside capability and evidence in the first Jev request.
+Code calculates conservative observed bounds and admissible choices; Jev judges
+semantic applicability. Observe mode records the outcome, while explicit enforce
+mode hands off on insufficient benefit or uncertainty. No default calibration or
+savings claim is shipped; the first live synthetic positive case remained uncertain.
+The [Claude prompt-hook diagnostic](evals/reports/2026-09-18-economic-routing.md)
+observed ordinary compact delivery after Jev's existing skill recommendation,
+but higher gross usage on the small task. The opt-in [focused reader](docs/focused-reader.md) now complements the existing excerpt path. Its full/selected modes remain experimental and require live quality/cost validation. Public Shunt context
+compression percentages do not establish complete-task or subscription savings.
+
+The [16-case applicability diagnostic](evals/reports/2026-09-18-economic-applicability.md)
+compared the production compound Choice with an evaluation-only semantic-family
+Noul. Economic-only acceptance was 0/4 versus 4/4 authored positives, with no
+unsupported economic delegation among 12 blocking cases. This is synthetic
+question behavior, not measured costs. A stricter evaluator relevance threshold
+and missing saved relevance answers invalidate its combined route comparison;
+retain the audit. The new versioned membership contract is implemented without lowering thresholds or promoting synthetic costs into calibration; independent validation remains open.
+The [v2 whole-task proposal](evals/artifact-comparison-v2/protocol.md) now has shared
+grammar instructions, six output workloads, matched delivery/Jev/hook contrasts,
+rejection diagnostics and normalized token utilities. No live v2 runner exists;
+independent checks, adapters, full-answer/gate parity, failure-injection accounting,
+cache conditions, budgets and confirmatory data remain execution gates.
+
 ### Later experiments
-- The [token-efficiency architecture plan](docs/token-efficiency-plan.md) compares shunt with the current runtime and defines measurement for evidence reuse, optional generative workers and semantic routing. The [development-brain design](docs/development-brain.md) extends its initial optional-memory proposal: native engineering memory is now core planned scope. Main-LLM code generation remains the shipped behavior; auxiliary generation is in the adopted product direction but is not implemented or enabled.
+- The [token-efficiency architecture plan](docs/token-efficiency-plan.md) compares shunt with the current runtime and defines measurement for evidence reuse, optional generative workers and semantic routing. The [development-brain design](docs/development-brain.md) extends its initial optional-memory proposal: native engineering memory is now core planned scope. Main-LLM generation remains the default; explicitly configured pure-function test profiles can use the managed CLI generator through MCP.
 - Checking explicit completion requirements against observed evidence.
 - An MCP tool for LLM-proposed candidates and explicit decision requests.
 - A supported library API for other agent integrations.
@@ -110,7 +202,7 @@ This owner-directed experiment advances DR-014 before the initial skill-routing 
 - Incremental source-bound knowledge, project impact profiles, assumption records and scoped lessons from review, specified in the decision architecture.
 - Full lifecycle accounting: memory/index maintenance, main-model work, workers, Jev, fallback and failed attempts.
 
-The recommended first store is local and embedded, with lexical/structural retrieval before optional embeddings. Keep private organization services optional. The first vertical slice proves cross-host save/recall and stale-source handling; it does not start a hosted platform or autonomous coding loop. DR-028 through DR-038 add this scope without replacing existing issue IDs. DR-034 establishes the decision registry before the first memory slice.
+The recommended first store is local and embedded, with lexical/structural retrieval before optional embeddings. Keep private organization services optional. The first memory slice proves cross-host save/recall and stale-source handling after the worker milestone; it does not start a hosted platform or autonomous coding loop. DR-028 through DR-038 retain this longer-term scope. DR-034 starts with the worker's decision receipts and later extends to memory. DR-039 supplies the CLI worker transport.
 
 ### Non-goals for the initial release
 
@@ -382,6 +474,30 @@ The first module reads only the current prompt and explicitly configured skill d
 
 Observe is the default. Cache, event deduplication, durable session budgets, automatic installation, transcript instrumentation, skill-adherence observation, module registration, and two-stage skill selection are not implemented. A synthetic three-arm full-task retrieval pilot is implemented; broad independently reviewed evaluation remains open. Explicit references preserve native handling; multi-skill and uncertain results abstain. This alpha is an integration experiment, not the completion of the initial release scope above.
 
+DR-039 adds internal worker request/result schemas and a bounded Codex CLI generator,
+with fake-process tests and an explicit synthetic live diagnostic. It returns
+candidate text and metadata without applying source changes, calling Jev or
+registering a new MCP tool. Broader capability certification remains open.
+
+The minimum DR-020/025/034 slice wraps that transport in a Jev-managed operation:
+route/evidence, selected-packet sufficiency and candidate review/continuation.
+It adds source-bound receipts, one generation per operation, finite call/byte/time
+limits and usage subtotals with unknowns. It returns an unaccepted candidate only
+when the semantic gates permit trusted validation. The first live operation
+stopped at an uncertain continuation. The DR-023 extension subsequently added a
+runtime-owned validator for pure-function tests: private staged candidates,
+actual Node execution, independent mutants, semantic completion review and at most
+one repair. It returns a compact handle. Application is an explicit create-only
+operation with freshness and no-overwrite checks; existing-file patches and
+host-specific atomic apply enforcement remain open. The opt-in MCP wrapper adds
+process-local operation deduplication, a finite session budget and source-bound
+artifact review, then leaves application to native tools. Optional native tickets
+provide exact-byte deterministic application with signed bindings, expiry and
+create-only publication under native permissions. General cross-process resume,
+durable budgets and reliable ordinary adoption remain open. The diagnostic observed
+ordinary Codex adoption once and successful explicit Claude wiring; Claude's
+ordinary request completed natively.
+
 ## 15. Decisions to resolve during implementation
 
 | Question | Resolution point |
@@ -394,6 +510,9 @@ Observe is the default. Cache, event deduplication, durable session budgets, aut
 | Is native subscription usage sufficient for cost measurement? | DR-010 instrumentation |
 | Does process startup justify a persistent service? | Only after DR-011 evidence |
 | Is a general public framework API warranted? | DR-017 after multiple validated modules |
+| Which worker and transport come first? | Resolved for v1: test artifacts, Luna through fresh Codex CLI; DR-039 then DR-023 |
+| Does CLI isolation actually remove unrelated context and tools? | DR-039 capability probe on recorded versions, before end-to-end evaluation |
+| Must native memory or Portal access precede workers? | Resolved: neither is a v1 dependency; memory remains follow-on scope |
 
 ## 16. Sources
 

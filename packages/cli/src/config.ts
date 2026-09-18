@@ -6,6 +6,9 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { z } from 'zod';
 import { DecisionError, MODEL, modeSchema, policySchema } from '@jevra/core';
+import { testArtifactOptionsSchema } from './test-artifacts.ts';
+import { economicConfigSchema } from '../../core/src/economics.ts';
+import { readerPolicySchema } from '../../core/src/reader.ts';
 
 const absolutePath = z.string().min(1).max(4096).refine(isAbsolute);
 export const contextConfigSchema = z.object({
@@ -22,11 +25,37 @@ export const contextConfigSchema = z.object({
   timeoutMs: z.number().int().min(100).max(10000).default(5000),
 }).strict();
 export type ContextConfig = z.infer<typeof contextConfigSchema>;
+export const focusedReaderConfigSchema = readerPolicySchema.extend({
+  enabled: z.boolean().default(false),
+  experimentalProfile: z.literal('focused-reader/1'),
+  codexExecutable: absolutePath,
+  maxOperations: z.number().int().min(1).max(4).default(1),
+  ttlMs: z.number().int().min(1000).max(300000).default(300000),
+}).strict();
 export const bulkConfigSchema = contextConfigSchema.omit({ sources: true }).extend({
   transport: z.enum(['mcp', 'cli']).default('mcp'),
   roots: z.array(absolutePath).min(1).max(16),
   minLines: z.number().int().min(1).max(10000).default(350),
+  reader: focusedReaderConfigSchema.optional(),
 }).strict();
+export const testArtifactsConfigSchema = z.object({
+  enabled: z.boolean().default(false),
+  experimentalProfile: z.literal('node-pure-function-tests/1'),
+  codexExecutable: absolutePath,
+  stagingDirectory: absolutePath,
+  delivery: z.enum(['review', 'native-ticket']).default('review'),
+  maxOperations: z.number().int().min(1).max(4).default(1),
+  packetMode: z.enum(['fixed', 'selected']).default('fixed'),
+  economics: economicConfigSchema.optional(),
+  profiles: z.array(testArtifactOptionsSchema.omit({ stagingDirectory: true }).extend({
+    id: z.string().regex(/^[a-zA-Z0-9_-]{1,80}$/),
+    requirements: z.array(z.string().trim().min(1).max(1024)).min(1).max(8),
+    instructions: z.array(z.string().trim().min(1).max(1024)).max(16).default([]),
+  }).strict()).min(1).max(8),
+}).strict().refine(value => new Set(value.profiles.map(p => p.id)).size === value.profiles.length,
+  'Profile IDs must be unique')
+  .refine(value => new Set(value.profiles.map(p => resolve(dirname(p.sourcePath), p.outputName))).size === value.profiles.length,
+    'Output destinations must be unique');
 export const configSchema = z.object({
   version: z.literal(1),
   mode: modeSchema.default('observe'),
@@ -42,6 +71,7 @@ export const configSchema = z.object({
   retentionDays: z.number().int().min(1).max(30).default(7),
   context: contextConfigSchema.optional(),
   bulkRead: bulkConfigSchema.optional(),
+  testArtifacts: testArtifactsConfigSchema.optional(),
 }).strict();
 export type Config = z.infer<typeof configSchema>;
 

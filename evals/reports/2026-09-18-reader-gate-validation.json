@@ -1,0 +1,185 @@
+{
+  "manifest": {
+    "version": "reader-gate-validation/1",
+    "preparedAt": "2026-09-18T06:24:23.623Z",
+    "inference": "not_dispatched",
+    "hashes": {
+      "evals/reader-gate/validate.ts": "36d51d34216299b998556f6d29e5468c58e3ea1ba4954b01ce9c3c79ae6a0f44",
+      "evals/reader-gate/inspect-hooks.ts": "a0d720a98a2784d3ff2958327ea0d5093ff253229025b4c8a42ae0c37852c129",
+      "evals/reader-gate/observations.ts": "d9c97d54497c4a1bfeee7be498fe8acbd662030ab9daaa09c00ed7ca72828508",
+      "evals/reader-gate/protocol.md": "68a93a0629ddf37c7d4cd4abdbd9ef9d493170ec380390690b02530519ea0385",
+      "packages/cli/src/bulk-read.ts": "4795d0b131d9b524e377a4f572e84331294f36c128630c0fdd6be576bf57b275",
+      "dist/jevra.mjs": "958b7cbdaed857103b6d137aaacb85bc367b78e00ac425044a0f4a74547aef3f",
+      "evals/reader-comparison/server.ts": "9e9a5352a50d7b6f58995be4fa69e88c156d8a44323cda8183807d19266cfbff",
+      "evals/reader-comparison/fixtures.ts": "332b96c6243a7ac6207fff857fb8db71f96e39c60e4ac119ac5fc88799ba4e62",
+      "package-lock.json": "ebbee3f71746ff2a4d2839fd7bba46341b319f1164fef0a7f4925ee21b413195"
+    },
+    "node": "v24.21.0",
+    "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+    "promotion": "not_authorized"
+  },
+  "checks": [
+    {
+      "host": "codex",
+      "case": "large-canonical-bash",
+      "passed": true,
+      "expected": "redirect",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "codex",
+      "case": "large-unified-exec",
+      "passed": true,
+      "expected": "redirect",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "codex",
+      "case": "large-read",
+      "passed": true,
+      "expected": "redirect",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "codex",
+      "case": "targeted-range",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "codex",
+      "case": "targeted-read",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "codex",
+      "case": "small-boundary",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "codex",
+      "case": "unsupported-shell",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "claude-code",
+      "case": "large-canonical-bash",
+      "passed": true,
+      "expected": "redirect",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "claude-code",
+      "case": "large-unified-exec",
+      "passed": true,
+      "expected": "redirect",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "claude-code",
+      "case": "large-read",
+      "passed": true,
+      "expected": "redirect",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "claude-code",
+      "case": "targeted-range",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "claude-code",
+      "case": "targeted-read",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "claude-code",
+      "case": "small-boundary",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    },
+    {
+      "host": "claude-code",
+      "case": "unsupported-shell",
+      "passed": true,
+      "expected": "pass_through",
+      "inferenceCalls": 0
+    }
+  ],
+  "gateCasesPassed": true,
+  "catalog": [
+    {
+      "name": "bulk_read",
+      "hasQuestion": true,
+      "hasPaths": true,
+      "schemaHash": "406e651594353e9cee239d605ea4f8c47b87394796c6b735c681ba9c23aaad8a"
+    },
+    {
+      "name": "code_context",
+      "hasQuestion": false,
+      "hasPaths": false,
+      "schemaHash": "ff56f9c2542d3e7e90f6bd1d72b081123a814a9bf4a083e2093a59ef68ce5583"
+    }
+  ],
+  "catalogAvailable": true,
+  "native": {
+    "configuredMatches": 1,
+    "unrelatedDefinitions": 0,
+    "enabled": true,
+    "trustStatus": "untrusted",
+    "definitionFingerprint": "3b769562232d60e4a32c8158d10ccd6ad1e86b29563bd203340b2831f425cb31",
+    "warningCount": 0,
+    "errorCount": 0,
+    "ready": false,
+    "inferenceCalls": 0
+  },
+  "inferenceCalls": {
+    "parent": 0,
+    "worker": 0,
+    "managed_jev": 0,
+    "routing_hook": 0
+  },
+  "actualBilledUsd": null,
+  "limitations": "Direct bundled hook and separate MCP catalog checks; native hooks/list is read-only. No model task, native hook execution, adherence or savings is established.",
+  "nativeReview": {
+    "reviewedAt": "2026-09-18T06:25:57.315Z",
+    "method": "native_cli_definition_review",
+    "before": {
+      "configuredMatches": 1,
+      "unrelatedDefinitions": 0,
+      "enabled": true,
+      "trustStatus": "untrusted",
+      "definitionFingerprint": "3b769562232d60e4a32c8158d10ccd6ad1e86b29563bd203340b2831f425cb31",
+      "warningCount": 0,
+      "errorCount": 0,
+      "ready": false,
+      "inferenceCalls": 0
+    },
+    "after": {
+      "configuredMatches": 1,
+      "unrelatedDefinitions": 0,
+      "enabled": true,
+      "trustStatus": "trusted",
+      "definitionFingerprint": "3b769562232d60e4a32c8158d10ccd6ad1e86b29563bd203340b2831f425cb31",
+      "warningCount": 0,
+      "errorCount": 0,
+      "ready": true,
+      "inferenceCalls": 0
+    },
+    "configHash": "2fef82a77c76e8a6a6f3ba2abdbfc2873845c0c1fdcffb1ad58b41321306d1c7",
+    "inferenceCalls": 0,
+    "nativeHookExecutionEstablished": false
+  }
+}

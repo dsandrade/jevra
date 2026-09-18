@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "kind": "compact-native-materialization-diagnostic",
+  "runs": [
+    {
+      "timestamp": "2026-09-18T04:10:23.649Z",
+      "host": "codex",
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "configuredModel": "gpt-6-astra",
+      "observedModel": null,
+      "codeHash": "cad774d69ab1074bd6f8cd8746723e218203f05cbb4f2df9044b9bc200b84dbc",
+      "skillHash": "4963ec0b7e7abb1acd86aaf43d9efae37d6b06a6d6bfde578164b2cfa9471e04",
+      "setup": "explicit MCP plus repository skill; no installed plugin",
+      "promptMentionsJevraOrTools": false,
+      "delivery": "native-ticket",
+      "skillAdvertised": null,
+      "skillReadObserved": true,
+      "mcpConnection": null,
+      "mcpCalls": [
+        "generate_tests"
+      ],
+      "exitCode": 0,
+      "failure": null,
+      "cleanupComplete": true,
+      "terminalResult": "turn.completed",
+      "durationMs": 49189,
+      "hostUsage": {
+        "inputTokens": 91058,
+        "cachedInputTokens": 71040,
+        "cacheCreationInputTokens": null,
+        "outputTokens": 670
+      },
+      "managedUsage": {
+        "worker": {
+          "input": 2786,
+          "output": 177,
+          "cacheRead": 0,
+          "calls": 1
+        },
+        "jev": {
+          "input": 4003,
+          "output": 306,
+          "calls": 3
+        },
+        "unknownEntries": 0
+      },
+      "materialization": {
+        "commandCalls": 1,
+        "readArtifactCalls": 0,
+        "fullExactBodyObservedInNativeToolPayload": false,
+        "applicationReceipts": [
+          {
+            "status": "applied",
+            "candidateHash": "674cdd4a7152ec53b82980662ed0a91627b00ec819e5c2cb7577ff642896e7ab",
+            "bytes": 315,
+            "postApplyChecks": "not_run",
+            "inferenceCalls": 0
+          }
+        ],
+        "outputMatchesApplicationReceipt": true
+      },
+      "actualBilledUsd": null,
+      "subscriptionUsage": null,
+      "outputCreated": true,
+      "outputMatchesAcceptedArtifact": true,
+      "sourceUnchanged": true,
+      "managedStatus": [
+        {
+          "status": "accepted",
+          "reason": "accepted",
+          "deliveryFailure": null
+        }
+      ],
+      "quality": {
+        "requiredChecksPassed": true,
+        "checks": [
+          {
+            "kind": "syntax_policy",
+            "outcome": "passed",
+            "reason": "valid",
+            "tests": 0,
+            "failures": 0,
+            "exitCode": null
+          },
+          {
+            "kind": "baseline",
+            "outcome": "passed",
+            "reason": "assertions_passed",
+            "tests": 3,
+            "failures": 0,
+            "exitCode": 0
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          }
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-09-18T04:11:54.935Z",
+      "host": "claude-code",
+      "hostVersion": "2.1.274 (Claude Code)",
+      "configuredModel": "claude-sonnet-5",
+      "observedModel": "claude-sonnet-5",
+      "codeHash": "cad774d69ab1074bd6f8cd8746723e218203f05cbb4f2df9044b9bc200b84dbc",
+      "skillHash": "4963ec0b7e7abb1acd86aaf43d9efae37d6b06a6d6bfde578164b2cfa9471e04",
+      "setup": "explicit MCP plus repository skill; no installed plugin",
+      "promptMentionsJevraOrTools": false,
+      "delivery": "native-ticket",
+      "skillAdvertised": true,
+      "skillReadObserved": false,
+      "mcpConnection": [
+        {
+          "name": "jevra",
+          "status": "connected"
+        }
+      ],
+      "mcpCalls": [],
+      "exitCode": 0,
+      "failure": null,
+      "cleanupComplete": true,
+      "terminalResult": "success",
+      "durationMs": 10165,
+      "hostUsage": {
+        "inputTokens": 90354,
+        "cachedInputTokens": 66457,
+        "cacheCreationInputTokens": 22917,
+        "outputTokens": 613
+      },
+      "managedUsage": {
+        "worker": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "calls": 0
+        },
+        "jev": {
+          "input": 0,
+          "output": 0,
+          "calls": 0
+        },
+        "unknownEntries": 0
+      },
+      "materialization": {
+        "commandCalls": 0,
+        "readArtifactCalls": 0,
+        "fullExactBodyObservedInNativeToolPayload": true,
+        "applicationReceipts": [],
+        "outputMatchesApplicationReceipt": false
+      },
+      "actualBilledUsd": null,
+      "subscriptionUsage": null,
+      "outputCreated": true,
+      "outputMatchesAcceptedArtifact": false,
+      "sourceUnchanged": true,
+      "managedStatus": [],
+      "quality": {
+        "requiredChecksPassed": true,
+        "checks": [
+          {
+            "kind": "syntax_policy",
+            "outcome": "passed",
+            "reason": "valid",
+            "tests": 0,
+            "failures": 0,
+            "exitCode": null
+          },
+          {
+            "kind": "baseline",
+            "outcome": "passed",
+            "reason": "assertions_passed",
+            "tests": 3,
+            "failures": 0,
+            "exitCode": 0
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          },
+          {
+            "kind": "mutation",
+            "outcome": "passed",
+            "reason": "mutant_detected",
+            "tests": 3,
+            "failures": 2,
+            "exitCode": 1
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "One ordinary synthetic task per host; no matched baseline or repetition.",
+    "Codex responding model omitted by telemetry; configured model is recorded.",
+    "Claude did not adopt Jevra, so compact materialization was not observed in that host.",
+    "Complete-body detection is an exact-string check over native tool events, not proof of zero partial reads or equivalent rewrites.",
+    "Independent rerun uses the same configured baseline and mutant fixtures; it is not held-out quality evaluation.",
+    "Actual billing and subscription consumption are unknown."
+  ]
+}

@@ -1,6 +1,6 @@
 # Jevra development brain
 
-> Review note (2026-09-17): the [architecture critique](architecture-critique.md) recommends a smaller delivery sequence focused on complete-task quality and cost. It preserves Jev ownership of managed semantic decisions and proposes deferring broad memory/workflow automation. This is a recommendation for discussion, not an implemented change or an adopted replacement of this plan.
+> Delivery update (2026-09-17): [CLI-first worker v1](v1-delivery-plan.md) is now the next implementation milestone. The memory slice below remains planned follow-on scope, not a prerequisite for workers. The broader target and Jev ownership are retained; no new capability is implemented by this update.
 
 Date: 2026-09-17. Status: adopted product direction; architecture and delivery slices are planned. The executable version remains `0.1.0-alpha.2`.
 

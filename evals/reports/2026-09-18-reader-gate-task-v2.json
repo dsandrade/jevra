@@ -1,0 +1,751 @@
+{
+  "version": "reader-gate-task-v2-report/1",
+  "date": "2026-09-18",
+  "status": "single_cell_managed_reader_adoption_observed_no_efficiency_promotion",
+  "frozenManifest": {
+    "version": "reader-gate-task/2",
+    "preparedAt": "2026-09-18T07:02:21.097Z",
+    "execute": true,
+    "selectedCells": [
+      {
+        "id": "codex/large-shipping/jev-full-gate",
+        "host": "codex",
+        "taskId": "large-shipping",
+        "arm": "jev-full-gate"
+      }
+    ],
+    "hashes": {
+      "evals/reader-comparison/protocol.md": "a5f22ff2d575885d69d62d6122667cffa5aa025a22dadf55cc4f79ba61f477e5",
+      "evals/reader-comparison/fixtures.ts": "332b96c6243a7ac6207fff857fb8db71f96e39c60e4ac119ac5fc88799ba4e62",
+      "evals/reader-comparison/judge.ts": "056a506f96597deb404f7a254218b0a0b3310dad6bba5ff487c7ec0dfd92ed2d",
+      "evals/reader-comparison/server.ts": "9e9a5352a50d7b6f58995be4fa69e88c156d8a44323cda8183807d19266cfbff",
+      "evals/reader-comparison/run.ts": "1fbde3603c0f4ae7899d88f4845df9eb5e2c4e1309fddc60555af55a87053397",
+      "evals/reader-comparison/accounting.ts": "99656e9ecb056916e6305c96d0b3ab5c9bd76cdce5892a8bc1ef11c6857b6292",
+      "evals/reader-comparison/prepare.ts": "372386625ec1f934aec0a3079c20826cc4a8aa07b27fea1b8bebb114236ff717",
+      "packages/core/src/reader.ts": "007edb89384521efb192129d7d7224a5f9ffc24dc373ff3a8d37843156cf9194",
+      "packages/core/src/accounting.ts": "511ff84eac5ebf484dc443756a6ea5d45a46f9c8b1d94189692ce18b577b28b0",
+      "packages/core/src/context.ts": "a2cf8d37d923885d0acfa4f48283f238b96336dc198296f6dfe05ffcd37947c0",
+      "packages/core/src/index.ts": "3d0214343bc89646d285349856b3c7ef080a9a0c690f43533999e753473fc00c",
+      "packages/core/src/worker.ts": "0a9187b5449b08cfbdb9a223d41584fc6332b955ffee83ba0f1390d0e9fb1449",
+      "packages/cli/src/reader-session.ts": "1374fbdd8c75e6c9acec09e4c42479483f8115f245ef493b6c8274ddff36c874",
+      "packages/cli/src/bulk-read.ts": "a5abfc8600f8d8b944a7a015064ffbc6ceaefefbd21ae4d3df12665c1d8b36ba",
+      "packages/cli/src/config.ts": "ff77e257d309d6695b228f81017dac4168311027b0889fc70f1a8113a1aefa07",
+      "packages/cli/src/codex-worker.ts": "3bde147f320552d4b3d8e0f0965795a17ac504f10a0af43fc412e681b80d3e3f",
+      "packages/cli/src/worker-process.ts": "b474dfdb3c75050dab51b2d58608037e2409819ad9340f7ca25e3dc6210c9745",
+      "packages/cli/src/test-policy.ts": "66c522d9d679a20b9234fa3d35e15ba6be78d2cc6e734c2b5ca8fbeb72f841ef",
+      "packages/provider-typesafe/src/index.ts": "211c90ecdec732face3a13409354867a25fea034b16cecae3d904815e8dc20b3",
+      "package-lock.json": "ebbee3f71746ff2a4d2839fd7bba46341b319f1164fef0a7f4925ee21b413195",
+      "dist/jevra.mjs": "e85a69e10ac1043f3173316fe4548150b31e6bce74ed4ae39dd18662d4d447a3",
+      "packages/cli/src/trace.ts": "39162816670ba65688f08c3415fdab2358a55537eeff8fbb4ac3941e3a1dc212",
+      "evals/reader-gate/run.ts": "cc9664d0df4d4042ddfe82d9a9f59705340fd1d2f59eaf2af988bff0d9af28f5",
+      "evals/reader-gate/config-lease.ts": "6ad67ceafcd6d7431016ec4292f454b36fb6e4ea1db77d74927b36c8bf1ec1f3",
+      "evals/reader-gate/inspect-hooks.ts": "eb13202850de7d202afa8f5b03a7f3dca77b1bb16718fee85eccdd92556e4120",
+      "evals/reader-gate/observations.ts": "7650af107d73ccbdb59cd3221d734989b31b0ca5c8df3f31c8f68da6e4185ab2",
+      "evals/reader-gate/task-protocol.md": "c62dc148cc5b4dc079ded18318b6e230f9e9bbda150b1fc0eeccb8aa842fa073"
+    },
+    "sourceHash": "83a3fcd95b2f0245d4eb340cb2444868933fe10cae396e1ba1d88cde6321ed15",
+    "requirementsHash": "1c223dad947e05cf78b3c74f75db5712dd398e269fd93ebede326dcadb0ae96d",
+    "promptHash": "14289d726a500c796a23f051495829df53fcaa88edee276e65607e80a8755970",
+    "preflightConfigHash": "07ee319578fa81614e05d5c2da57338d84fc5123b242dafd4ac86e4c42c15845",
+    "taskConfigHash": "9fd612aae0b79a66ecdc0327d5eb6d985b5785fda1a76963d8cc2e05475c3318",
+    "nativeReadiness": {
+      "configuredMatches": 1,
+      "unrelatedDefinitions": 0,
+      "enabled": true,
+      "trustStatus": "trusted",
+      "definitionFingerprint": "f96a2df9e4be766034dc6508f264c7d8c8323d891b23cdc7a68f987943456707",
+      "warningCount": 0,
+      "errorCount": 0,
+      "ready": true,
+      "inferenceCalls": 0
+    },
+    "nativeContext": {
+      "configuredMcpServers": 4,
+      "enabledMcpServers": 3,
+      "onlyJevraEnabled": false,
+      "standardOpenAiProvider": true,
+      "parentLoadsUserConfiguration": true,
+      "unrelatedMcpDisabled": 4
+    },
+    "models": {
+      "requestedParent": "gpt-6-astra",
+      "worker": "gpt-5.6-luna",
+      "effort": "low",
+      "observedParent": null
+    },
+    "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+    "node": "v24.21.0",
+    "budget": {
+      "maxCells": 1,
+      "maxParentMs": 240000,
+      "maxWorkerCalls": 1,
+      "maxJevRequests": 4,
+      "maxJevRequestBytes": 49152,
+      "maxCorpusBytes": 98304,
+      "maxWorkerInputBytes": 131072,
+      "maxWorkerOutputBytes": 8000,
+      "enforceableUsd": null
+    },
+    "cachePolicy": "fresh_parent_existing_provider_caches_not_controlled",
+    "labelSource": "authored_synthetic_not_independent_review",
+    "promotion": "not_authorized"
+  },
+  "frozenSourceSnapshots": {
+    "evals/reader-gate/task-protocol.md": "evals/reader-gate/frozen-v2-task-protocol.md.txt"
+  },
+  "preflight": {
+    "manifest": {
+      "version": "reader-gate-validation/1",
+      "preparedAt": "2026-09-18T07:01:27.197Z",
+      "inference": "not_dispatched",
+      "hashes": {
+        "evals/reader-gate/validate.ts": "36d51d34216299b998556f6d29e5468c58e3ea1ba4954b01ce9c3c79ae6a0f44",
+        "evals/reader-gate/inspect-hooks.ts": "eb13202850de7d202afa8f5b03a7f3dca77b1bb16718fee85eccdd92556e4120",
+        "evals/reader-gate/observations.ts": "7650af107d73ccbdb59cd3221d734989b31b0ca5c8df3f31c8f68da6e4185ab2",
+        "evals/reader-gate/protocol.md": "0f09c91e287aafc1fb3727f8150d5e2b58c8fbc99b764303b36b136e0221b518",
+        "packages/cli/src/bulk-read.ts": "a5abfc8600f8d8b944a7a015064ffbc6ceaefefbd21ae4d3df12665c1d8b36ba",
+        "dist/jevra.mjs": "e85a69e10ac1043f3173316fe4548150b31e6bce74ed4ae39dd18662d4d447a3",
+        "evals/reader-comparison/server.ts": "9e9a5352a50d7b6f58995be4fa69e88c156d8a44323cda8183807d19266cfbff",
+        "evals/reader-comparison/fixtures.ts": "332b96c6243a7ac6207fff857fb8db71f96e39c60e4ac119ac5fc88799ba4e62",
+        "package-lock.json": "ebbee3f71746ff2a4d2839fd7bba46341b319f1164fef0a7f4925ee21b413195"
+      },
+      "node": "v24.21.0",
+      "hostVersion": "codex-cli 0.154.0-alpha.6.2",
+      "promotion": "not_authorized"
+    },
+    "checks": [
+      {
+        "host": "codex",
+        "case": "large-canonical-bash",
+        "passed": true,
+        "expected": "redirect",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "codex",
+        "case": "large-unified-exec",
+        "passed": true,
+        "expected": "redirect",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "codex",
+        "case": "large-read",
+        "passed": true,
+        "expected": "redirect",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "codex",
+        "case": "targeted-range",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "codex",
+        "case": "targeted-read",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "codex",
+        "case": "small-boundary",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "codex",
+        "case": "unsupported-shell",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "claude-code",
+        "case": "large-canonical-bash",
+        "passed": true,
+        "expected": "redirect",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "claude-code",
+        "case": "large-unified-exec",
+        "passed": true,
+        "expected": "redirect",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "claude-code",
+        "case": "large-read",
+        "passed": true,
+        "expected": "redirect",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "claude-code",
+        "case": "targeted-range",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "claude-code",
+        "case": "targeted-read",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "claude-code",
+        "case": "small-boundary",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      },
+      {
+        "host": "claude-code",
+        "case": "unsupported-shell",
+        "passed": true,
+        "expected": "pass_through",
+        "inferenceCalls": 0
+      }
+    ],
+    "catalog": [
+      {
+        "name": "bulk_read",
+        "hasQuestion": true,
+        "hasPaths": true,
+        "schemaHash": "406e651594353e9cee239d605ea4f8c47b87394796c6b735c681ba9c23aaad8a"
+      },
+      {
+        "name": "code_context",
+        "hasQuestion": false,
+        "hasPaths": false,
+        "schemaHash": "ff56f9c2542d3e7e90f6bd1d72b081123a814a9bf4a083e2093a59ef68ce5583"
+      }
+    ],
+    "gateCasesPassed": true,
+    "catalogAvailable": true,
+    "nativeReview": {
+      "before": {
+        "configuredMatches": 1,
+        "unrelatedDefinitions": 0,
+        "enabled": true,
+        "trustStatus": "modified",
+        "definitionFingerprint": "f96a2df9e4be766034dc6508f264c7d8c8323d891b23cdc7a68f987943456707",
+        "warningCount": 0,
+        "errorCount": 0,
+        "ready": false,
+        "inferenceCalls": 0
+      },
+      "after": {
+        "configuredMatches": 1,
+        "unrelatedDefinitions": 0,
+        "enabled": true,
+        "trustStatus": "trusted",
+        "definitionFingerprint": "f96a2df9e4be766034dc6508f264c7d8c8323d891b23cdc7a68f987943456707",
+        "warningCount": 0,
+        "errorCount": 0,
+        "ready": true,
+        "inferenceCalls": 0
+      },
+      "configHash": "07ee319578fa81614e05d5c2da57338d84fc5123b242dafd4ac86e4c42c15845",
+      "inferenceCalls": 0,
+      "nativeHookExecutionEstablished": false
+    },
+    "inferenceCalls": 0
+  },
+  "row": {
+    "id": "codex/large-shipping/jev-full-gate",
+    "status": "completed",
+    "success": true,
+    "failure": null,
+    "durationMs": 64367,
+    "cleanupComplete": true,
+    "startup": {
+      "stderrBytes": 954,
+      "hookReviewWarningObserved": false
+    },
+    "parent": {
+      "usage": {
+        "input": 105753,
+        "cacheRead": 85632,
+        "cacheWrite": null,
+        "output": 1103
+      },
+      "failure": null,
+      "terminal": "turn.completed",
+      "observedModel": null,
+      "toolCalls": 6,
+      "modelUsage": null
+    },
+    "observations": {
+      "version": "reader-observations/1",
+      "observations": [
+        {
+          "ordinal": 1,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 133,
+          "exitCode": 0
+        },
+        {
+          "ordinal": 2,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 261,
+          "exitCode": 0
+        },
+        {
+          "ordinal": 3,
+          "kind": "helper",
+          "tool": "bulk_read",
+          "outcome": "answered",
+          "outputBytes": 1015
+        },
+        {
+          "ordinal": 4,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 3315,
+          "exitCode": 0
+        },
+        {
+          "ordinal": 5,
+          "kind": "native_command",
+          "readShape": "not_simple_broad_read",
+          "outputBytes": 51,
+          "exitCode": 0
+        }
+      ],
+      "omitted": 0,
+      "complete": true,
+      "scope": "Completed command/MCP events and exposed hook completions only; other tool kinds are not covered. Complete means no collector truncation; absent hook events do not establish absent hook execution."
+    },
+    "helperCalls": [
+      "bulk_read"
+    ],
+    "helperJournal": {
+      "reservations": [
+        {
+          "id": "4ac4844b-69d7-4581-b6ab-1f210d54bf16",
+          "component": "managed_jev"
+        },
+        {
+          "id": "8921e879-719f-402f-a8c5-9f53ae2b7bfa",
+          "component": "worker"
+        },
+        {
+          "id": "a7ba9e84-352e-47de-8aa3-ac7b13f7ac9d",
+          "component": "managed_jev"
+        }
+      ],
+      "journals": [
+        {
+          "id": "4ac4844b-69d7-4581-b6ab-1f210d54bf16",
+          "component": "managed_jev",
+          "status": "completed",
+          "usage": {
+            "input": 443,
+            "output": 40,
+            "cacheRead": null,
+            "cacheWrite": null
+          },
+          "requestHash": "d2e72e07ed49192a562e47d804e6b357a5dc00f2d506dacbeb2cd498c3958234",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "reader",
+              "probabilities": {
+                "abstain": 0,
+                "reader": 1,
+                "native": 0
+              },
+              "confidence": 1
+            }
+          }
+        },
+        {
+          "id": "8921e879-719f-402f-a8c5-9f53ae2b7bfa",
+          "component": "worker",
+          "status": "completed",
+          "usage": {
+            "input": 16335,
+            "output": 232,
+            "cacheRead": 0,
+            "cacheWrite": null
+          },
+          "receipt": {
+            "schemaVersion": 1,
+            "transport": "codex-cli",
+            "requestHash": "b30b1b2e1a721534a327725eddbb446123141f26b97d8a3d2adadd4eb58f468b",
+            "operationHash": "e8e067792f12e6474b080668be0b42b3c60efbe44662b0e6f48a888f0a89bbf0",
+            "attempt": 1,
+            "profile": "context-reader/1",
+            "configuredModel": "gpt-5.6-luna",
+            "configuredEffort": "low",
+            "isolationProfile": "codex-generator/1",
+            "observedModel": null,
+            "cliVersion": "0.154.0-alpha.6.2",
+            "authentication": "chatgpt",
+            "inputBytes": 66013,
+            "stdoutBytes": 1041,
+            "stderrBytes": 256,
+            "generationInvocations": 1,
+            "observedToolItems": 0,
+            "usage": {
+              "inputTokens": 16335,
+              "cachedInputTokens": 0,
+              "outputTokens": 232
+            },
+            "usageComplete": true,
+            "durationMs": 9355,
+            "exitCode": 0,
+            "cleanupComplete": true,
+            "actualBilledUsd": null,
+            "subscriptionUsage": null
+          },
+          "usageComplete": true
+        },
+        {
+          "id": "a7ba9e84-352e-47de-8aa3-ac7b13f7ac9d",
+          "component": "managed_jev",
+          "status": "completed",
+          "usage": {
+            "input": 4728,
+            "output": 144,
+            "cacheRead": null,
+            "cacheWrite": null
+          },
+          "requestHash": "c26c0d0045cfd491e7ca27aa8db3f133ee75ddcffadd263f0109167725fd8f53",
+          "answers": {
+            "claim_0": {
+              "type": "choice",
+              "choice": "supported",
+              "probabilities": {
+                "contradicted": 0,
+                "supported": 1,
+                "insufficient": 0
+              },
+              "confidence": 0.99
+            },
+            "claim_1": {
+              "type": "choice",
+              "choice": "supported",
+              "probabilities": {
+                "supported": 1,
+                "contradicted": 0,
+                "insufficient": 0
+              },
+              "confidence": 1
+            },
+            "coverage": {
+              "type": "noul",
+              "noul": 0.86
+            },
+            "continuation": {
+              "type": "choice",
+              "choice": "answer",
+              "probabilities": {
+                "abstain": 0,
+                "native": 0.01,
+                "answer": 0.99
+              },
+              "confidence": 0.98
+            }
+          }
+        }
+      ]
+    },
+    "accounting": {
+      "complete": true,
+      "components": [
+        {
+          "component": "parent",
+          "observedCalls": 1,
+          "expectedCalls": 1,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 105753,
+          "knownOutput": 1103,
+          "knownCacheRead": 85632,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 1
+        },
+        {
+          "component": "worker",
+          "observedCalls": 1,
+          "expectedCalls": 1,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 16335,
+          "knownOutput": 232,
+          "knownCacheRead": 0,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 1
+        },
+        {
+          "component": "managed_jev",
+          "observedCalls": 2,
+          "expectedCalls": 2,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 5171,
+          "knownOutput": 184,
+          "knownCacheRead": 0,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 2
+        },
+        {
+          "component": "routing_hook",
+          "observedCalls": 0,
+          "expectedCalls": 0,
+          "countReconciled": true,
+          "unknownCalls": 0,
+          "knownInput": 0,
+          "knownOutput": 0,
+          "knownCacheRead": 0,
+          "knownCacheWrite": 0,
+          "unknownCacheCalls": 0
+        }
+      ],
+      "knownInput": 127259,
+      "knownOutput": 1519,
+      "input": 127259,
+      "output": 1519,
+      "totalTokens": 128778,
+      "apiEquivalentUsd": null,
+      "actualBilledUsd": null,
+      "subscriptionUsage": null
+    },
+    "gate": {
+      "recordedInvocations": 5,
+      "invocations": [
+        {
+          "payloadValid": true,
+          "toolKind": "Bash",
+          "readShape": "not_simple_read",
+          "inferenceAttempts": 0
+        },
+        {
+          "payloadValid": true,
+          "toolKind": "Bash",
+          "readShape": "simple_read",
+          "inferenceAttempts": 0
+        },
+        {
+          "payloadValid": true,
+          "toolKind": "Bash",
+          "readShape": "not_simple_read",
+          "inferenceAttempts": 0
+        },
+        {
+          "payloadValid": true,
+          "toolKind": "Bash",
+          "readShape": "not_simple_read",
+          "inferenceAttempts": 0
+        },
+        {
+          "payloadValid": true,
+          "toolKind": "Bash",
+          "readShape": "not_simple_read",
+          "inferenceAttempts": 0
+        }
+      ],
+      "recordedEligibleReads": 1,
+      "records": [
+        {
+          "action": "redirect",
+          "sourceCount": 1,
+          "maxLines": 546,
+          "inferenceAttempts": 0
+        }
+      ],
+      "nativeInvocationCount": null,
+      "scope": "Observed invocation and eligibility records; missing records cannot become zero native invocations. No provider inference in the local gate."
+    },
+    "quality": {
+      "passed": true,
+      "facts": true,
+      "scope": true,
+      "grammar": true,
+      "functional": true,
+      "failure": null,
+      "labelSource": "authored_synthetic_oracle_not_independent_review"
+    },
+    "configRestored": true
+  },
+  "readerReceipts": [
+    {
+      "version": "focused-reader/1",
+      "operationHash": "e8e067792f12e6474b080668be0b42b3c60efbe44662b0e6f48a888f0a89bbf0",
+      "bindingHash": "367c4abf5f73e58b2cdab1d2b4328b96c8049b030a3b6c27741277ba08475bea",
+      "policyHash": "ee5e6250c1fe2714d35e978e581794437e0a3b56abf6f6e96b64b10d6203aaf5",
+      "selection": "full",
+      "status": "answered",
+      "reason": "answered",
+      "decisions": [
+        {
+          "id": "59331106e0256cfa1188c72787d6b78a160fcc7fe332e412c477d7461bf3a04d",
+          "stage": "route",
+          "status": "completed",
+          "requestHash": "d2e72e07ed49192a562e47d804e6b357a5dc00f2d506dacbeb2cd498c3958234",
+          "questionSetHash": "1b9799978621fa0cc131531e8fa2d0b5f5f527782ee79710596f9d11e35b4ceb",
+          "requestBytes": 750,
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "reader",
+              "probabilities": {
+                "abstain": 0,
+                "reader": 1,
+                "native": 0
+              },
+              "confidence": 1
+            }
+          },
+          "usage": {
+            "input_tokens": 443,
+            "output_tokens": 40
+          },
+          "failure": null
+        },
+        {
+          "id": "3c5b1d53f2501a94691c6c6e3efeaba40322af00402a2073a4b8b8494e25644b",
+          "stage": "answer_review",
+          "status": "completed",
+          "requestHash": "c26c0d0045cfd491e7ca27aa8db3f133ee75ddcffadd263f0109167725fd8f53",
+          "questionSetHash": "446bb4ad37aba13ade559637521430a53bd02e492c7d6690fb60a05352044507",
+          "requestBytes": 19007,
+          "answers": {
+            "claim_0": {
+              "type": "choice",
+              "choice": "supported",
+              "probabilities": {
+                "contradicted": 0,
+                "supported": 1,
+                "insufficient": 0
+              },
+              "confidence": 0.99
+            },
+            "claim_1": {
+              "type": "choice",
+              "choice": "supported",
+              "probabilities": {
+                "supported": 1,
+                "contradicted": 0,
+                "insufficient": 0
+              },
+              "confidence": 1
+            },
+            "coverage": {
+              "type": "noul",
+              "noul": 0.86
+            },
+            "continuation": {
+              "type": "choice",
+              "choice": "answer",
+              "probabilities": {
+                "abstain": 0,
+                "native": 0.01,
+                "answer": 0.99
+              },
+              "confidence": 0.98
+            }
+          },
+          "usage": {
+            "input_tokens": 4728,
+            "output_tokens": 144
+          },
+          "failure": null
+        }
+      ],
+      "generations": [
+        {
+          "id": "0b98fedcf5b9d2b419880a9692ef33908343fd8dab7a6c4362449c2435b2cf57",
+          "requestHash": "b30b1b2e1a721534a327725eddbb446123141f26b97d8a3d2adadd4eb58f468b",
+          "status": "completed",
+          "failure": null,
+          "receipt": {
+            "schemaVersion": 1,
+            "transport": "codex-cli",
+            "requestHash": "b30b1b2e1a721534a327725eddbb446123141f26b97d8a3d2adadd4eb58f468b",
+            "operationHash": "e8e067792f12e6474b080668be0b42b3c60efbe44662b0e6f48a888f0a89bbf0",
+            "attempt": 1,
+            "profile": "context-reader/1",
+            "configuredModel": "gpt-5.6-luna",
+            "configuredEffort": "low",
+            "isolationProfile": "codex-generator/1",
+            "observedModel": null,
+            "cliVersion": "0.154.0-alpha.6.2",
+            "authentication": "chatgpt",
+            "inputBytes": 66013,
+            "stdoutBytes": 1041,
+            "stderrBytes": 256,
+            "generationInvocations": 1,
+            "observedToolItems": 0,
+            "usage": {
+              "inputTokens": 16335,
+              "cachedInputTokens": 0,
+              "outputTokens": 232
+            },
+            "usageComplete": true,
+            "durationMs": 9355,
+            "exitCode": 0,
+            "cleanupComplete": true,
+            "actualBilledUsd": null,
+            "subscriptionUsage": null
+          }
+        }
+      ],
+      "corpusBytes": 59302,
+      "suppliedPassages": 21,
+      "selectedPassages": 21,
+      "selectedHash": "a6d6e52f27285fed2c4bb9cfb68f3a591896bcdc392c7a06bfcd76022d00ad35",
+      "reviewedPassages": 6,
+      "reviewCoverage": "cited_spans_and_bounded_counterevidence",
+      "answerHash": "da8054c311122a27180fcb2e824228c82fd3ebc6a2520dfd03dc82b2bf46b1a3",
+      "outputBytes": 1015,
+      "actualBilledUsd": null,
+      "subscriptionUsage": null
+    }
+  ],
+  "derived": {
+    "observedCommandOutputBytes": 3760,
+    "observedHelperOutputBytes": 1015,
+    "knownCoveredToolOutputBytes": 4775,
+    "parentGrossInputMinusReportedCacheReads": 20121,
+    "allGrossInputMinusKnownCacheReads": 41627,
+    "cacheSubtractionScope": "Arithmetic only; absent Jev cache fields and cache writes remain unknown. This is not a fully uncached or billable token class."
+  },
+  "localValidation": {
+    "node": "24.21.0",
+    "build": "passed",
+    "readerGateTestsPassedThisIncrement": 6,
+    "readerGateTestsFailed": 0,
+    "lastFullSuitePassed": 184,
+    "lastFullSuiteScope": "Previous implementation increment; no executable source changed before this dispatch."
+  },
+  "usageSnapshots": {
+    "beforeUsedPercent": 98,
+    "afterUsedPercent": 99,
+    "scope": "Rounded shared-account snapshots; not attributable quota consumption or zero/precise cost evidence.",
+    "resetCreditsUsed": 0,
+    "purchasedCreditsUsed": 0
+  },
+  "actualBilledUsd": null,
+  "apiEquivalentUsd": null,
+  "subscriptionUsage": null,
+  "limitations": [
+    "One authored synthetic cell; no matched contemporaneous native arm, repeated comparison, independent labels or general plugin activation certification.",
+    "The first pair and gate-task v1 used different host/skill/config conditions and uncontrolled caches; historical differences cannot identify a causal effect.",
+    "Gross input includes cache reads once. Cache creation, Jev cache classes, actual charges and subscription allocation remain unobservable.",
+    "The full bounded-corpus reader arm ran; the Jev-selected corpus arm and matched Luna-only ablation did not run.",
+    "Gate invocation records are observed lower bounds; no complete native hook notification stream or general mediation proof.",
+    "Jev reviews only cited spans and bounded counterevidence; scores and this task success do not establish calibration or full-repository correctness.",
+    "No automatic inference retry, paid expansion, threshold tuning, reset credit or promotion follows."
+  ]
+}

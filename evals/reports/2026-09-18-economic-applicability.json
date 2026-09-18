@@ -1,0 +1,952 @@
+{
+  "schemaVersion": 1,
+  "kind": "synthetic-economic-applicability-diagnostic",
+  "timestamp": "2026-09-18T04:48:04.007Z",
+  "manifest": {
+    "timestamp": "2026-09-18T04:48:04.007Z",
+    "hashes": {
+      "evals/economic-applicability/protocol.md": "1da6c48cfbabc7eaec95f29eb9350253ff9d0c55977f3965dcd62c990781c0c2",
+      "evals/economic-applicability/cases.ts": "52d75cddacda95033d69d3930f97be74dff55dd7fee033182f5d2ddc061ba79d",
+      "evals/economic-applicability/evaluate.ts": "d9d4b43f82869a5fb1e5a59965df3bb45547fb79a6b55f86f43e00207c0954c4",
+      "evals/economic-applicability/run.ts": "e00fcf2d005ede7e39b001c6ad1b5c7f344a0c4968ef2e65ced22533d5830acd",
+      "packages/core/src/economics.ts": "e1ad368b6d6a3165bb6352262e10818c1db7f35c49396b9f2373278182110627",
+      "packages/core/src/managed-worker.ts": "b655369f77abecca5020b8830f384bf7015410eea9fc8defe8d79eae9c0a3c97",
+      "packages/core/src/index.ts": "3d0214343bc89646d285349856b3c7ef080a9a0c690f43533999e753473fc00c",
+      "packages/provider-typesafe/src/index.ts": "211c90ecdec732face3a13409354867a25fea034b16cecae3d904815e8dc20b3",
+      "packages/cli/src/config.ts": "607b7a71135eb5e49cb9dfce6beb68eed2d67ec095d0b3547662c239c5a2bd2c",
+      "package-lock.json": "ebbee3f71746ff2a4d2839fd7bba46341b319f1164fef0a7f4925ee21b413195"
+    },
+    "cases": [
+      "literal-addition",
+      "addition-negative-operands",
+      "renamed-addition",
+      "piecewise-range",
+      "currency-table-family",
+      "same-size-different-behavior",
+      "production-edit-request",
+      "exploration-request",
+      "ambiguous-family-description",
+      "ambiguous-task",
+      "missing-family",
+      "known-negative-benefit",
+      "unknown-worker-usage",
+      "stale-measurements",
+      "unequal-quality-checks",
+      "incompatible-host-context"
+    ],
+    "expectedCalls": 16
+  },
+  "stopReason": null,
+  "summary": {
+    "economicOnly": [
+      {
+        "variant": "current",
+        "positiveCases": 4,
+        "acceptedPositives": 0,
+        "missedPositiveIds": [
+          "literal-addition",
+          "addition-negative-operands",
+          "renamed-addition",
+          "piecewise-range"
+        ],
+        "blockedCases": 12,
+        "unsupportedDelegationIds": []
+      },
+      {
+        "variant": "challenger",
+        "positiveCases": 4,
+        "acceptedPositives": 4,
+        "missedPositiveIds": [],
+        "blockedCases": 12,
+        "unsupportedDelegationIds": []
+      }
+    ],
+    "applicabilityAgreement": 14,
+    "disagreements": [
+      {
+        "id": "same-size-different-behavior",
+        "expected": "no",
+        "observed": "uncertain",
+        "noul": 0.48
+      },
+      {
+        "id": "missing-family",
+        "expected": "uncertain",
+        "observed": "no",
+        "noul": 0.03
+      }
+    ],
+    "currentReadyDecisions": 6,
+    "usage": {
+      "knownInputTokens": 26174,
+      "knownOutputTokens": 1904,
+      "unknownCalls": 0
+    }
+  },
+  "audit": {
+    "combinedInitialRouteComparisonValid": false,
+    "reason": "evaluator_relevance_gate_2_instead_of_runtime_1_5_and_relevance_answers_not_retained",
+    "recovery": "cannot_rescore_combined_route_without_saved_answers; preserve_original_run; no_retry",
+    "economicOnlyComparisonValidAsSyntheticComponentDiagnostic": true,
+    "scope": "no_later_sufficiency_generation_review_validation_or_permission_transition_observed"
+  },
+  "rows": [
+    {
+      "id": "literal-addition",
+      "category": "related",
+      "requestHash": "ddf233dd907b669da312342a40c3297ba7953d6ee413c7f8e4266054437cc1f0",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "yes",
+      "expectedDelegate": true,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.95,
+      "challengerEconomicDelegate": true,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "abstain": 0,
+            "tests": 1,
+            "native": 0
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "insufficient": 0.45,
+            "native": 0.12,
+            "delegate": 0.43
+          },
+          "confidence": 0.18
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.95
+        }
+      },
+      "usage": {
+        "input_tokens": 1665,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "addition-negative-operands",
+      "category": "related",
+      "requestHash": "f2ce7410a8c80bc0c66ebf0ca43a49be3f9db0db2a0b425473470d0087288df1",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "yes",
+      "expectedDelegate": true,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.96,
+      "challengerEconomicDelegate": true,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 1,
+            "native": 0,
+            "abstain": 0
+          },
+          "confidence": 1
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "insufficient": 0.49,
+            "native": 0.12,
+            "delegate": 0.39
+          },
+          "confidence": 0.23
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.96
+        }
+      },
+      "usage": {
+        "input_tokens": 1679,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "renamed-addition",
+      "category": "related",
+      "requestHash": "300f337f155032bc35f60e54bdf67d69122c5c0a73c2ef46813a18b086c0482d",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "yes",
+      "expectedDelegate": true,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "delegate",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.94,
+      "challengerEconomicDelegate": true,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 1,
+            "abstain": 0,
+            "native": 0
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "delegate",
+          "probabilities": {
+            "native": 0.18,
+            "insufficient": 0.4,
+            "delegate": 0.42
+          },
+          "confidence": 0.13
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1670,
+        "output_tokens": 119
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "piecewise-range",
+      "category": "related",
+      "requestHash": "226a351e1a05731c7674dbe6983f9571b066854999c53d666986ecb977690418",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "yes",
+      "expectedDelegate": true,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.94,
+      "challengerEconomicDelegate": true,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "native": 0,
+            "tests": 1,
+            "abstain": 0
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "native": 0.13,
+            "insufficient": 0.56,
+            "delegate": 0.31
+          },
+          "confidence": 0.34
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1720,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "currency-table-family",
+      "category": "unrelated",
+      "requestHash": "1eccbfbb7daa043889c9d6ebe6fd08e0678ca620c7e9acdcb444d1c47c52af90",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "no",
+      "expectedDelegate": false,
+      "observedApplicability": "no",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": true,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.01,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 0.99,
+            "native": 0,
+            "abstain": 0.01
+          },
+          "confidence": 0.98
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "delegate": 0,
+            "insufficient": 0.9,
+            "native": 0.1
+          },
+          "confidence": 0.84
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 1647,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "same-size-different-behavior",
+      "category": "unrelated",
+      "requestHash": "56f078892f274f17858c0d1652bb765e7b12395f8fb146eb178da99ebcfca260",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "no",
+      "expectedDelegate": false,
+      "observedApplicability": "uncertain",
+      "applicabilityMatchesExpected": false,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.48,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "native": 0.02,
+            "tests": 0.85,
+            "abstain": 0.13
+          },
+          "confidence": 0.77
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "native": 0.19,
+            "insufficient": 0.59,
+            "delegate": 0.22
+          },
+          "confidence": 0.37
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.48
+        }
+      },
+      "usage": {
+        "input_tokens": 1674,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "production-edit-request",
+      "category": "unrelated",
+      "requestHash": "4e46478b1f8eaede8b1a94fc62dca5ddf4adef7e8a4e72a683dbc899f7c668f1",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "no",
+      "expectedDelegate": false,
+      "observedApplicability": "no",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.07,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": false,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "native",
+          "probabilities": {
+            "tests": 0.28,
+            "native": 0.51,
+            "abstain": 0.21
+          },
+          "confidence": 0.26
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "native": 0.2,
+            "delegate": 0.04,
+            "insufficient": 0.76
+          },
+          "confidence": 0.65
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.07
+        }
+      },
+      "usage": {
+        "input_tokens": 1668,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "exploration-request",
+      "category": "unrelated",
+      "requestHash": "f5c572004851e6526230d5765af909bcc9c7fa89dbbb302047a12d2227141e09",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "no",
+      "expectedDelegate": false,
+      "observedApplicability": "no",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": true,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.03,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": false,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "native",
+          "probabilities": {
+            "tests": 0.09,
+            "native": 0.73,
+            "abstain": 0.18
+          },
+          "confidence": 0.59
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "insufficient": 0.87,
+            "delegate": 0,
+            "native": 0.13
+          },
+          "confidence": 0.79
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.03
+        }
+      },
+      "usage": {
+        "input_tokens": 1671,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "ambiguous-family-description",
+      "category": "ambiguous",
+      "requestHash": "7898b5d093a09c2bb023a4c11349c06e11b27aa99cfd8ef45a7cc5185a5006e3",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "uncertain",
+      "expectedDelegate": false,
+      "observedApplicability": "uncertain",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.78,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "abstain": 0,
+            "native": 0,
+            "tests": 1
+          },
+          "confidence": 1
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "delegate": 0.31,
+            "insufficient": 0.57,
+            "native": 0.12
+          },
+          "confidence": 0.36
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.78
+        }
+      },
+      "usage": {
+        "input_tokens": 1635,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "ambiguous-task",
+      "category": "ambiguous",
+      "requestHash": "9fdbdc579a4e4aa75d4e369646ac9706dce0acca66c3b83d7d0dfc3d2069cf0d",
+      "questionSetHash": "ef86fa2dafe13cc26708cc2ed3b5e05193b3d3620135109407c27f83a76fc14c",
+      "admissible": true,
+      "issues": [],
+      "expectedApplicability": "uncertain",
+      "expectedDelegate": false,
+      "observedApplicability": "uncertain",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.82,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 0.98,
+            "abstain": 0.01,
+            "native": 0.01
+          },
+          "confidence": 0.97
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "insufficient": 0.5,
+            "delegate": 0.34,
+            "native": 0.16
+          },
+          "confidence": 0.24
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.82
+        }
+      },
+      "usage": {
+        "input_tokens": 1654,
+        "output_tokens": 122
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "missing-family",
+      "category": "invalid_accounting",
+      "requestHash": "a18e839ac74d0a0f25fa98dd0468452ca2365c8ebd330aa08dfb78476837bbc7",
+      "questionSetHash": "069474050d364c9814bef045d79b982d4de1e7735ecdbcab7223929941e74480",
+      "admissible": false,
+      "issues": [
+        "missing_calibration"
+      ],
+      "expectedApplicability": "uncertain",
+      "expectedDelegate": false,
+      "observedApplicability": "no",
+      "applicabilityMatchesExpected": false,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": true,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.03,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 1,
+            "abstain": 0,
+            "native": 0
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "insufficient": 0.93,
+            "native": 0.07
+          },
+          "confidence": 0.86
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.03
+        }
+      },
+      "usage": {
+        "input_tokens": 1488,
+        "output_tokens": 115
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "known-negative-benefit",
+      "category": "invalid_accounting",
+      "requestHash": "43071347f217c5d2c5e8b982d6f95a17ff21f2cd3628ffd69661c4b118c76671",
+      "questionSetHash": "069474050d364c9814bef045d79b982d4de1e7735ecdbcab7223929941e74480",
+      "admissible": false,
+      "issues": [],
+      "expectedApplicability": "yes",
+      "expectedDelegate": false,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "native",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.94,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 0.99,
+            "native": 0,
+            "abstain": 0.01
+          },
+          "confidence": 0.98
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "native",
+          "probabilities": {
+            "insufficient": 0.36,
+            "native": 0.64
+          },
+          "confidence": 0.28
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1640,
+        "output_tokens": 112
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "unknown-worker-usage",
+      "category": "invalid_accounting",
+      "requestHash": "bb5c8099f645fbfe7516085fa821455a1dee56a3e8b5846b851210a9d7e7dec1",
+      "questionSetHash": "069474050d364c9814bef045d79b982d4de1e7735ecdbcab7223929941e74480",
+      "admissible": false,
+      "issues": [
+        "unknown_usage"
+      ],
+      "expectedApplicability": "yes",
+      "expectedDelegate": false,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": true,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.94,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "native": 0,
+            "abstain": 0,
+            "tests": 1
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "insufficient": 0.85,
+            "native": 0.15
+          },
+          "confidence": 0.7
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1592,
+        "output_tokens": 115
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "stale-measurements",
+      "category": "invalid_accounting",
+      "requestHash": "c4d75df03f40b9c086ccddfac3e8cb69693bdeab29330a4e01a4aaf6eea8e026",
+      "questionSetHash": "069474050d364c9814bef045d79b982d4de1e7735ecdbcab7223929941e74480",
+      "admissible": false,
+      "issues": [
+        "expired_or_future_measurement"
+      ],
+      "expectedApplicability": "yes",
+      "expectedDelegate": false,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": true,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.94,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "abstain": 0,
+            "native": 0,
+            "tests": 1
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "native": 0.09,
+            "insufficient": 0.91
+          },
+          "confidence": 0.81
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1594,
+        "output_tokens": 115
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "unequal-quality-checks",
+      "category": "invalid_accounting",
+      "requestHash": "fb0965694e6f756c6739464faa1ee1c20d95b243e521fddf4e4646533d80d8b2",
+      "questionSetHash": "069474050d364c9814bef045d79b982d4de1e7735ecdbcab7223929941e74480",
+      "admissible": false,
+      "issues": [
+        "quality_not_established"
+      ],
+      "expectedApplicability": "yes",
+      "expectedDelegate": false,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": true,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.94,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 1,
+            "abstain": 0,
+            "native": 0
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "insufficient": 0.93,
+            "native": 0.07
+          },
+          "confidence": 0.86
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1587,
+        "output_tokens": 115
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    },
+    {
+      "id": "incompatible-host-context",
+      "category": "invalid_accounting",
+      "requestHash": "df8a4aee770f865ff5cc85fbfaaf1b11c362bbb1175fef76b2e9a50ea36bdb66",
+      "questionSetHash": "069474050d364c9814bef045d79b982d4de1e7735ecdbcab7223929941e74480",
+      "admissible": false,
+      "issues": [
+        "measurement_context_mismatch"
+      ],
+      "expectedApplicability": "yes",
+      "expectedDelegate": false,
+      "observedApplicability": "yes",
+      "applicabilityMatchesExpected": true,
+      "currentEconomicChoice": "insufficient",
+      "currentDecisionReady": false,
+      "currentEconomicDelegate": false,
+      "challengerNoul": 0.94,
+      "challengerEconomicDelegate": false,
+      "capabilityReady": true,
+      "frozenEvaluatorEvidenceSelected": false,
+      "frozenCurrentInitialRoute": false,
+      "frozenChallengerInitialRoute": false,
+      "answers": {
+        "route": {
+          "type": "choice",
+          "choice": "tests",
+          "probabilities": {
+            "tests": 1,
+            "abstain": 0,
+            "native": 0
+          },
+          "confidence": 0.99
+        },
+        "economic_route": {
+          "type": "choice",
+          "choice": "insufficient",
+          "probabilities": {
+            "native": 0.16,
+            "insufficient": 0.84
+          },
+          "confidence": 0.68
+        },
+        "calibration_applicability": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1590,
+        "output_tokens": 115
+      },
+      "observedModel": "jev-1.13.0",
+      "failure": null
+    }
+  ],
+  "parentInvocations": 0,
+  "workerInvocations": 0,
+  "actualBilledUsd": null,
+  "subscriptionUsage": null,
+  "promotion": "not_authorized_by_author_labeled_synthetic_cases_or_invalid_combined_gate"
+}
